@@ -9,13 +9,13 @@ class Order implements OrderInterface
      */
     private $id;
 
+    public function __construct(int $order_id)
+    {
+        $this->id = $order_id;
+    }
+
     public function id(): int
     {
         return (int) $this->id;
-    }
-
-    public function setId(int $order_id)
-    {
-        $this->id = $order_id;
     }
 }
