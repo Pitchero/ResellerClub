@@ -3,13 +3,14 @@
 namespace ResellerClub\Requests\Orders\Tests;
 
 use PHPUnit\Framework\TestCase;
-use ResellerClub\Requests\Orders\BusinessEmailOrder;
-use ResellerClub\Resources\Invoices\InvoiceState;
+use ResellerClub\Exceptions\InvalidInvoiceStateException;
+use ResellerClub\Requests\Orders\BusinessEmailOrderRequest;
+use ResellerClub\Resources\Invoices\InvoiceStateResource;
 
-class BusinessEmailOrderTest extends TestCase
+class BusinessEmailOrderRequestTest extends TestCase
 {
     /**
-     * @var BusinessEmailOrder
+     * @var BusinessEmailOrderRequest
      */
     private $business_email_order;
 
@@ -42,19 +43,32 @@ class BusinessEmailOrderTest extends TestCase
 
     public function testInvoiceCustomer()
     {
-        $this->assertEquals(InvoiceState::NO_INVOICE, $this->business_email_order->invoiceState());
+        $this->assertEquals(InvoiceStateResource::NO_INVOICE, $this->business_email_order->invoiceState());
+    }
+
+    public function testInvalidInvoiceStateCausesAnException()
+    {
+        $this->expectException(InvalidInvoiceStateException::class);
+
+        $this->business_email_order = new BusinessEmailOrderRequest(
+            123,
+            'some-domain.co.uk',
+            5,
+            1,
+            'not_a_valid_invoice_state'
+        );
     }
 
     protected function setUp()
     {
         parent::setUp();
 
-        $this->business_email_order = new BusinessEmailOrder(
+        $this->business_email_order = new BusinessEmailOrderRequest(
             123,
             'some-domain.co.uk',
             5,
             1,
-            InvoiceState::NO_INVOICE
+            InvoiceStateResource::NO_INVOICE
         );
     }
 }

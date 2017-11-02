@@ -2,7 +2,10 @@
 
 namespace ResellerClub\Requests\Orders;
 
-class BusinessEmailOrder
+use ResellerClub\Exceptions\InvalidInvoiceStateException;
+use ResellerClub\Resources\Invoices\InvoiceStateResource;
+
+class BusinessEmailOrderRequest
 {
     /**
      * @var integer
@@ -36,6 +39,10 @@ class BusinessEmailOrder
         int $for_number_of_months,
         string $invoice_state
     ) {
+        if (!InvoiceStateResource::validateState($invoice_state)) {
+            throw new InvalidInvoiceStateException();
+        }
+
         $this->customer_id = $customer_id;
         $this->domain = $domain;
         $this->number_of_accounts = $number_of_account;
