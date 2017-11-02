@@ -1,9 +1,9 @@
 <?php
 
-namespace ResellerClub\Tests;
+namespace ResellerClub\Resources\Customers\Tests;
 
 use PHPUnit\Framework\TestCase;
-use ResellerClub\Customer;
+use ResellerClub\Resources\Customers\Customer;
 
 class CustomerTest extends TestCase
 {

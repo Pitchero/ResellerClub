@@ -1,6 +1,6 @@
 <?php
 
-namespace ResellerClub;
+namespace ResellerClub\Resources\Customers;
 
 class Customer
 {
