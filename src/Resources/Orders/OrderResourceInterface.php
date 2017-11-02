@@ -2,7 +2,7 @@
 
 namespace ResellerClub\Resources\Orders;
 
-interface OrderInterface
+interface OrderResourceInterface
 {
     public function id(): int;
 }

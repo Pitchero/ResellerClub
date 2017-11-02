@@ -2,7 +2,7 @@
 
 namespace ResellerClub\Resources\Orders;
 
-class Order implements OrderInterface
+class OrderResource implements OrderResourceInterface
 {
     /**
      * @var integer
