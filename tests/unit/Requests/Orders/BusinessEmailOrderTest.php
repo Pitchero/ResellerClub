@@ -1,11 +1,10 @@
 <?php
 
-namespace ResellerClub\Resources\Orders\Tests;
+namespace ResellerClub\Requests\Orders\Tests;
 
 use PHPUnit\Framework\TestCase;
-use ResellerClub\Resources\Invoices\Invoice;
-use ResellerClub\Resources\Customers\Customer;
-use ResellerClub\Resources\Orders\BusinessEmailOrder;
+use ResellerClub\Requests\Orders\BusinessEmailOrder;
+use ResellerClub\Resources\Invoices\InvoiceState;
 
 class BusinessEmailOrderTest extends TestCase
 {
@@ -24,19 +23,11 @@ class BusinessEmailOrderTest extends TestCase
 
     public function testDomainName()
     {
-        $this->assertNull($this->business_email_order->domain());
-        $this->business_email_order->setDomain('some-domain.co.uk');
         $this->assertEquals('some-domain.co.uk', $this->business_email_order->domain());
     }
 
     public function testNumberOfAccounts()
     {
-        $pre_assert_number_of_accounts = $this->business_email_order->numberOfAccounts();
-        $this->assertInternalType('int', $pre_assert_number_of_accounts);
-        $this->assertEquals(0, $pre_assert_number_of_accounts);
-
-        $this->business_email_order->setNumberOfAccounts(5);
-
         $number_of_accounts = $this->business_email_order->numberOfAccounts();
         $this->assertInternalType('int', $number_of_accounts);
         $this->assertEquals(5, $number_of_accounts);
@@ -44,12 +35,6 @@ class BusinessEmailOrderTest extends TestCase
 
     public function testForNumberOfMonths()
     {
-        $pre_assert_for_number_of_months = $this->business_email_order->forNumberOfMonths();
-        $this->assertInternalType('int', $pre_assert_for_number_of_months);
-        $this->assertEquals(0, $pre_assert_for_number_of_months);
-
-        $this->business_email_order->setForNumberOfMonths(1);
-
         $for_number_of_months = $this->business_email_order->forNumberOfMonths();
         $this->assertInternalType('int', $for_number_of_months);
         $this->assertEquals(1, $for_number_of_months);
@@ -57,9 +42,7 @@ class BusinessEmailOrderTest extends TestCase
 
     public function testInvoiceCustomer()
     {
-        $invoice = new Invoice('no_invoice');
-        $this->assertInstanceOf(Invoice::class, $this->business_email_order->invoice());
-        $this->assertEquals($invoice->paymentState(), $this->business_email_order->invoice()->paymentState());
+        $this->assertEquals(InvoiceState::NO_INVOICE, $this->business_email_order->invoiceState());
     }
 
     protected function setUp()
@@ -67,8 +50,11 @@ class BusinessEmailOrderTest extends TestCase
         parent::setUp();
 
         $this->business_email_order = new BusinessEmailOrder(
-            new Customer(123),
-            new Invoice('no_invoice')
+            123,
+            'some-domain.co.uk',
+            5,
+            1,
+            InvoiceState::NO_INVOICE
         );
     }
 }
