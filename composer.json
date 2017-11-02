@@ -1,6 +1,14 @@
 {
+    "name": "Pitchero/ResellerClub",
+    "description": "A PHP SDK to ResellerClub's API.",
+    "keywords": ["ResellerClub", "Reseller club", "Reseller Club SDK"],
+    "support": {
+        "issues": "https://github.com/Pitchero/ResellerClub/issues",
+        "source": "https://github.com/Pitchero/ResellerClub"
+    },
     "require": {
-        "php": ">=7.0.0"
+        "php": ">=7.0.0",
+        "guzzlehttp/guzzle": "^6.3"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.4"
