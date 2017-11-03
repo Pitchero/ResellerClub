@@ -7,6 +7,11 @@ use ResellerClub\Config;
 
 class ConfigTest extends TestCase
 {
+    /**
+     * @var Config
+     */
+    private $config;
+
     public function testAuthUserId()
     {
         $this->assertEquals(123, $this->config->authUserId());
