@@ -2,41 +2,41 @@
 
 namespace ResellerClub\Orders\BusinessEmails;
 
-use GuzzleHttp\Client;
-use ResellerClub\Resources\Orders\BusinessEmailOrder;
+use ResellerClub\Api;
+use ResellerClub\Config;
 
-class BusinessEmailOrderCreate
+class BusinessEmailOrder
 {
+    /**
+     * @var Config
+     */
+    private $api;
+
+    public function __construct(Api $api)
+    {
+        $this->api = $api;
+    }
+
     /**
      * Makes a POST request to ResellerClub's 'add' business email order API.
      * https://manage.resellerclub.com/kb/answer/2156
      */
-    public function order(BusinessEmailOrder $business_email_order)
+    public function create(BusinessEmailOrderRequest $request)
     {
-        $client = new Client();
-        try {
-            $client->request(
-                'POST',
-                $this->baseApiURI() . 'eelite/us/add.json',
-                [
-                    'auth-userid' => 715226,
-                    'api-key' => 'GL9zQ7EiPHBeHQqhwpaC3HTg8Ne033Dp',
-                    'domain-name' => $business_email_order->domain(),
-                    'customer-id' => $business_email_order->customer()->id(),
-                    'months' => $business_email_order->forNumberOfMonths(),
-                    'no-of-accounts' => $business_email_order->numberOfAccounts(),
-                    'invoice-option' => $business_email_order->invoice()->paymentState(),
-                ]
-            );
-        } catch (\Exception $e) {
-            var_dump($e);
-            die();
-        }
+        $response = $this->api->post(
+            'eelite/us/add',
+            [
+                'domain-name' => $request->domain(),
+                'customer-id' => $request->customerId(),
+                'months' => $request->forNumberOfMonths(),
+                'no-of-accounts' => $request->numberOfAccounts(),
+                'invoice-option' => (string) $request->invoiceOption(),
+            ]
+        );
 
-    }
-
-    private function baseApiURI()
-    {
-        return 'https://test.httpapi.com/api/';
+        echo '878' . PHP_EOL;
+        die();
+        // @todo - create the response object
+        //return new BusinessEmailOrderResource($response);
     }
 }
