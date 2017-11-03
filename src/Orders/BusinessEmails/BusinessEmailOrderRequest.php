@@ -1,9 +1,8 @@
 <?php
 
-namespace ResellerClub\Requests\Orders;
+namespace ResellerClub\Orders\BusinessEmails;
 
-use ResellerClub\Exceptions\InvalidInvoiceStateException;
-use ResellerClub\Resources\Invoices\InvoiceStateResource;
+use ResellerClub\Orders\InvoiceOption;
 
 class BusinessEmailOrderRequest
 {
@@ -28,26 +27,22 @@ class BusinessEmailOrderRequest
     private $for_number_of_months;
 
     /**
-     * @var string
+     * @var InvoiceOption
      */
-    private $invoice_state;
+    private $invoice_option;
 
     public function __construct(
         int $customer_id,
         string $domain,
         int $number_of_account,
         int $for_number_of_months,
-        string $invoice_state
+        InvoiceOption $invoice_option
     ) {
-        if (!InvoiceStateResource::validateState($invoice_state)) {
-            throw new InvalidInvoiceStateException();
-        }
-
         $this->customer_id = $customer_id;
         $this->domain = $domain;
         $this->number_of_accounts = $number_of_account;
         $this->for_number_of_months = $for_number_of_months;
-        $this->invoice_state = $invoice_state;
+        $this->invoice_option = $invoice_option;
     }
 
     public function customerId(): int
@@ -62,16 +57,16 @@ class BusinessEmailOrderRequest
 
     public function numberOfAccounts(): int
     {
-        return (int) $this->number_of_accounts;
+        return $this->number_of_accounts;
     }
 
     public function forNumberOfMonths(): int
     {
-        return (int) $this->for_number_of_months;
+        return $this->for_number_of_months;
     }
 
-    public function invoiceState(): string
+    public function invoiceOption(): InvoiceOption
     {
-        return $this->invoice_state;
+        return $this->invoice_option;
     }
 }

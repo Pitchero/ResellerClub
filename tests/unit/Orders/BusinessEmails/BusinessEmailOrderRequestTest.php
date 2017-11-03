@@ -1,11 +1,10 @@
 <?php
 
-namespace ResellerClub\Requests\Orders\Tests;
+namespace ResellerClub\Orders\BusinessEmails\Tests;
 
 use PHPUnit\Framework\TestCase;
-use ResellerClub\Exceptions\InvalidInvoiceStateException;
-use ResellerClub\Requests\Orders\BusinessEmailOrderRequest;
-use ResellerClub\Resources\Invoices\InvoiceStateResource;
+use ResellerClub\Orders\BusinessEmails\BusinessEmailOrderRequest;
+use ResellerClub\Orders\InvoiceOption;
 
 class BusinessEmailOrderRequestTest extends TestCase
 {
@@ -43,20 +42,7 @@ class BusinessEmailOrderRequestTest extends TestCase
 
     public function testInvoiceCustomer()
     {
-        $this->assertEquals(InvoiceStateResource::NO_INVOICE, $this->business_email_order->invoiceState());
-    }
-
-    public function testInvalidInvoiceStateCausesAnException()
-    {
-        $this->expectException(InvalidInvoiceStateException::class);
-
-        $this->business_email_order = new BusinessEmailOrderRequest(
-            123,
-            'some-domain.co.uk',
-            5,
-            1,
-            'not_a_valid_invoice_state'
-        );
+        $this->assertInstanceOf(InvoiceOption::class, $this->business_email_order->invoiceOption());
     }
 
     protected function setUp()
@@ -68,7 +54,7 @@ class BusinessEmailOrderRequestTest extends TestCase
             'some-domain.co.uk',
             5,
             1,
-            InvoiceStateResource::NO_INVOICE
+            InvoiceOption::noInvoice()
         );
     }
 }
