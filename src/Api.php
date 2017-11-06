@@ -37,14 +37,14 @@ class Api
     {
         return $this->guzzle_client->request(
             $method,
-            $this->baseApiURI() . $uri,
+            $this->baseApiUri() . $uri,
             array_merge($this->auth(), $request)
         );
     }
 
-    private function baseApiURI()
+    private function baseApiUri()
     {
-        return $this->config->testMode() ? 'https://test.httpapi.com/api/' : 'https://httpapi.com/api/';
+        return $this->config->isTestMode() ? 'https://test.httpapi.com/api/' : 'https://httpapi.com/api/';
     }
 
     private function auth()

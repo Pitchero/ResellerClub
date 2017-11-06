@@ -22,15 +22,15 @@ class ConfigTest extends TestCase
         $this->assertEquals('api_key', $this->config->apiKey());
     }
 
-    public function testUnsetTestMode()
+    public function testIsNotTestMode()
     {
-        $this->assertFalse($this->config->testMode());
+        $this->assertFalse($this->config->isTestMode());
     }
 
-    public function testSetTestMode()
+    public function testIsTestMode()
     {
         $config = new Config(123, 'api_key', true);
-        $this->assertTrue($config->testMode());
+        $this->assertTrue($config->isTestMode());
     }
 
     protected function setUp()

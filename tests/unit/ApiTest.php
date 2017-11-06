@@ -33,14 +33,12 @@ class ApiTest extends TestCase
         parent::setUp();
 
         $mock = new MockHandler([
-            new Response(200, ['a' => 'b'])
+            new Response(200)
         ]);
-
-        $handler = HandlerStack::create($mock);
 
         $this->api = new Api(
             new Config(123, 'api_key', true),
-            new Client(['handler' => $handler])
+            new Client(['handler' => HandlerStack::create($mock)])
         );
     }
 }
