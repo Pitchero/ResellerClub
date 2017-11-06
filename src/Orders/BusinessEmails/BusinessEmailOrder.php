@@ -34,9 +34,6 @@ class BusinessEmailOrder
             ]
         );
 
-        echo '878' . PHP_EOL;
-        die();
-        // @todo - create the response object
-        //return new BusinessEmailOrderResource($response);
+        return BusinessEmailOrderResource::fromResponse($response);
     }
 }
