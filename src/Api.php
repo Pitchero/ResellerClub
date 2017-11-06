@@ -12,9 +12,15 @@ class Api
      */
     private $config;
 
-    public function __construct(Config $config)
+    /**
+     * @var Client
+     */
+    private $guzzle_client;
+
+    public function __construct(Config $config, Client $guzzle_client)
     {
         $this->config = $config;
+        $this->guzzle_client = $guzzle_client;
     }
 
     public function post(string $uri, array $request)
@@ -29,8 +35,7 @@ class Api
 
     private function makeApiCall($method, $uri, $request)
     {
-        $client = new Client;
-        return $client->request(
+        return $this->guzzle_client->request(
             $method,
             $this->baseApiURI() . $uri,
             array_merge($this->auth(), $request)

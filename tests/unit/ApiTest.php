@@ -2,6 +2,10 @@
 
 namespace ResellerClub\Tests;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 use ResellerClub\Api;
 use ResellerClub\Config;
@@ -9,9 +13,14 @@ use ResellerClub\Orders\BusinessEmails\BusinessEmailOrder;
 
 class ApiTest extends TestCase
 {
+    /**
+     * @var Api
+     */
+    private $api;
+
     public function testPost()
     {
-        $this->api->post('post', ['request-param' => 123]);
+        $this->assertInstanceOf(Response::class, $this->api->post('post', ['request-param' => 123]));
     }
 
     public function testBusinessEmailOrder()
@@ -22,6 +31,16 @@ class ApiTest extends TestCase
     protected function setUp()
     {
         parent::setUp();
-        $this->api = new Api(new Config(123, 'api_key', true));
+
+        $mock = new MockHandler([
+            new Response(200, ['a' => 'b'])
+        ]);
+
+        $handler = HandlerStack::create($mock);
+
+        $this->api = new Api(
+            new Config(123, 'api_key', true),
+            new Client(['handler' => $handler])
+        );
     }
 }
