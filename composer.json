@@ -1,7 +1,18 @@
 {
-    "name": "Pitchero/ResellerClub",
-    "description": "A PHP SDK to ResellerClub's API.",
-    "keywords": ["ResellerClub", "Reseller club", "Reseller Club SDK"],
+    "name": "pitchero/reseller-club",
+    "description": "A PHP SDK for the ResellerClub API.",
+    "keywords": ["resellerclub", "reseller-club", "email", "hosting", "api"],
+    "type": "library",
+    "authors": [
+        {
+            "name": "Robert Rosebury",
+            "email": "r.rosebury@pitchero.com"
+        },
+        {
+            "name": "Martin Bean",
+            "email": "m.bean@pitchero.com"
+        }
+    ],
     "support": {
         "issues": "https://github.com/Pitchero/ResellerClub/issues",
         "source": "https://github.com/Pitchero/ResellerClub"

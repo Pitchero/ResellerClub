@@ -1,3 +1,2 @@
-# OS & IDE files
-.idea/
-vendor
+/.idea
+/vendor

@@ -17,22 +17,60 @@ class Api
      */
     private $guzzle_client;
 
+    /**
+     * @var string
+     */
+    const TEST_API_URI = 'https://test.httpapi.com/api/';
+
+    /**
+     * @var string
+     */
+    const LIVE_API_URI = 'https://httpapi.com/api/';
+
+    /**
+     * Create a new API instance.
+     *
+     * @param Config $config
+     * @param Client $guzzle_client
+     */
     public function __construct(Config $config, Client $guzzle_client)
     {
         $this->config = $config;
         $this->guzzle_client = $guzzle_client;
     }
 
+    /**
+     * Make a POST request.
+     *
+     * @param string $uri
+     * @param array $request
+     *
+     * @return Response
+     */
     public function post(string $uri, array $request)
     {
         return $this->makeApiCall('POST', $uri, $request);
     }
 
+    /**
+     * Get a new business email order instance.
+     *
+     * @return BusinessEmailOrder
+     */
     public function businessEmailOrder()
     {
         return new BusinessEmailOrder($this);
     }
 
+    /**
+     * Make an API call.
+     *
+     * @param string $method
+     * @param string $uri
+     * @param mixed $request
+     *
+     * @return Response
+     */
     private function makeApiCall($method, $uri, $request)
     {
         return $this->guzzle_client->request(
@@ -42,11 +80,22 @@ class Api
         );
     }
 
+    /**
+     * Get the base API URI for requests.
+     *
+     * @return string
+     */
     private function baseApiUri()
     {
-        return $this->config->isTestMode() ? 'https://test.httpapi.com/api/' : 'https://httpapi.com/api/';
+        return $this->config->isTestMode() ? static::TEST_API_URI
+                                           : static::LIVE_API_URI;
     }
 
+    /**
+     * Get authentication details for API requests.
+     *
+     * @return array
+     */
     private function auth()
     {
         return [
