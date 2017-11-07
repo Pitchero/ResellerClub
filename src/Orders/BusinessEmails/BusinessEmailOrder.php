@@ -21,7 +21,7 @@ class BusinessEmailOrder
      * Makes a POST request to ResellerClub's 'add' business email order API.
      * https://manage.resellerclub.com/kb/answer/2156
      */
-    public function create(BusinessEmailOrderRequest $request)
+    public function create(BusinessEmailOrderRequest $request): BusinessEmailOrderResource
     {
         $response = $this->api->post(
             'eelite/us/add',

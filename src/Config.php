@@ -36,7 +36,7 @@ class Config
         return $this->api_key;
     }
 
-    public function isTestMode()
+    public function isTestMode(): bool
     {
         return $this->test_mode;
     }
