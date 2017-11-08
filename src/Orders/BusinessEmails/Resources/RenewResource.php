@@ -99,9 +99,9 @@ class RenewResource extends Resource
     /**
      * Get the selling currency amount.
      *
-     * @return int
+     * @return float
      */
-    public function sellingAmount(): int
+    public function sellingAmount(): float
     {
         return $this->sellingamount;
     }
@@ -109,9 +109,9 @@ class RenewResource extends Resource
     /**
      * Get the unutilised transaction amount in the selling currency.
      *
-     * @return int
+     * @return float
      */
-    public function unutilisedSellingAmount(): int
+    public function unutilisedSellingAmount(): float
     {
         return $this->unutilisedsellingamount;
     }
