@@ -88,5 +88,7 @@ class BusinessEmailOrder
             'no-of-accounts' => $request->numberOfAccounts(),
             'invoice-option' => $request->invoiceOption(),
         ]);
+
+        return RenewResource::fromResponse($response);
     }
 }
