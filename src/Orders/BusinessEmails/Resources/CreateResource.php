@@ -13,7 +13,7 @@ class CreateResource extends Resource
      */
     public function invoiceId(): int
     {
-        return $this->parameters['invoiceid'];
+        return $this->invoiceid;
     }
 
     /**
@@ -23,7 +23,7 @@ class CreateResource extends Resource
      */
     public function sellingCurrency(): string
     {
-        return $this->parameters['sellingcurrencysymbol'];
+        return $this->sellingcurrencysymbol;
     }
 
     /**
@@ -33,7 +33,7 @@ class CreateResource extends Resource
      */
     public function sellingAmount(): string
     {
-        return $this->parameters['sellingamount'];
+        return $this->sellingamount;
     }
 
     /**
@@ -43,7 +43,7 @@ class CreateResource extends Resource
      */
     public function transactionAmount(): string
     {
-        return $this->parameters['unutilisedsellingamount'];
+        return $this->unutilisedsellingamount;
     }
 
     /**
@@ -53,6 +53,6 @@ class CreateResource extends Resource
      */
     public function customerId(): int
     {
-        return $this->parameters['customerid'];
+        return $this->customerid;
     }
 }
