@@ -4,6 +4,9 @@ namespace ResellerClub\Orders\BusinessEmails;
 
 use ResellerClub\Api;
 use ResellerClub\Config;
+use ResellerClub\Orders\BusinessEmails\Resources\BusinessEmailOrderResource;
+use ResellerClub\Orders\BusinessEmails\Resources\CreateResource;
+use ResellerClub\Orders\Order;
 
 class BusinessEmailOrder
 {
@@ -29,9 +32,9 @@ class BusinessEmailOrder
      *
      * @param BusinessEmailOrderRequest $request
      *
-     * @return BusinessEmailOrderResource
+     * @return CreateResource
      */
-    public function create(BusinessEmailOrderRequest $request): BusinessEmailOrderResource
+    public function create(BusinessEmailOrderRequest $request): CreateResource
     {
         $response = $this->api->post(
             'eelite/us/add',
@@ -41,6 +44,27 @@ class BusinessEmailOrder
                 'months' => $request->forNumberOfMonths(),
                 'no-of-accounts' => $request->numberOfAccounts(),
                 'invoice-option' => (string) $request->invoiceOption(),
+            ]
+        );
+
+        return CreateResource::fromResponse($response);
+    }
+
+    /**
+     * Makes a POST request to ResellerClub's 'delete' business email order API.
+     *
+     * @see https://manage.resellerclub.com/kb/answer/2162
+     *
+     * @param Order $request
+     *
+     * @return BusinessEmailOrderResource
+     */
+    public function delete(Order $request): BusinessEmailOrderResource
+    {
+        $response = $this->api->post(
+            'eelite/us/delete',
+            [
+                'order-id' => $request->id()
             ]
         );
 

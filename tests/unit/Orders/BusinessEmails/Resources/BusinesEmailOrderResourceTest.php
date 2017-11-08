@@ -1,9 +1,9 @@
 <?php
 
-namespace ResellerClub\Orders\BusinessEmails\Tests;
+namespace ResellerClub\Orders\BusinessEmails\Resources\Tests;
 
 use PHPUnit\Framework\TestCase;
-use ResellerClub\Orders\BusinessEmails\BusinessEmailOrderResource;
+use ResellerClub\Orders\BusinessEmails\Resources\BusinessEmailOrderResource;
 
 class BusinessEmailOrderResourceTest extends TestCase
 {
@@ -74,50 +74,5 @@ class BusinessEmailOrderResourceTest extends TestCase
             'The action is pending execution',
             $business_email_order_resource->actionStatusDescription()
         );
-    }
-
-    public function testInvoiceId()
-    {
-        $business_email_order_resource = new BusinessEmailOrderResource([
-            'invoiceid' => 77433277
-        ]);
-
-        $this->assertEquals(77433277, $business_email_order_resource->invoiceId());
-    }
-
-    public function testSellingCurrency()
-    {
-        $business_email_order_resource = new BusinessEmailOrderResource(
-            ['sellingcurrencysymbol' => '£']
-        );
-
-        $this->assertEquals('£', $business_email_order_resource->sellingCurrency());
-    }
-
-    public function testSellingAmount()
-    {
-        $business_email_order_resource = new BusinessEmailOrderResource([
-            'sellingamount' => '1.25'
-        ]);
-
-        $this->assertEquals('1.25', $business_email_order_resource->sellingAmount());
-    }
-
-    public function testTransactionAmount()
-    {
-        $business_email_order_resource = new BusinessEmailOrderResource([
-            'unutilisedsellingamount' => '1.00'
-        ]);
-
-        $this->assertEquals('1.00', $business_email_order_resource->transactionAmount());
-    }
-
-    public function testCustomerId()
-    {
-        $business_email_order_resource = new BusinessEmailOrderResource([
-            'customerid' => 17824872
-        ]);
-
-        $this->assertEquals(17824872, $business_email_order_resource->customerId());
     }
 }

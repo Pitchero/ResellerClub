@@ -11,36 +11,15 @@ use ResellerClub\Api;
 use ResellerClub\Config;
 use ResellerClub\Orders\BusinessEmails\BusinessEmailOrder;
 use ResellerClub\Orders\BusinessEmails\BusinessEmailOrderRequest;
-use ResellerClub\Orders\BusinessEmails\BusinessEmailOrderResource;
+use ResellerClub\Orders\BusinessEmails\Resources\BusinessEmailOrderResource;
+use ResellerClub\Orders\BusinessEmails\Resources\CreateResource;
 use ResellerClub\Orders\InvoiceOption;
+use ResellerClub\Orders\Order;
 
 class BusinessEmailOrderTest extends TestCase
 {
-    /**
-     * @var BusinessEmailOrder
-     */
-    private $business_email_order;
-
     public function testResponseFromBusinessEmailOrderCreate()
     {
-        $this->assertInstanceOf(
-        BusinessEmailOrderResource::class,
-            $this->business_email_order->create(
-                new BusinessEmailOrderRequest(
-                    17824872,
-                    'some-domain.co.in',
-                    5,
-                    1,
-                    InvoiceOption::noInvoice()
-                )
-            )
-        );
-    }
-
-    protected function setUp()
-    {
-        parent::setUp();
-
         $mock = new MockHandler([
             new Response(
                 200,
@@ -58,16 +37,61 @@ class BusinessEmailOrderTest extends TestCase
                     'sellingamount' => '1.25',
                     'unutilisedsellingamount' => '1.00',
                     'customerid' => 17824872,
+                    'status' => 'Success',
                 ]))
         ]);
 
+        $business_email_order = new BusinessEmailOrder($this->api($mock));
+
+        $this->assertInstanceOf(
+        CreateResource::class,
+            $business_email_order->create(
+                new BusinessEmailOrderRequest(
+                    17824872,
+                    'some-domain.co.in',
+                    5,
+                    1,
+                    InvoiceOption::noInvoice()
+                )
+            )
+        );
+    }
+
+    public function testResponseFromBusinessEmailOrderDelete()
+    {
+        $mock = new MockHandler([
+            new Response(
+                200,
+                ['Content-Type' => 'application/json'],
+                json_encode([
+                    'description' => 'some-domain.co.in',
+                    'entityid' => 123,
+                    'actiontype' => 'Add',
+                    'actiontypedesc' => 'Addition of Business Email 1 for testdomainmail.com for 1 month',
+                    'eaqid' => '461331388',
+                    'actionstatus' => 'PendingExecution',
+                    'actionstatusdesc' => '',
+                    'status' => 'Success',
+                ]))
+        ]);
+
+        $business_email_order = new BusinessEmailOrder($this->api($mock));
+
+        $this->assertInstanceOf(
+            BusinessEmailOrderResource::class,
+            $business_email_order->delete(
+                new Order(123)
+            )
+        );
+    }
+
+    private function api(MockHandler $mock): Api
+    {
         $handler = HandlerStack::create($mock);
 
-        $api = new Api(
+        return new Api(
             new Config(123, 'api_key', true),
             new Client(['handler' => $handler])
         );
-
-        $this->business_email_order = new BusinessEmailOrder($api);
     }
 }
