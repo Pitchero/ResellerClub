@@ -17,7 +17,7 @@ class ResourceTest extends TestCase
             json_encode(['status' => 'Success'])
         );
 
-        $this->assertEquals('Success', (BusinessEmailOrderResource::fromResponse($response))->status());
-        $this->assertEquals('Success', (CreateResource::fromResponse($response))->status());
+        $this->assertEquals('Success', BusinessEmailOrderResource::fromResponse($response)->status());
+        $this->assertEquals('Success', CreateResource::fromResponse($response)->status());
     }
 }
