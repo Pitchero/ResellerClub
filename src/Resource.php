@@ -9,37 +9,55 @@ abstract class Resource
     /**
      * @var array
      */
-    protected $parameters;
+    protected $attributes = [];
 
     /**
-     * Create a new business email order resource instance.
+     * Create a new resource instance.
      *
-     * @param array $parameters
+     * @param array $attributes
      */
-    public function __construct(array $parameters)
+    public function __construct(array $attributes = [])
     {
-        $this->parameters = $parameters;
+        foreach ($attributes as $key => $value) {
+            $this->attributes[$key] = $value;
+        }
     }
 
     /**
-     * Create a business email resource instance from the given response.
+     * Create a resource instance from the given response.
      *
-     * @param Response $parameters
+     * @param Response $response
      *
      * @return self
      */
-    public static function fromResponse(Response $parameters)
+    public static function fromResponse(Response $response)
     {
-        return new static(json_decode($parameters->getBody(), true));
+       return new static(json_decode($response->getBody(), true));
     }
 
     /**
-     * Get the domain parameter.
+     * Get the response status.
      *
      * @return string
      */
     public function status(): string
     {
-        return $this->parameters['status'];
+        return $this->attributes['status'];
+    }
+
+    /**
+     * Dynamically retrieve the value of an attribute.
+     *
+     * @param string $key
+     *
+     * @return mixed
+     */
+    public function __get($key)
+    {
+        if (array_key_exists($key, $this->attributes)) {
+            return $this->attributes[$key];
+        }
+
+        return null;
     }
 }
