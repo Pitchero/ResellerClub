@@ -52,7 +52,7 @@ abstract class Resource
      *
      * @return mixed
      */
-    public function __get($key)
+    protected function __get($key)
     {
         if (array_key_exists($key, $this->attributes)) {
             return $this->attributes[$key];
