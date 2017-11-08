@@ -3,7 +3,6 @@
 namespace ResellerClub\Orders\Tests;
 
 use PHPUnit\Framework\TestCase;
-use ResellerClub\Orders\InvalidInvoiceOptionException;
 use ResellerClub\Orders\InvoiceOption;
 
 class InvoiceOptionTest extends TestCase
