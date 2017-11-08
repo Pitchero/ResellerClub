@@ -4,8 +4,10 @@ namespace ResellerClub\Orders\BusinessEmails;
 
 use ResellerClub\Api;
 use ResellerClub\Config;
+use ResellerClub\Orders\BusinessEmails\Requests\RenewRequest;
 use ResellerClub\Orders\BusinessEmails\Resources\BusinessEmailOrderResource;
 use ResellerClub\Orders\BusinessEmails\Resources\CreateResource;
+use ResellerClub\Orders\BusinessEmails\Resources\RenewResource;
 use ResellerClub\Orders\Order;
 
 class BusinessEmailOrder
@@ -26,7 +28,7 @@ class BusinessEmailOrder
     }
 
     /**
-     * Makes a POST request to ResellerClub’s 'add' business email order API.
+     * Place a business email order for the specified domain name.
      *
      * @see https://manage.resellerclub.com/kb/answer/2156
      *
@@ -69,5 +71,22 @@ class BusinessEmailOrder
         );
 
         return BusinessEmailOrderResource::fromResponse($response);
+    }
+
+    /**
+     * Renew an existing business email order.
+     *
+     * @param RenewRequest $request
+     *
+     * @return RenewResource
+     */
+    public function renew(RenewRequest $request): RenewResource
+    {
+        $response = $this->api->post('eelite/us/renew', [
+            'order-id' => $request->orderId(),
+            'months' => $request->months(),
+            'no-of-accounts' => $request->numberOfAccounts(),
+            'invoice-option' => $request->invoiceOption(),
+        ]);
     }
 }

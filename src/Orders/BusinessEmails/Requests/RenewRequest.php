@@ -50,4 +50,44 @@ class RenewRequest
         $this->numberOfAccounts = $numberOfAccounts;
         $this->invoiceOption = $invoiceOption;
     }
+
+    /**
+     * Get the ID of the order to be renewed.
+     *
+     * @return int
+     */
+    public function orderId(): int
+    {
+        return $this->order->id();
+    }
+
+    /**
+     * Get the number of months for which the order should be renewed.
+     *
+     * @return int
+     */
+    public function months(): int
+    {
+        return $this->months;
+    }
+
+    /**
+     * Get the number of additional email accounts to be purchased for the business email order.
+     *
+     * @return int
+     */
+    public function numberOfAccounts(): int
+    {
+        return $this->numberOfAccounts;
+    }
+
+    /**
+     * Get how the customer invoices will be handled.
+     *
+     * @return InvoiceOption
+     */
+    public function invoiceOption(): InvoiceOption
+    {
+        return $this->invoiceOption;
+    }
 }
