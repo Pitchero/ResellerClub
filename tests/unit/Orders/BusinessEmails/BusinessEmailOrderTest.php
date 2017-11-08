@@ -37,6 +37,7 @@ class BusinessEmailOrderTest extends TestCase
                     'sellingamount' => '1.25',
                     'unutilisedsellingamount' => '1.00',
                     'customerid' => 17824872,
+                    'status' => 'Success',
                 ]))
         ]);
 
@@ -70,6 +71,7 @@ class BusinessEmailOrderTest extends TestCase
                     'eaqid' => '461331388',
                     'actionstatus' => 'PendingExecution',
                     'actionstatusdesc' => '',
+                    'status' => 'Success',
                 ]))
         ]);
 

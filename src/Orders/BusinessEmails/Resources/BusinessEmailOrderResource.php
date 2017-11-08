@@ -4,8 +4,9 @@ namespace ResellerClub\Orders\BusinessEmails\Resources;
 
 use GuzzleHttp\Psr7\Response;
 use ReflectionClass;
+use ResellerClub\Resource;
 
-class BusinessEmailOrderResource
+class BusinessEmailOrderResource extends Resource
 {
     /**
      * @var array

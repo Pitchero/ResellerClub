@@ -32,9 +32,9 @@ class BusinessEmailOrder
      *
      * @param BusinessEmailOrderRequest $request
      *
-     * @return BusinessEmailOrderResource
+     * @return CreateResource
      */
-    public function create(BusinessEmailOrderRequest $request): BusinessEmailOrderResource
+    public function create(BusinessEmailOrderRequest $request): CreateResource
     {
         $response = $this->api->post(
             'eelite/us/add',

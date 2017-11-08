@@ -2,7 +2,9 @@
 
 namespace ResellerClub\Orders\BusinessEmails\Resources;
 
-class CreateResource extends BusinessEmailOrderResource
+use ResellerClub\Resource;
+
+class CreateResource extends Resource
 {
     /**
      * Get the invoice ID parameter.
