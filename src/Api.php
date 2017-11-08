@@ -40,6 +40,19 @@ class Api
     }
 
     /**
+     * Make a GET request.
+     *
+     * @param string $uri
+     * @param array $request
+     *
+     * @return Response
+     */
+    public function get(string $uri, array $request)
+    {
+        return $this->makeApiCall('GET', $uri, $request);
+    }
+
+    /**
      * Make a POST request.
      *
      * @param string $uri
