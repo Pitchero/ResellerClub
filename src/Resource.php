@@ -3,7 +3,6 @@
 namespace ResellerClub;
 
 use GuzzleHttp\Psr7\Response;
-use ReflectionClass;
 
 abstract class Resource
 {
@@ -31,9 +30,7 @@ abstract class Resource
      */
     public static function fromResponse(Response $parameters)
     {
-        $called_class = (new ReflectionClass(get_called_class()));
-
-        return $called_class->newInstance(json_decode($parameters->getBody(), true));
+        return new static(json_decode($parameters->getBody(), true));
     }
 
     /**
