@@ -13,7 +13,7 @@ class BusinessEmailOrderResource extends Resource
      */
     public function domain(): string
     {
-        return $this->parameters['description'];
+        return $this->description;
     }
 
     /**
@@ -23,7 +23,7 @@ class BusinessEmailOrderResource extends Resource
      */
     public function orderId(): int
     {
-        return $this->parameters['entityid'];
+        return $this->entityid;
     }
 
     /**
@@ -33,7 +33,7 @@ class BusinessEmailOrderResource extends Resource
      */
     public function actionId(): int
     {
-        return $this->parameters['eaqid'];
+        return $this->eaqid;
     }
 
     /**
@@ -43,7 +43,7 @@ class BusinessEmailOrderResource extends Resource
      */
     public function actionType(): string
     {
-        return $this->parameters['actiontype'];
+        return $this->actiontype;
     }
 
     /**
@@ -53,7 +53,7 @@ class BusinessEmailOrderResource extends Resource
      */
     public function actionStatus(): string
     {
-        return $this->parameters['actionstatus'];
+        return $this->actionstatus;
     }
 
     /**
@@ -63,7 +63,7 @@ class BusinessEmailOrderResource extends Resource
      */
     public function actionStatusDescription(): string
     {
-        return $this->parameters['actionstatusdesc'];
+        return $this->actionstatusdesc;
     }
 
     /**
@@ -73,6 +73,6 @@ class BusinessEmailOrderResource extends Resource
      */
     public function description(): string
     {
-        return $this->parameters['actiontypedesc'];
+        return $this->actiontypedesc;
     }
 }
