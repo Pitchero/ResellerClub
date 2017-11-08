@@ -3,15 +3,15 @@
 namespace Tests\Unit\Orders\BusinessEmails\Resources;
 
 use PHPUnit\Framework\TestCase;
-use ResellerClub\Orders\BusinessEmails\Resources\RenewResource;
+use ResellerClub\Orders\BusinessEmails\Resources\RenewalResource;
 
-class RenewResourceTest extends TestCase
+class RenewalResourceTest extends TestCase
 {
     protected function setUp()
     {
         parent::setUp();
 
-        $this->resource = new RenewResource([
+        $this->resource = new RenewalResource([
             'description' => 'Test description',
             'entityid' => '123',
             'actiontype' => 'Renew',

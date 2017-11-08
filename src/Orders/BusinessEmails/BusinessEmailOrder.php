@@ -7,7 +7,7 @@ use ResellerClub\Config;
 use ResellerClub\Orders\BusinessEmails\Requests\RenewRequest;
 use ResellerClub\Orders\BusinessEmails\Resources\BusinessEmailOrderResource;
 use ResellerClub\Orders\BusinessEmails\Resources\CreateResource;
-use ResellerClub\Orders\BusinessEmails\Resources\RenewResource;
+use ResellerClub\Orders\BusinessEmails\Resources\RenewalResource;
 use ResellerClub\Orders\Order;
 
 class BusinessEmailOrder
@@ -78,9 +78,9 @@ class BusinessEmailOrder
      *
      * @param RenewRequest $request
      *
-     * @return RenewResource
+     * @return RenewalResource
      */
-    public function renew(RenewRequest $request): RenewResource
+    public function renew(RenewRequest $request): RenewalResource
     {
         $response = $this->api->post('eelite/us/renew', [
             'order-id' => $request->orderId(),
@@ -89,6 +89,6 @@ class BusinessEmailOrder
             'invoice-option' => $request->invoiceOption(),
         ]);
 
-        return RenewResource::fromResponse($response);
+        return RenewalResource::fromResponse($response);
     }
 }

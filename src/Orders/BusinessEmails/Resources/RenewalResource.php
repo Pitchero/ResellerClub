@@ -4,7 +4,7 @@ namespace ResellerClub\Orders\BusinessEmails\Resources;
 
 use ResellerClub\Resource;
 
-class RenewResource extends Resource
+class RenewalResource extends Resource
 {
     /**
      * Description of the business email order renewal action status.
