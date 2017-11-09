@@ -7,30 +7,30 @@ class Config
     /**
      * @var integer
      */
-    private $auth_user_id;
+    private $authUserId;
 
     /**
      * @var string
      */
-    private $api_key;
+    private $apiKey;
 
     /**
      * @var bool
      */
-    private $test_mode;
+    private $testMode;
 
     /**
      * Create a new config instance.
      *
-     * @param int $auth_user_id
-     * @param string $api_key
-     * @param bool $test_mode
+     * @param int $authUserId
+     * @param string $apiKey
+     * @param bool $testMode
      */
-    public function __construct(int $auth_user_id, string $api_key, bool $test_mode = false)
+    public function __construct(int $authUserId, string $apiKey, bool $testMode = false)
     {
-        $this->auth_user_id = $auth_user_id;
-        $this->api_key = $api_key;
-        $this->test_mode = $test_mode;
+        $this->authUserId = $authUserId;
+        $this->apiKey = $apiKey;
+        $this->testMode = $testMode;
     }
 
     /**
@@ -40,7 +40,7 @@ class Config
      */
     public function authUserId(): int
     {
-        return $this->auth_user_id;
+        return $this->authUserId;
     }
 
     /**
@@ -50,7 +50,7 @@ class Config
      */
     public function apiKey(): string
     {
-        return $this->api_key;
+        return $this->apiKey;
     }
 
     /**
@@ -60,6 +60,6 @@ class Config
      */
     public function isTestMode(): bool
     {
-        return $this->test_mode;
+        return $this->testMode;
     }
 }

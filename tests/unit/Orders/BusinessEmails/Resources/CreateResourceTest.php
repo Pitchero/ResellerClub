@@ -9,46 +9,46 @@ class BusinessEmailOrderResourceTest extends TestCase
 {
     public function testInvoiceId()
     {
-        $business_email_order_resource = new CreateResource([
+        $businessEmailOrderResource = new CreateResource([
             'invoiceid' => 77433277
         ]);
 
-        $this->assertEquals(77433277, $business_email_order_resource->invoiceId());
+        $this->assertEquals(77433277, $businessEmailOrderResource->invoiceId());
     }
 
     public function testSellingCurrency()
     {
-        $business_email_order_resource = new CreateResource(
+        $businessEmailOrderResource = new CreateResource(
             ['sellingcurrencysymbol' => '£']
         );
 
-        $this->assertEquals('£', $business_email_order_resource->sellingCurrency());
+        $this->assertEquals('£', $businessEmailOrderResource->sellingCurrency());
     }
 
     public function testSellingAmount()
     {
-        $business_email_order_resource = new CreateResource([
+        $businessEmailOrderResource = new CreateResource([
             'sellingamount' => '1.25'
         ]);
 
-        $this->assertEquals('1.25', $business_email_order_resource->sellingAmount());
+        $this->assertEquals('1.25', $businessEmailOrderResource->sellingAmount());
     }
 
     public function testTransactionAmount()
     {
-        $business_email_order_resource = new CreateResource([
+        $businessEmailOrderResource = new CreateResource([
             'unutilisedsellingamount' => '1.00'
         ]);
 
-        $this->assertEquals('1.00', $business_email_order_resource->transactionAmount());
+        $this->assertEquals('1.00', $businessEmailOrderResource->transactionAmount());
     }
 
     public function testCustomerId()
     {
-        $business_email_order_resource = new CreateResource([
+        $businessEmailOrderResource = new CreateResource([
             'customerid' => 17824872
         ]);
 
-        $this->assertEquals(17824872, $business_email_order_resource->customerId());
+        $this->assertEquals(17824872, $businessEmailOrderResource->customerId());
     }
 }

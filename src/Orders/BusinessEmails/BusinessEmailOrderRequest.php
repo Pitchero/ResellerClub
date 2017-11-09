@@ -9,7 +9,7 @@ class BusinessEmailOrderRequest
     /**
      * @var integer
      */
-    private $customer_id;
+    private $customerId;
 
     /**
      * @var string
@@ -19,39 +19,39 @@ class BusinessEmailOrderRequest
     /**
      * @var integer
      */
-    private $number_of_accounts;
+    private $numberOfAccounts;
 
     /**
      * @var integer
      */
-    private $for_number_of_months;
+    private $forNumberOfMonths;
 
     /**
      * @var InvoiceOption
      */
-    private $invoice_option;
+    private $invoiceOption;
 
     /**
      * Create a new business email order request instance.
      *
-     * @param int $customer_id
+     * @param int $customerId
      * @param string $domain
-     * @param int $number_of_account
-     * @param int $for_number_of_months
-     * @param InvoiceOption $invoice_option
+     * @param int $numberOfAccounts
+     * @param int $forNumberOfMonths
+     * @param InvoiceOption $invoiceOption
      */
     public function __construct(
-        int $customer_id,
+        int $customerId,
         string $domain,
-        int $number_of_account,
-        int $for_number_of_months,
-        InvoiceOption $invoice_option
+        int $numberOfAccounts,
+        int $forNumberOfMonths,
+        InvoiceOption $invoiceOption
     ) {
-        $this->customer_id = $customer_id;
+        $this->customerId = $customerId;
         $this->domain = $domain;
-        $this->number_of_accounts = $number_of_account;
-        $this->for_number_of_months = $for_number_of_months;
-        $this->invoice_option = $invoice_option;
+        $this->numberOfAccounts = $numberOfAccounts;
+        $this->forNumberOfMonths = $forNumberOfMonths;
+        $this->invoiceOption = $invoiceOption;
     }
 
     /**
@@ -61,7 +61,7 @@ class BusinessEmailOrderRequest
      */
     public function customerId(): int
     {
-        return $this->customer_id;
+        return $this->customerId;
     }
 
     /**
@@ -81,7 +81,7 @@ class BusinessEmailOrderRequest
      */
     public function numberOfAccounts(): int
     {
-        return $this->number_of_accounts;
+        return $this->numberOfAccounts;
     }
 
     /**
@@ -91,7 +91,7 @@ class BusinessEmailOrderRequest
      */
     public function forNumberOfMonths(): int
     {
-        return $this->for_number_of_months;
+        return $this->forNumberOfMonths;
     }
 
     /**
@@ -101,6 +101,6 @@ class BusinessEmailOrderRequest
      */
     public function invoiceOption(): InvoiceOption
     {
-        return $this->invoice_option;
+        return $this->invoiceOption;
     }
 }

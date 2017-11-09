@@ -9,9 +9,9 @@ class OrderTest extends TestCase
 {
     public function testGettingIdWhenSet()
     {
-        $order_id = (new Order(123))->id();
+        $orderId = (new Order(123))->id();
 
-        $this->assertInternalType('int', $order_id);
-        $this->assertEquals(123, $order_id);
+        $this->assertInternalType('int', $orderId);
+        $this->assertEquals(123, $orderId);
     }
 }
