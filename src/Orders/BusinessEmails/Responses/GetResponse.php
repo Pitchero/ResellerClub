@@ -3,7 +3,6 @@
 namespace ResellerClub\Orders\BusinessEmails\Responses;
 
 use Carbon\Carbon;
-use ResellerClub\Orders\BusinessEmails\Resources\BusinessEmailOrderResource;
 use ResellerClub\Orders\OrderStatus;
 use ResellerClub\Resource;
 
@@ -157,15 +156,5 @@ class GetResponse extends Resource
     public function productCategory(): string
     {
         return $this->productcategory;
-    }
-
-    /**
-     * Gets the business email order resource for the order response.
-     *
-     * @return BusinessEmailOrderResource
-     */
-    public function businessEmailOrderResource(): BusinessEmailOrderResource
-    {
-        return new BusinessEmailOrderResource($this);
     }
 }
