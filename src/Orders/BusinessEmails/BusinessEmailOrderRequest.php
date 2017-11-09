@@ -36,20 +36,20 @@ class BusinessEmailOrderRequest
      *
      * @param int $customerId
      * @param string $domain
-     * @param int $number_of_account
+     * @param int $numberOfAccounts
      * @param int $forNumberOfMonths
      * @param InvoiceOption $invoiceOption
      */
     public function __construct(
         int $customerId,
         string $domain,
-        int $number_of_account,
+        int $numberOfAccounts,
         int $forNumberOfMonths,
         InvoiceOption $invoiceOption
     ) {
         $this->customerId = $customerId;
         $this->domain = $domain;
-        $this->numberOfAccounts = $number_of_account;
+        $this->numberOfAccounts = $numberOfAccounts;
         $this->forNumberOfMonths = $forNumberOfMonths;
         $this->invoiceOption = $invoiceOption;
     }
