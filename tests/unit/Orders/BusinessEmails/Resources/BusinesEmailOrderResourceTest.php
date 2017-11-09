@@ -3,76 +3,38 @@
 namespace ResellerClub\Orders\BusinessEmails\Resources\Tests;
 
 use PHPUnit\Framework\TestCase;
+use ResellerClub\Action;
 use ResellerClub\Orders\BusinessEmails\Resources\BusinessEmailOrderResource;
 
 class BusinessEmailOrderResourceTest extends TestCase
 {
-    public function testDomain()
+    protected function setUp()
     {
-        $business_email_order_resource = new BusinessEmailOrderResource([
-            'description' => 'some-domain.co.in'
-        ]);
+        parent::setUp();
 
-        $this->assertEquals('some-domain.co.in', $business_email_order_resource->domain());
+        $this->resource = new BusinessEmailOrderResource([
+            'description' => 'some-domain.co.in',
+            'entityid' => 1234,
+            'eaqid' => 461331388,
+            'actiontype' => 'Add',
+            'actiontypedesc' => 'Addition of Business Email 1 for testdomainmail.com for 1 month',
+            'actionstatus' => 'PendingExecution',
+            'actionstatusdesc' => 'The action is pending execution',
+        ]);
     }
 
-    public function testOrderId()
+    public function testItCanGetDomain()
     {
-        $business_email_order_resource = new BusinessEmailOrderResource([
-            'entityid' => 1234
-        ]);
-
-        $this->assertEquals(1234, $business_email_order_resource->orderId());
+        $this->assertEquals('some-domain.co.in', $this->resource->domain());
     }
 
-    public function testActionType()
+    public function testItCanGetOrderId()
     {
-        $business_email_order_resource = new BusinessEmailOrderResource([
-            'actiontype' => 'Add'
-        ]);
-
-        $this->assertEquals('Add', $business_email_order_resource->actionType());
+        $this->assertEquals(1234, $this->resource->orderId());
     }
 
-    public function description()
+    public function testItCanGetAction()
     {
-        $business_email_order_resource = new BusinessEmailOrderResource([
-            'actiontypedesc' => 'Addition of Business Email 1 for testdomainmail.com for 1 month'
-        ]);
-
-        $this->assertEquals(
-            'Addition of Business Email 1 for testdomainmail.com for 1 month',
-            $business_email_order_resource->description()
-        );
-    }
-
-    public function testActionId()
-    {
-        $business_email_order_resource = new BusinessEmailOrderResource(
-            ['eaqid' => 461331388]
-        );
-
-        $this->assertEquals(461331388, $business_email_order_resource->actionId());
-    }
-
-    public function testActionStatus()
-    {
-        $business_email_order_resource = new BusinessEmailOrderResource([
-            'actionstatus' => 'PendingExecution'
-        ]);
-
-        $this->assertEquals('PendingExecution', $business_email_order_resource->actionStatus());
-    }
-
-    public function testActionStatusDescription()
-    {
-        $business_email_order_resource = new BusinessEmailOrderResource([
-            'actionstatusdesc' => 'The action is pending execution'
-        ]);
-
-        $this->assertEquals(
-            'The action is pending execution',
-            $business_email_order_resource->actionStatusDescription()
-        );
+        $this->assertInstanceOf(Action::class, $this->resource->action());
     }
 }
