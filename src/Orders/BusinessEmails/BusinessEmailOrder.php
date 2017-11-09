@@ -49,7 +49,7 @@ class BusinessEmailOrder
             ]
         );
 
-        return CreateResponse::fromResponse($response);
+        return CreateResponse::fromApiResponse($response);
     }
 
     /**
@@ -70,7 +70,7 @@ class BusinessEmailOrder
             ]
         );
 
-        return BusinessEmailOrderResponse::fromResponse($response);
+        return BusinessEmailOrderResponse::fromApiResponse($response);
     }
 
     /**
@@ -89,6 +89,6 @@ class BusinessEmailOrder
             'invoice-option' => $request->invoiceOption(),
         ]);
 
-        return RenewalResponse::fromResponse($response);
+        return RenewalResponse::fromApiResponse($response);
     }
 }
