@@ -16,7 +16,7 @@ class GetResponse extends Resource
      */
     public function orderId(): int
     {
-        return $this->parameters['entityid'];
+        return $this->entityid;
     }
 
     /**
@@ -26,7 +26,7 @@ class GetResponse extends Resource
      */
     public function orderDescription(): string
     {
-        return $this->parameters['description'];
+        return $this->description;
     }
 
     /**
@@ -36,7 +36,7 @@ class GetResponse extends Resource
      */
     public function orderCreationDate(): Carbon
     {
-        return new Carbon($this->parameters['creationtime']);
+        return Carbon::createFromTimestamp($this->creationtime);
     }
 
     /**
@@ -46,7 +46,7 @@ class GetResponse extends Resource
      */
     public function orderSuspendedAtExpiry(): bool
     {
-        return $this->parameters['isOrderSuspendedUponExpiry'];
+        return $this->isOrderSuspendedUponExpiry;
     }
 
     /**
@@ -56,7 +56,7 @@ class GetResponse extends Resource
      */
     public function orderSuspendedByParent(): bool
     {
-        return $this->parameters['orderSuspendedByParent'];
+        return $this->orderSuspendedByParent;
     }
 
     /**
@@ -66,7 +66,7 @@ class GetResponse extends Resource
      */
     public function orderDeletionAllowed(): bool
     {
-        return $this->parameters['allowdeletion'];
+        return $this->allowdeletion;
     }
 
     /**
@@ -76,7 +76,7 @@ class GetResponse extends Resource
      */
     public function orderStatus(): string
     {
-        return $this->parameters['currentstatus'];
+        return $this->currentstatus;
     }
 
     /**
@@ -86,7 +86,7 @@ class GetResponse extends Resource
      */
     public function domain(): string
     {
-        return $this->parameters['domainname'];
+        return $this->domainname;
     }
 
     /**
@@ -96,7 +96,7 @@ class GetResponse extends Resource
      */
     public function expiry(): Carbon
     {
-        return new Carbon($this->parameters['endtime']);
+        return Carbon::createFromTimestamp($this->endtime);
     }
 
     /**
@@ -106,7 +106,7 @@ class GetResponse extends Resource
      */
     public function isImmediateReseller(): bool
     {
-        return $this->parameters['isImmediateReseller'];
+        return $this->isImmediateReseller;
     }
 
     /**
@@ -116,7 +116,7 @@ class GetResponse extends Resource
      */
     public function resellerParentId(): string
     {
-        return $this->parameters['parentkey'];
+        return $this->parentkey;
     }
 
     /**
@@ -126,7 +126,7 @@ class GetResponse extends Resource
      */
     public function customerId(): int
     {
-        return $this->parameters['customerid'];
+        return $this->customerid;
     }
 
     /**
@@ -136,7 +136,7 @@ class GetResponse extends Resource
      */
     public function numberOfEmailAccounts(): int
     {
-        return $this->parameters['emailaccounts'];
+        return $this->emailaccounts;
     }
 
     /**
@@ -146,7 +146,7 @@ class GetResponse extends Resource
      */
     public function productId(): string
     {
-        return $this->parameters['productkey'];
+        return $this->productkey;
     }
 
     /**
@@ -156,7 +156,7 @@ class GetResponse extends Resource
      */
     public function productCategory(): string
     {
-        return $this->parameters['productcategory'];
+        return $this->productcategory;
     }
 
     /**
