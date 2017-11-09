@@ -41,11 +41,11 @@ class BusinessEmailOrderTest extends TestCase
                 ]))
         ]);
 
-        $business_email_order = new BusinessEmailOrder($this->api($mock));
+        $BusinessEmailOrder = new BusinessEmailOrder($this->api($mock));
 
         $this->assertInstanceOf(
         CreateResource::class,
-            $business_email_order->create(
+            $BusinessEmailOrder->create(
                 new BusinessEmailOrderRequest(
                     17824872,
                     'some-domain.co.in',
@@ -75,11 +75,11 @@ class BusinessEmailOrderTest extends TestCase
                 ]))
         ]);
 
-        $business_email_order = new BusinessEmailOrder($this->api($mock));
+        $BusinessEmailOrder = new BusinessEmailOrder($this->api($mock));
 
         $this->assertInstanceOf(
             BusinessEmailOrderResource::class,
-            $business_email_order->delete(
+            $BusinessEmailOrder->delete(
                 new Order(123)
             )
         );

@@ -11,45 +11,45 @@ class BusinessEmailOrderRequestTest extends TestCase
     /**
      * @var BusinessEmailOrderRequest
      */
-    private $business_email_order;
+    private $businessEmailOrder;
 
     public function testCustomerId()
     {
-        $customer_id = $this->business_email_order->customerId();
+        $customerId = $this->businessEmailOrder->customerId();
 
-        $this->assertInternalType('int', $customer_id);
-        $this->assertEquals(123, $customer_id);
+        $this->assertInternalType('int', $customerId);
+        $this->assertEquals(123, $customerId);
     }
 
     public function testDomainName()
     {
-        $this->assertEquals('some-domain.co.uk', $this->business_email_order->domain());
+        $this->assertEquals('some-domain.co.uk', $this->businessEmailOrder->domain());
     }
 
     public function testNumberOfAccounts()
     {
-        $number_of_accounts = $this->business_email_order->numberOfAccounts();
-        $this->assertInternalType('int', $number_of_accounts);
-        $this->assertEquals(5, $number_of_accounts);
+        $numberOfAccounts = $this->businessEmailOrder->numberOfAccounts();
+        $this->assertInternalType('int', $numberOfAccounts);
+        $this->assertEquals(5, $numberOfAccounts);
     }
 
     public function testForNumberOfMonths()
     {
-        $for_number_of_months = $this->business_email_order->forNumberOfMonths();
-        $this->assertInternalType('int', $for_number_of_months);
-        $this->assertEquals(1, $for_number_of_months);
+        $forNumberOfMonths = $this->businessEmailOrder->forNumberOfMonths();
+        $this->assertInternalType('int', $forNumberOfMonths);
+        $this->assertEquals(1, $forNumberOfMonths);
     }
 
     public function testInvoiceCustomer()
     {
-        $this->assertInstanceOf(InvoiceOption::class, $this->business_email_order->invoiceOption());
+        $this->assertInstanceOf(InvoiceOption::class, $this->businessEmailOrder->invoiceOption());
     }
 
     protected function setUp()
     {
         parent::setUp();
 
-        $this->business_email_order = new BusinessEmailOrderRequest(
+        $this->businessEmailOrder = new BusinessEmailOrderRequest(
             123,
             'some-domain.co.uk',
             5,

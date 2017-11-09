@@ -15,7 +15,7 @@ class Api
     /**
      * @var Client
      */
-    private $guzzle_client;
+    private $guzzleClient;
 
     /**
      * @var string
@@ -31,12 +31,12 @@ class Api
      * Create a new API instance.
      *
      * @param Config $config
-     * @param Client $guzzle_client
+     * @param Client $guzzleClient
      */
-    public function __construct(Config $config, Client $guzzle_client)
+    public function __construct(Config $config, Client $guzzleClient)
     {
         $this->config = $config;
-        $this->guzzle_client = $guzzle_client;
+        $this->guzzleClient = $guzzleClient;
     }
 
     /**
@@ -57,7 +57,7 @@ class Api
      *
      * @return BusinessEmailOrder
      */
-    public function businessEmailOrder()
+    public function businessEmailOrder() : BusinessEmailOrder
     {
         return new BusinessEmailOrder($this);
     }
@@ -73,7 +73,7 @@ class Api
      */
     private function makeApiCall($method, $uri, $request)
     {
-        return $this->guzzle_client->request(
+        return $this->guzzleClient->request(
             $method,
             $this->baseApiUri() . $uri,
             array_merge($this->auth(), $request)
