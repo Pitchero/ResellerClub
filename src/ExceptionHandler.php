@@ -69,7 +69,11 @@ class ExceptionHandler
      */
     private function responseContents(Exception $exception) :array
     {
-        if (!method_exists($exception, 'getResponse')) {
+        if (!method_exists($exception, 'hasResponse')) {
+            return [];
+        }
+
+        if (!$exception->hasResponse()) {
             return [];
         }
 
