@@ -44,7 +44,7 @@ class BusinessEmailOrderTest extends TestCase
         $BusinessEmailOrder = new BusinessEmailOrder($this->api($mock));
 
         $this->assertInstanceOf(
-        CreateResource::class,
+            CreateResource::class,
             $BusinessEmailOrder->create(
                 new BusinessEmailOrderRequest(
                     17824872,
