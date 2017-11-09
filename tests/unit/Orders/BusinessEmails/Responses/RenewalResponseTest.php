@@ -2,6 +2,8 @@
 
 namespace Tests\Unit\Orders\BusinessEmails\Responses;
 
+use Money\Currency;
+use Money\Money;
 use PHPUnit\Framework\TestCase;
 use ResellerClub\Orders\BusinessEmails\Responses\RenewalResponse;
 
@@ -78,14 +80,21 @@ class RenewalResponseTest extends TestCase
         $this->assertEquals('GBP', $this->resource->sellingCurrencySymbol());
     }
 
+    public function testItCanGetSellingCurrency()
+    {
+        $this->assertInstanceOf(Currency::class, $this->resource->sellingCurrency());
+    }
+
     public function testItCanGetSellingAmount()
     {
-        $this->assertEquals(18.99, $this->resource->sellingAmount());
+        $this->assertInstanceOf(Money::class, $this->resource->sellingAmount());
+        $this->assertEquals(1899, $this->resource->sellingAmount()->getAmount());
     }
 
     public function testItCanGetUnutilisedSellingAmount()
     {
-        $this->assertEquals(1.01, $this->resource->unutilisedSellingAmount());
+        $this->assertInstanceOf(Money::class, $this->resource->unutilisedSellingAmount());
+        $this->assertEquals(101, $this->resource->unutilisedSellingAmount()->getAmount());
     }
 
     public function testItCanGetCustomerId()

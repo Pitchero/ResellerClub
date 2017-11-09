@@ -2,6 +2,8 @@
 
 namespace ResellerClub\Orders\BusinessEmails\Responses;
 
+use Money\Currency;
+use Money\Money;
 use ResellerClub\Response;
 
 class RenewalResponse extends Response
@@ -103,7 +105,7 @@ class RenewalResponse extends Response
     }
 
     /**
-     * Get the selling currency of the reseller.
+     * Get the selling currency symbol of the reseller.
      *
      * @see https://manage.resellerclub.com/kb/answer/2157
      *
@@ -115,27 +117,37 @@ class RenewalResponse extends Response
     }
 
     /**
+     * Get the selling currency of the reseller.
+     *
+     * @return Currency
+     */
+    public function sellingCurrency(): Currency
+    {
+        return new Currency($this->sellingcurrencysymbol);
+    }
+
+    /**
      * Get the selling currency amount.
      *
-     * @see https://manage.resellerclub.com/kb/answer/2157
-     *
-     * @return float
+     * @return Money
      */
-    public function sellingAmount(): float
+    public function sellingAmount(): Money
     {
-        return $this->sellingamount;
+        $amount = $this->sellingamount * 100;
+
+        return new Money($amount, $this->sellingCurrency());
     }
 
     /**
      * Get the unutilised transaction amount in the selling currency.
      *
-     * @see https://manage.resellerclub.com/kb/answer/2157
-     *
-     * @return float
+     * @return Money
      */
-    public function unutilisedSellingAmount(): float
+    public function unutilisedSellingAmount(): Money
     {
-        return $this->unutilisedsellingamount;
+        $amount = $this->unutilisedsellingamount * 100;
+
+        return new Money($amount, $this->sellingCurrency());
     }
 
     /**
