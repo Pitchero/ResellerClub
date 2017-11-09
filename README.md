@@ -29,7 +29,14 @@ A PHP SDK for [ResellerClub’s API](https://manage.resellerclub.com/kb/answer/7
         
         // @todo - Handle a successful response within your codebase.
         
-    } catch(\Exception $e) {
+    } catch(Reseller\Exceptions\ApiException $e) {
         // @todo - Handle the exceptions within your codebase.
     }
 ```
+
+## Exceptions
+The API calls are wrapped and any exceptions are caught with a library specific exception being thrown. This means you can safely rely on the following exception types for calls made.
+
+* ApiClientException
+* ConnectionException
+* ApiException
