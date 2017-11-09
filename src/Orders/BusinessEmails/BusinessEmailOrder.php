@@ -4,6 +4,7 @@ namespace ResellerClub\Orders\BusinessEmails;
 
 use ResellerClub\Api;
 use ResellerClub\Config;
+use ResellerClub\Orders\BusinessEmails\Requests\BusinessEmailOrderRequest;
 use ResellerClub\Orders\BusinessEmails\Requests\RenewRequest;
 use ResellerClub\Orders\BusinessEmails\Responses\BusinessEmailOrderResponse;
 use ResellerClub\Orders\BusinessEmails\Responses\CreateResponse;

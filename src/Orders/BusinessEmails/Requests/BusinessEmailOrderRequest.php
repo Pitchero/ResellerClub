@@ -1,6 +1,6 @@
 <?php
 
-namespace ResellerClub\Orders\BusinessEmails;
+namespace ResellerClub\Orders\BusinessEmails\Requests;
 
 use ResellerClub\Orders\InvoiceOption;
 

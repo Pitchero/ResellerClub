@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 use ResellerClub\Api;
 use ResellerClub\Config;
 use ResellerClub\Orders\BusinessEmails\BusinessEmailOrder;
-use ResellerClub\Orders\BusinessEmails\BusinessEmailOrderRequest;
+use ResellerClub\Orders\BusinessEmails\Requests\BusinessEmailOrderRequest;
 use ResellerClub\Orders\BusinessEmails\Responses\BusinessEmailOrderResponse;
 use ResellerClub\Orders\BusinessEmails\Responses\CreateResponse;
 use ResellerClub\Orders\InvoiceOption;
