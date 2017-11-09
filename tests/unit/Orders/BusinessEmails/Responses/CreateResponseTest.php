@@ -3,13 +3,13 @@
 namespace ResellerClub\Orders\BusinessEmails\Tests;
 
 use PHPUnit\Framework\TestCase;
-use ResellerClub\Orders\BusinessEmails\Resources\CreateResource;
+use ResellerClub\Orders\BusinessEmails\Responses\CreateResponse;
 
-class BusinessEmailOrderResourceTest extends TestCase
+class BusinessEmailOrderResponseTest extends TestCase
 {
     public function testInvoiceId()
     {
-        $businessEmailOrderResource = new CreateResource([
+        $businessEmailOrderResource = new CreateResponse([
             'invoiceid' => 77433277
         ]);
 
@@ -18,7 +18,7 @@ class BusinessEmailOrderResourceTest extends TestCase
 
     public function testSellingCurrency()
     {
-        $businessEmailOrderResource = new CreateResource(
+        $businessEmailOrderResource = new CreateResponse(
             ['sellingcurrencysymbol' => '£']
         );
 
@@ -27,7 +27,7 @@ class BusinessEmailOrderResourceTest extends TestCase
 
     public function testSellingAmount()
     {
-        $businessEmailOrderResource = new CreateResource([
+        $businessEmailOrderResource = new CreateResponse([
             'sellingamount' => '1.25'
         ]);
 
@@ -36,7 +36,7 @@ class BusinessEmailOrderResourceTest extends TestCase
 
     public function testTransactionAmount()
     {
-        $businessEmailOrderResource = new CreateResource([
+        $businessEmailOrderResource = new CreateResponse([
             'unutilisedsellingamount' => '1.00'
         ]);
 
@@ -45,7 +45,7 @@ class BusinessEmailOrderResourceTest extends TestCase
 
     public function testCustomerId()
     {
-        $businessEmailOrderResource = new CreateResource([
+        $businessEmailOrderResource = new CreateResponse([
             'customerid' => 17824872
         ]);
 

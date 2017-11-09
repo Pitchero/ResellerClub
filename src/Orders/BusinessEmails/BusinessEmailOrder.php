@@ -5,9 +5,9 @@ namespace ResellerClub\Orders\BusinessEmails;
 use ResellerClub\Api;
 use ResellerClub\Config;
 use ResellerClub\Orders\BusinessEmails\Requests\RenewRequest;
-use ResellerClub\Orders\BusinessEmails\Resources\BusinessEmailOrderResource;
-use ResellerClub\Orders\BusinessEmails\Resources\CreateResource;
-use ResellerClub\Orders\BusinessEmails\Resources\RenewalResource;
+use ResellerClub\Orders\BusinessEmails\Responses\BusinessEmailOrderResponse;
+use ResellerClub\Orders\BusinessEmails\Responses\CreateResponse;
+use ResellerClub\Orders\BusinessEmails\Responses\RenewalResponse;
 use ResellerClub\Orders\Order;
 
 class BusinessEmailOrder
@@ -34,9 +34,9 @@ class BusinessEmailOrder
      *
      * @param BusinessEmailOrderRequest $request
      *
-     * @return CreateResource
+     * @return CreateResponse
      */
-    public function create(BusinessEmailOrderRequest $request): CreateResource
+    public function create(BusinessEmailOrderRequest $request): CreateResponse
     {
         $response = $this->api->post(
             'eelite/us/add',
@@ -49,7 +49,7 @@ class BusinessEmailOrder
             ]
         );
 
-        return CreateResource::fromResponse($response);
+        return CreateResponse::fromApiResponse($response);
     }
 
     /**
@@ -59,9 +59,9 @@ class BusinessEmailOrder
      *
      * @param Order $request
      *
-     * @return BusinessEmailOrderResource
+     * @return BusinessEmailOrderResponse
      */
-    public function delete(Order $request): BusinessEmailOrderResource
+    public function delete(Order $request): BusinessEmailOrderResponse
     {
         $response = $this->api->post(
             'eelite/us/delete',
@@ -70,7 +70,7 @@ class BusinessEmailOrder
             ]
         );
 
-        return BusinessEmailOrderResource::fromResponse($response);
+        return BusinessEmailOrderResponse::fromApiResponse($response);
     }
 
     /**
@@ -78,9 +78,9 @@ class BusinessEmailOrder
      *
      * @param RenewRequest $request
      *
-     * @return RenewalResource
+     * @return RenewalResponse
      */
-    public function renew(RenewRequest $request): RenewalResource
+    public function renew(RenewRequest $request): RenewalResponse
     {
         $response = $this->api->post('eelite/us/renew', [
             'order-id' => $request->orderId(),
@@ -89,6 +89,6 @@ class BusinessEmailOrder
             'invoice-option' => $request->invoiceOption(),
         ]);
 
-        return RenewalResource::fromResponse($response);
+        return RenewalResponse::fromApiResponse($response);
     }
 }

@@ -1,11 +1,11 @@
 <?php
 
-namespace ResellerClub\Orders\BusinessEmails\Resources;
+namespace ResellerClub\Orders\BusinessEmails\Responses;
 
-use ResellerClub\Resource;
-use ResellerClub\Orders\BusinessEmails\Resources\Concerns\HasAction;
+use ResellerClub\Response;
+use ResellerClub\Orders\BusinessEmails\Responses\Concerns\HasAction;
 
-class BusinessEmailOrderResource extends Resource
+class BusinessEmailOrderResponse extends Response
 {
     use HasAction;
 

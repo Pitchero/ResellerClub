@@ -11,8 +11,8 @@ use ResellerClub\Api;
 use ResellerClub\Config;
 use ResellerClub\Orders\BusinessEmails\BusinessEmailOrder;
 use ResellerClub\Orders\BusinessEmails\BusinessEmailOrderRequest;
-use ResellerClub\Orders\BusinessEmails\Resources\BusinessEmailOrderResource;
-use ResellerClub\Orders\BusinessEmails\Resources\CreateResource;
+use ResellerClub\Orders\BusinessEmails\Responses\BusinessEmailOrderResponse;
+use ResellerClub\Orders\BusinessEmails\Responses\CreateResponse;
 use ResellerClub\Orders\InvoiceOption;
 use ResellerClub\Orders\Order;
 
@@ -41,11 +41,11 @@ class BusinessEmailOrderTest extends TestCase
                 ]))
         ]);
 
-        $BusinessEmailOrder = new BusinessEmailOrder($this->api($mock));
+        $businessEmailOrder = new BusinessEmailOrder($this->api($mock));
 
         $this->assertInstanceOf(
-            CreateResource::class,
-            $BusinessEmailOrder->create(
+            CreateResponse::class,
+            $businessEmailOrder->create(
                 new BusinessEmailOrderRequest(
                     17824872,
                     'some-domain.co.in',
@@ -75,11 +75,11 @@ class BusinessEmailOrderTest extends TestCase
                 ]))
         ]);
 
-        $BusinessEmailOrder = new BusinessEmailOrder($this->api($mock));
+        $businessEmailOrder = new BusinessEmailOrder($this->api($mock));
 
         $this->assertInstanceOf(
-            BusinessEmailOrderResource::class,
-            $BusinessEmailOrder->delete(
+            BusinessEmailOrderResponse::class,
+            $businessEmailOrder->delete(
                 new Order(123)
             )
         );

@@ -1,18 +1,18 @@
 <?php
 
-namespace ResellerClub\Orders\BusinessEmails\Resources\Tests;
+namespace ResellerClub\Orders\BusinessEmails\Responses\Tests;
 
 use PHPUnit\Framework\TestCase;
 use ResellerClub\Action;
-use ResellerClub\Orders\BusinessEmails\Resources\BusinessEmailOrderResource;
+use ResellerClub\Orders\BusinessEmails\Responses\BusinessEmailOrderResponse;
 
-class BusinessEmailOrderResourceTest extends TestCase
+class BusinessEmailOrderResponseTest extends TestCase
 {
     protected function setUp()
     {
         parent::setUp();
 
-        $this->resource = new BusinessEmailOrderResource([
+        $this->resource = new BusinessEmailOrderResponse([
             'description' => 'some-domain.co.in',
             'entityid' => 1234,
             'eaqid' => 461331388,

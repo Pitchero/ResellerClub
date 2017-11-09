@@ -2,9 +2,9 @@
 
 namespace ResellerClub;
 
-use GuzzleHttp\Psr7\Response;
+use GuzzleHttp\Psr7\Response as GuzzleResponse;
 
-abstract class Resource
+abstract class Response
 {
     /**
      * @var array
@@ -26,11 +26,11 @@ abstract class Resource
     /**
      * Create a resource instance from the given response.
      *
-     * @param Response $response
+     * @param GuzzleResponse $response
      *
      * @return self
      */
-    public static function fromResponse(Response $response)
+    public static function fromApiResponse(GuzzleResponse $response)
     {
        return new static(json_decode($response->getBody(), true));
     }

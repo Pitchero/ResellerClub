@@ -1,10 +1,10 @@
 <?php
 
-namespace ResellerClub\Orders\BusinessEmails\Resources;
+namespace ResellerClub\Orders\BusinessEmails\Responses;
 
-use ResellerClub\Resource;
+use ResellerClub\Response;
 
-class CreateResource extends Resource
+class CreateResponse extends Response
 {
     /**
      * Get the invoice ID parameter.
