@@ -18,7 +18,7 @@ A PHP SDK for [ResellerClub’s API](https://manage.resellerclub.com/kb/answer/7
         )
         
         $response = $api->businessEmailOrder()->create(
-             new ResellerClub\Orders\BusinessEmails\BusinessEmailOrderRequest(
+             new ResellerClub\Orders\BusinessEmails\Requests\BusinessEmailOrderRequest(
                 123,
                 'some-domain.co.uk',
                 5,

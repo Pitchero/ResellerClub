@@ -3,7 +3,7 @@
 namespace ResellerClub\Orders\BusinessEmails\Tests;
 
 use PHPUnit\Framework\TestCase;
-use ResellerClub\Orders\BusinessEmails\BusinessEmailOrderRequest;
+use ResellerClub\Orders\BusinessEmails\Requests\BusinessEmailOrderRequest;
 use ResellerClub\Orders\InvoiceOption;
 
 class BusinessEmailOrderRequestTest extends TestCase
