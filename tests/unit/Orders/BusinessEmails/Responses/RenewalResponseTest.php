@@ -1,17 +1,17 @@
 <?php
 
-namespace Tests\Unit\Orders\BusinessEmails\Resources;
+namespace Tests\Unit\Orders\BusinessEmails\Responses;
 
 use PHPUnit\Framework\TestCase;
-use ResellerClub\Orders\BusinessEmails\Resources\RenewalResource;
+use ResellerClub\Orders\BusinessEmails\Responses\RenewalResponse;
 
-class RenewalResourceTest extends TestCase
+class RenewalResponseTest extends TestCase
 {
     protected function setUp()
     {
         parent::setUp();
 
-        $this->resource = new RenewalResource([
+        $this->resource = new RenewalResponse([
             'description' => 'Test description',
             'entityid' => '123',
             'actiontype' => 'Renew',

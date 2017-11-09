@@ -1,10 +1,10 @@
 <?php
 
-namespace ResellerClub\Orders\BusinessEmails\Resources;
+namespace ResellerClub\Orders\BusinessEmails\Responses;
 
-use ResellerClub\Resource;
+use ResellerClub\Response;
 
-class RenewalResource extends Resource
+class RenewalResponse extends Response
 {
     /**
      * Description of the business email order renewal action status.

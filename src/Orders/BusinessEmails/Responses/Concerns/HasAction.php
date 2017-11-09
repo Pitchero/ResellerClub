@@ -1,6 +1,6 @@
 <?php
 
-namespace ResellerClub\Orders\BusinessEmails\Resources\Concerns;
+namespace ResellerClub\Orders\BusinessEmails\Responses\Concerns;
 
 use ResellerClub\Action;
 
