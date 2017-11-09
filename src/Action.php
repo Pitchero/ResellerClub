@@ -32,8 +32,6 @@ class Action
      * @param string $typeDescription
      * @param string $status
      * @param string $statusDescription
-     *
-     * @return void
      */
     public function __construct(
         int $id,
