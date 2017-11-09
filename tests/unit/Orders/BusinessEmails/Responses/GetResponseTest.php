@@ -15,12 +15,11 @@ class GetResponseTest extends TestCase
 
     public function testOrderId()
     {
-        $this->response = new GetResponse(['entityid' => 123]);
+        $this->response = new GetResponse(['orderid' => 123]);
 
         $this->assertInternalType('int', $this->response->orderId());
         $this->assertEquals(123, $this->response->orderId());
     }
-
 
     public function testOrderDescription()
     {
@@ -61,12 +60,12 @@ class GetResponseTest extends TestCase
         $this->assertTrue($this->response->orderDeletionAllowed());
     }
 
-    public function testOrderStatus()
+    public function testCurrentOrderStatus()
     {
         $this->response = new GetResponse(['currentstatus' => 'Active']);
 
-        $this->assertInternalType('string', $this->response->orderStatus());
-        $this->assertEquals('Active', $this->response->orderStatus());
+        $this->assertInternalType('string', $this->response->currentOrderStatus());
+        $this->assertEquals('Active', $this->response->currentOrderStatus());
     }
 
     public function testDomain()
@@ -130,5 +129,107 @@ class GetResponseTest extends TestCase
 
         $this->assertInternalType('string', $this->response->productCategory());
         $this->assertEquals('hosting', $this->response->productCategory());
+    }
+
+    public function testEntityId()
+    {
+        $this->response = new GetResponse(['entityid' => 123]);
+
+        $this->assertInternalType('int', $this->response->entityId());
+        $this->assertEquals(123, $this->response->entityId());
+    }
+
+    public function testEaqId()
+    {
+        $this->response = new GetResponse(['eaqid' => 0]);
+
+        $this->assertInternalType('int', $this->response->eaqId());
+        $this->assertEquals(0, $this->response->eaqId());
+    }
+
+    public function testPaused()
+    {
+        $this->response = new GetResponse(['paused' => false]);
+
+        $this->assertInternalType('bool', $this->response->paused());
+        $this->assertFalse($this->response->paused());
+    }
+
+    public function testCustomerCost()
+    {
+        $this->response = new GetResponse(['customercost' => '0.0']);
+
+        $this->assertInternalType('float', $this->response->customerCost());
+        $this->assertEquals('0.00', $this->response->customerCost());
+    }
+
+    public function testOrderStatus()
+    {
+        $this->response = new GetResponse(['orderstatus' => []]);
+
+        $this->assertInternalType('array', $this->response->orderStatus());
+    }
+
+    public function testIsRecurring()
+    {
+        $this->response = new GetResponse(['recurring' => false]);
+
+        $this->assertInternalType('bool', $this->response->isRecurring());
+        $this->assertFalse($this->response->isRecurring());
+    }
+
+    public function testEntityTypeId()
+    {
+        $this->response = new GetResponse(['entitytypeid' => 283]);
+
+        $this->assertInternalType('int', $this->response->entityTypeId());
+        $this->assertEquals(283, $this->response->entityTypeId());
+    }
+
+    public function testDeletionRequest()
+    {
+        $this->response = new GetResponse(['isDeletionRequest' => false]);
+
+        $this->assertInternalType('bool', $this->response->deletionRequest());
+        $this->assertFalse($this->response->deletionRequest());
+    }
+
+    public function testResellerCost()
+    {
+        $this->response = new GetResponse(['resellercost' => 0]);
+
+        $this->assertInternalType('float', $this->response->resellerCost());
+        $this->assertEquals('0.00', $this->response->resellerCost());
+    }
+
+    public function testJumpConditions()
+    {
+        $this->response = new GetResponse(['jumpConditions' => []]);
+
+        $this->assertInternalType('array', $this->response->jumpConditions());
+    }
+
+    public function testCurrentOrderPrice()
+    {
+        $this->response = new GetResponse(['currentOrderPrice' => '0.0']);
+
+        $this->assertInternalType('float', $this->response->currentOrderPrice());
+        $this->assertEquals('0.00', $this->response->currentOrderPrice());
+    }
+
+    public function testActionCompleted()
+    {
+        $this->response = new GetResponse(['actioncompleted' => '0']);
+
+        $this->assertInternalType('string', $this->response->actionCompleted());
+        $this->assertEquals('0', $this->response->actionCompleted());
+    }
+
+    public function testMoneyBackPeriod()
+    {
+        $this->response = new GetResponse(['moneybackperiod' => 30]);
+
+        $this->assertInternalType('int', $this->response->moneyBackPeriod());
+        $this->assertEquals(30, $this->response->moneyBackPeriod());
     }
 }
