@@ -1,6 +1,6 @@
 <?php
 
-namespace ResellerClub\Orders\EmailForwarders\Responses;
+namespace ResellerClub\Orders\EmailAccounts\Responses;
 
 use ResellerClub\Response;
 

@@ -1,13 +1,13 @@
 <?php
 
-namespace ResellerClub\Orders\EmailForwarders;
+namespace ResellerClub\Orders\EmailAccounts;
 
 use ResellerClub\Api;
 use ResellerClub\Config;
-use ResellerClub\Orders\EmailForwarders\Requests\DeleteRequest;
-use ResellerClub\Orders\EmailForwarders\Responses\DeletedResponse;
+use ResellerClub\Orders\EmailAccounts\Requests\DeleteRequest;
+use ResellerClub\Orders\EmailAccounts\Responses\DeletedResponse;
 
-class EmailForwarders
+class EmailAccount
 {
     /**
      * @var Config
@@ -37,7 +37,7 @@ class EmailForwarders
     public function delete(DeleteRequest $request): DeletedResponse
     {
         $response = $this->api->post(
-            'mail/user/delete-user-forwards',
+            'mail/user/delete',
             [
                 'order-id' => $request->orderId(),
                 'email' => $request->email(),

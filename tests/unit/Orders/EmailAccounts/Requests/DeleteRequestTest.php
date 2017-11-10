@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Unit\Orders\EmailForwarders\Requests;
+namespace Tests\Unit\Orders\EmailAccounts\Requests;
 
 use PHPUnit\Framework\TestCase;
-use ResellerClub\Orders\EmailForwarders\Requests\DeleteRequest;
+use ResellerClub\Orders\EmailAccounts\Requests\DeleteRequest;
 use ResellerClub\Orders\Order;
 
 class DeleteRequestTest extends TestCase

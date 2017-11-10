@@ -1,6 +1,6 @@
 <?php
 
-namespace ResellerClub\Orders\EmailForwarders\Requests;
+namespace ResellerClub\Orders\EmailAccounts\Requests;
 
 use ResellerClub\Orders\Order;
 

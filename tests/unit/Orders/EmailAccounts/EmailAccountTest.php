@@ -9,16 +9,15 @@ use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 use ResellerClub\Api;
 use ResellerClub\Config;
-use ResellerClub\Orders\EmailForwarders\EmailForwarders;
-use ResellerClub\Orders\EmailForwarders\Requests\DeleteRequest;
-use ResellerClub\Orders\EmailForwarders\Responses\DeletedResponse;
+use ResellerClub\Orders\EmailAccounts\EmailAccount;
+use ResellerClub\Orders\EmailForwarders\EmailForwarder;
+use ResellerClub\Orders\EmailAccounts\Requests\DeleteRequest;
+use ResellerClub\Orders\EmailAccounts\Responses\DeletedResponse;
 use ResellerClub\Orders\Order;
 
-class EmailForwardersTest extends TestCase
+class EmailAccountTest extends TestCase
 {
-
-
-    public function testResponseFromBusinessEmailOrderDelete()
+    public function testResponseFromEmailAccountDelete()
     {
         $mock = new MockHandler([
             new Response(
@@ -27,7 +26,7 @@ class EmailForwardersTest extends TestCase
                 json_encode(['status' => 'Success']))
         ]);
 
-        $emailForwarders = new EmailForwarders($this->api($mock));
+        $emailForwarders = new EmailAccount($this->api($mock));
 
         $this->assertInstanceOf(
             DeletedResponse::class,
