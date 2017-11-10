@@ -49,6 +49,7 @@ class CreateResponse extends Response
      */
     public function sellingAmount(): Money
     {
+        // TODO: Get subunit from currency instead of “guessing” its GBP/USD
         $amount = $this->sellingamount * 100;
 
         return new Money($amount, $this->sellingCurrency());
@@ -61,6 +62,7 @@ class CreateResponse extends Response
      */
     public function transactionAmount(): Money
     {
+        // TODO: Get subunit from currency instead of “guessing” its GBP/USD
         $amount = $this->unutilisedsellingamount * 100;
 
         return new Money($amount, $this->sellingCurrency());
