@@ -10,7 +10,6 @@ use PHPUnit\Framework\TestCase;
 use ResellerClub\Api;
 use ResellerClub\Config;
 use ResellerClub\Orders\EmailAccounts\EmailAccount;
-use ResellerClub\Orders\EmailForwarders\EmailForwarder;
 use ResellerClub\Orders\EmailAccounts\Requests\DeleteRequest;
 use ResellerClub\Orders\EmailAccounts\Responses\DeletedResponse;
 use ResellerClub\Orders\Order;

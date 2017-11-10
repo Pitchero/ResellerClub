@@ -24,7 +24,6 @@ class EmailAccount
         $this->api = $api;
     }
 
-
     /**
      * Makes a POST request to ResellerClub's 'delete' email accounts.
      *
