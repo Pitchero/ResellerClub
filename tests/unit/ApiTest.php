@@ -2,9 +2,9 @@
 
 namespace ResellerClub\Tests;
 
-use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -53,7 +53,7 @@ class ApiTest extends TestCase
     public function testConnectionException()
     {
         $mock = new MockHandler([
-            new RequestException("Error Communicating with Server", new Request('POST', 'test'))
+            new ConnectException("Error Communicating with Server", new Request('POST', 'test'))
         ]);
 
         $api = new Api(
@@ -68,7 +68,7 @@ class ApiTest extends TestCase
     public function testApiException()
     {
         $mock = new MockHandler([
-            new Exception("Error Communicating with Server", 400)
+            new RequestException("Error Communicating with Server", new Request('POST', 'test'))
         ]);
 
         $api = new Api(

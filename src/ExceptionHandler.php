@@ -2,9 +2,8 @@
 
 namespace ResellerClub;
 
-use Exception;
 use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
 use ResellerClub\Exceptions\ApiClientException;
 use ResellerClub\Exceptions\ApiException;
@@ -20,9 +19,9 @@ class ExceptionHandler
     /**
      * ExceptionHandler constructor.
      *
-     * @param Exception $exception
+     * @param RequestException $exception
      */
-    public function __construct(Exception $exception)
+    public function __construct(RequestException $exception)
     {
         $this->exception = $exception;
     }
@@ -34,10 +33,10 @@ class ExceptionHandler
      */
     public function render()
     {
-        switch ($this->exception) {
-            case $this->exception instanceof ClientException:
+        switch (get_class($this->exception)) {
+            case ClientException::class:
                 return new ApiClientException($this->getMessage($this->exception), $this->exception->getCode());
-            case $this->exception instanceof RequestException:
+            case ConnectException::class:
                 return new ConnectionException($this->getMessage($this->exception), $this->exception->getCode());
             default:
                 return new ApiException($this->getMessage($this->exception), $this->exception->getCode());
@@ -47,11 +46,11 @@ class ExceptionHandler
     /**
      * Gets the error message for the exception by checking the response first, else default to the exception message.
      *
-     * @param Exception $exception
+     * @param RequestException $exception
      *
      * @return string
      */
-    private function getMessage(Exception $exception)
+    private function getMessage(RequestException $exception)
     {
         $response_contents = $this->responseContents($exception);
 
@@ -63,20 +62,18 @@ class ExceptionHandler
     /**
      * Gets the response contents, if it exists.
      *
-     * @param Exception $exception
+     * @param RequestException $exception
      *
      * @return array
      */
-    private function responseContents(Exception $exception) :array
+    private function responseContents(RequestException $exception) :array
     {
-        if (!method_exists($exception, 'hasResponse')) {
-            return [];
-        }
-
         if (!$exception->hasResponse()) {
             return [];
         }
 
-        return json_decode($exception->getResponse()->getBody()->getContents(), true);
+        $contents = json_decode($exception->getResponse()->getBody()->getContents(), true);
+
+        return is_array($contents) ? $contents : [];
     }
 }

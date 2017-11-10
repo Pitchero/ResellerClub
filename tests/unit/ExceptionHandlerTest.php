@@ -4,6 +4,7 @@ namespace ResellerClub\Tests;
 
 use Exception;
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
@@ -42,19 +43,18 @@ class ExceptionHandlerTest extends TestCase
     public function testConnectionException()
     {
         $expected_message = 'Authentication failure';
-        $expected_code = 500;
 
-        $request_exception = new RequestException(
-            'Some other base message.',
-            $this->request,
-            $this->response($expected_code, $expected_message)
+
+        $request_exception = new ConnectException(
+            $expected_message,
+            $this->request
         );
 
         $exception_handler = new ExceptionHandler($request_exception);
         $exception = $exception_handler->render();
 
         $this->assertInstanceOf(ConnectionException::class, $exception);
-        $this->assertEquals($expected_code, $exception->getCode());
+
         $this->assertEquals($expected_message, $exception->getMessage());
     }
 
@@ -63,9 +63,10 @@ class ExceptionHandlerTest extends TestCase
         $expected_message = 'Some base message.';
         $expected_code = 500;
 
-        $request_exception = new Exception(
-            $expected_message,
-            $expected_code
+        $request_exception = new RequestException(
+            'Some other base message.',
+            $this->request,
+            $this->response($expected_code, $expected_message)
         );
 
         $exception_handler = new ExceptionHandler($request_exception);

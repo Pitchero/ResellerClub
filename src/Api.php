@@ -2,8 +2,8 @@
 
 namespace ResellerClub;
 
-use Exception;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 use ResellerClub\Orders\BusinessEmails\BusinessEmailOrder;
 
 class Api
@@ -93,7 +93,7 @@ class Api
                 $this->baseApiUri() . $uri,
                 array_merge($this->auth(), $request)
             );
-        } catch (Exception $e) {
+        } catch (RequestException $e) {
             throw (new ExceptionHandler($e))->render();
         }
     }
