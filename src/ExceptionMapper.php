@@ -12,7 +12,7 @@ use ResellerClub\Exceptions\ConnectionException;
 class ExceptionMapper
 {
     /**
-     * Render out a standardised exception.
+     * Maps exceptions out a standardised exception.
      *
      * @param RequestException $exception
      *
