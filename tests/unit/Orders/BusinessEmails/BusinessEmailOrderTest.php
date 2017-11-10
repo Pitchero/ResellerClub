@@ -85,6 +85,54 @@ class BusinessEmailOrderTest extends TestCase
         );
     }
 
+    public function testResponseFromBusinessEmailOrderGet()
+    {
+        $mock = new MockHandler([
+            new Response(
+                200,
+                ['Content-Type' => 'application/json'],
+                json_encode([
+                    'orderid'=> '79244641',
+                    'eaqid'=> '0',
+                    'description'=> 'name.onlyfordemo.com',
+                    'currentstatus'=> 'Active',
+                    'paused'=> 'false',
+                    'emailaccounts'=> 1,
+                    'customercost'=> '0.0',
+                    'parentkey'=> '999999999_999999998_715226',
+                    'orderstatus'=> [],
+                    'creationtime'=> '1510142454',
+                    'recurring'=> 'false',
+                    'entitytypeid'=> '283',
+                    'isDeletionRequest'=> 'false',
+                    'isImmediateReseller'=> 'true',
+                    'productkey'=> 'eeliteus',
+                    'customerid'=> '17824872',
+                    'resellercost'=> '0',
+                    'orderSuspendedByParent'=> 'false',
+                    'endtime'=> '1512734454',
+                    'entityid'=> '79244641',
+                    'jumpConditions'=> [],
+                    'currentOrderPrice'=> 0.0,
+                    'isOrderSuspendedUponExpiry'=> 'false',
+                    'actioncompleted'=> '0',
+                    'domainname'=> 'name.onlyfordemo.com',
+                    'productcategory'=> 'hosting',
+                    'allowdeletion'=> 'true',
+                    'moneybackperiod'=> '30'
+                ]))
+        ]);
+
+        $businessEmailOrder = new BusinessEmailOrder($this->api($mock));
+
+        $this->assertInstanceOf(
+            CreateResponse::class,
+            $businessEmailOrder->get(
+                new Order(123)
+            )
+        );
+    }
+
     private function api(MockHandler $mock): Api
     {
         $handler = HandlerStack::create($mock);

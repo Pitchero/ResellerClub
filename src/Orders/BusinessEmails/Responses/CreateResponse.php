@@ -9,6 +9,8 @@ class CreateResponse extends Response
     /**
      * Get the invoice ID parameter.
      *
+     * @see https://manage.resellerclub.com/kb/answer/2156
+     *
      * @return int
      */
     public function invoiceId(): int
@@ -18,6 +20,8 @@ class CreateResponse extends Response
 
     /**
      * Get the selling currency parameter.
+     *
+     * @see https://manage.resellerclub.com/kb/answer/2156
      *
      * @return string
      */
@@ -29,6 +33,8 @@ class CreateResponse extends Response
     /**
      * Get the selling amount parameter.
      *
+     * @see https://manage.resellerclub.com/kb/answer/2156
+     *
      * @return string
      */
     public function sellingAmount(): string
@@ -39,6 +45,8 @@ class CreateResponse extends Response
     /**
      * Get the transaction amount parameter.
      *
+     * @see https://manage.resellerclub.com/kb/answer/2156
+     *
      * @return string
      */
     public function transactionAmount(): string
@@ -48,6 +56,8 @@ class CreateResponse extends Response
 
     /**
      * Get the customer ID parameter.
+     *
+     * @see https://manage.resellerclub.com/kb/answer/2156
      *
      * @return int
      */

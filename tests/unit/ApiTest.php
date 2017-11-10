@@ -18,6 +18,11 @@ class ApiTest extends TestCase
      */
     private $api;
 
+    public function testGet()
+    {
+        $this->assertInstanceOf(Response::class, $this->api->get('get', ['request-param' => 123]));
+    }
+
     public function testPost()
     {
         $this->assertInstanceOf(Response::class, $this->api->post('post', ['request-param' => 123]));
