@@ -74,6 +74,27 @@ class BusinessEmailOrder
     }
 
     /**
+     * Makes a GET request to ResellerClub's 'details' business email order API.
+     *
+     * @see https://manage.resellerclub.com/kb/answer/2163
+     *
+     * @param Order $request
+     *
+     * @return CreateResponse
+     */
+    public function get(Order $request): CreateResponse
+    {
+        $response = $this->api->get(
+            'eelite/us/details',
+            [
+                'order-id' => $request->id()
+            ]
+        );
+
+        return CreateResponse::fromApiResponse($response);
+    }
+
+    /**
      * Renew an existing business email order.
      *
      * @see https://manage.resellerclub.com/kb/answer/2157
