@@ -7,7 +7,7 @@ use ResellerClub\Orders\Order;
 class DeleteRequest
 {
     /**
-     * ID of the order which is to be renewed.
+     * ID of the order.
      *
      * @var Order
      */
@@ -35,7 +35,7 @@ class DeleteRequest
     }
 
     /**
-     * Get the ID of the order to be renewed.
+     * Get the ID of the order.
      *
      * @return int
      */

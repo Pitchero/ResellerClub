@@ -45,6 +45,11 @@ abstract class Response
         return $this->attributes['status'];
     }
 
+    /**
+     * Was the response successful.
+     *
+     * @return bool
+     */
     public function wasSuccessful(): bool
     {
         return strtolower($this->status()) === 'success';
