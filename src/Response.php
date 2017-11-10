@@ -45,6 +45,11 @@ abstract class Response
         return $this->attributes['status'];
     }
 
+    public function wasSuccessful(): bool
+    {
+        return strtolower($this->status()) === 'success';
+    }
+
     /**
      * Dynamically retrieve the value of an attribute.
      *
