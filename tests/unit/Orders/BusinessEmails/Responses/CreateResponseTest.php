@@ -13,13 +13,7 @@ class BusinessEmailOrderResponseTest extends TestCase
     {
         parent::setUp();
 
-        $this->response = new CreateResponse([
-            'invoiceid' => '77433277',
-            'sellingcurrencysymbol' => 'GBP',
-            'sellingamount' => '1.25',
-            'unutilisedsellingamount' => '1.00',
-            'customerid' => 17824872,
-        ]);
+        $this->response = $this->createResponse();
     }
 
     public function testInvoiceId()
@@ -38,20 +32,75 @@ class BusinessEmailOrderResponseTest extends TestCase
         $this->assertEquals('GBP', $this->response->sellingCurrency());
     }
 
-    public function testSellingAmount()
+    /**
+     * @dataProvider sellingAmountProvider
+     */
+    public function testSellingAmount($response, $expectedAmount)
     {
-        $this->assertInstanceOf(Money::class, $this->response->sellingAmount());
-        $this->assertEquals(125, $this->response->sellingAmount()->getAmount());
+        $this->assertInstanceOf(Money::class, $response->sellingAmount());
+        $this->assertEquals($expectedAmount, $response->sellingAmount()->getAmount());
     }
 
-    public function testTransactionAmount()
+    /**
+     * @dataProvider transactionAmountProvider
+     */
+    public function testTransactionAmount($response, $expectedAmount)
     {
-        $this->assertInstanceOf(Money::class, $this->response->transactionAmount());
-        $this->assertEquals(100, $this->response->transactionAmount()->getAmount());
+        $this->assertInstanceOf(Money::class, $response->transactionAmount());
+        $this->assertEquals($expectedAmount, $response->transactionAmount()->getAmount());
     }
 
     public function testCustomerId()
     {
         $this->assertEquals(17824872, $this->response->customerId());
+    }
+
+    public function sellingAmountProvider()
+    {
+        return [
+            [
+                $this->createResponse(['sellingamount' => '100.00']),
+                10000,
+            ],
+            [
+                $this->createResponse(['sellingamount' => '2.50']),
+                250,
+            ],
+            [
+                $this->createResponse(['sellingamount' => '9.99']),
+                999,
+            ],
+        ];
+    }
+
+    public function transactionAmountProvider()
+    {
+        return [
+            [
+                $this->createResponse(['unutilisedsellingamount' => '0.00']),
+                0,
+            ],
+            [
+                $this->createResponse(['unutilisedsellingamount' => '1.23']),
+                123,
+            ],
+            [
+                $this->createResponse(['unutilisedsellingamount' => '145.78']),
+                14578,
+            ],
+        ];
+    }
+
+    private function createResponse(array $overrides = [])
+    {
+        $defaults = [
+            'invoiceid' => '77433277',
+            'sellingcurrencysymbol' => 'GBP',
+            'sellingamount' => '1.25',
+            'unutilisedsellingamount' => '1.00',
+            'customerid' => '17824872',
+        ];
+
+        return new CreateResponse(array_merge($defaults, $overrides));
     }
 }
