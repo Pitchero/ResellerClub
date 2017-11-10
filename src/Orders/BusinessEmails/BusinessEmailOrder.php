@@ -77,6 +77,8 @@ class BusinessEmailOrder
     /**
      * Renew an existing business email order.
      *
+     * @see https://manage.resellerclub.com/kb/answer/2157
+     *
      * @param RenewRequest $request
      *
      * @return RenewalResponse
