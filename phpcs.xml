@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<ruleset name="ResellerClub">
+    <description>ResellerClub coding standards, PSR2.s</description>
+
+    <rule ref="PSR2"/>
+</ruleset>
