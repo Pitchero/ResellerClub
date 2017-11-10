@@ -4,7 +4,7 @@ namespace ResellerClub\Orders\EmailForwarders;
 
 use ResellerClub\Api;
 use ResellerClub\Config;
-use ResellerClub\Orders\EmailAccounts\EmailAccounts;
+use ResellerClub\Orders\EmailAccounts\EmailAccount;
 use ResellerClub\Orders\EmailAccounts\Requests\DeleteRequest;
 use ResellerClub\Orders\EmailAccounts\Responses\DeletedResponse;
 
@@ -36,6 +36,6 @@ class EmailForwarder
      */
     public function delete(DeleteRequest $request): DeletedResponse
     {
-        return (new EmailAccounts($this->api))->delete($request);
+        return (new EmailAccount($this->api))->delete($request);
     }
 }

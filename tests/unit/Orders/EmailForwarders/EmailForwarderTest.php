@@ -14,7 +14,7 @@ use ResellerClub\Orders\EmailAccounts\Requests\DeleteRequest;
 use ResellerClub\Orders\EmailAccounts\Responses\DeletedResponse;
 use ResellerClub\Orders\Order;
 
-class EmailForwardersTest extends TestCase
+class EmailForwarderTest extends TestCase
 {
     public function testResponseFromEmailForwarderDelete()
     {
