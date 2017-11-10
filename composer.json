@@ -27,6 +27,11 @@
         "symfony/var-dumper": "^3.3",
         "squizlabs/php_codesniffer": "^3.1"
     },
+    "scripts": {
+        "post-install-cmd": [
+            "bash setup.sh"
+        ]
+    },
     "autoload": {
         "psr-4": {
             "ResellerClub\\": "src/"
