@@ -34,8 +34,7 @@ class EmailForwardersTest extends TestCase
             $emailForwarders->delete(
                 new DeleteRequest(
                     new Order($id = 123),
-                    $email = 'john.doe@my-domain.co.uk',
-                    $forwarders = 'jane.doe@my-domain.co.uk, stan.smith@my-domain.co.uk'
+                    $email = 'john.doe@my-domain.co.uk'
                 )
             )
         );

@@ -26,9 +26,9 @@ class EmailForwarders
 
 
     /**
-     * Makes a POST request to ResellerClub's 'delete' business email order API.
+     * Makes a POST request to ResellerClub's 'delete' email accounts.
      *
-     * @see https://manage.resellerclub.com/kb/answer/1054
+     * @see https://manage.resellerclub.com/kb/answer/1049
      *
      * @param DeleteRequest $request
      *
@@ -40,8 +40,7 @@ class EmailForwarders
             'mail/user/delete-user-forwards',
             [
                 'order-id' => $request->orderId(),
-                'emails' => $request->email(),
-                'forwards' => $request->forwarders(),
+                'email' => $request->email(),
             ]
         );
 

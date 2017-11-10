@@ -21,24 +21,17 @@ class DeleteRequest
     private $email;
 
     /**
-     * A comma-separated list of email addresses for the forwarders to be removed.
-     *
-     * @var string
-     */
-    private $forwarders;
-
-    /**
      * Create a new request instance.
+     *
+     * @see https://manage.resellerclub.com/kb/answer/1049
      *
      * @param Order $order
      * @param string $email
-     * @param string $forwarders
      */
-    public function __construct(Order $order, string $email, string $forwarders)
+    public function __construct(Order $order, string $email)
     {
         $this->order = $order;
         $this->email = $email;
-        $this->forwarders = $forwarders;
     }
 
     /**
@@ -59,15 +52,5 @@ class DeleteRequest
     public function email(): string
     {
         return $this->email;
-    }
-
-    /**
-     * Get the number of additional email accounts to be purchased for the business email order.
-     *
-     * @return string
-     */
-    public function forwarders(): string
-    {
-        return $this->forwarders;
     }
 }

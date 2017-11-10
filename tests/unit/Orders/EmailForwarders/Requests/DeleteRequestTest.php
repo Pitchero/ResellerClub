@@ -20,11 +20,6 @@ class DeleteRequestTest extends TestCase
         $this->assertEquals('john.doe@my-domain.co.uk', $this->request->email());
     }
 
-    public function testForwarders()
-    {
-        $this->assertEquals('jane.doe@my-domain.co.uk, stan.smith@my-domain.co.uk', $this->request->forwarders());
-    }
-
     protected function setUp()
     {
         parent::setUp();
@@ -33,8 +28,7 @@ class DeleteRequestTest extends TestCase
 
         $this->request = new DeleteRequest(
             $order,
-            $email = 'john.doe@my-domain.co.uk',
-            $forwarders = 'jane.doe@my-domain.co.uk, stan.smith@my-domain.co.uk'
+            $email = 'john.doe@my-domain.co.uk'
         );
     }
 }
