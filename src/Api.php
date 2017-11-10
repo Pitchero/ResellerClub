@@ -3,6 +3,7 @@
 namespace ResellerClub;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 use ResellerClub\Orders\BusinessEmails\BusinessEmailOrder;
 
 class Api
@@ -82,15 +83,21 @@ class Api
      * @param string $uri
      * @param mixed $request
      *
+     * @throws ApiException
+     *
      * @return Response
      */
     private function makeApiCall($method, $uri, $request)
     {
-        return $this->guzzleClient->request(
-            $method,
-            $this->baseApiUri() . $uri,
-            array_merge($this->auth(), $request)
-        );
+        try {
+            return $this->guzzleClient->request(
+                $method,
+                $this->baseApiUri() . $uri,
+                array_merge($this->auth(), $request)
+            );
+        } catch (RequestException $e) {
+            throw (new ExceptionMapper())->map($e);
+        }
     }
 
     /**
