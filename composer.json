@@ -20,7 +20,8 @@
     "require": {
         "php": ">=7.0.0",
         "guzzlehttp/guzzle": "^6.3",
-        "nesbot/carbon": "^1.22"
+        "nesbot/carbon": "^1.22",
+        "moneyphp/money": "^3.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.4",
