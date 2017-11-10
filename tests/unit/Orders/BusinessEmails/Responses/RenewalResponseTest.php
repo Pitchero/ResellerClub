@@ -18,7 +18,8 @@ class RenewalResponseTest extends TestCase
             'actiontypedesc' => 'Renewal of Business Email 1 for example.com for 1 month',
             'eaqid' => '461863406',
             'actionstatus' => 'InvoicePaid',
-            'actionstatusdesc' => 'Your Order will be processed by our automatic provisioning system in the next 5-10 minutes.',
+            'actionstatusdesc' =>
+                'Your Order will be processed by our automatic provisioning system in the next 5-10 minutes.',
             'invoiceid' => '123',
             'sellingcurrencysymbol' => 'GBP',
             'sellingamount' => '18.99',
