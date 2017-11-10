@@ -32,7 +32,7 @@ abstract class Response
      */
     public static function fromApiResponse(GuzzleResponse $response)
     {
-       return new static(json_decode($response->getBody(), true));
+        return new static(json_decode($response->getBody(), true));
     }
 
     /**
