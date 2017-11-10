@@ -2,6 +2,8 @@
 
 namespace ResellerClub\Orders\BusinessEmails\Responses;
 
+use Money\Currency;
+use Money\Money;
 use ResellerClub\Response;
 
 class CreateResponse extends Response
@@ -25,33 +27,43 @@ class CreateResponse extends Response
      *
      * @return string
      */
-    public function sellingCurrency(): string
+    public function sellingCurrencySymbol(): string
     {
         return $this->sellingcurrencysymbol;
     }
 
     /**
+     * Get the selling currency.
+     *
+     * @return Currency
+     */
+    public function sellingCurrency(): Currency
+    {
+        return new Currency($this->sellingCurrencySymbol());
+    }
+
+    /**
      * Get the selling amount parameter.
      *
-     * @see https://manage.resellerclub.com/kb/answer/2156
-     *
-     * @return string
+     * @return Money
      */
-    public function sellingAmount(): string
+    public function sellingAmount(): Money
     {
-        return $this->sellingamount;
+        $amount = $this->sellingamount * 100;
+
+        return new Money($amount, $this->sellingCurrency());
     }
 
     /**
      * Get the transaction amount parameter.
      *
-     * @see https://manage.resellerclub.com/kb/answer/2156
-     *
-     * @return string
+     * @return Money
      */
-    public function transactionAmount(): string
+    public function transactionAmount(): Money
     {
-        return $this->unutilisedsellingamount;
+        $amount = $this->unutilisedsellingamount * 100;
+
+        return new Money($amount, $this->sellingCurrency());
     }
 
     /**
