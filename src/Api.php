@@ -96,7 +96,7 @@ class Api
                 array_merge($this->auth(), $request)
             );
         } catch (RequestException $e) {
-            throw (new ExceptionMapper($e))->map();
+            throw (new ExceptionMapper())->map($e);
         }
     }
 

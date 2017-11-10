@@ -31,8 +31,8 @@ class ExceptionHandlerTest extends TestCase
             $this->response($expectedCode, $expectedMessage)
         );
 
-        $exception_handler = new ExceptionMapper($requestException);
-        $exception = $exception_handler->map();
+        $exception_handler = new ExceptionMapper();
+        $exception = $exception_handler->map($requestException);
 
         $this->assertInstanceOf(ApiClientException::class, $exception);
         $this->assertEquals($expectedCode, $exception->getCode());
@@ -48,8 +48,8 @@ class ExceptionHandlerTest extends TestCase
             $this->request
         );
 
-        $exception_handler = new ExceptionMapper($requestException);
-        $exception = $exception_handler->map();
+        $exception_handler = new ExceptionMapper();
+        $exception = $exception_handler->map($requestException);
 
         $this->assertInstanceOf(ConnectionException::class, $exception);
 
@@ -67,8 +67,8 @@ class ExceptionHandlerTest extends TestCase
             $this->response($expectedCode, $expectedMessage)
         );
 
-        $exception_handler = new ExceptionMapper($requestException);
-        $exception = $exception_handler->map();
+        $exception_handler = new ExceptionMapper();
+        $exception = $exception_handler->map($requestException);
 
         $this->assertInstanceOf(ApiException::class, $exception);
         $this->assertEquals($expectedCode, $exception->getCode());

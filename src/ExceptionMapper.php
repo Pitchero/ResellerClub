@@ -12,31 +12,18 @@ use ResellerClub\Exceptions\ConnectionException;
 class ExceptionMapper
 {
     /**
-     * @var Exception
-     */
-    private $exception;
-
-    /**
-     * ExceptionHandler constructor.
+     * Render out a standardised exception.
      *
      * @param RequestException $exception
-     */
-    public function __construct(RequestException $exception)
-    {
-        $this->exception = $exception;
-    }
-
-    /**
-     * Render out a standardised exception.
      *
      * @return ApiException
      */
-    public function map(): ApiException
+    public function map(RequestException $exception): ApiException
     {
-        $code = $this->exception->getCode();
-        $message = $this->getMessage($this->exception);
+        $code = $exception->getCode();
+        $message = $this->getMessage($exception);
 
-        switch (get_class($this->exception)) {
+        switch (get_class($exception)) {
             case ClientException::class:
                 return new ApiClientException($message, $code);
             case ConnectException::class:
