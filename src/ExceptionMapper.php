@@ -9,7 +9,7 @@ use ResellerClub\Exceptions\ApiClientException;
 use ResellerClub\Exceptions\ApiException;
 use ResellerClub\Exceptions\ConnectionException;
 
-class ExceptionHandler
+class ExceptionMapper
 {
     /**
      * @var Exception
@@ -29,17 +29,20 @@ class ExceptionHandler
     /**
      * Render out a standardised exception.
      *
-     * @return ApiClientException|ApiException|ConnectionException
+     * @return ApiException
      */
-    public function render()
+    public function map(): ApiException
     {
+        $code = $this->exception->getCode();
+        $message = $this->getMessage($this->exception);
+
         switch (get_class($this->exception)) {
             case ClientException::class:
-                return new ApiClientException($this->getMessage($this->exception), $this->exception->getCode());
+                return new ApiClientException($message, $code);
             case ConnectException::class:
-                return new ConnectionException($this->getMessage($this->exception), $this->exception->getCode());
+                return new ConnectionException($message, $code);
             default:
-                return new ApiException($this->getMessage($this->exception), $this->exception->getCode());
+                return new ApiException($message, $code);
         }
     }
 
@@ -50,7 +53,7 @@ class ExceptionHandler
      *
      * @return string
      */
-    private function getMessage(RequestException $exception)
+    private function getMessage(RequestException $exception): string
     {
         $response_contents = $this->responseContents($exception);
 

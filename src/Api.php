@@ -83,6 +83,8 @@ class Api
      * @param string $uri
      * @param mixed $request
      *
+     * @throws ApiException
+     *
      * @return Response
      */
     private function makeApiCall($method, $uri, $request)
@@ -94,7 +96,7 @@ class Api
                 array_merge($this->auth(), $request)
             );
         } catch (RequestException $e) {
-            throw (new ExceptionHandler($e))->render();
+            throw (new ExceptionMapper($e))->map();
         }
     }
 

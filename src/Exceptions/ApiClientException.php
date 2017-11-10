@@ -5,6 +5,6 @@ namespace ResellerClub\Exceptions;
 use RuntimeException;
 use Throwable;
 
-class ApiClientException extends RuntimeException
+class ApiClientException extends ApiException
 {
 }
