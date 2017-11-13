@@ -1,6 +1,6 @@
 <?php
 
-namespace ResellerClub\Tests;
+namespace Tests\Unit;
 
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ConnectException;

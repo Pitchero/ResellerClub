@@ -1,6 +1,6 @@
 <?php
 
-namespace ResellerClub\Orders\Tests;
+namespace Tests\Unit\Orders;
 
 use PHPUnit\Framework\TestCase;
 use ResellerClub\Orders\InvoiceOption;

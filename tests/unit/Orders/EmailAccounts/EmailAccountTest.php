@@ -1,6 +1,6 @@
 <?php
 
-namespace ResellerClub\Orders\EmailForwarders\Tests;
+namespace Tests\Unit\Orders\EmailAccounts;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
