@@ -4,10 +4,54 @@ namespace ResellerClub\Orders\EmailAccounts\Responses;
 
 use Carbon\Carbon;
 use ResellerClub\EmailAccountSettings;
+use ResellerClub\Exceptions\MissingAttributeException;
 use ResellerClub\Response;
 
 class CreateResponse extends Response
 {
+    /**
+     * @var array
+     */
+    private $user;
+
+    /**
+     * The created email account user.
+     *
+     * @see https://manage.resellerclub.com/kb/answer/1037
+     *
+     * @param array $attributes
+     *
+     * @throws MissingAttributeException
+     */
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        if (!array_key_exists('user', $this->response)) {
+            throw new MissingAttributeException('user');
+        }
+
+        $this->user = $this->response['user'];
+    }
+
+    /**
+     * Get the user status.
+     *
+     * @see https://manage.resellerclub.com/kb/answer/1037
+     *
+     * @throws MissingAttributeException
+     *
+     * @return string
+     */
+    public function status(): string
+    {
+        if (!array_key_exists('status', $this->response)) {
+            throw new MissingAttributeException('status');
+        }
+
+        return strtolower($this->response['status']);
+    }
+
     /**
      * Gets the newly created email address.
      *
@@ -15,9 +59,9 @@ class CreateResponse extends Response
      *
      * @return string
      */
-    public function emailAddress(): string
+    public function email(): string
     {
-        return $this->response['user']['emailAddress'];
+        return $this->user['emailAddress'];
     }
 
     /**
@@ -29,7 +73,7 @@ class CreateResponse extends Response
      */
     public function domain(): string
     {
-        return $this->response['user']['domainName'];
+        return $this->user['domainName'];
     }
 
     /**
@@ -41,7 +85,7 @@ class CreateResponse extends Response
      */
     public function firstName(): string
     {
-        return $this->response['user']['firstName'];
+        return $this->user['firstName'];
     }
 
     /**
@@ -53,7 +97,7 @@ class CreateResponse extends Response
      */
     public function lastName(): string
     {
-        return $this->response['user']['lastName'];
+        return $this->user['lastName'];
     }
 
     /**
@@ -65,7 +109,7 @@ class CreateResponse extends Response
      */
     public function notificationsEmail(): string
     {
-        return $this->response['user']['alternateEmailAddress'];
+        return $this->user['alternateEmailAddress'];
     }
 
     /**
@@ -77,7 +121,7 @@ class CreateResponse extends Response
      */
     public function internalForwards(): string
     {
-        return $this->response['user']['internalForwards'];
+        return $this->user['internalForwards'];
     }
 
     /**
@@ -87,9 +131,9 @@ class CreateResponse extends Response
      *
      * @return int
      */
-    public function quotaLimt(): int
+    public function quotaLimit(): int
     {
-        return $this->response['user']['quotaLimit'];
+        return $this->user['quotaLimit'];
     }
 
     /**
@@ -101,7 +145,7 @@ class CreateResponse extends Response
      */
     public function accountStatus(): string
     {
-        return $this->response['user']['status'];
+        return strtolower($this->user['status']);
     }
 
     /**
@@ -113,7 +157,7 @@ class CreateResponse extends Response
      */
     public function accountType(): string
     {
-        return $this->response['user']['accountType'];
+        return $this->user['accountType'];
     }
 
     /**
@@ -125,7 +169,7 @@ class CreateResponse extends Response
      */
     public function quotaUsed(): int
     {
-        return $this->response['user']['quotaUsed'];
+        return $this->user['quotaUsed'];
     }
 
     /**
@@ -137,7 +181,7 @@ class CreateResponse extends Response
      */
     public function countryCode(): string
     {
-        return $this->response['user']['countryCode'];
+        return $this->user['countryCode'];
     }
 
     /**
@@ -149,7 +193,7 @@ class CreateResponse extends Response
      */
     public function percentageQuotaUsage(): float
     {
-        return $this->response['user']['percentageQuotaUsage'];
+        return $this->user['percentageQuotaUsage'];
     }
 
     /**
@@ -161,7 +205,7 @@ class CreateResponse extends Response
      */
     public function languageCode(): string
     {
-        return $this->response['user']['languageCode'];
+        return $this->user['languageCode'];
     }
 
     /**
@@ -174,10 +218,10 @@ class CreateResponse extends Response
     public function accountSettings(): EmailAccountSettings
     {
         return new EmailAccountSettings(
-            $this->response['user']['accountSettings']['popSettings'],
-            $this->response['user']['accountSettings']['imapSettings'],
-            $this->response['user']['accountSettings']['smtpSettings'],
-            $this->response['user']['accountSettings']['webmailUrl']
+            $this->user['accountSettings']['popSettings'],
+            $this->user['accountSettings']['imapSettings'],
+            $this->user['accountSettings']['smtpSettings'],
+            $this->user['accountSettings']['webmailUrl']
         );
     }
 
@@ -190,7 +234,7 @@ class CreateResponse extends Response
      */
     public function createdOn(): Carbon
     {
-        return new Carbon($this->response['user']['createdOn']);
+        return new Carbon($this->user['createdOn']);
     }
 
     /**
@@ -200,9 +244,9 @@ class CreateResponse extends Response
      *
      * @return bool
      */
-    public function isPopAccessEnabled(): bool
+    public function popAccessEnabled(): bool
     {
-        return $this->response['user']['popAccessEnabled'];
+        return $this->user['popAccessEnabled'];
     }
 
     /**
@@ -212,9 +256,9 @@ class CreateResponse extends Response
      *
      * @return bool
      */
-    public function isImapAccessEnabled(): bool
+    public function imapAccessEnabled(): bool
     {
-        return $this->response['user']['imapAccessEnabled'];
+        return $this->user['imapAccessEnabled'];
     }
 
     /**
@@ -224,9 +268,9 @@ class CreateResponse extends Response
      *
      * @return bool
      */
-    public function isWebmaiAccessEnabled(): bool
+    public function webmailAccessEnabled(): bool
     {
-        return $this->response['user']['webmailAccessEnabled'];
+        return $this->user['webmailAccessEnabled'];
     }
 
     /**
@@ -238,7 +282,7 @@ class CreateResponse extends Response
      */
     public function canFooterOptout(): bool
     {
-        return $this->response['user']['canFooterOptout'];
+        return $this->user['canFooterOptout'];
     }
 
     /**
@@ -250,7 +294,7 @@ class CreateResponse extends Response
      */
     public function revertBlacklistRequestExists(): bool
     {
-        return $this->response['user']['revertBlacklistRequestExists'];
+        return $this->user['revertBlacklistRequestExists'];
     }
 
     /**
@@ -262,6 +306,6 @@ class CreateResponse extends Response
      */
     public function configurationProfile(): string
     {
-        return $this->response['user']['configurationProfile'];
+        return $this->user['configurationProfile'];
     }
 }

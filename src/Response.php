@@ -42,7 +42,7 @@ abstract class Response
      */
     public function status(): string
     {
-        return $this->attributes['status'];
+        return strtolower($this->attributes['status']);
     }
 
     /**
@@ -52,7 +52,7 @@ abstract class Response
      */
     public function wasSuccessful(): bool
     {
-        return strtolower($this->status()) === 'success';
+        return $this->status() === 'success';
     }
 
     /**
