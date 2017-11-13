@@ -20,7 +20,7 @@ class AddedResponseTest extends TestCase
 
     public function testItCanGetStatus()
     {
-        $this->assertEquals('SUCCESS', $this->response->status());
+        $this->assertEquals('success', $this->response->status());
     }
 
     public function testItIsSuccessfulIfStatusIsSuccess()

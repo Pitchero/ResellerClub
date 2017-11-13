@@ -13,6 +13,6 @@ class AddedResponse extends Response
      */
     public function status(): string
     {
-        return $this->response['status'];
+        return strtolower($this->response['status']);
     }
 }

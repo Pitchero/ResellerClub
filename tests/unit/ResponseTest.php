@@ -17,8 +17,8 @@ class ResponseTest extends TestCase
             json_encode(['status' => 'Success'])
         );
 
-        $this->assertEquals('Success', BusinessEmailOrderResponse::fromApiResponse($response)->status());
-        $this->assertEquals('Success', CreateResponse::fromApiResponse($response)->status());
+        $this->assertEquals('success', BusinessEmailOrderResponse::fromApiResponse($response)->status());
+        $this->assertEquals('success', CreateResponse::fromApiResponse($response)->status());
     }
 
     public function wasSuccessful()
