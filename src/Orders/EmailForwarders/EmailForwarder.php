@@ -30,7 +30,7 @@ class EmailForwarder
     /**
      * Add a forward-only email account.
      *
-     * @link https://manage.resellerclub.com/kb/answer/1038
+     * @see https://manage.resellerclub.com/kb/answer/1038
      *
      * @param AddRequest $request
      *
