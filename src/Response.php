@@ -46,16 +46,6 @@ abstract class Response
     }
 
     /**
-     * Was the response successful.
-     *
-     * @return bool
-     */
-    public function wasSuccessful(): bool
-    {
-        return strtolower($this->status()) === 'success';
-    }
-
-    /**
      * Determine if the response was successful.
      *
      * @return bool
