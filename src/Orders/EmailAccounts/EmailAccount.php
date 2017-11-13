@@ -36,7 +36,7 @@ class EmailAccount
     public function delete(DeleteRequest $request): DeletedResponse
     {
         $response = $this->api->post(
-            'mail/user/delete',
+            'mail/user/delete.json',
             [
                 'order-id' => $request->orderId(),
                 'email' => $request->email(),
