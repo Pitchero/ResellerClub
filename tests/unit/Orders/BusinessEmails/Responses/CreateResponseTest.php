@@ -1,6 +1,6 @@
 <?php
 
-namespace ResellerClub\Orders\BusinessEmails\Tests;
+namespace Tests\Unit\Orders\BusinessEmails;
 
 use Money\Currency;
 use Money\Money;

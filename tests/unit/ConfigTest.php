@@ -1,6 +1,6 @@
 <?php
 
-namespace ResellerClub\Tests;
+namespace Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
 use ResellerClub\Config;
