@@ -1,42 +1,23 @@
 # ResellerClub
+A PHP SDK for [ResellerClub’s API][1].
 
-A PHP SDK for [ResellerClub’s API](https://manage.resellerclub.com/kb/answer/744).
-
-## Requirements 
-* [PHP version => 7.0](http://www.php.net/)
-* [GuzzleHttp Package version >= 6.3](https://github.com/guzzle/guzzle)
+## Requirements
+* PHP >= 7.0
 
 ## Installation
+This package is available through [Packagist][4]. To install in your project via
+[Composer][5]:
 
-## Example usage 
+    $ composer require pitchero/reseller-club
 
-```php
-    try {
-        $api = new Reseller\Api(
-             new Reseller\Config(123, 'api_key', true),
-             new GuzzleHttp\Client()
-        )
-        
-        $response = $api->businessEmailOrder()->create(
-             new ResellerClub\Orders\BusinessEmails\Requests\BusinessEmailOrderRequest(
-                123,
-                'some-domain.co.uk',
-                5,
-                1,
-                ResellerClub\Orders\InvoiceOption::noInvoice()
-             )
-        );
-        
-        // @todo - Handle a successful response within your codebase.
-        
-    } catch(Reseller\Exceptions\ApiException $e) {
-        // @todo - Handle the exceptions within your codebase.
-    }
-```
+## License
+Licensed under the [MIT License][2].
 
-## Exceptions
-The API calls are wrapped and any exceptions are caught with a library specific exception being thrown. This means you can safely rely on the following exception types for calls made.
+## Issues
+If you find an issue with this package, please open a [GitHub Issue][3].
 
-* ApiClientException
-* ConnectionException
-* ApiException
+[1]: https://manage.resellerclub.com/kb/answer/744
+[2]: LICENSE.md
+[3]: https://github.com/Pitchero/ResellerClub/issues/new
+[4]: https://packagist.org/
+[5]: https://getcomposer.org/
