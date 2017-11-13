@@ -40,7 +40,7 @@ class BusinessEmailOrder
     public function create(BusinessEmailOrderRequest $request): CreateResponse
     {
         $response = $this->api->post(
-            'eelite/us/add',
+            'eelite/us/add.json',
             [
                 'domain-name' => $request->domain(),
                 'customer-id' => $request->customerId(),
@@ -65,7 +65,7 @@ class BusinessEmailOrder
     public function delete(Order $request): BusinessEmailOrderResponse
     {
         $response = $this->api->post(
-            'eelite/us/delete',
+            'eelite/us/delete.json',
             [
                 'order-id' => $request->id()
             ]
@@ -86,7 +86,7 @@ class BusinessEmailOrder
     public function get(Order $request): CreateResponse
     {
         $response = $this->api->get(
-            'eelite/us/details',
+            'eelite/us/details.json',
             [
                 'order-id' => $request->id()
             ]
@@ -106,7 +106,7 @@ class BusinessEmailOrder
      */
     public function renew(RenewRequest $request): RenewalResponse
     {
-        $response = $this->api->post('eelite/us/renew', [
+        $response = $this->api->post('eelite/us/renew.json', [
             'order-id' => $request->orderId(),
             'months' => $request->months(),
             'no-of-accounts' => $request->numberOfAccounts(),
