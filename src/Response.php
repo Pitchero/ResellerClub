@@ -46,6 +46,16 @@ abstract class Response
     }
 
     /**
+     * Was the response successful.
+     *
+     * @return bool
+     */
+    public function wasSuccessful(): bool
+    {
+        return strtolower($this->status()) === 'success';
+    }
+
+    /**
      * Dynamically retrieve the value of an attribute.
      *
      * @param string $key

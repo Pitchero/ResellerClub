@@ -20,4 +20,22 @@ class ResponseTest extends TestCase
         $this->assertEquals('Success', BusinessEmailOrderResponse::fromApiResponse($response)->status());
         $this->assertEquals('Success', CreateResponse::fromApiResponse($response)->status());
     }
+
+    public function wasSuccessful()
+    {
+        $successfulResponse = new Response(
+            200,
+            ['Content-Type' => 'application/json'],
+            json_encode(['status' => 'Success'])
+        );
+
+        $failureResponse = new Response(
+            200,
+            ['Content-Type' => 'application/json'],
+            json_encode(['status' => 'Failure'])
+        );
+
+        $this->assertTrue(CreateResponse::fromApiResponse($successfulResponse)->wasSuccessful());
+        $this->assertFalse(CreateResponse::fromApiResponse($failureResponse)->wasSuccessful());
+    }
 }
