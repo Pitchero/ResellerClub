@@ -19,7 +19,8 @@ class CreateRequestTest extends TestCase
 
     public function testEmail()
     {
-        $this->assertEquals('john.doe@my-domain.co.uk', $this->request->email());
+        $this->assertInstanceOf(EmailAddress::class, $this->request->email());
+        $this->assertEquals('john.doe@my-domain.co.uk', (string) $this->request->email());
     }
 
     public function testPassword()
@@ -29,7 +30,8 @@ class CreateRequestTest extends TestCase
 
     public function testNotificationEmail()
     {
-        $this->assertEquals('alternative@test.com', $this->request->notificationEmail());
+        $this->assertInstanceOf(EmailAddress::class, $this->request->notificationEmail());
+        $this->assertEquals('alternative@test.com', (string) $this->request->notificationEmail());
     }
 
     public function testFirstName()

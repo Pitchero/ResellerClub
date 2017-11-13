@@ -6,6 +6,7 @@ namespace ResellerClub\Orders\BusinessEmails\Tests;
 use Carbon\Carbon;
 use PHPUnit\Framework\TestCase;
 use ResellerClub\EmailAccountSettings;
+use ResellerClub\EmailAddress;
 use ResellerClub\Exceptions\MissingAttributeException;
 use ResellerClub\Orders\EmailAccounts\Responses\CreateResponse;
 
@@ -63,8 +64,8 @@ class CreateResponseTest extends TestCase
             ]
         ]);
 
-        $this->assertInternalType('string', $response->email());
-        $this->assertEquals('john.does@some-domain.co.uk', $response->email());
+        $this->assertInstanceOf(EmailAddress::class, $response->email());
+        $this->assertEquals('john.does@some-domain.co.uk', (string) $response->email());
     }
 
     public function testDomain()
@@ -119,8 +120,8 @@ class CreateResponseTest extends TestCase
             ]
         ]);
 
-        $this->assertInternalType('string', $response->notificationsEmail());
-        $this->assertEquals('another-email@some-domain.co.uk', $response->notificationsEmail());
+        $this->assertInstanceOf(EmailAddress::class, $response->notificationsEmail());
+        $this->assertEquals('another-email@some-domain.co.uk', (string) $response->notificationsEmail());
     }
 
     public function testInternalForwards()

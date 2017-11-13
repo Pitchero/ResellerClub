@@ -9,7 +9,7 @@ class CreateRequest
 {
 
     /**
-     * ID of the order.
+     * Order for the email account to be created against.
      *
      * @var Order $order
      */
@@ -108,9 +108,9 @@ class CreateRequest
     /**
      * Gets the desired email address for the email account.
      *
-     * @return string
+     * @return EmailAddress
      */
-    public function email(): string
+    public function email(): EmailAddress
     {
         return $this->email;
     }
@@ -128,9 +128,9 @@ class CreateRequest
     /**
      * Gets the notifications email for the email account.
      *
-     * @return string
+     * @return EmailAddress
      */
-    public function notificationEmail(): string
+    public function notificationEmail(): EmailAddress
     {
         return $this->notificationsEmail;
     }

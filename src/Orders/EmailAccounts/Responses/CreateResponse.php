@@ -4,6 +4,7 @@ namespace ResellerClub\Orders\EmailAccounts\Responses;
 
 use Carbon\Carbon;
 use ResellerClub\EmailAccountSettings;
+use ResellerClub\EmailAddress;
 use ResellerClub\Exceptions\MissingAttributeException;
 use ResellerClub\Response;
 
@@ -57,11 +58,11 @@ class CreateResponse extends Response
      *
      * @see https://manage.resellerclub.com/kb/answer/1037
      *
-     * @return string
+     * @return EmailAddress
      */
-    public function email(): string
+    public function email(): EmailAddress
     {
-        return $this->user['emailAddress'];
+        return new EmailAddress($this->user['emailAddress']);
     }
 
     /**
@@ -105,11 +106,11 @@ class CreateResponse extends Response
      *
      * @see https://manage.resellerclub.com/kb/answer/1037
      *
-     * @return string
+     * @return EmailAddress
      */
-    public function notificationsEmail(): string
+    public function notificationsEmail(): EmailAddress
     {
-        return $this->user['alternateEmailAddress'];
+        return new EmailAddress($this->user['alternateEmailAddress']);
     }
 
     /**
