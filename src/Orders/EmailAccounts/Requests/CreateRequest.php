@@ -2,6 +2,7 @@
 
 namespace ResellerClub\Orders\EmailAccounts\Requests;
 
+use ResellerClub\EmailAddress;
 use ResellerClub\Orders\Order;
 
 class CreateRequest
@@ -66,9 +67,9 @@ class CreateRequest
     /**
      * CreateRequest constructor.
      * @param Order $order
-     * @param string $email
+     * @param EmailAddress $email
      * @param string $password
-     * @param string $notificationsEmail
+     * @param EmailAddress $notificationsEmail
      * @param string $firstName
      * @param string $lastName
      * @param string $countryCode
@@ -76,9 +77,9 @@ class CreateRequest
      */
     public function __construct(
         Order $order,
-        string $email,
+        EmailAddress $email,
         string $password,
-        string $notificationsEmail,
+        EmailAddress $notificationsEmail,
         string $firstName,
         string $lastName,
         string $countryCode,
@@ -129,7 +130,7 @@ class CreateRequest
      *
      * @return string
      */
-    public function notificationsEmail(): string
+    public function notificationEmail(): string
     {
         return $this->notificationsEmail;
     }
