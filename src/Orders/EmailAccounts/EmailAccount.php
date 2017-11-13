@@ -3,14 +3,15 @@
 namespace ResellerClub\Orders\EmailAccounts;
 
 use ResellerClub\Api;
-use ResellerClub\Config;
 use ResellerClub\Orders\EmailAccounts\Requests\DeleteRequest;
 use ResellerClub\Orders\EmailAccounts\Responses\DeletedResponse;
+use ResellerClub\Orders\EmailAccounts\Requests\CreateRequest;
+use ResellerClub\Orders\EmailAccounts\Responses\CreateResponse;
 
 class EmailAccount
 {
     /**
-     * @var Config
+     * @var Api
      */
     private $api;
 
@@ -44,5 +45,33 @@ class EmailAccount
         );
 
         return DeletedResponse::fromApiResponse($response);
+    }
+
+    /**
+     * Makes a POST request to ResellerClub's 'add' email accounts.
+     *
+     * @see https://manage.resellerclub.com/kb/answer/1037
+     *
+     * @param CreateRequest $request
+     *
+     * @return CreateResponse
+     */
+    public function create(CreateRequest $request): CreateResponse
+    {
+        $response = $this->api->post(
+            'mail/user/add',
+            [
+                'order-id' => $request->orderId(),
+                'email' => $request->email(),
+                'passwd' => $request->password(),
+                'notification-email' => $request->notificationEmail(),
+                'first-name' => $request->firstName(),
+                'last-name' => $request->lastName(),
+                'country-code' => $request->countryCode(),
+                'language-code' => $request->languageCode(),
+            ]
+        );
+
+        return CreateResponse::fromApiResponse($response);
     }
 }
