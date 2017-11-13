@@ -59,7 +59,7 @@ class EmailAccount
     public function create(CreateRequest $request): CreateResponse
     {
         $response = $this->api->post(
-            'mail/user/add',
+            'mail/user/add.json',
             [
                 'order-id' => $request->orderId(),
                 'email' => $request->email(),
