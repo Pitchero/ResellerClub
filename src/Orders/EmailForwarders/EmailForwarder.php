@@ -11,7 +11,7 @@ use ResellerClub\Orders\EmailAccounts\Responses\DeletedResponse;
 class EmailForwarder
 {
     /**
-     * @var Config
+     * @var Api
      */
     private $api;
 

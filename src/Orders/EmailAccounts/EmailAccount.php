@@ -15,7 +15,7 @@ class EmailAccount
     private $api;
 
     /**
-     * Create a new business email order instance.
+     * The API calls to the email account management of ResellerClub.
      *
      * @param Api $api
      */

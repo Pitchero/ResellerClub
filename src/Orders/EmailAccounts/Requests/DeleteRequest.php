@@ -45,7 +45,7 @@ class DeleteRequest
     }
 
     /**
-     * Get the number of months for which the order should be renewed.
+     * Get the email address to be deleted.
      *
      * @return string
      */
