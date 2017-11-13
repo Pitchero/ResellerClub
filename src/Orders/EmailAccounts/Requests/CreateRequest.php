@@ -44,7 +44,7 @@ class CreateRequest
     private $firstName;
 
     /**
-     * User's first name for the email account.
+     * User's last name for the email account.
      *
      * @var string $lastName
      */
@@ -66,6 +66,7 @@ class CreateRequest
 
     /**
      * CreateRequest constructor.
+     *
      * @param Order $order
      * @param EmailAddress $email
      * @param string $password

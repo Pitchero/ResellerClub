@@ -9,22 +9,34 @@ class EmailAccountSettingsTest extends TestCase
 {
     public function testPop()
     {
-        $this->assertEquals('pop.somedomain.co.in.onlyfordemo.com', $this->emailAccountSettings->pop());
+        $this->assertEquals(
+            'pop.somedomain.co.in.onlyfordemo.com',
+            $this->emailAccountSettings->popSettings()
+        );
     }
 
     public function testImap()
     {
-        $this->assertEquals('imap.somedomain.co.in.onlyfordemo.com', $this->emailAccountSettings->imap());
+        $this->assertEquals(
+            'imap.somedomain.co.in.onlyfordemo.com',
+            $this->emailAccountSettings->imapSettings()
+        );
     }
 
-    public function testSmpt()
+    public function testSmtp()
     {
-        $this->assertEquals('smtp.somedomain.co.in.onlyfordemo.com', $this->emailAccountSettings->smtp());
+        $this->assertEquals(
+            'smtp.somedomain.co.in.onlyfordemo.com',
+            $this->emailAccountSettings->smtpSettings()
+        );
     }
 
     public function testWebmail()
     {
-        $this->assertEquals('http://webmail.somedomain.co.in.onlyfordemo.com', $this->emailAccountSettings->webmail());
+        $this->assertEquals(
+            'http://webmail.somedomain.co.in.onlyfordemo.com',
+            $this->emailAccountSettings->webmailUrl()
+        );
     }
 
     protected function setUp()

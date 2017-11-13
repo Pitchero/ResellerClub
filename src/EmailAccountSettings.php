@@ -45,41 +45,41 @@ class EmailAccountSettings
     }
 
     /**
-     * Get the POP address.
+     * Get the POP settings address.
      *
      * @return string
      */
-    public function pop(): string
+    public function popSettings(): string
     {
         return $this->popSettings;
     }
 
     /**
-     * Get the IMAP address.
+     * Get the IMAP settings address.
      *
      * @return string
      */
-    public function imap(): string
+    public function imapSettings(): string
     {
         return $this->imapSettings;
     }
 
     /**
-     * Get the SMTP address.
+     * Get the SMTP settings address.
      *
      * @return string
      */
-    public function smtp(): string
+    public function smtpSettings(): string
     {
         return $this->smtpSettings;
     }
 
     /**
-     * Get the webmail address.
+     * Get the webmail URL address.
      *
      * @return string
      */
-    public function webmail(): string
+    public function webmailUrl(): string
     {
         return $this->webmailUrl;
     }
