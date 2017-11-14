@@ -13,6 +13,19 @@ class BusinessEmailOrderRequestTest extends TestCase
      */
     private $businessEmailOrder;
 
+    protected function setUp()
+    {
+        parent::setUp();
+
+        $this->businessEmailOrder = new BusinessEmailOrderRequest(
+            123,
+            'some-domain.co.uk',
+            5,
+            1,
+            InvoiceOption::noInvoice()
+        );
+    }
+
     public function testCustomerId()
     {
         $customerId = $this->businessEmailOrder->customerId();
@@ -43,18 +56,5 @@ class BusinessEmailOrderRequestTest extends TestCase
     public function testInvoiceCustomer()
     {
         $this->assertInstanceOf(InvoiceOption::class, $this->businessEmailOrder->invoiceOption());
-    }
-
-    protected function setUp()
-    {
-        parent::setUp();
-
-        $this->businessEmailOrder = new BusinessEmailOrderRequest(
-            123,
-            'some-domain.co.uk',
-            5,
-            1,
-            InvoiceOption::noInvoice()
-        );
     }
 }

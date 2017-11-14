@@ -12,6 +12,12 @@ class ConfigTest extends TestCase
      */
     private $config;
 
+    protected function setUp()
+    {
+        parent::setUp();
+        $this->config = new Config(123, 'api_key');
+    }
+
     public function testAuthUserId()
     {
         $this->assertEquals(123, $this->config->authUserId());
@@ -31,11 +37,5 @@ class ConfigTest extends TestCase
     {
         $config = new Config(123, 'api_key', true);
         $this->assertTrue($config->isTestMode());
-    }
-
-    protected function setUp()
-    {
-        parent::setUp();
-        $this->config = new Config(123, 'api_key');
     }
 }

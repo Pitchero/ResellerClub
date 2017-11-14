@@ -8,6 +8,11 @@ use ResellerClub\Status;
 
 class AddedResponseTest extends TestCase
 {
+    /**
+     * @var AddedResponse
+     */
+    private $response;
+
     protected function setUp()
     {
         parent::setUp();

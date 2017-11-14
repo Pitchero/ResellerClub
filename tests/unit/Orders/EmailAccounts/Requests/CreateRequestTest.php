@@ -10,7 +10,29 @@ use ResellerClub\Orders\Order;
 
 class CreateRequestTest extends TestCase
 {
+    /**
+     * @var CreateRequest
+     */
     private $request;
+
+    protected function setUp()
+    {
+        parent::setUp();
+
+        $email = new EmailAddress('john.doe@my-domain.co.uk');
+        $notificationsEmail = new EmailAddress('alternative@test.com');
+
+        $this->request = new CreateRequest(
+            new Order($id = 123),
+            $email,
+            $password = 'myT35tP@55word',
+            $notificationsEmail,
+            $firstName = 'John',
+            $lastName = 'Doe',
+            $countryCode = 'US',
+            $languageCode = 'en'
+        );
+    }
 
     public function testOrderId()
     {
@@ -52,24 +74,5 @@ class CreateRequestTest extends TestCase
     public function testLanguageCode()
     {
         $this->assertEquals('en', $this->request->languageCode());
-    }
-
-    protected function setUp()
-    {
-        parent::setUp();
-
-        $email = new EmailAddress('john.doe@my-domain.co.uk');
-        $notificationsEmail = new EmailAddress('alternative@test.com');
-
-        $this->request = new CreateRequest(
-            new Order($id = 123),
-            $email,
-            $password = 'myT35tP@55word',
-            $notificationsEmail,
-            $firstName = 'John',
-            $lastName = 'Doe',
-            $countryCode = 'US',
-            $languageCode = 'en'
-        );
     }
 }

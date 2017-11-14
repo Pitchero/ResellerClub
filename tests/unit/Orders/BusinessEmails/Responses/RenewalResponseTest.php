@@ -9,11 +9,16 @@ use ResellerClub\Orders\BusinessEmails\Responses\RenewalResponse;
 
 class RenewalResponseTest extends TestCase
 {
+    /**
+     * @var RenewalResponse
+     */
+    private $response;
+
     protected function setUp()
     {
         parent::setUp();
 
-        $this->resource = new RenewalResponse([
+        $this->response = new RenewalResponse([
             'description' => 'Test description',
             'entityid' => '123',
             'actiontype' => 'Renew',
@@ -31,74 +36,74 @@ class RenewalResponseTest extends TestCase
 
     public function testItCanGetDescription()
     {
-        $this->assertEquals('Test description', $this->resource->description());
+        $this->assertEquals('Test description', $this->response->description());
     }
 
     public function testItCanGetEntityId()
     {
-        $this->assertEquals(123, $this->resource->entityId());
+        $this->assertEquals(123, $this->response->entityId());
     }
 
     public function testItCanGetActionType()
     {
-        $this->assertEquals('Renew', $this->resource->actiontype);
+        $this->assertEquals('Renew', $this->response->actiontype);
     }
 
     public function testItCanGetActionTypeDescription()
     {
         $this->assertEquals(
             'Renewal of Business Email 1 for example.com for 1 month',
-            $this->resource->actionTypeDescription()
+            $this->response->actionTypeDescription()
         );
     }
 
     public function testItCanGetActionId()
     {
-        $this->assertEquals(461863406, $this->resource->actionId());
+        $this->assertEquals(461863406, $this->response->actionId());
     }
 
     public function testItCanGetActionStatus()
     {
-        $this->assertEquals('InvoicePaid', $this->resource->actionStatus());
+        $this->assertEquals('InvoicePaid', $this->response->actionStatus());
     }
 
     public function testItCanGetActionStatusDescription()
     {
         $this->assertEquals(
             'Your Order will be processed by our automatic provisioning system in the next 5-10 minutes.',
-            $this->resource->actionStatusDescription()
+            $this->response->actionStatusDescription()
         );
     }
 
     public function testItCanGetInvoiceId()
     {
-        $this->assertEquals(123, $this->resource->invoiceId());
+        $this->assertEquals(123, $this->response->invoiceId());
     }
 
     public function testItCanGetSellingCurrencySymbol()
     {
-        $this->assertEquals('GBP', $this->resource->sellingCurrencySymbol());
+        $this->assertEquals('GBP', $this->response->sellingCurrencySymbol());
     }
 
     public function testItCanGetSellingCurrency()
     {
-        $this->assertInstanceOf(Currency::class, $this->resource->sellingCurrency());
+        $this->assertInstanceOf(Currency::class, $this->response->sellingCurrency());
     }
 
     public function testItCanGetSellingAmount()
     {
-        $this->assertInstanceOf(Money::class, $this->resource->sellingAmount());
-        $this->assertEquals(1899, $this->resource->sellingAmount()->getAmount());
+        $this->assertInstanceOf(Money::class, $this->response->sellingAmount());
+        $this->assertEquals(1899, $this->response->sellingAmount()->getAmount());
     }
 
     public function testItCanGetUnutilisedSellingAmount()
     {
-        $this->assertInstanceOf(Money::class, $this->resource->unutilisedSellingAmount());
-        $this->assertEquals(101, $this->resource->unutilisedSellingAmount()->getAmount());
+        $this->assertInstanceOf(Money::class, $this->response->unutilisedSellingAmount());
+        $this->assertEquals(101, $this->response->unutilisedSellingAmount()->getAmount());
     }
 
     public function testItCanGetCustomerId()
     {
-        $this->assertEquals(123, $this->resource->customerId());
+        $this->assertEquals(123, $this->response->customerId());
     }
 }

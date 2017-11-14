@@ -9,6 +9,11 @@ use ResellerClub\Orders\BusinessEmails\Responses\CreateResponse;
 
 class CreateResponseTest extends TestCase
 {
+    /**
+     * @var CreateResponse
+     */
+    private $response;
+
     protected function setUp()
     {
         parent::setUp();
