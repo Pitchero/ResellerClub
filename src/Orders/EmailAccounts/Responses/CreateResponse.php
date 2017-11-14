@@ -8,6 +8,9 @@ use ResellerClub\EmailAddress;
 use ResellerClub\Exceptions\MissingAttributeException;
 use ResellerClub\Response;
 
+/**
+ * @see https://manage.resellerclub.com/kb/answer/1037
+ */
 class CreateResponse extends Response
 {
     /**
@@ -17,8 +20,6 @@ class CreateResponse extends Response
 
     /**
      * The created email account user.
-     *
-     * @see https://manage.resellerclub.com/kb/answer/1037
      *
      * @param array $attributes
      *
@@ -38,8 +39,6 @@ class CreateResponse extends Response
     /**
      * Get the user status.
      *
-     * @see https://manage.resellerclub.com/kb/answer/1037
-     *
      * @throws MissingAttributeException
      *
      * @return string
@@ -56,8 +55,6 @@ class CreateResponse extends Response
     /**
      * Gets the newly created email address.
      *
-     * @see https://manage.resellerclub.com/kb/answer/1037
-     *
      * @return EmailAddress
      */
     public function email(): EmailAddress
@@ -67,8 +64,6 @@ class CreateResponse extends Response
 
     /**
      * Gets the domain name that this email account has been created for.
-     *
-     * @see https://manage.resellerclub.com/kb/answer/1037
      *
      * @return string
      */
@@ -80,8 +75,6 @@ class CreateResponse extends Response
     /**
      * Gets the user's first name for the email account created.
      *
-     * @see https://manage.resellerclub.com/kb/answer/1037
-     *
      * @return string
      */
     public function firstName(): string
@@ -91,8 +84,6 @@ class CreateResponse extends Response
 
     /**
      * Gets the user's last name for the email account created.
-     *
-     * @see https://manage.resellerclub.com/kb/answer/1037
      *
      * @return string
      */
@@ -104,8 +95,6 @@ class CreateResponse extends Response
     /**
      * Gets the user's email address to notify regarding this email account.
      *
-     * @see https://manage.resellerclub.com/kb/answer/1037
-     *
      * @return EmailAddress
      */
     public function notificationsEmail(): EmailAddress
@@ -115,8 +104,6 @@ class CreateResponse extends Response
 
     /**
      * Gets the information regarding the internal forwarding of the email account.
-     *
-     * @see https://manage.resellerclub.com/kb/answer/1037
      *
      * @return string
      */
@@ -128,8 +115,6 @@ class CreateResponse extends Response
     /**
      * Gets the email account's quota limit.
      *
-     * @see https://manage.resellerclub.com/kb/answer/1037
-     *
      * @return int
      */
     public function quotaLimit(): int
@@ -139,8 +124,6 @@ class CreateResponse extends Response
 
     /**
      * Gets the status on the email account.
-     *
-     * @see https://manage.resellerclub.com/kb/answer/1037
      *
      * @return string
      */
@@ -152,8 +135,6 @@ class CreateResponse extends Response
     /**
      * Gets the email account type.
      *
-     * @see https://manage.resellerclub.com/kb/answer/1037
-     *
      * @return string
      */
     public function accountType(): string
@@ -163,8 +144,6 @@ class CreateResponse extends Response
 
     /**
      * Gets the quota used for this email account.
-     *
-     * @see https://manage.resellerclub.com/kb/answer/1037
      *
      * @return int
      */
@@ -176,8 +155,6 @@ class CreateResponse extends Response
     /**
      * Gets the country code.
      *
-     * @see https://manage.resellerclub.com/kb/answer/1037
-     *
      * @return string
      */
     public function countryCode(): string
@@ -187,8 +164,6 @@ class CreateResponse extends Response
 
     /**
      * Gets the percentage of the quota used for the email account.
-     *
-     * @see https://manage.resellerclub.com/kb/answer/1037
      *
      * @return float
      */
@@ -200,8 +175,6 @@ class CreateResponse extends Response
     /**
      * Gets the language code.
      *
-     * @see https://manage.resellerclub.com/kb/answer/1037
-     *
      * @return string
      */
     public function languageCode(): string
@@ -211,8 +184,6 @@ class CreateResponse extends Response
 
     /**
      * Gets the email account settings.
-     *
-     * @see https://manage.resellerclub.com/kb/answer/1037
      *
      * @return EmailAccountSettings
      */
@@ -229,8 +200,6 @@ class CreateResponse extends Response
     /**
      * Gets the date that this email account was created.
      *
-     * @see https://manage.resellerclub.com/kb/answer/1037
-     *
      * @return Carbon
      */
     public function createdOn(): Carbon
@@ -240,8 +209,6 @@ class CreateResponse extends Response
 
     /**
      * Is pop email access enabled.
-     *
-     * @see https://manage.resellerclub.com/kb/answer/1037
      *
      * @return bool
      */
@@ -253,8 +220,6 @@ class CreateResponse extends Response
     /**
      * Is imap email access enabled.
      *
-     * @see https://manage.resellerclub.com/kb/answer/1037
-     *
      * @return bool
      */
     public function imapAccessEnabled(): bool
@@ -264,8 +229,6 @@ class CreateResponse extends Response
 
     /**
      * Is webmail email access enabled.
-     *
-     * @see https://manage.resellerclub.com/kb/answer/1037
      *
      * @return bool
      */
@@ -277,8 +240,6 @@ class CreateResponse extends Response
     /**
      * Gets footer opt out.
      *
-     * @see https://manage.resellerclub.com/kb/answer/1037
-     *
      * @return bool
      */
     public function canFooterOptout(): bool
@@ -289,8 +250,6 @@ class CreateResponse extends Response
     /**
      * Gets revert blacklist request exists.
      *
-     * @see https://manage.resellerclub.com/kb/answer/1037
-     *
      * @return bool
      */
     public function revertBlacklistRequestExists(): bool
@@ -300,8 +259,6 @@ class CreateResponse extends Response
 
     /**
      * Gets the configuration profile for the email account.
-     *
-     * @see https://manage.resellerclub.com/kb/answer/1037
      *
      * @return string
      */
