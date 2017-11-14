@@ -2,6 +2,7 @@
 
 namespace ResellerClub\Orders\EmailAccounts\Requests;
 
+use ResellerClub\EmailAddress;
 use ResellerClub\Orders\Order;
 
 class DeleteRequest
@@ -26,9 +27,9 @@ class DeleteRequest
      * @see https://manage.resellerclub.com/kb/answer/1049
      *
      * @param Order $order
-     * @param string $email
+     * @param EmailAddress $email
      */
-    public function __construct(Order $order, string $email)
+    public function __construct(Order $order, EmailAddress $email)
     {
         $this->order = $order;
         $this->email = $email;
@@ -47,9 +48,9 @@ class DeleteRequest
     /**
      * Get the email address to be deleted.
      *
-     * @return string
+     * @return EmailAddress
      */
-    public function email(): string
+    public function email(): EmailAddress
     {
         return $this->email;
     }

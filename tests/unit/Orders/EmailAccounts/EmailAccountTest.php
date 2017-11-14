@@ -35,7 +35,7 @@ class EmailAccountTest extends TestCase
             $emailAccounts->delete(
                 new DeleteRequest(
                     new Order($id = 123),
-                    $email = 'john.doe@my-domain.co.uk'
+                    new EmailAddress($email = 'john.doe@my-domain.co.uk')
                 )
             )
         );

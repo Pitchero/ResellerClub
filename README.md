@@ -166,10 +166,12 @@ This package is available through [Packagist][4]. To install in your project via
             );
             
             $request = ResellerClub\Orders\EmailAccounts\Requests\DeleteRequest(
-                  ResellerClub\Orders\Order(
-                     $orderId = 123
-                  ),   
-                  $email = 'john.doe@some-domain.co.uk'                      
+                ResellerClub\Orders\Order(
+                    $orderId = 123
+                ),   
+                ResellerClub\EmailAddress(
+                    $email = 'john.doe@some-domain.co.uk'
+                )                     
             );
             
             $response = $api->emailAccount()->delete($request);
@@ -222,10 +224,12 @@ This package is available through [Packagist][4]. To install in your project via
             );
             
             $request = ResellerClub\Orders\EmailAccounts\Requests\DeleteRequest(
-                  ResellerClub\Orders\Order(
-                     $orderId = 123
-                  ),   
-                  $email = 'john.doe@some-domain.co.uk'                      
+                ResellerClub\Orders\Order(
+                    $orderId = 123
+                ),   
+                ResellerClub\EmailAddress(
+                    $email = 'john.doe@some-domain.co.uk'
+                )                      
             );
             
             $response = $api->emailForwarder()->delete($request);
