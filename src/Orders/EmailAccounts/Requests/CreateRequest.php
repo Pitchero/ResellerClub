@@ -18,7 +18,7 @@ class CreateRequest
     /**
      * Desired email address for the email account.
      *
-     * @var string $email
+     * @var EmailAddress $email
      */
     private $email;
 
@@ -32,7 +32,7 @@ class CreateRequest
     /**
      * Notifications email for the email account.
      *
-     * @var string $notificationsEmail
+     * @var EmailAddress $notificationsEmail
      */
     private $notificationsEmail;
 
