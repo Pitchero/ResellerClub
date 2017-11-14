@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Orders\BusinessEmails;
+namespace Tests\Unit\Orders\BusinessEmails\Requests;
 
 use PHPUnit\Framework\TestCase;
 use ResellerClub\Orders\BusinessEmails\Requests\BusinessEmailOrderRequest;
