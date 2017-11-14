@@ -26,28 +26,6 @@ class EmailAccount
     }
 
     /**
-     * Makes a POST request to ResellerClub's 'delete' email accounts.
-     *
-     * @see https://manage.resellerclub.com/kb/answer/1049
-     *
-     * @param DeleteRequest $request
-     *
-     * @return DeletedResponse
-     */
-    public function delete(DeleteRequest $request): DeletedResponse
-    {
-        $response = $this->api->post(
-            'mail/user/delete.json',
-            [
-                'order-id' => $request->orderId(),
-                'email' => $request->email(),
-            ]
-        );
-
-        return DeletedResponse::fromApiResponse($response);
-    }
-
-    /**
      * Makes a POST request to ResellerClub's 'add' email accounts.
      *
      * @see https://manage.resellerclub.com/kb/answer/1037
@@ -73,5 +51,27 @@ class EmailAccount
         );
 
         return CreateResponse::fromApiResponse($response);
+    }
+
+    /**
+     * Makes a POST request to ResellerClub's 'delete' email accounts.
+     *
+     * @see https://manage.resellerclub.com/kb/answer/1049
+     *
+     * @param DeleteRequest $request
+     *
+     * @return DeletedResponse
+     */
+    public function delete(DeleteRequest $request): DeletedResponse
+    {
+        $response = $this->api->post(
+            'mail/user/delete.json',
+            [
+                'order-id' => $request->orderId(),
+                'email' => $request->email(),
+            ]
+        );
+
+        return DeletedResponse::fromApiResponse($response);
     }
 }

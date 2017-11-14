@@ -3,6 +3,7 @@
 namespace Tests\Unit\Orders\EmailAccounts\Requests;
 
 use PHPUnit\Framework\TestCase;
+use ResellerClub\EmailAddress;
 use ResellerClub\Orders\EmailAccounts\Requests\DeleteRequest;
 use ResellerClub\Orders\Order;
 
@@ -21,7 +22,7 @@ class DeleteRequestTest extends TestCase
 
         $this->request = new DeleteRequest(
             $order,
-            $email = 'john.doe@my-domain.co.uk'
+            new EmailAddress($email = 'john.doe@my-domain.co.uk')
         );
     }
 

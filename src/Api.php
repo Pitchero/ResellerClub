@@ -5,6 +5,8 @@ namespace ResellerClub;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use ResellerClub\Orders\BusinessEmails\BusinessEmailOrder;
+use ResellerClub\Orders\EmailAccounts\EmailAccount;
+use ResellerClub\Orders\EmailForwarders\EmailForwarder;
 
 class Api
 {
@@ -71,9 +73,29 @@ class Api
      *
      * @return BusinessEmailOrder
      */
-    public function businessEmailOrder() : BusinessEmailOrder
+    public function businessEmailOrder(): BusinessEmailOrder
     {
         return new BusinessEmailOrder($this);
+    }
+
+    /**
+     * Get a new business email order instance.
+     *
+     * @return EmailAccount
+     */
+    public function emailAccount(): EmailAccount
+    {
+        return new EmailAccount($this);
+    }
+
+    /**
+     * Get a new email forwarder instance.
+     *
+     * @return EmailForwarder
+     */
+    public function emailForwarder(): EmailForwarder
+    {
+        return new EmailForwarder($this);
     }
 
     /**

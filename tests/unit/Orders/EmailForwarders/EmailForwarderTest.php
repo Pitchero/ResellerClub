@@ -9,6 +9,7 @@ use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 use ResellerClub\Api;
 use ResellerClub\Config;
+use ResellerClub\EmailAddress;
 use ResellerClub\Orders\EmailForwarders\EmailForwarder;
 use ResellerClub\Orders\EmailAccounts\Requests\DeleteRequest;
 use ResellerClub\Orders\EmailAccounts\Responses\DeletedResponse;
@@ -32,7 +33,7 @@ class EmailForwarderTest extends TestCase
             $emailForwarders->delete(
                 new DeleteRequest(
                     new Order($id = 123),
-                    $email = 'john.doe@my-domain.co.uk'
+                    new EmailAddress($email = 'john.doe@my-domain.co.uk')
                 )
             )
         );
