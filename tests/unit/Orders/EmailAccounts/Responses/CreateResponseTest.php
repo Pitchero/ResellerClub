@@ -1,6 +1,6 @@
 <?php
 
-namespace ResellerClub\Orders\BusinessEmails\Tests;
+namespace Tests\Unit\Orders\EmailAccounts\Responses;
 
 use Carbon\Carbon;
 use PHPUnit\Framework\TestCase;

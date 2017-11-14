@@ -1,6 +1,6 @@
 <?php
 
-namespace ResellerClub\Orders\BusinessEmails\Settings\Tests;
+namespace Tests\Unit\Orders\EmailAccounts\Settings;
 
 use PHPUnit\Framework\TestCase;
 use ResellerClub\Orders\EmailAccounts\Settings\PopSettings;

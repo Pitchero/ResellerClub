@@ -1,6 +1,6 @@
 <?php
 
-namespace ResellerClub\Tests;
+namespace Tests\Unit;
 
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
