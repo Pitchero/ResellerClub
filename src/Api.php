@@ -73,7 +73,7 @@ class Api
      *
      * @return BusinessEmailOrder
      */
-    public function businessEmailOrder() : BusinessEmailOrder
+    public function businessEmailOrder(): BusinessEmailOrder
     {
         return new BusinessEmailOrder($this);
     }
@@ -83,7 +83,7 @@ class Api
      *
      * @return EmailAccount
      */
-    public function emailAccount() : EmailAccount
+    public function emailAccount(): EmailAccount
     {
         return new EmailAccount($this);
     }
@@ -93,7 +93,7 @@ class Api
      *
      * @return EmailForwarder
      */
-    public function emailForwarder() : EmailForwarder
+    public function emailForwarder(): EmailForwarder
     {
         return new EmailForwarder($this);
     }
