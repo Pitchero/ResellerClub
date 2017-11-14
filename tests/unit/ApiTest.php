@@ -17,6 +17,8 @@ use ResellerClub\Exceptions\ApiClientException;
 use ResellerClub\Exceptions\ApiException;
 use ResellerClub\Exceptions\ConnectionException;
 use ResellerClub\Orders\BusinessEmails\BusinessEmailOrder;
+use ResellerClub\Orders\EmailAccounts\EmailAccount;
+use ResellerClub\Orders\EmailForwarders\EmailForwarder;
 
 class ApiTest extends TestCase
 {
@@ -97,5 +99,15 @@ class ApiTest extends TestCase
     public function testBusinessEmailOrder()
     {
         $this->assertInstanceOf(BusinessEmailOrder::class, $this->api->businessEmailOrder());
+    }
+
+    public function testEmailAccount()
+    {
+        $this->assertInstanceOf(EmailAccount::class, $this->api->emailAccount());
+    }
+
+    public function testEmailForwarder()
+    {
+        $this->assertInstanceOf(EmailForwarder::class, $this->api->emailForwarder());
     }
 }
