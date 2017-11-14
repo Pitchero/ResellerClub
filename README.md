@@ -1,4 +1,6 @@
 # ResellerClub
+[![Build Status](https://api.travis-ci.org/Pitchero/ResellerClub.svg?branch=master)](https://travis-ci.org/Pitchero/ResellerClub)
+
 A PHP SDK for [ResellerClub’s API][1].
 
 ## Requirements
