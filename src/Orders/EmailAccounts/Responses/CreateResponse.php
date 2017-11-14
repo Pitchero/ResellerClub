@@ -3,9 +3,12 @@
 namespace ResellerClub\Orders\EmailAccounts\Responses;
 
 use Carbon\Carbon;
-use ResellerClub\EmailAccountSettings;
 use ResellerClub\EmailAddress;
 use ResellerClub\Exceptions\MissingAttributeException;
+use ResellerClub\Orders\EmailAccounts\Settings\ImapSettings;
+use ResellerClub\Orders\EmailAccounts\Settings\PopSettings;
+use ResellerClub\Orders\EmailAccounts\Settings\SmtpSettings;
+use ResellerClub\Orders\EmailAccounts\Settings\WebmailUrlSettings;
 use ResellerClub\Response;
 
 /**
@@ -185,16 +188,16 @@ class CreateResponse extends Response
     /**
      * Gets the email account settings.
      *
-     * @return EmailAccountSettings
+     * @return array
      */
-    public function accountSettings(): EmailAccountSettings
+    public function accountSettings(): array
     {
-        return new EmailAccountSettings(
-            $this->user['accountSettings']['popSettings'],
-            $this->user['accountSettings']['imapSettings'],
-            $this->user['accountSettings']['smtpSettings'],
-            $this->user['accountSettings']['webmailUrl']
-        );
+        return [
+            'pop' => new PopSettings($this->user['accountSettings']['popSettings']),
+            'imap' => new ImapSettings($this->user['accountSettings']['imapSettings']),
+            'smtp' => new SmtpSettings($this->user['accountSettings']['smtpSettings']),
+            'webmail' => new WebmailUrlSettings($this->user['accountSettings']['webmailUrl'])
+        ];
     }
 
     /**

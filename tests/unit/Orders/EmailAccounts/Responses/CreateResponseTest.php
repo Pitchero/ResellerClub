@@ -2,13 +2,15 @@
 
 namespace ResellerClub\Orders\BusinessEmails\Tests;
 
-
 use Carbon\Carbon;
 use PHPUnit\Framework\TestCase;
-use ResellerClub\EmailAccountSettings;
 use ResellerClub\EmailAddress;
 use ResellerClub\Exceptions\MissingAttributeException;
 use ResellerClub\Orders\EmailAccounts\Responses\CreateResponse;
+use ResellerClub\Orders\EmailAccounts\Settings\ImapSettings;
+use ResellerClub\Orders\EmailAccounts\Settings\PopSettings;
+use ResellerClub\Orders\EmailAccounts\Settings\SmtpSettings;
+use ResellerClub\Orders\EmailAccounts\Settings\WebmailUrlSettings;
 
 class CreateResponseTest extends TestCase
 {
@@ -253,7 +255,20 @@ class CreateResponseTest extends TestCase
             ]
         ]);
 
-        $this->assertInstanceOf(EmailAccountSettings::class, $response->accountSettings());
+        $accountSettings = $response->accountSettings();
+
+        $this->assertInternalType('array', $accountSettings);
+        $this->assertCount(4, $accountSettings);
+
+        $this->assertArrayHasKey('pop', $accountSettings);
+        $this->assertArrayHasKey('imap', $accountSettings);
+        $this->assertArrayHasKey('smtp', $accountSettings);
+        $this->assertArrayHasKey('webmail', $accountSettings);
+
+        $this->assertInstanceOf(PopSettings::class, $accountSettings['pop']);
+        $this->assertInstanceOf(ImapSettings::class, $accountSettings['imap']);
+        $this->assertInstanceOf(SmtpSettings::class, $accountSettings['smtp']);
+        $this->assertInstanceOf(WebmailUrlSettings::class, $accountSettings['webmail']);
     }
 
     public function testCreatedOn()
