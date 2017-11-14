@@ -15,105 +15,105 @@ This package is available through [Packagist][4]. To install in your project via
 ### Business Emails
 [API Documentation](https://manage.resellerclub.com/kb/answer/2155).
 
-#### Creating a order 
+#### Creating a order
 [API Documentation](https://manage.resellerclub.com/kb/answer/2156)
 
 ```php
-    try {
-        $api = new Reseller\Api(
-             new Reseller\Config(123, 'api_key', true),
-             new GuzzleHttp\Client()
-        )
-            
-        $request = new ResellerClub\Orders\BusinessEmails\Requests\BusinessEmailOrderRequest(
-            $customerId = 123,
-            $domain = 'some-domain.co.uk',
-            $numberOfAccount = 5,
-            $forNumberOfMonths = 1,
-            ResellerClub\Orders\InvoiceOption::noInvoice()
-        );    
-            
-        $response = $api->businessEmailOrder()->create($request);
-        
-        // @todo - Handle a successful response within your codebase.
-        
-    } catch(Reseller\Exceptions\ApiException $e) {
-        // @todo - Handle the exception within your codebase.
-    }
+try {
+    $api = new Reseller\Api(
+         new Reseller\Config(123, 'api_key', true),
+         new GuzzleHttp\Client()
+    )
+
+    $request = new ResellerClub\Orders\BusinessEmails\Requests\BusinessEmailOrderRequest(
+        $customerId = 123,
+        $domain = 'some-domain.co.uk',
+        $numberOfAccount = 5,
+        $forNumberOfMonths = 1,
+        ResellerClub\Orders\InvoiceOption::noInvoice()
+    );    
+
+    $response = $api->businessEmailOrder()->create($request);
+
+    // @todo - Handle a successful response within your codebase.
+
+} catch(Reseller\Exceptions\ApiException $e) {
+    // @todo - Handle the exception within your codebase.
+}
 ```
 
-#### Deleting an order 
+#### Deleting an order
 [API Documentation](https://manage.resellerclub.com/kb/answer/2162)
 
 ```php
-    try {
-        $api = new Reseller\Api(
-             new Reseller\Config(123, 'api_key', true),
-             new GuzzleHttp\Client()
-        );
-        
-        $request = new ResellerClub\Orders\Order(
-            $orderId = 123
-        );
-        
-        $response = $api->businessEmailOrder()->delete($request);
-        
-        // @todo - Handle the successful response within your codebase. 
-        
-    } catch(Reseller\Exceptions\ApiException $e) {
-        // @todo - Handle the exception within your codebase.
-    }
+try {
+    $api = new Reseller\Api(
+         new Reseller\Config(123, 'api_key', true),
+         new GuzzleHttp\Client()
+    );
+
+    $request = new ResellerClub\Orders\Order(
+        $orderId = 123
+    );
+
+    $response = $api->businessEmailOrder()->delete($request);
+
+    // @todo - Handle the successful response within your codebase.
+
+} catch(Reseller\Exceptions\ApiException $e) {
+    // @todo - Handle the exception within your codebase.
+}
 ```
 
-#### Getting an order 
+#### Getting an order
 [API Documentation](https://manage.resellerclub.com/kb/answer/2163)
 
-```php 
-    try {
-        $api = new Reseller\Api(
-             new Reseller\Config(123, 'api_key', true),
-             new GuzzleHttp\Client()
-        );
-           
-        $request = new ResellerClub\Orders\Order(
-            $orderId = 123
-        );   
-           
-        $response = $api->businessEmailOrder()->get($request);
-        
-        // @todo - Handle the successful response within your codebase. 
-        
-    } catch(Reseller\Exceptions\ApiException $e) {
-        // @todo - Handle the exception within your codebase.
-    }
+```php
+try {
+    $api = new Reseller\Api(
+         new Reseller\Config(123, 'api_key', true),
+         new GuzzleHttp\Client()
+    );
+
+    $request = new ResellerClub\Orders\Order(
+        $orderId = 123
+    );   
+
+    $response = $api->businessEmailOrder()->get($request);
+
+    // @todo - Handle the successful response within your codebase.
+
+} catch(Reseller\Exceptions\ApiException $e) {
+    // @todo - Handle the exception within your codebase.
+}
 ```
 
-#### Renewing an order 
+#### Renewing an order
 [API Documentation](https://manage.resellerclub.com/kb/answer/2157)
 
-```php 
-    try {
-        $api = new Reseller\Api(
-             new Reseller\Config(123, 'api_key', true),
-             new GuzzleHttp\Client()
-        );
-        
-        $request = new ResellerClub\Orders\BusinessEmails\Requests\RenewRequest(
-            new ResellerClub\Orders\Order(
-               $orderId = 123
-            ),
-            $months = 1, 
-            $numberOfAccounts = 1,
-            ResellerClub\Orders\InvoiceOption::noInvoice()
-        );
-        
-        $response = $api->businessEmailOrder()->renew($request);
-        
-        // @todo - Handle the successful response within your codebase. 
-        
-    } catch(Reseller\Exceptions\ApiException $e) {
-        // @todo - Handle the exception within your codebase.
-    }
+```php
+try {
+    $api = new Reseller\Api(
+         new Reseller\Config(123, 'api_key', true),
+         new GuzzleHttp\Client()
+    );
+
+    $request = new ResellerClub\Orders\BusinessEmails\Requests\RenewRequest(
+        new ResellerClub\Orders\Order(
+           $orderId = 123
+        ),
+        $months = 1,
+        $numberOfAccounts = 1,
+        ResellerClub\Orders\InvoiceOption::noInvoice()
+    );
+
+    $response = $api->businessEmailOrder()->renew($request);
+
+    // @todo - Handle the successful response within your codebase.
+
+} catch(Reseller\Exceptions\ApiException $e) {
+    // @todo - Handle the exception within your codebase.
+}
 ```
 
 ### Email Accounts
@@ -123,122 +123,122 @@ This package is available through [Packagist][4]. To install in your project via
 [API Documentation](https://manage.resellerclub.com/kb/answer/1037)
 
 ```php
-    try {
-            $api = new Reseller\Api(
-                 new Reseller\Config(123, 'api_key', true),
-                 new GuzzleHttp\Client()
-            );
-            
-            $request = ResellerClub\Orders\EmailAccounts\Requests\CreateRequest(
-                ResellerClub\Orders\Order(
-                   $orderId = 123
-                ),
-                ResellerClub\EmailAddress(
-                   $email = 'john.doe@some-domain.co.uk'
-                ),
-                string $password,
-                ResellerClub\EmailAddress(
-                   $notificationsEmail = 'john.doe@backup-email.co.uk'
-                ),
-                $firstName = 'John',
-                $lastName = 'Doe',
-                $countryCode = 'UK',
-                $languageCode = 'en'
-            );
-            
-            $response = $api->emailAccount()->create($request);
-                 
-            // @todo - Handle the successful response within your codebase. 
-            
-    } catch(Reseller\Exceptions\ApiException $e) {
-        // @todo - Handle the exception within your codebase.
-    }
+try {
+        $api = new Reseller\Api(
+             new Reseller\Config(123, 'api_key', true),
+             new GuzzleHttp\Client()
+        );
+
+        $request = ResellerClub\Orders\EmailAccounts\Requests\CreateRequest(
+            ResellerClub\Orders\Order(
+               $orderId = 123
+            ),
+            ResellerClub\EmailAddress(
+               $email = 'john.doe@some-domain.co.uk'
+            ),
+            string $password,
+            ResellerClub\EmailAddress(
+               $notificationsEmail = 'john.doe@backup-email.co.uk'
+            ),
+            $firstName = 'John',
+            $lastName = 'Doe',
+            $countryCode = 'UK',
+            $languageCode = 'en'
+        );
+
+        $response = $api->emailAccount()->create($request);
+
+        // @todo - Handle the successful response within your codebase.
+
+} catch(Reseller\Exceptions\ApiException $e) {
+    // @todo - Handle the exception within your codebase.
+}
 ```
 
-#### Deleting an email account 
+#### Deleting an email account
 [API Documentation](https://manage.resellerclub.com/kb/answer/1049)
 
 ```php
-    try {
-            $api = new Reseller\Api(
-                 new Reseller\Config(123, 'api_key', true),
-                 new GuzzleHttp\Client()
-            );
-            
-            $request = ResellerClub\Orders\EmailAccounts\Requests\DeleteRequest(
-                ResellerClub\Orders\Order(
-                    $orderId = 123
-                ),   
-                ResellerClub\EmailAddress(
-                    $email = 'john.doe@some-domain.co.uk'
-                )                     
-            );
-            
-            $response = $api->emailAccount()->delete($request);
-            
-            // @todo - Handle the successful response within your codebase. 
-            
-    } catch(Reseller\Exceptions\ApiException $e) {
-        // @todo - Handle the exception within your codebase.
-    }
+try {
+        $api = new Reseller\Api(
+             new Reseller\Config(123, 'api_key', true),
+             new GuzzleHttp\Client()
+        );
+
+        $request = ResellerClub\Orders\EmailAccounts\Requests\DeleteRequest(
+            ResellerClub\Orders\Order(
+                $orderId = 123
+            ),   
+            ResellerClub\EmailAddress(
+                $email = 'john.doe@some-domain.co.uk'
+            )                     
+        );
+
+        $response = $api->emailAccount()->delete($request);
+
+        // @todo - Handle the successful response within your codebase.
+
+} catch(Reseller\Exceptions\ApiException $e) {
+    // @todo - Handle the exception within your codebase.
+}
 ```
 
 ### Email forwarders
 
-#### Create an email forwarder 
+#### Create an email forwarder
 [API Documentation](https://manage.resellerclub.com/kb/answer/1038)
 
 ```php
-    try {
-            $api = new Reseller\Api(
-                 new Reseller\Config(123, 'api_key', true),
-                 new GuzzleHttp\Client()
-            );
-            
-            $request = ResellerClub\Orders\EmailForwarders\Requests\AddRequest(
-                  ResellerClub\Orders\Order(
-                     $orderId = 123
-                  ),   
-                  ResellerClub\EmailAddress(
-                    $email = 'john.doe@some-domain.co.uk'
-                  )                   
-            );
-            
-            $response = $api->emailForwarder()->add($request);
-            
-            // @todo - Handle the successful response within your codebase. 
-            
-    } catch(Reseller\Exceptions\ApiException $e) {
-        // @todo - Handle the exception within your codebase.
-    }
+try {
+        $api = new Reseller\Api(
+             new Reseller\Config(123, 'api_key', true),
+             new GuzzleHttp\Client()
+        );
+
+        $request = ResellerClub\Orders\EmailForwarders\Requests\AddRequest(
+              ResellerClub\Orders\Order(
+                 $orderId = 123
+              ),   
+              ResellerClub\EmailAddress(
+                $email = 'john.doe@some-domain.co.uk'
+              )                   
+        );
+
+        $response = $api->emailForwarder()->add($request);
+
+        // @todo - Handle the successful response within your codebase.
+
+} catch(Reseller\Exceptions\ApiException $e) {
+    // @todo - Handle the exception within your codebase.
+}
 ```
 
 #### Deleting an email forwarder
 [API Documentation](https://manage.resellerclub.com/kb/answer/1049)
 
 ```php
-    try {
-            $api = new Reseller\Api(
-                 new Reseller\Config(123, 'api_key', true),
-                 new GuzzleHttp\Client()
-            );
-            
-            $request = ResellerClub\Orders\EmailAccounts\Requests\DeleteRequest(
-                ResellerClub\Orders\Order(
-                    $orderId = 123
-                ),   
-                ResellerClub\EmailAddress(
-                    $email = 'john.doe@some-domain.co.uk'
-                )                      
-            );
-            
-            $response = $api->emailForwarder()->delete($request);
-            
-            // @todo - Handle the successful response within your codebase. 
-            
-    } catch(Reseller\Exceptions\ApiException $e) {
-        // @todo - Handle the exception within your codebase.
-    }
+try {
+        $api = new Reseller\Api(
+             new Reseller\Config(123, 'api_key', true),
+             new GuzzleHttp\Client()
+        );
+
+        $request = ResellerClub\Orders\EmailAccounts\Requests\DeleteRequest(
+            ResellerClub\Orders\Order(
+                $orderId = 123
+            ),   
+            ResellerClub\EmailAddress(
+                $email = 'john.doe@some-domain.co.uk'
+            )                      
+        );
+
+        $response = $api->emailForwarder()->delete($request);
+
+        // @todo - Handle the successful response within your codebase.
+
+} catch(Reseller\Exceptions\ApiException $e) {
+    // @todo - Handle the exception within your codebase.
+}
 ```
 
 ## License

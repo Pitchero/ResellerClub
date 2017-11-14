@@ -1,6 +1,7 @@
 {
     "name": "pitchero/reseller-club",
     "description": "A PHP SDK for the ResellerClub API.",
+    "license": "MIT",
     "keywords": ["resellerclub", "reseller-club", "email", "hosting", "api"],
     "type": "library",
     "authors": [
