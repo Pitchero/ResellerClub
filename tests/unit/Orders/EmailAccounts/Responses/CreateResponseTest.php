@@ -11,6 +11,7 @@ use ResellerClub\Orders\EmailAccounts\Settings\ImapSettings;
 use ResellerClub\Orders\EmailAccounts\Settings\PopSettings;
 use ResellerClub\Orders\EmailAccounts\Settings\SmtpSettings;
 use ResellerClub\Orders\EmailAccounts\Settings\WebmailUrlSettings;
+use ResellerClub\Status;
 
 class CreateResponseTest extends TestCase
 {
@@ -35,8 +36,8 @@ class CreateResponseTest extends TestCase
             ]
         ]);
 
-        $this->assertInternalType('string', $response->status());
-        $this->assertEquals('success', $response->status());
+        $this->assertInstanceOf(Status::class, $response->status());
+        $this->assertEquals('success', (string) $response->status());
     }
 
     public function testStatusNotSetInResponse()

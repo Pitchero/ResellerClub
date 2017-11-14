@@ -10,6 +10,7 @@ use ResellerClub\Orders\EmailAccounts\Settings\PopSettings;
 use ResellerClub\Orders\EmailAccounts\Settings\SmtpSettings;
 use ResellerClub\Orders\EmailAccounts\Settings\WebmailUrlSettings;
 use ResellerClub\Response;
+use ResellerClub\Status;
 
 /**
  * @see https://manage.resellerclub.com/kb/answer/1037
@@ -44,15 +45,15 @@ class CreateResponse extends Response
      *
      * @throws MissingAttributeException
      *
-     * @return string
+     * @return Status
      */
-    public function status(): string
+    public function status(): Status
     {
         if (!array_key_exists('status', $this->response)) {
             throw new MissingAttributeException('status');
         }
 
-        return strtolower($this->response['status']);
+        return new Status($this->response['status']);
     }
 
     /**
