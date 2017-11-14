@@ -25,6 +25,20 @@ class ApiTest extends TestCase
      */
     private $api;
 
+    protected function setUp()
+    {
+        parent::setUp();
+
+        $mock = new MockHandler([
+            new Response(200)
+        ]);
+
+        $this->api = new Api(
+            new Config(123, 'api_key', true),
+            new Client(['handler' => HandlerStack::create($mock)])
+        );
+    }
+
     public function testGet()
     {
         $this->assertInstanceOf(Response::class, $this->api->get('get', ['request-param' => 123]));
@@ -83,19 +97,5 @@ class ApiTest extends TestCase
     public function testBusinessEmailOrder()
     {
         $this->assertInstanceOf(BusinessEmailOrder::class, $this->api->businessEmailOrder());
-    }
-
-    protected function setUp()
-    {
-        parent::setUp();
-
-        $mock = new MockHandler([
-            new Response(200)
-        ]);
-
-        $this->api = new Api(
-            new Config(123, 'api_key', true),
-            new Client(['handler' => HandlerStack::create($mock)])
-        );
     }
 }

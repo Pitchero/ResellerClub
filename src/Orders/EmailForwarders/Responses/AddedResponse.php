@@ -3,16 +3,17 @@
 namespace ResellerClub\Orders\EmailForwarders\Responses;
 
 use ResellerClub\Response;
+use ResellerClub\Status;
 
 class AddedResponse extends Response
 {
     /**
      * Get the response status.
      *
-     * @return string
+     * @return Status
      */
-    public function status(): string
+    public function status(): Status
     {
-        return $this->response['status'];
+        return new Status($this->response['status']);
     }
 }

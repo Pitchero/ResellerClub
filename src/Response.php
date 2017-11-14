@@ -38,11 +38,11 @@ abstract class Response
     /**
      * Get the response status.
      *
-     * @return string
+     * @return Status
      */
-    public function status(): string
+    public function status(): Status
     {
-        return $this->attributes['status'];
+        return new Status($this->attributes['status']);
     }
 
     /**
@@ -52,7 +52,7 @@ abstract class Response
      */
     public function wasSuccessful(): bool
     {
-        return strtolower($this->status()) === 'success';
+        return (string) $this->status() === 'success';
     }
 
     /**

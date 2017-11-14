@@ -4,9 +4,15 @@ namespace Tests\Unit\Orders\EmailForwarders\Responses;
 
 use PHPUnit\Framework\TestCase;
 use ResellerClub\Orders\EmailForwarders\Responses\AddedResponse;
+use ResellerClub\Status;
 
 class AddedResponseTest extends TestCase
 {
+    /**
+     * @var AddedResponse
+     */
+    private $response;
+
     protected function setUp()
     {
         parent::setUp();
@@ -20,7 +26,8 @@ class AddedResponseTest extends TestCase
 
     public function testItCanGetStatus()
     {
-        $this->assertEquals('SUCCESS', $this->response->status());
+        $this->assertInstanceOf(Status::class, $this->response->status());
+        $this->assertEquals('success', (string) $this->response->status());
     }
 
     public function testItIsSuccessfulIfStatusIsSuccess()

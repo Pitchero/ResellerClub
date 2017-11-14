@@ -6,6 +6,7 @@ use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 use ResellerClub\Orders\BusinessEmails\Responses\BusinessEmailOrderResponse;
 use ResellerClub\Orders\BusinessEmails\Responses\CreateResponse;
+use ResellerClub\Status;
 
 class ResponseTest extends TestCase
 {
@@ -17,8 +18,11 @@ class ResponseTest extends TestCase
             json_encode(['status' => 'Success'])
         );
 
-        $this->assertEquals('Success', BusinessEmailOrderResponse::fromApiResponse($response)->status());
-        $this->assertEquals('Success', CreateResponse::fromApiResponse($response)->status());
+        $this->assertInstanceOf(Status::class, BusinessEmailOrderResponse::fromApiResponse($response)->status());
+        $this->assertEquals('success', BusinessEmailOrderResponse::fromApiResponse($response)->status());
+
+        $this->assertInstanceOf(Status::class, CreateResponse::fromApiResponse($response)->status());
+        $this->assertEquals('success', CreateResponse::fromApiResponse($response)->status());
     }
 
     public function wasSuccessful()

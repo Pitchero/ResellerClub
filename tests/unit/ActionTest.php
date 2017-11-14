@@ -7,6 +7,11 @@ use ResellerClub\Action;
 
 class ActionTest extends TestCase
 {
+    /**
+     * @var Action
+     */
+    private $action;
+
     protected function setUp()
     {
         parent::setUp();

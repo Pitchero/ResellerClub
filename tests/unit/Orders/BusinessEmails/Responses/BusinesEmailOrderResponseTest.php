@@ -8,11 +8,16 @@ use ResellerClub\Orders\BusinessEmails\Responses\BusinessEmailOrderResponse;
 
 class BusinessEmailOrderResponseTest extends TestCase
 {
+    /**
+     * @var BusinessEmailOrderResponse
+     */
+    private $response;
+
     protected function setUp()
     {
         parent::setUp();
 
-        $this->resource = new BusinessEmailOrderResponse([
+        $this->response = new BusinessEmailOrderResponse([
             'description' => 'some-domain.co.in',
             'entityid' => 1234,
             'eaqid' => 461331388,
@@ -25,16 +30,16 @@ class BusinessEmailOrderResponseTest extends TestCase
 
     public function testItCanGetDomain()
     {
-        $this->assertEquals('some-domain.co.in', $this->resource->domain());
+        $this->assertEquals('some-domain.co.in', $this->response->domain());
     }
 
     public function testItCanGetOrderId()
     {
-        $this->assertEquals(1234, $this->resource->orderId());
+        $this->assertEquals(1234, $this->response->orderId());
     }
 
     public function testItCanGetAction()
     {
-        $this->assertInstanceOf(Action::class, $this->resource->action());
+        $this->assertInstanceOf(Action::class, $this->response->action());
     }
 }

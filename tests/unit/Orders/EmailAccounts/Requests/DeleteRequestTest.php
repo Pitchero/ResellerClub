@@ -8,17 +8,10 @@ use ResellerClub\Orders\Order;
 
 class DeleteRequestTest extends TestCase
 {
+    /**
+     * @var DeleteRequest
+     */
     private $request;
-
-    public function testOrderId()
-    {
-        $this->assertEquals(123, $this->request->orderId());
-    }
-
-    public function testEmail()
-    {
-        $this->assertEquals('john.doe@my-domain.co.uk', $this->request->email());
-    }
 
     protected function setUp()
     {
@@ -30,5 +23,15 @@ class DeleteRequestTest extends TestCase
             $order,
             $email = 'john.doe@my-domain.co.uk'
         );
+    }
+
+    public function testOrderId()
+    {
+        $this->assertEquals(123, $this->request->orderId());
+    }
+
+    public function testEmail()
+    {
+        $this->assertEquals('john.doe@my-domain.co.uk', $this->request->email());
     }
 }

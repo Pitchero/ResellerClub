@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Orders\BusinessEmails\Resources;
+namespace Tests\Unit\Orders\BusinessEmails\Responses;
 
 use Carbon\Carbon;
 use PHPUnit\Framework\TestCase;

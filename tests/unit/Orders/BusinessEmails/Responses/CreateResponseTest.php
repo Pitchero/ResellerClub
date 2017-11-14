@@ -1,14 +1,19 @@
 <?php
 
-namespace Tests\Unit\Orders\BusinessEmails;
+namespace Tests\Unit\Orders\BusinessEmails\Responses;
 
 use Money\Currency;
 use Money\Money;
 use PHPUnit\Framework\TestCase;
 use ResellerClub\Orders\BusinessEmails\Responses\CreateResponse;
 
-class BusinessEmailOrderResponseTest extends TestCase
+class CreateResponseTest extends TestCase
 {
+    /**
+     * @var CreateResponse
+     */
+    private $response;
+
     protected function setUp()
     {
         parent::setUp();

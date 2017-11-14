@@ -9,6 +9,11 @@ use ResellerClub\Orders\Order;
 
 class AddRequestTest extends TestCase
 {
+    /**
+     * @var AddRequest
+     */
+    private $request;
+
     protected function setUp()
     {
         parent::setUp();

@@ -20,6 +20,12 @@ class ExceptionHandlerTest extends TestCase
      */
     private $request;
 
+    protected function setUp()
+    {
+        parent::setUp();
+        $this->request = new Request('GET', 'https://test');
+    }
+
     public function testApiClientException()
     {
         $expectedMessage = 'Authentication failure';
@@ -73,12 +79,6 @@ class ExceptionHandlerTest extends TestCase
         $this->assertInstanceOf(ApiException::class, $exception);
         $this->assertEquals($expectedCode, $exception->getCode());
         $this->assertEquals($expectedMessage, $exception->getMessage());
-    }
-
-    protected function setUp()
-    {
-        parent::setUp();
-        $this->request = new Request('GET', 'https://test');
     }
 
     private function response($expectedCode, $expectedMessage)
