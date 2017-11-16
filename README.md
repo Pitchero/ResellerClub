@@ -22,8 +22,8 @@ This package is available through [Packagist][4]. To install in your project via
 
 ```php
 try {
-    $api = new Reseller\Api(
-         new Reseller\Config(123, 'api_key', true),
+    $api = new ResellerClub\Api(
+         new ResellerClub\Config(123, 'api_key', true),
          new GuzzleHttp\Client()
     )
 
@@ -39,7 +39,7 @@ try {
 
     // @todo - Handle a successful response within your codebase.
 
-} catch(Reseller\Exceptions\ApiException $e) {
+} catch(ResellerClub\Exceptions\ApiException $e) {
     // @todo - Handle the exception within your codebase.
 }
 ```
@@ -49,8 +49,8 @@ try {
 
 ```php
 try {
-    $api = new Reseller\Api(
-         new Reseller\Config(123, 'api_key', true),
+    $api = new ResellerClub\Api(
+         new ResellerClub\Config(123, 'api_key', true),
          new GuzzleHttp\Client()
     );
 
@@ -62,7 +62,7 @@ try {
 
     // @todo - Handle the successful response within your codebase.
 
-} catch(Reseller\Exceptions\ApiException $e) {
+} catch(ResellerClub\Exceptions\ApiException $e) {
     // @todo - Handle the exception within your codebase.
 }
 ```
@@ -72,8 +72,8 @@ try {
 
 ```php
 try {
-    $api = new Reseller\Api(
-         new Reseller\Config(123, 'api_key', true),
+    $api = new ResellerClub\Api(
+         new ResellerClub\Config(123, 'api_key', true),
          new GuzzleHttp\Client()
     );
 
@@ -85,7 +85,7 @@ try {
 
     // @todo - Handle the successful response within your codebase.
 
-} catch(Reseller\Exceptions\ApiException $e) {
+} catch(ResellerClub\Exceptions\ApiException $e) {
     // @todo - Handle the exception within your codebase.
 }
 ```
@@ -95,8 +95,8 @@ try {
 
 ```php
 try {
-    $api = new Reseller\Api(
-         new Reseller\Config(123, 'api_key', true),
+    $api = new ResellerClub\Api(
+         new ResellerClub\Config(123, 'api_key', true),
          new GuzzleHttp\Client()
     );
 
@@ -113,7 +113,7 @@ try {
 
     // @todo - Handle the successful response within your codebase.
 
-} catch(Reseller\Exceptions\ApiException $e) {
+} catch(ResellerClub\Exceptions\ApiException $e) {
     // @todo - Handle the exception within your codebase.
 }
 ```
@@ -126,8 +126,8 @@ try {
 
 ```php
 try {
-        $api = new Reseller\Api(
-             new Reseller\Config(123, 'api_key', true),
+        $api = new ResellerClub\Api(
+             new ResellerClub\Config(123, 'api_key', true),
              new GuzzleHttp\Client()
         );
 
@@ -152,7 +152,7 @@ try {
 
         // @todo - Handle the successful response within your codebase.
 
-} catch(Reseller\Exceptions\ApiException $e) {
+} catch(ResellerClub\Exceptions\ApiException $e) {
     // @todo - Handle the exception within your codebase.
 }
 ```
@@ -162,8 +162,8 @@ try {
 
 ```php
 try {
-        $api = new Reseller\Api(
-             new Reseller\Config(123, 'api_key', true),
+        $api = new ResellerClub\Api(
+             new ResellerClub\Config(123, 'api_key', true),
              new GuzzleHttp\Client()
         );
 
@@ -180,7 +180,7 @@ try {
 
         // @todo - Handle the successful response within your codebase.
 
-} catch(Reseller\Exceptions\ApiException $e) {
+} catch(ResellerClub\Exceptions\ApiException $e) {
     // @todo - Handle the exception within your codebase.
 }
 ```
@@ -192,8 +192,8 @@ try {
 
 ```php
 try {
-        $api = new Reseller\Api(
-             new Reseller\Config(123, 'api_key', true),
+        $api = new ResellerClub\Api(
+             new ResellerClub\Config(123, 'api_key', true),
              new GuzzleHttp\Client()
         );
 
@@ -210,7 +210,7 @@ try {
 
         // @todo - Handle the successful response within your codebase.
 
-} catch(Reseller\Exceptions\ApiException $e) {
+} catch(ResellerClub\Exceptions\ApiException $e) {
     // @todo - Handle the exception within your codebase.
 }
 ```
@@ -220,8 +220,8 @@ try {
 
 ```php
 try {
-        $api = new Reseller\Api(
-             new Reseller\Config(123, 'api_key', true),
+        $api = new ResellerClub\Api(
+             new ResellerClub\Config(123, 'api_key', true),
              new GuzzleHttp\Client()
         );
 
@@ -238,7 +238,7 @@ try {
 
         // @todo - Handle the successful response within your codebase.
 
-} catch(Reseller\Exceptions\ApiException $e) {
+} catch(ResellerClub\Exceptions\ApiException $e) {
     // @todo - Handle the exception within your codebase.
 }
 ```
