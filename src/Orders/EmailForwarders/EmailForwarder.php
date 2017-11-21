@@ -3,7 +3,6 @@
 namespace ResellerClub\Orders\EmailForwarders;
 
 use ResellerClub\Api;
-use ResellerClub\Config;
 use ResellerClub\Orders\EmailAccounts\EmailAccount;
 use ResellerClub\Orders\EmailAccounts\Requests\DeleteRequest;
 use ResellerClub\Orders\EmailAccounts\Responses\DeletedResponse;
@@ -40,7 +39,7 @@ class EmailForwarder
     {
         $response = $this->api->post('mail/user/add-forward-only-account.json', [
             'order-id' => $request->orderId(),
-            'email' => $request->email(),
+            'email'    => $request->email(),
             'forwards' => $request->forwarders(),
         ]);
 

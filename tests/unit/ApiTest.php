@@ -32,7 +32,7 @@ class ApiTest extends TestCase
         parent::setUp();
 
         $mock = new MockHandler([
-            new Response(200)
+            new Response(200),
         ]);
 
         $this->api = new Api(
@@ -54,7 +54,7 @@ class ApiTest extends TestCase
     public function testApiClientException()
     {
         $mock = new MockHandler([
-            new ClientException('a',  new Request('POST', 'test'))
+            new ClientException('a', new Request('POST', 'test')),
         ]);
 
         $api = new Api(
@@ -69,7 +69,7 @@ class ApiTest extends TestCase
     public function testConnectionException()
     {
         $mock = new MockHandler([
-            new ConnectException("Error Communicating with Server", new Request('POST', 'test'))
+            new ConnectException('Error Communicating with Server', new Request('POST', 'test')),
         ]);
 
         $api = new Api(
@@ -84,7 +84,7 @@ class ApiTest extends TestCase
     public function testApiException()
     {
         $mock = new MockHandler([
-            new RequestException("Error Communicating with Server", new Request('POST', 'test'))
+            new RequestException('Error Communicating with Server', new Request('POST', 'test')),
         ]);
 
         $api = new Api(

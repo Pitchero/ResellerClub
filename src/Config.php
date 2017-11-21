@@ -5,7 +5,7 @@ namespace ResellerClub;
 class Config
 {
     /**
-     * @var integer
+     * @var int
      */
     private $authUserId;
 
@@ -22,9 +22,9 @@ class Config
     /**
      * Create a new config instance.
      *
-     * @param int $authUserId
+     * @param int    $authUserId
      * @param string $apiKey
-     * @param bool $testMode
+     * @param bool   $testMode
      */
     public function __construct(int $authUserId, string $apiKey, bool $testMode = false)
     {

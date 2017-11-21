@@ -7,74 +7,73 @@ use ResellerClub\Orders\Order;
 
 class CreateRequest
 {
-
     /**
      * Order for the email account to be created against.
      *
-     * @var Order $order
+     * @var Order
      */
     private $order;
 
     /**
      * Desired email address for the email account.
      *
-     * @var EmailAddress $email
+     * @var EmailAddress
      */
     private $email;
 
     /**
      * Password for the email account.
      *
-     * @var string $password
+     * @var string
      */
     private $password;
 
     /**
      * Notifications email for the email account.
      *
-     * @var EmailAddress $notificationsEmail
+     * @var EmailAddress
      */
     private $notificationsEmail;
 
     /**
      * User's first name for the email account.
      *
-     * @var string $firstName
+     * @var string
      */
     private $firstName;
 
     /**
      * User's last name for the email account.
      *
-     * @var string $lastName
+     * @var string
      */
     private $lastName;
 
     /**
      * Country code for the email account.
      *
-     * @var string $countryCode
+     * @var string
      */
     private $countryCode;
 
     /**
      * Language code for the email account.
      *
-     * @var string $languageCode
+     * @var string
      */
     private $languageCode;
 
     /**
      * CreateRequest constructor.
      *
-     * @param Order $order
+     * @param Order        $order
      * @param EmailAddress $email
-     * @param string $password
+     * @param string       $password
      * @param EmailAddress $notificationsEmail
-     * @param string $firstName
-     * @param string $lastName
-     * @param string $countryCode
-     * @param string $languageCode
+     * @param string       $firstName
+     * @param string       $lastName
+     * @param string       $countryCode
+     * @param string       $languageCode
      */
     public function __construct(
         Order $order,

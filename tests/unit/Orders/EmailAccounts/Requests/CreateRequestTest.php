@@ -5,7 +5,6 @@ namespace Tests\Unit\Orders\EmailAccounts\Requests;
 use PHPUnit\Framework\TestCase;
 use ResellerClub\EmailAddress;
 use ResellerClub\Orders\EmailAccounts\Requests\CreateRequest;
-use ResellerClub\Orders\EmailAccounts\Requests\DeleteRequest;
 use ResellerClub\Orders\Order;
 
 class CreateRequestTest extends TestCase

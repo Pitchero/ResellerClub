@@ -194,10 +194,10 @@ class CreateResponse extends Response
     public function accountSettings(): array
     {
         return [
-            'pop' => new PopSettings($this->user['accountSettings']['popSettings']),
-            'imap' => new ImapSettings($this->user['accountSettings']['imapSettings']),
-            'smtp' => new SmtpSettings($this->user['accountSettings']['smtpSettings']),
-            'webmail' => new WebmailUrlSettings($this->user['accountSettings']['webmailUrl'])
+            'pop'     => new PopSettings($this->user['accountSettings']['popSettings']),
+            'imap'    => new ImapSettings($this->user['accountSettings']['imapSettings']),
+            'smtp'    => new SmtpSettings($this->user['accountSettings']['smtpSettings']),
+            'webmail' => new WebmailUrlSettings($this->user['accountSettings']['webmailUrl']),
         ];
     }
 

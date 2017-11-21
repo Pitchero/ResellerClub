@@ -46,7 +46,7 @@ class Api
      * Make a GET request.
      *
      * @param string $uri
-     * @param array $request
+     * @param array  $request
      *
      * @return Response
      */
@@ -59,7 +59,7 @@ class Api
      * Make a POST request.
      *
      * @param string $uri
-     * @param array $request
+     * @param array  $request
      *
      * @return Response
      */
@@ -103,7 +103,7 @@ class Api
      *
      * @param string $method
      * @param string $uri
-     * @param mixed $request
+     * @param mixed  $request
      *
      * @throws ApiException
      *
@@ -114,7 +114,7 @@ class Api
         try {
             return $this->guzzleClient->request(
                 $method,
-                $this->baseApiUri() . $uri,
+                $this->baseApiUri().$uri,
                 array_merge($this->auth(), $request)
             );
         } catch (RequestException $e) {
@@ -142,7 +142,7 @@ class Api
     {
         return [
             'auth-userid' => $this->config->authUserId(),
-            'api-key' => $this->config->apiKey(),
+            'api-key'     => $this->config->apiKey(),
         ];
     }
 }

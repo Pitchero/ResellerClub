@@ -27,7 +27,7 @@ class Action
     /**
      * Create a new action instance.
      *
-     * @param int $id
+     * @param int    $id
      * @param string $type
      * @param string $typeDescription
      * @param string $status

@@ -5,7 +5,7 @@ namespace ResellerClub\Orders;
 class Order
 {
     /**
-     * @var integer
+     * @var int
      */
     private $id;
 

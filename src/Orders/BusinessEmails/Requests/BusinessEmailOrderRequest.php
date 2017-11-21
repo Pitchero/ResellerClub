@@ -7,7 +7,7 @@ use ResellerClub\Orders\InvoiceOption;
 class BusinessEmailOrderRequest
 {
     /**
-     * @var integer
+     * @var int
      */
     private $customerId;
 
@@ -17,12 +17,12 @@ class BusinessEmailOrderRequest
     private $domain;
 
     /**
-     * @var integer
+     * @var int
      */
     private $numberOfAccounts;
 
     /**
-     * @var integer
+     * @var int
      */
     private $forNumberOfMonths;
 
@@ -34,10 +34,10 @@ class BusinessEmailOrderRequest
     /**
      * Create a new business email order request instance.
      *
-     * @param int $customerId
-     * @param string $domain
-     * @param int $numberOfAccounts
-     * @param int $forNumberOfMonths
+     * @param int           $customerId
+     * @param string        $domain
+     * @param int           $numberOfAccounts
+     * @param int           $forNumberOfMonths
      * @param InvoiceOption $invoiceOption
      */
     public function __construct(

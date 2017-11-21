@@ -99,11 +99,11 @@ class CreateResponseTest extends TestCase
     private function createResponse(array $overrides = [])
     {
         $defaults = [
-            'invoiceid' => '77433277',
-            'sellingcurrencysymbol' => 'GBP',
-            'sellingamount' => '1.25',
+            'invoiceid'               => '77433277',
+            'sellingcurrencysymbol'   => 'GBP',
+            'sellingamount'           => '1.25',
             'unutilisedsellingamount' => '1.00',
-            'customerid' => '17824872',
+            'customerid'              => '17824872',
         ];
 
         return new CreateResponse(array_merge($defaults, $overrides));

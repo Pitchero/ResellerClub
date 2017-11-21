@@ -32,7 +32,7 @@ abstract class Response
      */
     public static function fromApiResponse(GuzzleResponse $response)
     {
-       return new static(json_decode($response->getBody(), true));
+        return new static(json_decode($response->getBody(), true));
     }
 
     /**
@@ -67,7 +67,5 @@ abstract class Response
         if (array_key_exists($key, $this->attributes)) {
             return $this->attributes[$key];
         }
-
-        return null;
     }
 }

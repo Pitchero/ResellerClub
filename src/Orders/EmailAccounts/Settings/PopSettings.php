@@ -28,6 +28,4 @@ class PopSettings
     {
         return $this->popSettings;
     }
-
-
 }

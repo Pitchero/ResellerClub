@@ -2,8 +2,8 @@
 
 namespace ResellerClub\Orders\BusinessEmails\Responses;
 
-use ResellerClub\Response;
 use ResellerClub\Orders\BusinessEmails\Responses\Concerns\HasAction;
+use ResellerClub\Response;
 
 class BusinessEmailOrderResponse extends Response
 {

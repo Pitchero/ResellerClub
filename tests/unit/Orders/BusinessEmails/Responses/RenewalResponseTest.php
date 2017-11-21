@@ -19,18 +19,18 @@ class RenewalResponseTest extends TestCase
         parent::setUp();
 
         $this->response = new RenewalResponse([
-            'description' => 'Test description',
-            'entityid' => '123',
-            'actiontype' => 'Renew',
-            'actiontypedesc' => 'Renewal of Business Email 1 for example.com for 1 month',
-            'eaqid' => '461863406',
-            'actionstatus' => 'InvoicePaid',
-            'actionstatusdesc' => 'Your Order will be processed by our automatic provisioning system in the next 5-10 minutes.',
-            'invoiceid' => '123',
-            'sellingcurrencysymbol' => 'GBP',
-            'sellingamount' => '18.99',
+            'description'             => 'Test description',
+            'entityid'                => '123',
+            'actiontype'              => 'Renew',
+            'actiontypedesc'          => 'Renewal of Business Email 1 for example.com for 1 month',
+            'eaqid'                   => '461863406',
+            'actionstatus'            => 'InvoicePaid',
+            'actionstatusdesc'        => 'Your Order will be processed by our automatic provisioning system in the next 5-10 minutes.',
+            'invoiceid'               => '123',
+            'sellingcurrencysymbol'   => 'GBP',
+            'sellingamount'           => '18.99',
             'unutilisedsellingamount' => '1.01',
-            'customerid' => '123',
+            'customerid'              => '123',
         ]);
     }
 

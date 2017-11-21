@@ -26,7 +26,7 @@ class DeleteRequest
      *
      * @see https://manage.resellerclub.com/kb/answer/1049
      *
-     * @param Order $order
+     * @param Order        $order
      * @param EmailAddress $email
      */
     public function __construct(Order $order, EmailAddress $email)

@@ -21,6 +21,7 @@ class CreateResponseTest extends TestCase
             new CreateResponse(['response' => []]);
         } catch (MissingAttributeException $e) {
             $this->assertEquals('Expected attribute [user] was not in response.', $e->getMessage());
+
             return;
         }
 
@@ -32,8 +33,8 @@ class CreateResponseTest extends TestCase
         $response = new CreateResponse([
             'response' => [
                 'status' => 'SUCCESS',
-                'user' => []
-            ]
+                'user'   => [],
+            ],
         ]);
 
         $this->assertInstanceOf(Status::class, $response->status());
@@ -45,12 +46,13 @@ class CreateResponseTest extends TestCase
         try {
             $response = new CreateResponse([
                 'response' => [
-                    'user' => []
-                ]
+                    'user' => [],
+                ],
             ]);
             $response->status();
         } catch (MissingAttributeException $e) {
             $this->assertEquals('Expected attribute [status] was not in response.', $e->getMessage());
+
             return;
         }
 
@@ -63,8 +65,8 @@ class CreateResponseTest extends TestCase
             'response' => [
                 'user' => [
                     'emailAddress' => 'john.does@some-domain.co.uk',
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $this->assertInstanceOf(EmailAddress::class, $response->email());
@@ -77,8 +79,8 @@ class CreateResponseTest extends TestCase
             'response' => [
                 'user' => [
                     'domainName' => 'some-domain.co.uk',
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $this->assertInternalType('string', $response->domain());
@@ -91,8 +93,8 @@ class CreateResponseTest extends TestCase
             'response' => [
                 'user' => [
                     'firstName' => 'John',
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $this->assertInternalType('string', $response->firstName());
@@ -105,8 +107,8 @@ class CreateResponseTest extends TestCase
             'response' => [
                 'user' => [
                     'lastName' => 'Doe',
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $this->assertInternalType('string', $response->lastName());
@@ -119,8 +121,8 @@ class CreateResponseTest extends TestCase
             'response' => [
                 'user' => [
                     'alternateEmailAddress' => 'another-email@some-domain.co.uk',
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $this->assertInstanceOf(EmailAddress::class, $response->notificationsEmail());
@@ -135,8 +137,8 @@ class CreateResponseTest extends TestCase
             'response' => [
                 'user' => [
                     'internalForwards' => $expected_result,
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $this->assertInternalType('string', $response->internalForwards());
@@ -149,8 +151,8 @@ class CreateResponseTest extends TestCase
             'response' => [
                 'user' => [
                     'quotaLimit' => 5242880,
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $this->assertInternalType('int', $response->quotaLimit());
@@ -163,8 +165,8 @@ class CreateResponseTest extends TestCase
             'response' => [
                 'user' => [
                     'status' => 'ACTIVE',
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $this->assertInternalType('string', $response->accountStatus());
@@ -177,8 +179,8 @@ class CreateResponseTest extends TestCase
             'response' => [
                 'user' => [
                     'accountType' => 'POP_WITHOUT_AUTORESPONDER',
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $this->assertInternalType('string', $response->accountType());
@@ -191,8 +193,8 @@ class CreateResponseTest extends TestCase
             'response' => [
                 'user' => [
                     'quotaUsed' => 0,
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $this->assertInternalType('int', $response->quotaUsed());
@@ -205,8 +207,8 @@ class CreateResponseTest extends TestCase
             'response' => [
                 'user' => [
                     'countryCode' => 'US',
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $this->assertInternalType('string', $response->countryCode());
@@ -219,8 +221,8 @@ class CreateResponseTest extends TestCase
             'response' => [
                 'user' => [
                     'percentageQuotaUsage' => 0,
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $this->assertInternalType('float', $response->percentageQuotaUsage());
@@ -233,8 +235,8 @@ class CreateResponseTest extends TestCase
             'response' => [
                 'user' => [
                     'languageCode' => 'en',
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $this->assertInternalType('string', $response->languageCode());
@@ -247,13 +249,13 @@ class CreateResponseTest extends TestCase
             'response' => [
                 'user' => [
                     'accountSettings' => [
-                        "popSettings" => "pop.somedomain.co.in.onlyfordemo.com",
-                        "imapSettings" =>  "imap.somedomain.co.in.onlyfordemo.com",
-                        "smtpSettings" =>  "smtp.somedomain.co.in.onlyfordemo.com",
-                        "webmailUrl" =>  "http://webmail.somedomain.co.in.onlyfordemo.com"
+                        'popSettings'  => 'pop.somedomain.co.in.onlyfordemo.com',
+                        'imapSettings' => 'imap.somedomain.co.in.onlyfordemo.com',
+                        'smtpSettings' => 'smtp.somedomain.co.in.onlyfordemo.com',
+                        'webmailUrl'   => 'http://webmail.somedomain.co.in.onlyfordemo.com',
                     ],
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $accountSettings = $response->accountSettings();
@@ -278,8 +280,8 @@ class CreateResponseTest extends TestCase
             'response' => [
                 'user' => [
                     'createdOn' => '2017-11-10 17:45:17.988 GMT',
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $this->assertInstanceOf(Carbon::class, $response->createdOn());
@@ -292,8 +294,8 @@ class CreateResponseTest extends TestCase
             'response' => [
                 'user' => [
                     'popAccessEnabled' => true,
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $this->assertInternalType('bool', $response->popAccessEnabled());
@@ -306,8 +308,8 @@ class CreateResponseTest extends TestCase
             'response' => [
                 'user' => [
                     'imapAccessEnabled' => true,
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $this->assertInternalType('bool', $response->imapAccessEnabled());
@@ -320,8 +322,8 @@ class CreateResponseTest extends TestCase
             'response' => [
                 'user' => [
                     'webmailAccessEnabled' => true,
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $this->assertInternalType('bool', $response->webmailAccessEnabled());
@@ -334,8 +336,8 @@ class CreateResponseTest extends TestCase
             'response' => [
                 'user' => [
                     'canFooterOptout' => false,
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $this->assertInternalType('bool', $response->canFooterOptout());
@@ -348,8 +350,8 @@ class CreateResponseTest extends TestCase
             'response' => [
                 'user' => [
                     'revertBlacklistRequestExists' => false,
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $this->assertInternalType('bool', $response->revertBlacklistRequestExists());
@@ -362,8 +364,8 @@ class CreateResponseTest extends TestCase
             'response' => [
                 'user' => [
                     'configurationProfile' => 'EELITE',
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $this->assertInternalType('string', $response->configurationProfile());

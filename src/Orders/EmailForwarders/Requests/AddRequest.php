@@ -26,7 +26,7 @@ class AddRequest
     /**
      * Create a new email forwarded request.
      *
-     * @param Order $order
+     * @param Order        $order
      * @param EmailAddress $email
      */
     public function __construct(Order $order, EmailAddress $email)
@@ -60,15 +60,15 @@ class AddRequest
      *
      * @param array $forwarders
      *
-     * @return $this
-     *
      * @throws InvalidArgumentException
+     *
+     * @return $this
      */
     public function setForwarders(array $forwarders)
     {
         // Assert each element in array is an EmailAddress instance
         foreach ($forwarders as $forwarder) {
-            if (! ($forwarder instanceof EmailAddress)) {
+            if (!($forwarder instanceof EmailAddress)) {
                 throw new InvalidArgumentException(
                     sprintf('Forwarder should be an instance of %s.', EmailAddress::class)
                 );

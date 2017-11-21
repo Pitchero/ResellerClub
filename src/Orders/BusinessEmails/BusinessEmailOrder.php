@@ -42,9 +42,9 @@ class BusinessEmailOrder
         $response = $this->api->post(
             'eelite/us/add.json',
             [
-                'domain-name' => $request->domain(),
-                'customer-id' => $request->customerId(),
-                'months' => $request->forNumberOfMonths(),
+                'domain-name'    => $request->domain(),
+                'customer-id'    => $request->customerId(),
+                'months'         => $request->forNumberOfMonths(),
                 'no-of-accounts' => $request->numberOfAccounts(),
                 'invoice-option' => (string) $request->invoiceOption(),
             ]
@@ -67,7 +67,7 @@ class BusinessEmailOrder
         $response = $this->api->post(
             'eelite/us/delete.json',
             [
-                'order-id' => $request->id()
+                'order-id' => $request->id(),
             ]
         );
 
@@ -88,7 +88,7 @@ class BusinessEmailOrder
         $response = $this->api->get(
             'eelite/us/details.json',
             [
-                'order-id' => $request->id()
+                'order-id' => $request->id(),
             ]
         );
 
@@ -107,8 +107,8 @@ class BusinessEmailOrder
     public function renew(RenewRequest $request): RenewalResponse
     {
         $response = $this->api->post('eelite/us/renew.json', [
-            'order-id' => $request->orderId(),
-            'months' => $request->months(),
+            'order-id'       => $request->orderId(),
+            'months'         => $request->months(),
             'no-of-accounts' => $request->numberOfAccounts(),
             'invoice-option' => $request->invoiceOption(),
         ]);

@@ -38,9 +38,9 @@ class RenewRequest
     /**
      * Create a new request instance.
      *
-     * @param Order $order
-     * @param int $months
-     * @param int $numberOfAccounts
+     * @param Order         $order
+     * @param int           $months
+     * @param int           $numberOfAccounts
      * @param InvoiceOption $invoiceOption
      */
     public function __construct(Order $order, int $months, int $numberOfAccounts, InvoiceOption $invoiceOption)
