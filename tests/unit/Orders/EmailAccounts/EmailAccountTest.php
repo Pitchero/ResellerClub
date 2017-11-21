@@ -25,7 +25,7 @@ class EmailAccountTest extends TestCase
             new Response(
                 200,
                 ['Content-Type' => 'application/json'],
-                json_encode(['status' => 'Success']))
+                json_encode(['status' => 'Success'])),
         ]);
 
         $emailAccounts = new EmailAccount($this->api($mock));
@@ -48,47 +48,45 @@ class EmailAccountTest extends TestCase
                 200,
                 ['Content-Type' => 'application/json'],
                 json_encode([
-                    'response' =>
-                        [
+                    'response' => [
                             'status' => 'SUCCESS',
-                            'user' => [
-                                'emailAddress' => 'john.doe@somedomain.co.in.onlyfordemo.com',
-                                'domainName' => 'somedomain.co.in.onlyfordemo.com',
-                                'firstName' => 'John',
-                                'lastName' => 'Doe',
+                            'user'   => [
+                                'emailAddress'          => 'john.doe@somedomain.co.in.onlyfordemo.com',
+                                'domainName'            => 'somedomain.co.in.onlyfordemo.com',
+                                'firstName'             => 'John',
+                                'lastName'              => 'Doe',
                                 'alternateEmailAddress' => 'alternative@test.com',
-                                'internalForwards' => 'new:somedomain.co.in.onlyfordemo.com@set25.mss.mailhostbox.aus-tx.colo',
-                                'quotaLimit' => 5242880,
-                                'status' => 'ACTIVE',
-                                'accountType' => 'POP_WITHOUT_AUTORESPONDER',
-                                'quotaUsed' => 0,
-                                'countryCode' => 'US',
-                                'percentageQuotaUsage' => 0,
-                                'languageCode' => 'en',
-                                'accountSettings' => [
-                                    'popSettings' => 'pop.somedomain.co.in.onlyfordemo.com',
+                                'internalForwards'      => 'new:somedomain.co.in.onlyfordemo.com@set25.mss.mailhostbox.aus-tx.colo',
+                                'quotaLimit'            => 5242880,
+                                'status'                => 'ACTIVE',
+                                'accountType'           => 'POP_WITHOUT_AUTORESPONDER',
+                                'quotaUsed'             => 0,
+                                'countryCode'           => 'US',
+                                'percentageQuotaUsage'  => 0,
+                                'languageCode'          => 'en',
+                                'accountSettings'       => [
+                                    'popSettings'  => 'pop.somedomain.co.in.onlyfordemo.com',
                                     'imapSettings' => 'imap.somedomain.co.in.onlyfordemo.com',
                                     'smtpSettings' => 'smtp.somedomain.co.in.onlyfordemo.com',
-                                    'webmailUrl' => 'http://webmail.somedomain.co.in.onlyfordemo.com',
+                                    'webmailUrl'   => 'http://webmail.somedomain.co.in.onlyfordemo.com',
                                 ],
-                                'createdOn' => '2017-11-10 17:45:17.988 GMT',
-                                'popAccessEnabled' => true,
-                                'imapAccessEnabled' => true,
-                                'webmailAccessEnabled' => true,
-                                'canFooterOptout' => false,
+                                'createdOn'                    => '2017-11-10 17:45:17.988 GMT',
+                                'popAccessEnabled'             => true,
+                                'imapAccessEnabled'            => true,
+                                'webmailAccessEnabled'         => true,
+                                'canFooterOptout'              => false,
                                 'revertBlacklistRequestExists' => false,
-                                'configurationProfile' => 'EELITE',
+                                'configurationProfile'         => 'EELITE',
                             ],
-                        ]
+                        ],
                 ])
-            )
+            ),
         ]);
 
         $emailForwarders = new EmailAccount($this->api($mock));
 
         $email = new EmailAddress('john.doe@somedomain.co.in.onlyfordemo.com');
         $notificationsEmail = new EmailAddress('alternative@test.com');
-
 
         $this->assertInstanceOf(
             CreateResponse::class,

@@ -13,7 +13,7 @@ use ResellerClub\Exceptions\ApiClientException;
 use ResellerClub\Exceptions\ApiException;
 use ResellerClub\Exceptions\ConnectionException;
 
-class ExceptionHandlerTest extends TestCase
+class ExceptionMapperTest extends TestCase
 {
     /**
      * @var Request

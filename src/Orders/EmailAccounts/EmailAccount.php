@@ -3,10 +3,10 @@
 namespace ResellerClub\Orders\EmailAccounts;
 
 use ResellerClub\Api;
-use ResellerClub\Orders\EmailAccounts\Requests\DeleteRequest;
-use ResellerClub\Orders\EmailAccounts\Responses\DeletedResponse;
 use ResellerClub\Orders\EmailAccounts\Requests\CreateRequest;
+use ResellerClub\Orders\EmailAccounts\Requests\DeleteRequest;
 use ResellerClub\Orders\EmailAccounts\Responses\CreateResponse;
+use ResellerClub\Orders\EmailAccounts\Responses\DeletedResponse;
 
 class EmailAccount
 {
@@ -39,14 +39,14 @@ class EmailAccount
         $response = $this->api->post(
             'mail/user/add.json',
             [
-                'order-id' => $request->orderId(),
-                'email' => $request->email(),
-                'passwd' => $request->password(),
+                'order-id'           => $request->orderId(),
+                'email'              => $request->email(),
+                'passwd'             => $request->password(),
                 'notification-email' => $request->notificationEmail(),
-                'first-name' => $request->firstName(),
-                'last-name' => $request->lastName(),
-                'country-code' => $request->countryCode(),
-                'language-code' => $request->languageCode(),
+                'first-name'         => $request->firstName(),
+                'last-name'          => $request->lastName(),
+                'country-code'       => $request->countryCode(),
+                'language-code'      => $request->languageCode(),
             ]
         );
 
@@ -68,7 +68,7 @@ class EmailAccount
             'mail/user/delete.json',
             [
                 'order-id' => $request->orderId(),
-                'email' => $request->email(),
+                'email'    => $request->email(),
             ]
         );
 

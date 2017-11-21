@@ -10,9 +10,9 @@ use PHPUnit\Framework\TestCase;
 use ResellerClub\Api;
 use ResellerClub\Config;
 use ResellerClub\EmailAddress;
-use ResellerClub\Orders\EmailForwarders\EmailForwarder;
 use ResellerClub\Orders\EmailAccounts\Requests\DeleteRequest;
 use ResellerClub\Orders\EmailAccounts\Responses\DeletedResponse;
+use ResellerClub\Orders\EmailForwarders\EmailForwarder;
 use ResellerClub\Orders\Order;
 
 class EmailForwarderTest extends TestCase
@@ -23,7 +23,7 @@ class EmailForwarderTest extends TestCase
             new Response(
                 200,
                 ['Content-Type' => 'application/json'],
-                json_encode(['status' => 'Success']))
+                json_encode(['status' => 'Success'])),
         ]);
 
         $emailForwarders = new EmailForwarder($this->api($mock));

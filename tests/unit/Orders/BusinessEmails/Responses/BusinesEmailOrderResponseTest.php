@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 use ResellerClub\Action;
 use ResellerClub\Orders\BusinessEmails\Responses\BusinessEmailOrderResponse;
 
-class BusinessEmailOrderResponseTest extends TestCase
+class BusinesEmailOrderResponseTest extends TestCase
 {
     /**
      * @var BusinessEmailOrderResponse
@@ -18,12 +18,12 @@ class BusinessEmailOrderResponseTest extends TestCase
         parent::setUp();
 
         $this->response = new BusinessEmailOrderResponse([
-            'description' => 'some-domain.co.in',
-            'entityid' => 1234,
-            'eaqid' => 461331388,
-            'actiontype' => 'Add',
-            'actiontypedesc' => 'Addition of Business Email 1 for testdomainmail.com for 1 month',
-            'actionstatus' => 'PendingExecution',
+            'description'      => 'some-domain.co.in',
+            'entityid'         => 1234,
+            'eaqid'            => 461331388,
+            'actiontype'       => 'Add',
+            'actiontypedesc'   => 'Addition of Business Email 1 for testdomainmail.com for 1 month',
+            'actionstatus'     => 'PendingExecution',
             'actionstatusdesc' => 'The action is pending execution',
         ]);
     }
