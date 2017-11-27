@@ -115,7 +115,9 @@ class Api
             return $this->guzzleClient->request(
                 $method,
                 $this->baseApiUri().$uri,
-                array_merge($this->auth(), $request)
+                [
+                    $this->requestParameterType($method) => array_merge($this->auth(), $request)
+                ]
             );
         } catch (RequestException $e) {
             throw (new ExceptionMapper())->map($e);
@@ -131,6 +133,23 @@ class Api
     {
         return $this->config->isTestMode() ? static::TEST_API_URI
                                            : static::LIVE_API_URI;
+    }
+
+    /**
+     * Gets the request parameter type for the Guzzle client request.
+     *
+     * @param string $method
+     *
+     * @return string
+     */
+    private function requestParameterType(string $method): string
+    {
+        switch(strtolower($method)) {
+            case 'post':
+                return 'form_params';
+            case 'get':
+                return 'query';
+        }
     }
 
     /**
