@@ -116,7 +116,7 @@ class Api
                 $method,
                 $this->baseApiUri().$uri,
                 [
-                    $this->requestParameterType($method) => array_merge($this->auth(), $request)
+                    $this->requestParameterType($method) => array_merge($this->auth(), $request),
                 ]
             );
         } catch (RequestException $e) {
@@ -144,7 +144,7 @@ class Api
      */
     private function requestParameterType(string $method): string
     {
-        switch(strtolower($method)) {
+        switch (strtolower($method)) {
             case 'post':
                 return 'form_params';
             default:
