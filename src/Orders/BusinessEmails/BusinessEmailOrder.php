@@ -110,7 +110,7 @@ class BusinessEmailOrder
             'order-id'       => $request->orderId(),
             'months'         => $request->months(),
             'no-of-accounts' => $request->numberOfAccounts(),
-            'invoice-option' => $request->invoiceOption(),
+            'invoice-option' => (string) $request->invoiceOption(),
         ]);
 
         return RenewalResponse::fromApiResponse($response);
