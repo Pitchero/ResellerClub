@@ -8,6 +8,7 @@ use ResellerClub\Orders\BusinessEmails\Requests\BusinessEmailOrderRequest;
 use ResellerClub\Orders\BusinessEmails\Requests\RenewRequest;
 use ResellerClub\Orders\BusinessEmails\Responses\BusinessEmailOrderResponse;
 use ResellerClub\Orders\BusinessEmails\Responses\CreateResponse;
+use ResellerClub\Orders\BusinessEmails\Responses\GetResponse;
 use ResellerClub\Orders\BusinessEmails\Responses\RenewalResponse;
 use ResellerClub\Orders\Order;
 
@@ -81,9 +82,9 @@ class BusinessEmailOrder
      *
      * @param Order $request
      *
-     * @return CreateResponse
+     * @return GetResponse
      */
-    public function get(Order $request): CreateResponse
+    public function get(Order $request): GetResponse
     {
         $response = $this->api->get(
             'eelite/us/details.json',
@@ -92,7 +93,7 @@ class BusinessEmailOrder
             ]
         );
 
-        return CreateResponse::fromApiResponse($response);
+        return GetResponse::fromApiResponse($response);
     }
 
     /**

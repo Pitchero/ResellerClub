@@ -13,6 +13,7 @@ use ResellerClub\Orders\BusinessEmails\BusinessEmailOrder;
 use ResellerClub\Orders\BusinessEmails\Requests\BusinessEmailOrderRequest;
 use ResellerClub\Orders\BusinessEmails\Responses\BusinessEmailOrderResponse;
 use ResellerClub\Orders\BusinessEmails\Responses\CreateResponse;
+use ResellerClub\Orders\BusinessEmails\Responses\GetResponse;
 use ResellerClub\Orders\InvoiceOption;
 use ResellerClub\Orders\Order;
 
@@ -126,7 +127,7 @@ class BusinessEmailOrderTest extends TestCase
         $businessEmailOrder = new BusinessEmailOrder($this->api($mock));
 
         $this->assertInstanceOf(
-            CreateResponse::class,
+            GetResponse::class,
             $businessEmailOrder->get(
                 new Order(123)
             )
