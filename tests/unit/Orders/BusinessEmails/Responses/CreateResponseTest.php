@@ -48,7 +48,7 @@ class CreateResponseTest extends TestCase
             $this->response->actionStatusDescription()
         );
     }
-    
+
     public function testInvoiceId()
     {
         $this->assertEquals(77433277, $this->response->invoiceId());
