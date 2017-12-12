@@ -21,6 +21,34 @@ class CreateResponseTest extends TestCase
         $this->response = $this->createResponse();
     }
 
+    public function testOrderId()
+    {
+        $this->assertEquals(79767882, $this->response->orderId());
+    }
+
+    public function testDomain()
+    {
+        $this->assertEquals('test-domain.co.uk.onlyfordemo.com', $this->response->domain());
+    }
+
+    public function testActionId()
+    {
+        $this->assertEquals(466923107, $this->response->actionId());
+    }
+
+    public function testActionStatus()
+    {
+        $this->assertEquals('InvoicePaid', $this->response->actionStatus());
+    }
+
+    public function testActionStatusDescription()
+    {
+        $this->assertEquals(
+            'Your Order will be processed by our automatic provisioning system in the next 5-10 minutes.',
+            $this->response->actionStatusDescription()
+        );
+    }
+    
     public function testInvoiceId()
     {
         $this->assertEquals(77433277, $this->response->invoiceId());
@@ -99,6 +127,14 @@ class CreateResponseTest extends TestCase
     private function createResponse(array $overrides = [])
     {
         $defaults = [
+            'entityid'                => '79767882',
+            'description'             => 'test-domain.co.uk.onlyfordemo.com',
+            'actionstatus'            => 'InvoicePaid',
+            'actionstatusdesc'        => 'Your Order will be processed by our automatic provisioning system in the next 5-10 minutes.',
+            'actiontypedesc'          => 'Addition of Business Email 1 for test-domain.co.uk.onlyfordemo.com for 1 month',
+            'status'                  => 'Success',
+            'eaqid'                   => '466923107',
+            'actiontype'              => 'Add',
             'invoiceid'               => '77433277',
             'sellingcurrencysymbol'   => 'GBP',
             'sellingamount'           => '1.25',

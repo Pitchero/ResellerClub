@@ -6,12 +6,83 @@ use Money\Currency;
 use Money\Money;
 use ResellerClub\Response;
 
+/**
+ * @see https://manage.resellerclub.com/kb/answer/2156
+ */
 class CreateResponse extends Response
 {
     /**
-     * Get the invoice ID parameter.
+     * Get the business email order id.
      *
-     * @see https://manage.resellerclub.com/kb/answer/2156
+     * @return int
+     */
+    public function orderId(): int
+    {
+        return $this->entityid;
+    }
+
+    /**
+     * Gets the domain name that this business email order has been created for.
+     *
+     * @return string
+     */
+    public function domain(): string
+    {
+        return $this->description;
+    }
+
+    /**
+     * Gets the action status for this business email order.
+     *
+     * @return string
+     */
+    public function actionStatus(): string
+    {
+        return $this->actionstatus;
+    }
+
+    /**
+     * Get the description of the business email order add action status.
+     *
+     * @return string
+     */
+    public function actionStatusDescription(): string
+    {
+        return $this->actionstatusdesc;
+    }
+
+    /**
+     * Get the ID of the business email order add action.
+     *
+     * @return int
+     */
+    public function actionId(): int
+    {
+        return $this->eaqid;
+    }
+
+    /**
+     * Get the action type.
+     *
+     * @return string
+     */
+    public function actionType(): string
+    {
+        return $this->actiontype;
+    }
+
+    /**
+     * Get the description of the business email order add action.
+     *
+     * @return string
+     */
+    public function actionTypeDescription(): string
+    {
+        return $this->actiontypedesc;
+    }
+
+    /**
+     * Get the invoice ID parameter.
      *
      * @return int
      */
@@ -22,8 +93,6 @@ class CreateResponse extends Response
 
     /**
      * Get the selling currency parameter.
-     *
-     * @see https://manage.resellerclub.com/kb/answer/2156
      *
      * @return string
      */
@@ -70,8 +139,6 @@ class CreateResponse extends Response
 
     /**
      * Get the customer ID parameter.
-     *
-     * @see https://manage.resellerclub.com/kb/answer/2156
      *
      * @return int
      */
