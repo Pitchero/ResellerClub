@@ -5,6 +5,7 @@ namespace Tests\Unit\Orders\BusinessEmails\Responses;
 use Carbon\Carbon;
 use PHPUnit\Framework\TestCase;
 use ResellerClub\Orders\BusinessEmails\Responses\GetResponse;
+use ResellerClub\Orders\OrderStatus;
 
 class GetResponseTest extends TestCase
 {
@@ -64,8 +65,7 @@ class GetResponseTest extends TestCase
     {
         $this->response = new GetResponse(['currentstatus' => 'Active']);
 
-        $this->assertInternalType('string', $this->response->currentOrderStatus());
-        $this->assertEquals('Active', $this->response->currentOrderStatus());
+        $this->assertInstanceOf(OrderStatus::class, $this->response->currentOrderStatus());
     }
 
     public function testDomain()

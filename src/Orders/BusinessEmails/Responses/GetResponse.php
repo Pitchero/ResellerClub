@@ -85,11 +85,11 @@ class GetResponse extends Response
      *
      * @see https://manage.resellerclub.com/kb/answer/2163
      *
-     * @return string
+     * @return OrderStatus
      */
-    public function currentOrderStatus(): string
+    public function currentOrderStatus(): OrderStatus
     {
-        return $this->currentstatus;
+        return new OrderStatus($this->currentstatus);
     }
 
     /**
