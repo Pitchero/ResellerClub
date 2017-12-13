@@ -4,6 +4,7 @@ namespace ResellerClub\Orders\BusinessEmails\Responses;
 
 use Money\Currency;
 use Money\Money;
+use ResellerClub\Orders\BusinessEmails\Responses\Concerns\HasAction;
 use ResellerClub\Response;
 
 /**
@@ -11,6 +12,8 @@ use ResellerClub\Response;
  */
 class CreateResponse extends Response
 {
+    use HasAction;
+
     /**
      * Get the business email order id.
      *
@@ -29,56 +32,6 @@ class CreateResponse extends Response
     public function domain(): string
     {
         return $this->description;
-    }
-
-    /**
-     * Gets the action status for this business email order.
-     *
-     * @return string
-     */
-    public function actionStatus(): string
-    {
-        return $this->actionstatus;
-    }
-
-    /**
-     * Get the description of the business email order add action status.
-     *
-     * @return string
-     */
-    public function actionStatusDescription(): string
-    {
-        return $this->actionstatusdesc;
-    }
-
-    /**
-     * Get the ID of the business email order add action.
-     *
-     * @return int
-     */
-    public function actionId(): int
-    {
-        return $this->eaqid;
-    }
-
-    /**
-     * Get the action type.
-     *
-     * @return string
-     */
-    public function actionType(): string
-    {
-        return $this->actiontype;
-    }
-
-    /**
-     * Get the description of the business email order add action.
-     *
-     * @return string
-     */
-    public function actionTypeDescription(): string
-    {
-        return $this->actiontypedesc;
     }
 
     /**

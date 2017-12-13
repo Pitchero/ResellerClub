@@ -5,6 +5,7 @@ namespace Tests\Unit\Orders\BusinessEmails\Responses;
 use Money\Currency;
 use Money\Money;
 use PHPUnit\Framework\TestCase;
+use ResellerClub\Action;
 use ResellerClub\Orders\BusinessEmails\Responses\CreateResponse;
 
 class CreateResponseTest extends TestCase
@@ -31,22 +32,9 @@ class CreateResponseTest extends TestCase
         $this->assertEquals('test-domain.co.uk.onlyfordemo.com', $this->response->domain());
     }
 
-    public function testActionId()
+    public function testItCanGetAction()
     {
-        $this->assertEquals(466923107, $this->response->actionId());
-    }
-
-    public function testActionStatus()
-    {
-        $this->assertEquals('InvoicePaid', $this->response->actionStatus());
-    }
-
-    public function testActionStatusDescription()
-    {
-        $this->assertEquals(
-            'Your Order will be processed by our automatic provisioning system in the next 5-10 minutes.',
-            $this->response->actionStatusDescription()
-        );
+        $this->assertInstanceOf(Action::class, $this->response->action());
     }
 
     public function testInvoiceId()
