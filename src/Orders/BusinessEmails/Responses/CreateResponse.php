@@ -4,14 +4,38 @@ namespace ResellerClub\Orders\BusinessEmails\Responses;
 
 use Money\Currency;
 use Money\Money;
+use ResellerClub\Orders\BusinessEmails\Responses\Concerns\HasAction;
 use ResellerClub\Response;
 
+/**
+ * @see https://manage.resellerclub.com/kb/answer/2156
+ */
 class CreateResponse extends Response
 {
+    use HasAction;
+
+    /**
+     * Get the business email order id.
+     *
+     * @return int
+     */
+    public function orderId(): int
+    {
+        return $this->entityid;
+    }
+
+    /**
+     * Gets the domain name that this business email order has been created for.
+     *
+     * @return string
+     */
+    public function domain(): string
+    {
+        return $this->description;
+    }
+
     /**
      * Get the invoice ID parameter.
-     *
-     * @see https://manage.resellerclub.com/kb/answer/2156
      *
      * @return int
      */
@@ -22,8 +46,6 @@ class CreateResponse extends Response
 
     /**
      * Get the selling currency parameter.
-     *
-     * @see https://manage.resellerclub.com/kb/answer/2156
      *
      * @return string
      */
@@ -70,8 +92,6 @@ class CreateResponse extends Response
 
     /**
      * Get the customer ID parameter.
-     *
-     * @see https://manage.resellerclub.com/kb/answer/2156
      *
      * @return int
      */

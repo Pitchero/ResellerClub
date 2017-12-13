@@ -5,6 +5,7 @@ namespace Tests\Unit\Orders\BusinessEmails\Responses;
 use Money\Currency;
 use Money\Money;
 use PHPUnit\Framework\TestCase;
+use ResellerClub\Action;
 use ResellerClub\Orders\BusinessEmails\Responses\CreateResponse;
 
 class CreateResponseTest extends TestCase
@@ -19,6 +20,21 @@ class CreateResponseTest extends TestCase
         parent::setUp();
 
         $this->response = $this->createResponse();
+    }
+
+    public function testOrderId()
+    {
+        $this->assertEquals(79767882, $this->response->orderId());
+    }
+
+    public function testDomain()
+    {
+        $this->assertEquals('test-domain.co.uk.onlyfordemo.com', $this->response->domain());
+    }
+
+    public function testItCanGetAction()
+    {
+        $this->assertInstanceOf(Action::class, $this->response->action());
     }
 
     public function testInvoiceId()
@@ -99,6 +115,14 @@ class CreateResponseTest extends TestCase
     private function createResponse(array $overrides = [])
     {
         $defaults = [
+            'entityid'                => '79767882',
+            'description'             => 'test-domain.co.uk.onlyfordemo.com',
+            'actionstatus'            => 'InvoicePaid',
+            'actionstatusdesc'        => 'Your Order will be processed by our automatic provisioning system in the next 5-10 minutes.',
+            'actiontypedesc'          => 'Addition of Business Email 1 for test-domain.co.uk.onlyfordemo.com for 1 month',
+            'status'                  => 'Success',
+            'eaqid'                   => '466923107',
+            'actiontype'              => 'Add',
             'invoiceid'               => '77433277',
             'sellingcurrencysymbol'   => 'GBP',
             'sellingamount'           => '1.25',
