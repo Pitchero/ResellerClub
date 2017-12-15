@@ -5,7 +5,7 @@ namespace ResellerClub\Orders\EmailForwarders\Responses;
 use ResellerClub\Response;
 use ResellerClub\Status;
 
-class AddedResponse extends Response
+class CreateResponse extends Response
 {
     /**
      * Get the response status.

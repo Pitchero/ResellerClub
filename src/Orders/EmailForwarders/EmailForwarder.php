@@ -6,8 +6,8 @@ use ResellerClub\Api;
 use ResellerClub\Orders\EmailAccounts\EmailAccount;
 use ResellerClub\Orders\EmailAccounts\Requests\DeleteRequest;
 use ResellerClub\Orders\EmailAccounts\Responses\DeletedResponse;
-use ResellerClub\Orders\EmailForwarders\Requests\AddRequest;
-use ResellerClub\Orders\EmailForwarders\Responses\AddedResponse;
+use ResellerClub\Orders\EmailForwarders\Requests\CreateRequest;
+use ResellerClub\Orders\EmailForwarders\Responses\CreateResponse;
 
 class EmailForwarder
 {
@@ -31,11 +31,11 @@ class EmailForwarder
      *
      * @see https://manage.resellerclub.com/kb/answer/1038
      *
-     * @param AddRequest $request
+     * @param CreateRequest $request
      *
-     * @return AddedResponse
+     * @return CreateResponse
      */
-    public function add(AddRequest $request): AddedResponse
+    public function create(CreateRequest $request): CreateResponse
     {
         $response = $this->api->post('mail/user/add-forward-only-account.json', [
             'order-id' => $request->orderId(),
@@ -43,7 +43,7 @@ class EmailForwarder
             'forwards' => $request->forwarders(),
         ]);
 
-        return AddedResponse::fromApiResponse($response);
+        return CreateResponse::fromApiResponse($response);
     }
 
     /**

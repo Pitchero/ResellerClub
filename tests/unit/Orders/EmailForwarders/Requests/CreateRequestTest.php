@@ -4,13 +4,13 @@ namespace Tests\Unit\Orders\EmailForwarders\Requests;
 
 use PHPUnit\Framework\TestCase;
 use ResellerClub\EmailAddress;
-use ResellerClub\Orders\EmailForwarders\Requests\AddRequest;
+use ResellerClub\Orders\EmailForwarders\Requests\CreateRequest;
 use ResellerClub\Orders\Order;
 
-class AddRequestTest extends TestCase
+class CreateRequestTest extends TestCase
 {
     /**
-     * @var AddRequest
+     * @var CreateRequest
      */
     private $request;
 
@@ -21,7 +21,7 @@ class AddRequestTest extends TestCase
         $order = new Order(123);
         $email = new EmailAddress('team@example.com');
 
-        $this->request = new AddRequest($order, $email);
+        $this->request = new CreateRequest($order, $email);
         $this->request->setForwarders([
             new EmailAddress('john.doe@example.com'),
             new EmailAddress('jane.doe@example.com'),

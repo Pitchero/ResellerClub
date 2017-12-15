@@ -3,13 +3,13 @@
 namespace Tests\Unit\Orders\EmailForwarders\Responses;
 
 use PHPUnit\Framework\TestCase;
-use ResellerClub\Orders\EmailForwarders\Responses\AddedResponse;
+use ResellerClub\Orders\EmailForwarders\Responses\CreateResponse;
 use ResellerClub\Status;
 
-class AddedResponseTest extends TestCase
+class CreateResponseTest extends TestCase
 {
     /**
-     * @var AddedResponse
+     * @var CreateResponse
      */
     private $response;
 
@@ -17,7 +17,7 @@ class AddedResponseTest extends TestCase
     {
         parent::setUp();
 
-        $this->response = new AddedResponse([
+        $this->response = new CreateResponse([
             'response' => [
                 'status' => 'SUCCESS',
             ],

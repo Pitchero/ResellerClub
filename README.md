@@ -197,7 +197,7 @@ try {
              new GuzzleHttp\Client()
         );
 
-        $request = ResellerClub\Orders\EmailForwarders\Requests\AddRequest(
+        $request = ResellerClub\Orders\EmailForwarders\Requests\CreateRequest(
               ResellerClub\Orders\Order(
                  $orderId = 123
               ),   
@@ -206,7 +206,7 @@ try {
               )                   
         );
 
-        $response = $api->emailForwarder()->add($request);
+        $response = $api->emailForwarder()->create($request);
 
         // @todo - Handle the successful response within your codebase.
 
