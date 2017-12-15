@@ -6,7 +6,7 @@ use InvalidArgumentException;
 use ResellerClub\EmailAddress;
 use ResellerClub\Orders\Order;
 
-class AddRequest
+class CreateRequest
 {
     /**
      * @var Order
