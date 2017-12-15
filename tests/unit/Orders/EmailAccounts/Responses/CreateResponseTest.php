@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use PHPUnit\Framework\TestCase;
 use ResellerClub\EmailAddress;
 use ResellerClub\Exceptions\MissingAttributeException;
+use ResellerClub\Exceptions\ResponseException;
 use ResellerClub\Orders\EmailAccounts\Responses\CreateResponse;
 use ResellerClub\Orders\EmailAccounts\Settings\ImapSettings;
 use ResellerClub\Orders\EmailAccounts\Settings\PopSettings;
@@ -15,10 +16,31 @@ use ResellerClub\Status;
 
 class CreateResponseTest extends TestCase
 {
+    public function testResponseExceptionThrownWhenValidationErrorIsReturn()
+    {
+        try {
+            new CreateResponse(['response' => [
+                'status' => 'FAILURE',
+                'message' => 'Email address is already registered with us',
+                'errorCode' => 'emailaddress_unique_key_voilation',
+            ]]);
+        } catch (ResponseException $e) {
+            $this->assertEquals('Email address is already registered with us', $e->getMessage());
+
+            return;
+        }
+
+        $this->fail('The missing attribute exception was not thrown for the user.');
+    }
+
     public function testMissingAttributeExceptionThrownWhenUserNotSetInResponse()
     {
         try {
-            new CreateResponse(['response' => []]);
+            new CreateResponse([
+                'response' => [
+                    'status' => 'SUCCESS',
+                ]
+            ]);
         } catch (MissingAttributeException $e) {
             $this->assertEquals('Expected attribute [user] was not in response.', $e->getMessage());
 
@@ -63,6 +85,7 @@ class CreateResponseTest extends TestCase
     {
         $response = new CreateResponse([
             'response' => [
+                'status' => 'SUCCESS',
                 'user' => [
                     'emailAddress' => 'john.does@some-domain.co.uk',
                 ],
@@ -77,6 +100,7 @@ class CreateResponseTest extends TestCase
     {
         $response = new CreateResponse([
             'response' => [
+                'status' => 'SUCCESS',
                 'user' => [
                     'domainName' => 'some-domain.co.uk',
                 ],
@@ -91,6 +115,7 @@ class CreateResponseTest extends TestCase
     {
         $response = new CreateResponse([
             'response' => [
+                'status' => 'SUCCESS',
                 'user' => [
                     'firstName' => 'John',
                 ],
@@ -105,6 +130,7 @@ class CreateResponseTest extends TestCase
     {
         $response = new CreateResponse([
             'response' => [
+                'status' => 'SUCCESS',
                 'user' => [
                     'lastName' => 'Doe',
                 ],
@@ -119,6 +145,7 @@ class CreateResponseTest extends TestCase
     {
         $response = new CreateResponse([
             'response' => [
+                'status' => 'SUCCESS',
                 'user' => [
                     'alternateEmailAddress' => 'another-email@some-domain.co.uk',
                 ],
@@ -135,6 +162,7 @@ class CreateResponseTest extends TestCase
 
         $response = new CreateResponse([
             'response' => [
+                'status' => 'SUCCESS',
                 'user' => [
                     'internalForwards' => $expected_result,
                 ],
@@ -149,6 +177,7 @@ class CreateResponseTest extends TestCase
     {
         $response = new CreateResponse([
             'response' => [
+                'status' => 'SUCCESS',
                 'user' => [
                     'quotaLimit' => 5242880,
                 ],
@@ -163,6 +192,7 @@ class CreateResponseTest extends TestCase
     {
         $response = new CreateResponse([
             'response' => [
+                'status' => 'SUCCESS',
                 'user' => [
                     'status' => 'ACTIVE',
                 ],
@@ -177,6 +207,7 @@ class CreateResponseTest extends TestCase
     {
         $response = new CreateResponse([
             'response' => [
+                'status' => 'SUCCESS',
                 'user' => [
                     'accountType' => 'POP_WITHOUT_AUTORESPONDER',
                 ],
@@ -191,6 +222,7 @@ class CreateResponseTest extends TestCase
     {
         $response = new CreateResponse([
             'response' => [
+                'status' => 'SUCCESS',
                 'user' => [
                     'quotaUsed' => 0,
                 ],
@@ -205,6 +237,7 @@ class CreateResponseTest extends TestCase
     {
         $response = new CreateResponse([
             'response' => [
+                'status' => 'SUCCESS',
                 'user' => [
                     'countryCode' => 'US',
                 ],
@@ -219,6 +252,7 @@ class CreateResponseTest extends TestCase
     {
         $response = new CreateResponse([
             'response' => [
+                'status' => 'SUCCESS',
                 'user' => [
                     'percentageQuotaUsage' => 0,
                 ],
@@ -233,6 +267,7 @@ class CreateResponseTest extends TestCase
     {
         $response = new CreateResponse([
             'response' => [
+                'status' => 'SUCCESS',
                 'user' => [
                     'languageCode' => 'en',
                 ],
@@ -247,6 +282,7 @@ class CreateResponseTest extends TestCase
     {
         $response = new CreateResponse([
             'response' => [
+                'status' => 'SUCCESS',
                 'user' => [
                     'accountSettings' => [
                         'popSettings'  => 'pop.somedomain.co.in.onlyfordemo.com',
@@ -278,6 +314,7 @@ class CreateResponseTest extends TestCase
     {
         $response = new CreateResponse([
             'response' => [
+                'status' => 'SUCCESS',
                 'user' => [
                     'createdOn' => '2017-11-10 17:45:17.988 GMT',
                 ],
@@ -292,6 +329,7 @@ class CreateResponseTest extends TestCase
     {
         $response = new CreateResponse([
             'response' => [
+                'status' => 'SUCCESS',
                 'user' => [
                     'popAccessEnabled' => true,
                 ],
@@ -306,6 +344,7 @@ class CreateResponseTest extends TestCase
     {
         $response = new CreateResponse([
             'response' => [
+                'status' => 'SUCCESS',
                 'user' => [
                     'imapAccessEnabled' => true,
                 ],
@@ -320,6 +359,7 @@ class CreateResponseTest extends TestCase
     {
         $response = new CreateResponse([
             'response' => [
+                'status' => 'SUCCESS',
                 'user' => [
                     'webmailAccessEnabled' => true,
                 ],
@@ -334,6 +374,7 @@ class CreateResponseTest extends TestCase
     {
         $response = new CreateResponse([
             'response' => [
+                'status' => 'SUCCESS',
                 'user' => [
                     'canFooterOptout' => false,
                 ],
@@ -348,6 +389,7 @@ class CreateResponseTest extends TestCase
     {
         $response = new CreateResponse([
             'response' => [
+                'status' => 'SUCCESS',
                 'user' => [
                     'revertBlacklistRequestExists' => false,
                 ],
@@ -362,6 +404,7 @@ class CreateResponseTest extends TestCase
     {
         $response = new CreateResponse([
             'response' => [
+                'status' => 'SUCCESS',
                 'user' => [
                     'configurationProfile' => 'EELITE',
                 ],

@@ -5,6 +5,7 @@ namespace ResellerClub\Orders\EmailAccounts\Responses;
 use Carbon\Carbon;
 use ResellerClub\EmailAddress;
 use ResellerClub\Exceptions\MissingAttributeException;
+use ResellerClub\Exceptions\ResponseException;
 use ResellerClub\Orders\EmailAccounts\Settings\ImapSettings;
 use ResellerClub\Orders\EmailAccounts\Settings\PopSettings;
 use ResellerClub\Orders\EmailAccounts\Settings\SmtpSettings;
@@ -32,6 +33,11 @@ class CreateResponse extends Response
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
+
+        // Not all responses contain a status it would seem, for example get business email.
+        if (!$this->wasSuccessful()) {
+            throw new ResponseException($this->response['message']);
+        }
 
         if (!array_key_exists('user', $this->response)) {
             throw new MissingAttributeException('user');
