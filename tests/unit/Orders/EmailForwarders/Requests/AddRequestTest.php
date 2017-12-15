@@ -36,8 +36,7 @@ class AddRequestTest extends TestCase
 
     public function testItCanGetEmail()
     {
-        $this->assertInternalType('string', $this->request->email());
-        $this->assertEquals('team@example.com', $this->request->email());
+        $this->assertInstanceOf(EmailAddress::class, $this->request->email());
     }
 
     public function testItCanGetForwarders()

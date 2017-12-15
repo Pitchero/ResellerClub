@@ -40,9 +40,9 @@ class EmailAccount
             'mail/user/add.json',
             [
                 'order-id'           => $request->orderId(),
-                'email'              => $request->email(),
+                'email'              => (string) $request->email(),
                 'passwd'             => $request->password(),
-                'notification-email' => $request->notificationEmail(),
+                'notification-email' => (string) $request->notificationEmail(),
                 'first-name'         => $request->firstName(),
                 'last-name'          => $request->lastName(),
                 'country-code'       => $request->countryCode(),
@@ -68,7 +68,7 @@ class EmailAccount
             'mail/user/delete.json',
             [
                 'order-id' => $request->orderId(),
-                'email'    => $request->email(),
+                'email'    => (string) $request->email(),
             ]
         );
 

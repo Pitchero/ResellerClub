@@ -39,7 +39,7 @@ class EmailForwarder
     {
         $response = $this->api->post('mail/user/add-forward-only-account.json', [
             'order-id' => $request->orderId(),
-            'email'    => $request->email(),
+            'email'    => (string) $request->email(),
             'forwards' => $request->forwarders(),
         ]);
 

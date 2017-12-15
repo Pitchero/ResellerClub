@@ -48,11 +48,11 @@ class AddRequest
     /**
      * Get the email address to forward.
      *
-     * @return string
+     * @return EmailAddress
      */
-    public function email(): string
+    public function email(): EmailAddress
     {
-        return (string) $this->email;
+        return $this->email;
     }
 
     /**
