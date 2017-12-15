@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 use ResellerClub\Action;
 use ResellerClub\Orders\BusinessEmails\Responses\BusinessEmailOrderResponse;
 
-class BusinesEmailOrderResponseTest extends TestCase
+class BusinessEmailOrderResponseTest extends TestCase
 {
     /**
      * @var BusinessEmailOrderResponse
