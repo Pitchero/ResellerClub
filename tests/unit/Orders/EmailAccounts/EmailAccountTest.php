@@ -25,7 +25,12 @@ class EmailAccountTest extends TestCase
             new Response(
                 200,
                 ['Content-Type' => 'application/json'],
-                json_encode(['status' => 'Success'])),
+                json_encode([
+                    'response' => [
+                        'status' => 'Success',
+                    ],
+                ])
+            ),
         ]);
 
         $emailAccounts = new EmailAccount($this->api($mock));

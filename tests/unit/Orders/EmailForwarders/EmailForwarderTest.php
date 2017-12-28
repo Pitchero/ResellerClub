@@ -23,7 +23,12 @@ class EmailForwarderTest extends TestCase
             new Response(
                 200,
                 ['Content-Type' => 'application/json'],
-                json_encode(['status' => 'Success'])),
+                json_encode([
+                    'response' => [
+                        'status' => 'Success',
+                    ],
+                ])
+            ),
         ]);
 
         $emailForwarders = new EmailForwarder($this->api($mock));
