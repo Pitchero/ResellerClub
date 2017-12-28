@@ -25,8 +25,8 @@ class EmailForwarderTest extends TestCase
                 ['Content-Type' => 'application/json'],
                 json_encode([
                     'response' => [
-                        'status' => 'Success'
-                    ]
+                        'status' => 'Success',
+                    ],
                 ])
             ),
         ]);
