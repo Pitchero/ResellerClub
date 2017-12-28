@@ -27,7 +27,7 @@ class DeletedResponseTest extends TestCase
     public function testStatusSet()
     {
         $response = new DeletedResponse([
-            'response' => ['status' => 'SUCCESS']
+            'response' => ['status' => 'SUCCESS'],
         ]);
 
         $this->assertInstanceOf(Status::class, $response->status());
@@ -39,10 +39,10 @@ class DeletedResponseTest extends TestCase
         $this->expectException(DoesNotExistResponseException::class);
         new DeletedResponse([
             'response' => [
-                'status' => 'FAILURE',
-                'message' => 'Email address test1@some-domain.co.uk does not exist',
+                'status'    => 'FAILURE',
+                'message'   => 'Email address test1@some-domain.co.uk does not exist',
                 'errorCode' => 'emailaddress_does_not_exist',
-            ]
+            ],
         ]);
     }
 
@@ -51,9 +51,9 @@ class DeletedResponseTest extends TestCase
         try {
             new DeletedResponse([
                 'response' => [
-                    'status' => 'FAILURE',
+                    'status'  => 'FAILURE',
                     'message' => 'A failure has occurred.',
-                ]
+                ],
             ]);
         } catch (ResponseException $e) {
             $this->assertEquals('A failure has occurred.', $e->getMessage());

@@ -49,7 +49,7 @@ class DeletedResponse extends Response
     private function throwExceptionIfWasNotSuccessful()
     {
         // Not all responses contain a status it would seem, for example get business email.
-        if (! $this->wasSuccessful()) {
+        if (!$this->wasSuccessful()) {
             $this->throwDoesNotExistResponseIfEmailAddressNotFoundError();
 
             throw new ResponseException($this->response['message']);
