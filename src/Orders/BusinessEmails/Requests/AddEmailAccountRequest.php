@@ -27,6 +27,7 @@ class AddEmailAccountRequest
 
     /**
      * AddEmailAccountRequest constructor.
+     *
      * @param Order         $order
      * @param int           $numberOfAccounts
      * @param InvoiceOption $invoiceOption
