@@ -104,14 +104,4 @@ class AddedEmailAccountResponseTest extends TestCase
         $this->assertInstanceOf(Money::class, $this->response->customerCost());
         $this->assertEquals('9054', $this->response->customerCost()->getAmount());
     }
-
-
-
-
-
-
-
-
-
-
 }
