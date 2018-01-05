@@ -10,7 +10,9 @@ use PHPUnit\Framework\TestCase;
 use ResellerClub\Api;
 use ResellerClub\Config;
 use ResellerClub\Orders\BusinessEmails\BusinessEmailOrder;
+use ResellerClub\Orders\BusinessEmails\Requests\AddEmailAccountRequest;
 use ResellerClub\Orders\BusinessEmails\Requests\BusinessEmailOrderRequest;
+use ResellerClub\Orders\BusinessEmails\Responses\AddedEmailAccountResponse;
 use ResellerClub\Orders\BusinessEmails\Responses\BusinessEmailOrderResponse;
 use ResellerClub\Orders\BusinessEmails\Responses\CreateResponse;
 use ResellerClub\Orders\BusinessEmails\Responses\GetResponse;
@@ -130,6 +132,46 @@ class BusinessEmailOrderTest extends TestCase
             GetResponse::class,
             $businessEmailOrder->get(
                 new Order(123)
+            )
+        );
+    }
+
+    public function testResponseFromBusinessEmailOrderAddEmailAccount()
+    {
+        $mock = new MockHandler([
+            new Response(
+                200,
+                ['Content-Type' => 'application/json'],
+                json_encode([
+                    '78877737' => [
+                        'actionstatusdesc'        => 'Request will be processed in some time.',
+                        'status'                  => 'Success',
+                        'sellingamount'           => '-90.540',
+                        'eaqid'                   => '469770847',
+                        'description'             => 'test-domain-3.co.uk.onlyfordemo.com',
+                        'actionstatus'            => 'InvoicePaid',
+                        'actiontype'              => 'AddEmailAccount',
+                        'entityid'                => '80030154',
+                        'unutilisedsellingamount' => '-90.540',
+                        'invoiceid'               => '78877737',
+                        'sellingcurrencysymbol'   => 'GBP',
+                        'customerid'              => '17824872',
+                        'actiontypedesc'          => 'Addition of 1 email account for test-domain-3.co.uk.onlyfordemo.com',
+                    ],
+                ])
+            ),
+        ]);
+
+        $businessEmailOrder = new BusinessEmailOrder($this->api($mock));
+
+        $this->assertInstanceOf(
+            AddedEmailAccountResponse::class,
+            $businessEmailOrder->addEmailAccounts(
+                new AddEmailAccountRequest(
+                    new Order(123),
+                    $numberOfAccounts = 1,
+                    InvoiceOption::noInvoice()
+                )
             )
         );
     }

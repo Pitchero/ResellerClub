@@ -4,8 +4,11 @@ namespace ResellerClub\Orders\BusinessEmails;
 
 use ResellerClub\Api;
 use ResellerClub\Config;
+use ResellerClub\Orders\BusinessEmails\Requests\AddEmailAccountRequest;
 use ResellerClub\Orders\BusinessEmails\Requests\BusinessEmailOrderRequest;
 use ResellerClub\Orders\BusinessEmails\Requests\RenewRequest;
+use ResellerClub\Orders\BusinessEmails\Responses\AddedEmailAccountResponse;
+use ResellerClub\Orders\BusinessEmails\Responses\AddedEmailAccountResponseFactory;
 use ResellerClub\Orders\BusinessEmails\Responses\BusinessEmailOrderResponse;
 use ResellerClub\Orders\BusinessEmails\Responses\CreateResponse;
 use ResellerClub\Orders\BusinessEmails\Responses\GetResponse;
@@ -115,5 +118,31 @@ class BusinessEmailOrder
         ]);
 
         return RenewalResponse::fromApiResponse($response);
+    }
+
+    /**
+     * Add email accounts to an existing business email order.
+     *
+     * @see https://manage.resellerclub.com/kb/answer/2158
+     *
+     * @param AddEmailAccountRequest $request
+     *
+     * @return AddedEmailAccountResponse
+     */
+    public function addEmailAccounts(AddEmailAccountRequest $request): AddedEmailAccountResponse
+    {
+        $response = $this->api->post('eelite/us/add-email-account.json', [
+            'order-id'       => $request->orderId(),
+            'no-of-accounts' => $request->numberOfAccounts(),
+            'invoice-option' => (string) $request->invoiceOption(),
+        ]);
+
+        /*
+         * The response body for pay invoice and keep invoice contains an extra level, which annoyingly means we need
+         * remove this to have a standardised response.
+         */
+        return AddedEmailAccountResponse::fromApiResponse(
+            AddedEmailAccountResponseFactory::response($request->invoiceOption(), $response)
+        );
     }
 }
