@@ -118,6 +118,33 @@ try {
 }
 ```
 
+#### Add email account to a business email order
+[API Documentation](https://manage.resellerclub.com/kb/answer/2158)
+
+```php
+try {
+    $api = new ResellerClub\Api(
+         new ResellerClub\Config(123, 'api_key', true),
+         new GuzzleHttp\Client()
+    );
+
+    $request = new ResellerClub\Orders\BusinessEmails\Requests\AddEmailAccountRequest(
+        new ResellerClub\Orders\Order(
+           $orderId = 123
+        ),
+        $numberOfAccounts = 1,
+        ResellerClub\Orders\InvoiceOption::noInvoice()
+    );
+
+    $response = $api->businessEmailOrder()->addEmailAccounts($request);
+
+    // @todo - Handle the successful response within your codebase.
+
+} catch(ResellerClub\Exceptions\ApiException $e) {
+    // @todo - Handle the exception within your codebase.
+}
+```
+
 ### Email Accounts
 [API Documentation](https://manage.resellerclub.com/kb/answer/1034).
 
