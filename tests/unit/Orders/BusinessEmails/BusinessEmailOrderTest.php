@@ -156,8 +156,8 @@ class BusinessEmailOrderTest extends TestCase
                         'invoiceid'               => '78877737',
                         'sellingcurrencysymbol'   => 'GBP',
                         'customerid'              => '17824872',
-                        'actiontypedesc'          => 'Addition of 1 email account for test-domain-3.co.uk.onlyfordemo.com'
-                    ]
+                        'actiontypedesc'          => 'Addition of 1 email account for test-domain-3.co.uk.onlyfordemo.com',
+                    ],
                 ])
             ),
         ]);

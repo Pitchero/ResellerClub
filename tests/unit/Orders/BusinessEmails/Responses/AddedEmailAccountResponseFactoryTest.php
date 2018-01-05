@@ -24,7 +24,7 @@ class AddedEmailAccountResponseFactoryTest extends TestCase
             'invoiceid'               => '78877737',
             'sellingcurrencysymbol'   => 'GBP',
             'customerid'              => '17824872',
-            'actiontypedesc'          => 'Addition of 1 email account for test-domain-3.co.uk.onlyfordemo.com'
+            'actiontypedesc'          => 'Addition of 1 email account for test-domain-3.co.uk.onlyfordemo.com',
         ];
 
         $response = AddedEmailAccountResponseFactory::response(
@@ -57,7 +57,7 @@ class AddedEmailAccountResponseFactoryTest extends TestCase
             'invoiceid'               => '78877737',
             'sellingcurrencysymbol'   => 'GBP',
             'customerid'              => '17824872',
-            'actiontypedesc'          => 'Addition of 1 email account for test-domain-3.co.uk.onlyfordemo.com'
+            'actiontypedesc'          => 'Addition of 1 email account for test-domain-3.co.uk.onlyfordemo.com',
         ];
 
         $response = AddedEmailAccountResponseFactory::response(
@@ -81,7 +81,7 @@ class AddedEmailAccountResponseFactoryTest extends TestCase
             'customercost' => '90.54',
             'eaqid'        => '469769356',
             'customerid'   => '17824872',
-            'invoiceid'    => '78877478'
+            'invoiceid'    => '78877478',
         ];
 
         $response = AddedEmailAccountResponseFactory::response(
@@ -109,7 +109,7 @@ class AddedEmailAccountResponseFactoryTest extends TestCase
             'actiontypedesc'   => 'Addition of 1 email account for test-domain-3.co.uk.onlyfordemo.com',
             'status'           => 'Success',
             'eaqid'            => '470068363',
-            'actiontype'       => 'AddEmailAccount'
+            'actiontype'       => 'AddEmailAccount',
         ];
 
         $response = AddedEmailAccountResponseFactory::response(

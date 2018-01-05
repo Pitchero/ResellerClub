@@ -36,6 +36,7 @@ class AddedEmailAccountResponseFactory
     private function flattenGuzzleResponse(GuzzleResponse $response): GuzzleResponse
     {
         $decodedResponse = $this->decodeResponseBody($response);
+
         return new GuzzleResponse(
             200,
             ['Content-Type' => 'application/json'],
