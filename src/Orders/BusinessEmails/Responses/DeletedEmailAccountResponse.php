@@ -2,8 +2,6 @@
 
 namespace ResellerClub\Orders\BusinessEmails\Responses;
 
-use Money\Currency;
-use Money\Money;
 use ResellerClub\Orders\BusinessEmails\Responses\Concerns\HasAction;
 use ResellerClub\Response;
 
