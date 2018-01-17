@@ -21,6 +21,7 @@ class DeleteEmailAccountRequest
 
     /**
      * DeleteEmailAccountRequest constructor.
+     *
      * @param Order $order
      * @param int   $numberOfAccounts
      */
