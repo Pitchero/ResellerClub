@@ -192,7 +192,7 @@ class BusinessEmailOrderTest extends TestCase
                     'actiontypedesc'    => 'Deletion of 1 email accounts for test-domain-3.co.uk.onlyfordemo.com',
                     'status'            => 'Success',
                     'eaqid'             => '471836050',
-                    'actiontype'        => 'DeleteEmailAccount'
+                    'actiontype'        => 'DeleteEmailAccount',
                 ])
             ),
         ]);
