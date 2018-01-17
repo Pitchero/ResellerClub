@@ -6,11 +6,13 @@ use ResellerClub\Api;
 use ResellerClub\Config;
 use ResellerClub\Orders\BusinessEmails\Requests\AddEmailAccountRequest;
 use ResellerClub\Orders\BusinessEmails\Requests\BusinessEmailOrderRequest;
+use ResellerClub\Orders\BusinessEmails\Requests\DeleteEmailAccountRequest;
 use ResellerClub\Orders\BusinessEmails\Requests\RenewRequest;
 use ResellerClub\Orders\BusinessEmails\Responses\AddedEmailAccountResponse;
 use ResellerClub\Orders\BusinessEmails\Responses\AddedEmailAccountResponseFactory;
 use ResellerClub\Orders\BusinessEmails\Responses\BusinessEmailOrderResponse;
 use ResellerClub\Orders\BusinessEmails\Responses\CreateResponse;
+use ResellerClub\Orders\BusinessEmails\Responses\DeletedEmailAccountResponse;
 use ResellerClub\Orders\BusinessEmails\Responses\GetResponse;
 use ResellerClub\Orders\BusinessEmails\Responses\RenewalResponse;
 use ResellerClub\Orders\Order;
@@ -144,5 +146,24 @@ class BusinessEmailOrder
         return AddedEmailAccountResponse::fromApiResponse(
             AddedEmailAccountResponseFactory::response($request->invoiceOption(), $response)
         );
+    }
+
+    /**
+     * Delete email accounts from an existing business email order.
+     *
+     * @see https://manage.resellerclub.com/kb/answer/2159
+     *
+     * @param DeleteEmailAccountRequest $request
+     *
+     * @return DeletedEmailAccountResponse
+     */
+    public function deleteEmailAccounts(DeleteEmailAccountRequest $request): DeletedEmailAccountResponse
+    {
+        $response = $this->api->post('delete-email-account.json', [
+            'order-id'       => $request->orderId(),
+            'no-of-accounts' => $request->numberOfAccounts(),
+        ]);
+
+        return DeletedEmailAccountResponse::fromApiResponse($response);
     }
 }
