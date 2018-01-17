@@ -12,9 +12,11 @@ use ResellerClub\Config;
 use ResellerClub\Orders\BusinessEmails\BusinessEmailOrder;
 use ResellerClub\Orders\BusinessEmails\Requests\AddEmailAccountRequest;
 use ResellerClub\Orders\BusinessEmails\Requests\BusinessEmailOrderRequest;
+use ResellerClub\Orders\BusinessEmails\Requests\DeleteEmailAccountRequest;
 use ResellerClub\Orders\BusinessEmails\Responses\AddedEmailAccountResponse;
 use ResellerClub\Orders\BusinessEmails\Responses\BusinessEmailOrderResponse;
 use ResellerClub\Orders\BusinessEmails\Responses\CreateResponse;
+use ResellerClub\Orders\BusinessEmails\Responses\DeletedEmailAccountResponse;
 use ResellerClub\Orders\BusinessEmails\Responses\GetResponse;
 use ResellerClub\Orders\InvoiceOption;
 use ResellerClub\Orders\Order;
@@ -171,6 +173,38 @@ class BusinessEmailOrderTest extends TestCase
                     new Order(123),
                     $numberOfAccounts = 1,
                     InvoiceOption::noInvoice()
+                )
+            )
+        );
+    }
+
+    public function testResponseFromBusinessEmailOrderDeleteEmailAccount()
+    {
+        $mock = new MockHandler([
+            new Response(
+                200,
+                ['Content-Type' => 'application/json'],
+                json_encode([
+                    'entityid'          => '80239999',
+                    'description'       => 'test-domain-3.co.uk.onlyfordemo.com',
+                    'actionstatus'      => 'ExecutionStarted',
+                    'actionstatusdesc'  => 'Your email account deletion request will be processed shortly.',
+                    'actiontypedesc'    => 'Deletion of 1 email accounts for test-domain-3.co.uk.onlyfordemo.com',
+                    'status'            => 'Success',
+                    'eaqid'             => '471836050',
+                    'actiontype'        => 'DeleteEmailAccount',
+                ])
+            ),
+        ]);
+
+        $businessEmailOrder = new BusinessEmailOrder($this->api($mock));
+
+        $this->assertInstanceOf(
+            DeletedEmailAccountResponse::class,
+            $businessEmailOrder->deleteEmailAccounts(
+                new DeleteEmailAccountRequest(
+                    new Order(123),
+                    $numberOfAccounts = 1
                 )
             )
         );
