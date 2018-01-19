@@ -159,7 +159,7 @@ class BusinessEmailOrder
      */
     public function deleteEmailAccounts(DeleteEmailAccountRequest $request): DeletedEmailAccountResponse
     {
-        $response = $this->api->post('delete-email-account.json', [
+        $response = $this->api->post('eelite/us/delete-email-account.json', [
             'order-id'       => $request->orderId(),
             'no-of-accounts' => $request->numberOfAccounts(),
         ]);
