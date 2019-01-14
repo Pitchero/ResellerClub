@@ -1,10 +1,9 @@
 <?php
 
-namespace Tests\Unit\Orders;
+namespace Tests\Unit\Domains;
 
 use PHPUnit\Framework\TestCase;
 use ResellerClub\Orders\Domains\DomainOrderDetailType;
-use ResellerClub\Orders\InvoiceOption;
 
 class DomainOrderDetailTypeTest extends TestCase
 {
