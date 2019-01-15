@@ -5,7 +5,7 @@ namespace Tests\Unit\Orders;
 use PHPUnit\Framework\TestCase;
 use ResellerClub\Orders\LockedOrHoldStatus;
 
-class OrderStatusTest extends TestCase
+class LockedOrHoldStatusTest extends TestCase
 {
     public function testObjectToString()
     {
