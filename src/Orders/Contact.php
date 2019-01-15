@@ -21,7 +21,7 @@ class Contact
     /**
      * Contact constructor.
      *
-     * @param int $id
+     * @param int    $id
      * @param string $detail
      */
     public function __construct(int $id, string $detail)

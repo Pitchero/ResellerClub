@@ -19,7 +19,7 @@ class RegistrantContactVerification
     /**
      * RegistrantContactVerification constructor.
      *
-     * @param string $status
+     * @param string      $status
      * @param string|null $verificationProcessStartTime
      */
     public function __construct(string $status, string $verificationProcessStartTime = null)
@@ -45,8 +45,8 @@ class RegistrantContactVerification
      */
     public function verificationProcessStartTime()
     {
-        if (! $this->verificationProcessStartTime) {
-            return null;
+        if (!$this->verificationProcessStartTime) {
+            return;
         }
 
         return Carbon::createFromTimestamp($this->verificationProcessStartTime);

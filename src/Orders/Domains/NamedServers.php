@@ -40,7 +40,7 @@ class NamedServers
      * @param string $ns2
      * @param string $cns
      */
-    public function __construct(int $numberOfNamedServers = 0, string $ns1, string $ns2, string $cns)
+    public function __construct(int $numberOfNamedServers, string $ns1, string $ns2, string $cns)
     {
         $this->numberOfNamedServers = $numberOfNamedServers;
         $this->ns1 = $ns1;

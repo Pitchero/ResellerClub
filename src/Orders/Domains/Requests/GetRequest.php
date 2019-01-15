@@ -24,7 +24,7 @@ class GetRequest
     /**
      * Create a get request instance.
      *
-     * @param Order                   $order
+     * @param Order                 $order
      * @param DomainOrderDetailType $domainOrderDetailOption
      */
     public function __construct(Order $order, DomainOrderDetailType $domainOrderDetailOption)

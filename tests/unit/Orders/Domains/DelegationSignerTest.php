@@ -4,7 +4,6 @@ namespace Tests\Unit\Domains;
 
 use PHPUnit\Framework\TestCase;
 use ResellerClub\Orders\Domains\DelegationSigner;
-use ResellerClub\Orders\Domains\NamedServers;
 
 class DelegationSignerTest extends TestCase
 {

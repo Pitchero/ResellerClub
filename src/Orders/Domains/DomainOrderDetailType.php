@@ -9,57 +9,57 @@ class DomainOrderDetailType
      */
     private $detailOption;
 
-    public static function all(): DomainOrderDetailType
+    public static function all(): self
     {
         return new self('All');
     }
 
-    public static function orderDetails(): DomainOrderDetailType
+    public static function orderDetails(): self
     {
         return new self('OrderDetails');
     }
 
-    public static function contactIds(): DomainOrderDetailType
+    public static function contactIds(): self
     {
         return new self('ContactIds');
     }
 
-    public static function registrantContactDetails(): DomainOrderDetailType
+    public static function registrantContactDetails(): self
     {
         return new self('RegistrantContactDetails');
     }
 
-    public static function adminContactDetails(): DomainOrderDetailType
+    public static function adminContactDetails(): self
     {
         return new self('AdminContactDetails');
     }
 
-    public static function technicalContactDetails(): DomainOrderDetailType
+    public static function technicalContactDetails(): self
     {
         return new self('TechContactDetails');
     }
 
-    public static function billingContactDetails(): DomainOrderDetailType
+    public static function billingContactDetails(): self
     {
         return new self('BillingContactDetails');
     }
 
-    public static function namedServerDetails(): DomainOrderDetailType
+    public static function namedServerDetails(): self
     {
         return new self('NsDetails');
     }
 
-    public static function domainStatus(): DomainOrderDetailType
+    public static function domainStatus(): self
     {
         return new self('DomainStatus');
     }
 
-    public static function dnsSecurityDetails(): DomainOrderDetailType
+    public static function dnsSecurityDetails(): self
     {
         return new self('DNSSECDetails');
     }
 
-    public static function orderStatus(): DomainOrderDetailType
+    public static function orderStatus(): self
     {
         return new self('StatusDetails');
     }

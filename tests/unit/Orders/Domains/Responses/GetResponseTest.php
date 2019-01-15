@@ -198,7 +198,6 @@ class GetResponseTest extends TestCase
         $this->assertEquals('', $response->resellerParentId());
     }
 
-
     public function testIsPrivacyProtectionAllowed()
     {
         $response = new GetResponse(['privacyprotectedallowed' => true]);
@@ -336,9 +335,9 @@ class GetResponseTest extends TestCase
     {
         $response = new GetResponse([
             'noOfNameServers' => 2,
-            'ns1' => 'ns1.test.example.com',
-            'ns2' => 'ns2.test.example.com',
-            'cns' => 'ns3.test.example.com'
+            'ns1'             => 'ns1.test.example.com',
+            'ns2'             => 'ns2.test.example.com',
+            'cns'             => 'ns3.test.example.com',
         ]);
 
         $this->assertInstanceOf(NamedServers::class, $response->namedServers());
@@ -352,7 +351,7 @@ class GetResponseTest extends TestCase
     {
         $response = new GetResponse([
             'registrantcontactid' => '1234',
-            'registrantcontact' => 'test_1@testing.co.uk',
+            'registrantcontact'   => 'test_1@testing.co.uk',
         ]);
 
         $this->assertInstanceOf(Contact::class, $response->registrantContact());
@@ -364,7 +363,7 @@ class GetResponseTest extends TestCase
     {
         $response = new GetResponse([
             'admincontactid' => '456',
-            'admincontact' => 'test_2@testing.co.uk',
+            'admincontact'   => 'test_2@testing.co.uk',
         ]);
 
         $this->assertInstanceOf(Contact::class, $response->adminContact());
@@ -376,7 +375,7 @@ class GetResponseTest extends TestCase
     {
         $response = new GetResponse([
             'techcontactid' => '678',
-            'techcontact' => 'test_3@testing.co.uk',
+            'techcontact'   => 'test_3@testing.co.uk',
         ]);
 
         $this->assertInstanceOf(Contact::class, $response->technicalContact());
@@ -388,7 +387,7 @@ class GetResponseTest extends TestCase
     {
         $response = new GetResponse([
             'billingcontactid' => '890',
-            'billingcontact' => 'test_4@testing.co.uk',
+            'billingcontact'   => 'test_4@testing.co.uk',
         ]);
 
         $this->assertInstanceOf(Contact::class, $response->billingContact());
@@ -400,7 +399,7 @@ class GetResponseTest extends TestCase
     {
         $response = new GetResponse([
             'gdpr' => [
-                'enabled' => true,
+                'enabled'  => true,
                 'eligible' => false,
             ],
         ]);
@@ -413,7 +412,7 @@ class GetResponseTest extends TestCase
     public function testRegistrantContactVerification()
     {
         $response = new GetResponse([
-            'raaVerificationStatus' => 'Pending',
+            'raaVerificationStatus'    => 'Pending',
             'raaVerificationStartTime' => '1547563773',
         ]);
 
@@ -428,10 +427,10 @@ class GetResponseTest extends TestCase
     public function testPrivacyProtection()
     {
         $response = new GetResponse([
-            'privacyprotectendtime' => '1547565748',
+            'privacyprotectendtime'     => '1547565748',
             'privacy-registrantcontact' => 'registrant',
-            'privacy-admincontact' => 'admin',
-            'privacy-billingcontact' => 'billing',
+            'privacy-admincontact'      => 'admin',
+            'privacy-billingcontact'    => 'billing',
         ]);
 
         $this->assertInstanceOf(PrivacyProtection::class, $response->privacyProtection());
@@ -445,9 +444,9 @@ class GetResponseTest extends TestCase
     {
         $response = new GetResponse([
             'dnssec' => [
-                'keytag' => 'some-key-tag',
-                'algorithm' => 'RSA-SHA256',
-                'digest' => 'some-digest',
+                'keytag'     => 'some-key-tag',
+                'algorithm'  => 'RSA-SHA256',
+                'digest'     => 'some-digest',
                 'digesttype' => 'SHA-256',
             ],
         ]);

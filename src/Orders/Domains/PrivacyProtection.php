@@ -81,5 +81,4 @@ class PrivacyProtection
     {
         return $this->billingContact;
     }
-
 }

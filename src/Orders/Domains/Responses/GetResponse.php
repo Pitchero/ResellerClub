@@ -62,7 +62,7 @@ class GetResponse extends Response
     public function currentOrderStatus(): OrderStatus
     {
         return new OrderStatus(
-            (string)$this->currentstatus
+            (string) $this->currentstatus
         );
     }
 
