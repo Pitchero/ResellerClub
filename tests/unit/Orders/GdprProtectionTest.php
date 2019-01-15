@@ -29,7 +29,7 @@ class GdprProtectionTest extends TestCase
                 $eligibility = true
             ))->enabled()
         );
-        
+
         $this->assertFalse(
             (new GdprProtection(
                 $enabled = false,
