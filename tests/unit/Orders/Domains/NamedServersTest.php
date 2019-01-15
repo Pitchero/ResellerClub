@@ -20,7 +20,7 @@ class NamedServersTest extends TestCase
             $ns1 = 'ns1.test.example.com',
             $ns2 = 'ns2.testing.example.com',
             $cns = 'ns3.child-named-server.example.com'
-        );;
+        );
     }
 
     public function testNumberOfNamedServers()
