@@ -3,6 +3,7 @@
 namespace ResellerClub\Orders\Domains;
 
 use ResellerClub\Api;
+use ResellerClub\Orders\Domains\Requests\GetByDomainRequest;
 use ResellerClub\Orders\Domains\Requests\GetRequest;
 use ResellerClub\Orders\Domains\Responses\GetResponse;
 
@@ -38,6 +39,28 @@ class DomainOrder
             'domains/details.json',
             [
                 'order-id' => $request->orderId(),
+                'options' => $request->orderDetailType(),
+            ]
+        );
+
+        return GetResponse::fromApiResponse($response);
+    }
+
+    /**
+     * Makes a GET request to ResellerClub's 'details-by-name' domain API.
+     *
+     * @see https://manage.resellerclub.com/kb/node/1755
+     *
+     * @param GetByDomainRequest $request
+     *
+     * @return GetResponse
+     */
+    public function getByDomain(GetByDomainRequest $request): GetResponse
+    {
+        $response = $this->api->get(
+            'domains/details-by-name.json',
+            [
+                'domain-name' => $request->domain(),
                 'options' => $request->orderDetailType(),
             ]
         );

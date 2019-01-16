@@ -11,6 +11,7 @@ use ResellerClub\Api;
 use ResellerClub\Config;
 use ResellerClub\Orders\Domains\DomainOrder;
 use ResellerClub\Orders\Domains\DomainOrderDetailType;
+use ResellerClub\Orders\Domains\Requests\GetByDomainRequest;
 use ResellerClub\Orders\Domains\Requests\GetRequest;
 use ResellerClub\Orders\Domains\Responses\GetResponse;
 use ResellerClub\Orders\Order;
@@ -19,6 +20,7 @@ class DomainOrderTest extends TestCase
 {
     public function testResponseFromDomainOrderGet()
     {
+        // @todo: Mock the API response, when the sandbox account is unsuspended.
         $mock = new MockHandler([
             new Response(
                 200,
@@ -35,6 +37,31 @@ class DomainOrderTest extends TestCase
             $domainOrder->get(
                 new GetRequest(
                     new Order(123),
+                    DomainOrderDetailType::all()
+                )
+            )
+        );
+    }
+
+    public function testResponseFromDomainOrderGetByDomain()
+    {
+        // @todo: Mock the API response, when the sandbox account is unsuspended.
+        $mock = new MockHandler([
+            new Response(
+                200,
+                ['Content-Type' => 'application/json'],
+                json_encode([
+                ])
+            ),
+        ]);
+
+        $domainOrder = new DomainOrder($this->api($mock));
+
+        $this->assertInstanceOf(
+            GetResponse::class,
+            $domainOrder->getByDomain(
+                new GetByDomainRequest(
+                    $domain = 'some-domain.co.uk',
                     DomainOrderDetailType::all()
                 )
             )
