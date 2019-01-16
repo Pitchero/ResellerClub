@@ -20,6 +20,7 @@ class GetResponse extends Response
      * Get the order ID parameter.
      *
      * @see https://manage.resellerclub.com/kb/node/770
+     * @see https://manage.resellerclub.com/kb/node/1755
      *
      * @return int
      */
@@ -32,6 +33,7 @@ class GetResponse extends Response
      * Get the description of the order.
      *
      * @see https://manage.resellerclub.com/kb/node/770
+     * @see https://manage.resellerclub.com/kb/node/1755
      *
      * @return string
      */
@@ -44,6 +46,7 @@ class GetResponse extends Response
      * Get the domain name associated to this order.
      *
      * @see https://manage.resellerclub.com/kb/node/770
+     * @see https://manage.resellerclub.com/kb/node/1755
      *
      * @return string
      */
@@ -56,6 +59,7 @@ class GetResponse extends Response
      * Gets the order's current status.
      *
      * @see https://manage.resellerclub.com/kb/node/770
+     * @see https://manage.resellerclub.com/kb/node/1755
      *
      * @return OrderStatus
      */
@@ -70,6 +74,7 @@ class GetResponse extends Response
      * Gets the order registry status.
      *
      * @see https://manage.resellerclub.com/kb/node/770
+     * @see https://manage.resellerclub.com/kb/node/1755
      *
      * @return RegistryStatus
      */
@@ -84,6 +89,7 @@ class GetResponse extends Response
      * Gets whether the order is locked or on hold.
      *
      * @see https://manage.resellerclub.com/kb/node/770
+     * @see https://manage.resellerclub.com/kb/node/1755
      *
      * @return LockedOrHoldStatus
      */
@@ -98,6 +104,7 @@ class GetResponse extends Response
      * Gets the product category.
      *
      * @see https://manage.resellerclub.com/kb/node/770
+     * @see https://manage.resellerclub.com/kb/node/1755
      *
      * @return string
      */
@@ -110,6 +117,7 @@ class GetResponse extends Response
      * Gets the product id.
      *
      * @see https://manage.resellerclub.com/kb/node/770
+     * @see https://manage.resellerclub.com/kb/node/1755
      *
      * @return string
      */
@@ -122,6 +130,7 @@ class GetResponse extends Response
      * Date the order was created with the registry.
      *
      * @see https://manage.resellerclub.com/kb/node/770
+     * @see https://manage.resellerclub.com/kb/node/1755
      *
      * @return Carbon
      */
@@ -134,6 +143,7 @@ class GetResponse extends Response
      * Date the order will expire with the registry.
      *
      * @see https://manage.resellerclub.com/kb/node/770
+     * @see https://manage.resellerclub.com/kb/node/1755
      *
      * @return Carbon
      */
@@ -146,6 +156,7 @@ class GetResponse extends Response
      * Get the customer ID associated with the domain order.
      *
      * @see https://manage.resellerclub.com/kb/node/770
+     * @see https://manage.resellerclub.com/kb/node/1755
      *
      * @return int
      */
@@ -158,6 +169,7 @@ class GetResponse extends Response
      * Gets if the order is an immediate Reseller account.
      *
      * @see https://manage.resellerclub.com/kb/node/770
+     * @see https://manage.resellerclub.com/kb/node/1755
      *
      * @return bool
      */
@@ -170,6 +182,7 @@ class GetResponse extends Response
      * Gets the Reseller's parent ID.
      *
      * @see https://manage.resellerclub.com/kb/node/770
+     * @see https://manage.resellerclub.com/kb/node/1755
      *
      * @return string
      */
@@ -182,6 +195,7 @@ class GetResponse extends Response
      * Is privacy protection allowed for this domain order?
      *
      * @see https://manage.resellerclub.com/kb/node/770
+     * @see https://manage.resellerclub.com/kb/node/1755
      *
      * @return bool
      */
@@ -194,6 +208,7 @@ class GetResponse extends Response
      * Does the domain order have privacy protection enabled?
      *
      * @see https://manage.resellerclub.com/kb/node/770
+     * @see https://manage.resellerclub.com/kb/node/1755
      *
      * @return bool
      */
@@ -206,6 +221,7 @@ class GetResponse extends Response
      * Can the domain order be deleted?
      *
      * @see https://manage.resellerclub.com/kb/node/770
+     * @see https://manage.resellerclub.com/kb/node/1755
      *
      * @return bool
      */
@@ -218,6 +234,7 @@ class GetResponse extends Response
      * Is the order suspended when it expires?
      *
      * @see https://manage.resellerclub.com/kb/node/770
+     * @see https://manage.resellerclub.com/kb/node/1755
      *
      * @return bool
      */
@@ -230,6 +247,7 @@ class GetResponse extends Response
      * Has the order been suspended by the reseller parent?
      *
      * @see https://manage.resellerclub.com/kb/node/770
+     * @see https://manage.resellerclub.com/kb/node/1755
      *
      * @return bool
      */
@@ -242,6 +260,7 @@ class GetResponse extends Response
      * Get the domain secret.
      *
      * @see https://manage.resellerclub.com/kb/node/770
+     * @see https://manage.resellerclub.com/kb/node/1755
      *
      * @return string
      */
@@ -254,6 +273,7 @@ class GetResponse extends Response
      * Get the named servers information.
      *
      * @see https://manage.resellerclub.com/kb/node/770
+     * @see https://manage.resellerclub.com/kb/node/1755
      *
      * @return NamedServers
      */
@@ -271,6 +291,7 @@ class GetResponse extends Response
      * Gets the registrant contact information.
      *
      * @see https://manage.resellerclub.com/kb/node/770
+     * @see https://manage.resellerclub.com/kb/node/1755
      *
      * @return Contact
      */
@@ -286,6 +307,7 @@ class GetResponse extends Response
      * Gets the admin contact information.
      *
      * @see https://manage.resellerclub.com/kb/node/770
+     * @see https://manage.resellerclub.com/kb/node/1755
      *
      * @return Contact
      */
@@ -301,6 +323,7 @@ class GetResponse extends Response
      * Gets the technical contact information.
      *
      * @see https://manage.resellerclub.com/kb/node/770
+     * @see https://manage.resellerclub.com/kb/node/1755
      *
      * @return Contact
      */
@@ -316,6 +339,7 @@ class GetResponse extends Response
      * Gets the billing contact information.
      *
      * @see https://manage.resellerclub.com/kb/node/770
+     * @see https://manage.resellerclub.com/kb/node/1755
      *
      * @return Contact
      */
@@ -331,6 +355,7 @@ class GetResponse extends Response
      * Gets the GDPR protection information.
      *
      * @see https://manage.resellerclub.com/kb/node/770
+     * @see https://manage.resellerclub.com/kb/node/1755
      *
      * @return GDPRProtection
      */
@@ -346,6 +371,7 @@ class GetResponse extends Response
      * Gets the registrant contact verification.
      *
      * @see https://manage.resellerclub.com/kb/node/770
+     * @see https://manage.resellerclub.com/kb/node/1755
      *
      * @return RegistrantContactVerification
      */
@@ -361,6 +387,7 @@ class GetResponse extends Response
      * Gets the privacy protection information.
      *
      * @see https://manage.resellerclub.com/kb/node/770
+     * @see https://manage.resellerclub.com/kb/node/1755
      *
      * @return PrivacyProtection
      */
@@ -378,6 +405,7 @@ class GetResponse extends Response
      * Gets the delegation signer record details.
      *
      * @see https://manage.resellerclub.com/kb/node/770
+     * @see https://manage.resellerclub.com/kb/node/1755
      *
      * @return DelegationSigner
      */
