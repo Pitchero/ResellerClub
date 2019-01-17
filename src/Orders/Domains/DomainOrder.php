@@ -39,7 +39,7 @@ class DomainOrder
             'domains/details.json',
             [
                 'order-id' => $request->orderId(),
-                'options' => $request->orderDetailType(),
+                'options'  => $request->orderDetailType(),
             ]
         );
 
@@ -61,7 +61,7 @@ class DomainOrder
             'domains/details-by-name.json',
             [
                 'domain-name' => $request->domain(),
-                'options' => $request->orderDetailType(),
+                'options'     => $request->orderDetailType(),
             ]
         );
 

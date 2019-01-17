@@ -46,6 +46,7 @@ class Address
 
     /**
      * Address constructor.
+     *
      * @param string $company
      * @param string $addressLine1
      * @param string $addressLine2
@@ -65,14 +66,14 @@ class Address
         string $country,
         string $postCode
     ) {
-        $this->company      = $company;
+        $this->company = $company;
         $this->addressLine1 = $addressLine1;
         $this->addressLine2 = $addressLine2;
         $this->addressLine3 = $addressLine3;
-        $this->city         = $city;
-        $this->county       = $county;
-        $this->country      = $country;
-        $this->postCode     = $postCode;
+        $this->city = $city;
+        $this->county = $county;
+        $this->country = $country;
+        $this->postCode = $postCode;
     }
 
     /**

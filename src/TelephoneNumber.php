@@ -12,7 +12,7 @@ class TelephoneNumber
     private $number;
 
     /**
-     * @var $diallingCode
+     * @var
      */
     private $diallingCode;
 
@@ -28,7 +28,6 @@ class TelephoneNumber
     {
         $this->diallingCode = $diallingCode;
         $this->number = $number;
-
     }
 
     public function diallingCode(): string

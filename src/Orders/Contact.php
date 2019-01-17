@@ -48,13 +48,13 @@ class Contact
     /**
      * Contact constructor.
      *
-     * @param int $id
-     * @param int $customerId
-     * @param string $parentId
-     * @param string $name
-     * @param EmailAddress $email
+     * @param int             $id
+     * @param int             $customerId
+     * @param string          $parentId
+     * @param string          $name
+     * @param EmailAddress    $email
      * @param TelephoneNumber $telephoneNumber
-     * @param Address $address
+     * @param Address         $address
      */
     public function __construct(
         int $id,
