@@ -22,6 +22,7 @@ class AddressTest extends TestCase
             $addressLine3 = 'AddrESs LiNe 3',
             $city = 'lEEds',
             $county = 'West yorkSHire',
+            $country = 'GB',
             $postCode = 'LS1 1aB'
         );
     }
@@ -60,6 +61,12 @@ class AddressTest extends TestCase
     {
         $this->assertInternalType('string', $this->address->county());
         $this->assertEquals('West Yorkshire', $this->address->county());
+    }
+
+    public function testCountry()
+    {
+        $this->assertInternalType('string', $this->address->country());
+        $this->assertEquals('Gb', $this->address->country());
     }
 
     public function testPostCode()

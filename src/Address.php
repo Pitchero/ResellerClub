@@ -2,8 +2,6 @@
 
 namespace ResellerClub;
 
-use InvalidArgumentException;
-
 class Address
 {
     /**
@@ -39,6 +37,11 @@ class Address
     /**
      * @var string
      */
+    private $country;
+
+    /**
+     * @var string
+     */
     private $postCode;
 
     /**
@@ -49,6 +52,7 @@ class Address
      * @param string $addressLine3
      * @param string $city
      * @param string $county
+     * @param string $country
      * @param string $postCode
      */
     public function __construct(
@@ -58,6 +62,7 @@ class Address
         string $addressLine3,
         string $city,
         string $county,
+        string $country,
         string $postCode
     ) {
         $this->company      = $company;
@@ -66,6 +71,7 @@ class Address
         $this->addressLine3 = $addressLine3;
         $this->city         = $city;
         $this->county       = $county;
+        $this->country      = $country;
         $this->postCode     = $postCode;
     }
 
@@ -127,6 +133,16 @@ class Address
     public function county(): string
     {
         return $this->format($this->county);
+    }
+
+    /**
+     * Gets the country.
+     *
+     * @return string
+     */
+    public function country(): string
+    {
+        return $this->format($this->country);
     }
 
     /**
