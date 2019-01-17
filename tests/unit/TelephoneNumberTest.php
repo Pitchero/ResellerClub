@@ -2,9 +2,7 @@
 
 namespace Tests\Unit;
 
-use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use ResellerClub\EmailAddress;
 use ResellerClub\TelephoneNumber;
 
 class TelephoneNumberTest extends TestCase
@@ -18,7 +16,6 @@ class TelephoneNumberTest extends TestCase
 
         $this->assertInternalType('string', $telephoneNumber->diallingCode());
         $this->assertEquals('44', $telephoneNumber->diallingCode());
-
 
         $telephoneNumber = new TelephoneNumber(
             $diallingCode = '44',
@@ -38,7 +35,6 @@ class TelephoneNumberTest extends TestCase
 
         $this->assertInternalType('string', $telephoneNumber->number());
         $this->assertEquals('01130000000', $telephoneNumber->number());
-
 
         $telephoneNumber = new TelephoneNumber(
             $diallingCode = '00',

@@ -23,7 +23,7 @@ class GetResponse extends Response
      * Ignored the following API response values, as they don't look like they're suppose to be returned;
      * productkey
      * classname
-     * addons
+     * addons.
      */
 
     /**
@@ -120,12 +120,12 @@ class GetResponse extends Response
     public function lockedOrHoldStatus(): LockedOrHoldStatus
     {
         // If the value is not set then force it to be an empty array, to match the api response.
-        if (! $this->domainstatus) {
+        if (!$this->domainstatus) {
             $this->domainstatus = [];
         }
 
         // Force the property to be an array to match the api response.
-        if (! is_array($this->domainstatus)) {
+        if (!is_array($this->domainstatus)) {
             $this->domainstatus = [$this->domainstatus];
         }
 

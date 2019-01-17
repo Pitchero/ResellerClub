@@ -6,8 +6,6 @@ use PHPUnit\Framework\TestCase;
 use ResellerClub\Orders\BusinessEmails\Requests\RenewRequest;
 use ResellerClub\Orders\Domains\DomainOrderDetailType;
 use ResellerClub\Orders\Domains\Requests\GetByDomainRequest;
-use ResellerClub\Orders\Domains\Requests\GetRequest;
-use ResellerClub\Orders\Order;
 
 class GetbyDomainRequestTest extends TestCase
 {

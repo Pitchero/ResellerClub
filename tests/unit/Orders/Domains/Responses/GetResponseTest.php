@@ -364,27 +364,27 @@ class GetResponseTest extends TestCase
     {
         $response = new GetResponse([
             'registrantcontact'  => [
-                'company' => 'Test Company',
-                'parentkey' => '999999999_999999998_000000',
-                'state' => 'West Yorkshire',
-                'telnocc' => '44',
-                'emailaddr' => 'testy.mctest@example.com',
-                'address3' => 'Address line 3',
-                'address2' => 'Address line 2',
+                'company'       => 'Test Company',
+                'parentkey'     => '999999999_999999998_000000',
+                'state'         => 'West Yorkshire',
+                'telnocc'       => '44',
+                'emailaddr'     => 'testy.mctest@example.com',
+                'address3'      => 'Address line 3',
+                'address2'      => 'Address line 2',
                 'contactstatus' => 'Active',
-                'address1' => 'Address line 1',
-                'contactid' => '56789',
-                'type' => 'Contact',
-                'city' => 'Leeds',
-                'country' => 'GB',
-                'zip' => 'EX3 5MP',
-                'customerid' => '12345',
-                'contacttype' =>[
-                    'dotin'
+                'address1'      => 'Address line 1',
+                'contactid'     => '56789',
+                'type'          => 'Contact',
+                'city'          => 'Leeds',
+                'country'       => 'GB',
+                'zip'           => 'EX3 5MP',
+                'customerid'    => '12345',
+                'contacttype'   => [
+                    'dotin',
                 ],
-                'name' => 'Testy McTest',
-                'telno' =>'1130000000'
-            ]
+                'name'  => 'Testy McTest',
+                'telno' => '1130000000',
+            ],
         ]);
 
         $this->assertInstanceOf(Contact::class, $response->registrantContact());
@@ -409,27 +409,27 @@ class GetResponseTest extends TestCase
     {
         $response = new GetResponse([
             'admincontact'  => [
-                'company' => 'Test Company',
-                'parentkey' => '999999999_999999998_000000',
-                'state' => 'West Yorkshire',
-                'telnocc' => '44',
-                'emailaddr' => 'testy.mctest@example.com',
-                'address3' => 'Address line 3',
-                'address2' => 'Address line 2',
+                'company'       => 'Test Company',
+                'parentkey'     => '999999999_999999998_000000',
+                'state'         => 'West Yorkshire',
+                'telnocc'       => '44',
+                'emailaddr'     => 'testy.mctest@example.com',
+                'address3'      => 'Address line 3',
+                'address2'      => 'Address line 2',
                 'contactstatus' => 'Active',
-                'address1' => 'Address line 1',
-                'contactid' => '56789',
-                'type' => 'Contact',
-                'city' => 'Leeds',
-                'country' => 'GB',
-                'zip' => 'EX3 5MP',
-                'customerid' => '12345',
-                'contacttype' =>[
-                    'dotin'
+                'address1'      => 'Address line 1',
+                'contactid'     => '56789',
+                'type'          => 'Contact',
+                'city'          => 'Leeds',
+                'country'       => 'GB',
+                'zip'           => 'EX3 5MP',
+                'customerid'    => '12345',
+                'contacttype'   => [
+                    'dotin',
                 ],
-                'name' => 'Testy McTest',
-                'telno' =>'1130000000'
-            ]
+                'name'  => 'Testy McTest',
+                'telno' => '1130000000',
+            ],
         ]);
 
         $this->assertInstanceOf(Contact::class, $response->adminContact());
@@ -454,27 +454,27 @@ class GetResponseTest extends TestCase
     {
         $response = new GetResponse([
             'techcontact'  => [
-                'company' => 'Test Company',
-                'parentkey' => '999999999_999999998_000000',
-                'state' => 'West Yorkshire',
-                'telnocc' => '44',
-                'emailaddr' => 'testy.mctest@example.com',
-                'address3' => 'Address line 3',
-                'address2' => 'Address line 2',
+                'company'       => 'Test Company',
+                'parentkey'     => '999999999_999999998_000000',
+                'state'         => 'West Yorkshire',
+                'telnocc'       => '44',
+                'emailaddr'     => 'testy.mctest@example.com',
+                'address3'      => 'Address line 3',
+                'address2'      => 'Address line 2',
                 'contactstatus' => 'Active',
-                'address1' => 'Address line 1',
-                'contactid' => '56789',
-                'type' => 'Contact',
-                'city' => 'Leeds',
-                'country' => 'GB',
-                'zip' => 'EX3 5MP',
-                'customerid' => '12345',
-                'contacttype' =>[
-                    'dotin'
+                'address1'      => 'Address line 1',
+                'contactid'     => '56789',
+                'type'          => 'Contact',
+                'city'          => 'Leeds',
+                'country'       => 'GB',
+                'zip'           => 'EX3 5MP',
+                'customerid'    => '12345',
+                'contacttype'   => [
+                    'dotin',
                 ],
-                'name' => 'Testy McTest',
-                'telno' =>'1130000000'
-            ]
+                'name'  => 'Testy McTest',
+                'telno' => '1130000000',
+            ],
         ]);
 
         $this->assertInstanceOf(Contact::class, $response->technicalContact());
@@ -499,27 +499,27 @@ class GetResponseTest extends TestCase
     {
         $response = new GetResponse([
             'billingcontact'  => [
-                'company' => 'Test Company',
-                'parentkey' => '999999999_999999998_000000',
-                'state' => 'West Yorkshire',
-                'telnocc' => '44',
-                'emailaddr' => 'testy.mctest@example.com',
-                'address3' => 'Address line 3',
-                'address2' => 'Address line 2',
+                'company'       => 'Test Company',
+                'parentkey'     => '999999999_999999998_000000',
+                'state'         => 'West Yorkshire',
+                'telnocc'       => '44',
+                'emailaddr'     => 'testy.mctest@example.com',
+                'address3'      => 'Address line 3',
+                'address2'      => 'Address line 2',
                 'contactstatus' => 'Active',
-                'address1' => 'Address line 1',
-                'contactid' => '56789',
-                'type' => 'Contact',
-                'city' => 'Leeds',
-                'country' => 'GB',
-                'zip' => 'EX3 5MP',
-                'customerid' => '12345',
-                'contacttype' =>[
-                    'dotin'
+                'address1'      => 'Address line 1',
+                'contactid'     => '56789',
+                'type'          => 'Contact',
+                'city'          => 'Leeds',
+                'country'       => 'GB',
+                'zip'           => 'EX3 5MP',
+                'customerid'    => '12345',
+                'contacttype'   => [
+                    'dotin',
                 ],
-                'name' => 'Testy McTest',
-                'telno' =>'1130000000'
-            ]
+                'name'  => 'Testy McTest',
+                'telno' => '1130000000',
+            ],
         ]);
 
         $this->assertInstanceOf(Contact::class, $response->billingContact());
@@ -606,14 +606,14 @@ class GetResponseTest extends TestCase
     public function testRecurring()
     {
         $response = new GetResponse([
-            'recurring' => true
+            'recurring' => true,
         ]);
 
         $this->assertInternalType('bool', $response->recurring());
         $this->assertTrue($response->recurring());
 
         $response = new GetResponse([
-            'recurring' => false
+            'recurring' => false,
         ]);
         $this->assertFalse($response->recurring());
 
