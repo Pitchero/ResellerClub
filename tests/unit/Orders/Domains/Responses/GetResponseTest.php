@@ -17,6 +17,14 @@ use ResellerClub\Orders\OrderStatus;
 
 class GetResponseTest extends TestCase
 {
+    public function testEntityId()
+    {
+        $response = new GetResponse(['entityid' => 123]);
+
+        $this->assertInternalType('int', $response->entityId());
+        $this->assertEquals(123, $response->entityId());
+    }
+
     public function testOrderId()
     {
         $response = new GetResponse(['orderid' => 123]);
@@ -91,15 +99,18 @@ class GetResponseTest extends TestCase
 
     public function testLockedOrHoldStatus()
     {
+        $response = new GetResponse(['domainstatus' => ['sixtydaylock']]);
+        $this->assertInstanceOf(LockedOrHoldStatus::class, $response->lockedOrHoldStatus());
+
         $response = new GetResponse(['domainstatus' => 'sixtydaylock']);
         $this->assertInstanceOf(LockedOrHoldStatus::class, $response->lockedOrHoldStatus());
     }
 
     public function testProductCategory()
     {
-        $response = new GetResponse(['productcategory' => 'domain name']);
+        $response = new GetResponse(['productcategory' => 'domorder']);
         $this->assertInternalType('string', $response->productCategory());
-        $this->assertEquals('domain name', $response->productCategory());
+        $this->assertEquals('domorder', $response->productCategory());
 
         $response = new GetResponse(['productcategory' => null]);
         $this->assertInternalType('string', $response->productCategory());
@@ -112,9 +123,9 @@ class GetResponseTest extends TestCase
 
     public function testProductId()
     {
-        $response = new GetResponse(['productkey' => 'domains-1234']);
+        $response = new GetResponse(['productkey' => 'dominfo']);
         $this->assertInternalType('string', $response->productId());
-        $this->assertEquals('domains-1234', $response->productId());
+        $this->assertEquals('dominfo', $response->productId());
 
         $response = new GetResponse(['productcategory' => null]);
         $this->assertInternalType('string', $response->productId());
@@ -182,10 +193,10 @@ class GetResponseTest extends TestCase
 
     public function testResellerParentId()
     {
-        $response = new GetResponse(['parentkey' => '123']);
+        $response = new GetResponse(['parentkey' => '999999999_999999998_000000']);
 
         $this->assertInternalType('string', $response->resellerParentId());
-        $this->assertEquals('123', $response->resellerParentId());
+        $this->assertEquals('999999999_999999998_000000', $response->resellerParentId());
 
         $response = new GetResponse(['parentkey' => null]);
 
@@ -337,7 +348,9 @@ class GetResponseTest extends TestCase
             'noOfNameServers' => 2,
             'ns1'             => 'ns1.test.example.com',
             'ns2'             => 'ns2.test.example.com',
-            'cns'             => 'ns3.test.example.com',
+            'cns'             => [
+                'ns3.test.example.com',
+            ],
         ]);
 
         $this->assertInstanceOf(NamedServers::class, $response->namedServers());
@@ -350,49 +363,181 @@ class GetResponseTest extends TestCase
     public function testRegistrantContact()
     {
         $response = new GetResponse([
-            'registrantcontactid' => '1234',
-            'registrantcontact'   => 'test_1@testing.co.uk',
+            'registrantcontact'  => [
+                'company' => 'Test Company',
+                'parentkey' => '999999999_999999998_000000',
+                'state' => 'West Yorkshire',
+                'telnocc' => '44',
+                'emailaddr' => 'testy.mctest@example.com',
+                'address3' => 'Address line 3',
+                'address2' => 'Address line 2',
+                'contactstatus' => 'Active',
+                'address1' => 'Address line 1',
+                'contactid' => '56789',
+                'type' => 'Contact',
+                'city' => 'Leeds',
+                'country' => 'GB',
+                'zip' => 'EX3 5MP',
+                'customerid' => '12345',
+                'contacttype' =>[
+                    'dotin'
+                ],
+                'name' => 'Testy McTest',
+                'telno' =>'1130000000'
+            ]
         ]);
 
         $this->assertInstanceOf(Contact::class, $response->registrantContact());
-        $this->assertEquals(1234, $response->registrantContact()->id());
-        $this->assertEquals('test_1@testing.co.uk', $response->registrantContact()->detail());
+        $this->assertEquals(56789, $response->registrantContact()->id());
+        $this->assertEquals(12345, $response->registrantContact()->customerId());
+        $this->assertEquals('999999999_999999998_000000', $response->registrantContact()->parentId());
+        $this->assertEquals('Testy McTest', $response->registrantContact()->name());
+        $this->assertEquals('testy.mctest@example.com', (string) $response->registrantContact()->email());
+        $this->assertEquals('44', $response->registrantContact()->telephoneNumber()->diallingCode());
+        $this->assertEquals('1130000000', $response->registrantContact()->telephoneNumber()->number());
+        $this->assertEquals('Test Company', $response->registrantContact()->address()->company());
+        $this->assertEquals('Address Line 1', $response->registrantContact()->address()->addressLine1());
+        $this->assertEquals('Address Line 2', $response->registrantContact()->address()->addressLine2());
+        $this->assertEquals('Address Line 3', $response->registrantContact()->address()->addressLine3());
+        $this->assertEquals('Leeds', $response->registrantContact()->address()->city());
+        $this->assertEquals('West Yorkshire', $response->registrantContact()->address()->county());
+        $this->assertEquals('Gb', $response->registrantContact()->address()->country());
+        $this->assertEquals('EX3 5MP', $response->registrantContact()->address()->postCode());
     }
 
     public function testAdminContact()
     {
         $response = new GetResponse([
-            'admincontactid' => '456',
-            'admincontact'   => 'test_2@testing.co.uk',
+            'admincontact'  => [
+                'company' => 'Test Company',
+                'parentkey' => '999999999_999999998_000000',
+                'state' => 'West Yorkshire',
+                'telnocc' => '44',
+                'emailaddr' => 'testy.mctest@example.com',
+                'address3' => 'Address line 3',
+                'address2' => 'Address line 2',
+                'contactstatus' => 'Active',
+                'address1' => 'Address line 1',
+                'contactid' => '56789',
+                'type' => 'Contact',
+                'city' => 'Leeds',
+                'country' => 'GB',
+                'zip' => 'EX3 5MP',
+                'customerid' => '12345',
+                'contacttype' =>[
+                    'dotin'
+                ],
+                'name' => 'Testy McTest',
+                'telno' =>'1130000000'
+            ]
         ]);
 
         $this->assertInstanceOf(Contact::class, $response->adminContact());
-        $this->assertEquals(456, $response->adminContact()->id());
-        $this->assertEquals('test_2@testing.co.uk', $response->adminContact()->detail());
+        $this->assertEquals(56789, $response->adminContact()->id());
+        $this->assertEquals(12345, $response->adminContact()->customerId());
+        $this->assertEquals('999999999_999999998_000000', $response->adminContact()->parentId());
+        $this->assertEquals('Testy McTest', $response->adminContact()->name());
+        $this->assertEquals('testy.mctest@example.com', (string) $response->adminContact()->email());
+        $this->assertEquals('44', $response->adminContact()->telephoneNumber()->diallingCode());
+        $this->assertEquals('1130000000', $response->adminContact()->telephoneNumber()->number());
+        $this->assertEquals('Test Company', $response->adminContact()->address()->company());
+        $this->assertEquals('Address Line 1', $response->adminContact()->address()->addressLine1());
+        $this->assertEquals('Address Line 2', $response->adminContact()->address()->addressLine2());
+        $this->assertEquals('Address Line 3', $response->adminContact()->address()->addressLine3());
+        $this->assertEquals('Leeds', $response->adminContact()->address()->city());
+        $this->assertEquals('West Yorkshire', $response->adminContact()->address()->county());
+        $this->assertEquals('Gb', $response->adminContact()->address()->country());
+        $this->assertEquals('EX3 5MP', $response->adminContact()->address()->postCode());
     }
 
     public function testTechnicalContact()
     {
         $response = new GetResponse([
-            'techcontactid' => '678',
-            'techcontact'   => 'test_3@testing.co.uk',
+            'techcontact'  => [
+                'company' => 'Test Company',
+                'parentkey' => '999999999_999999998_000000',
+                'state' => 'West Yorkshire',
+                'telnocc' => '44',
+                'emailaddr' => 'testy.mctest@example.com',
+                'address3' => 'Address line 3',
+                'address2' => 'Address line 2',
+                'contactstatus' => 'Active',
+                'address1' => 'Address line 1',
+                'contactid' => '56789',
+                'type' => 'Contact',
+                'city' => 'Leeds',
+                'country' => 'GB',
+                'zip' => 'EX3 5MP',
+                'customerid' => '12345',
+                'contacttype' =>[
+                    'dotin'
+                ],
+                'name' => 'Testy McTest',
+                'telno' =>'1130000000'
+            ]
         ]);
 
         $this->assertInstanceOf(Contact::class, $response->technicalContact());
-        $this->assertEquals(678, $response->technicalContact()->id());
-        $this->assertEquals('test_3@testing.co.uk', $response->technicalContact()->detail());
+        $this->assertEquals(56789, $response->technicalContact()->id());
+        $this->assertEquals(12345, $response->technicalContact()->customerId());
+        $this->assertEquals('999999999_999999998_000000', $response->technicalContact()->parentId());
+        $this->assertEquals('Testy McTest', $response->technicalContact()->name());
+        $this->assertEquals('testy.mctest@example.com', (string) $response->technicalContact()->email());
+        $this->assertEquals('44', $response->technicalContact()->telephoneNumber()->diallingCode());
+        $this->assertEquals('1130000000', $response->technicalContact()->telephoneNumber()->number());
+        $this->assertEquals('Test Company', $response->technicalContact()->address()->company());
+        $this->assertEquals('Address Line 1', $response->technicalContact()->address()->addressLine1());
+        $this->assertEquals('Address Line 2', $response->technicalContact()->address()->addressLine2());
+        $this->assertEquals('Address Line 3', $response->technicalContact()->address()->addressLine3());
+        $this->assertEquals('Leeds', $response->technicalContact()->address()->city());
+        $this->assertEquals('West Yorkshire', $response->technicalContact()->address()->county());
+        $this->assertEquals('Gb', $response->technicalContact()->address()->country());
+        $this->assertEquals('EX3 5MP', $response->technicalContact()->address()->postCode());
     }
 
     public function testBillingContact()
     {
         $response = new GetResponse([
-            'billingcontactid' => '890',
-            'billingcontact'   => 'test_4@testing.co.uk',
+            'billingcontact'  => [
+                'company' => 'Test Company',
+                'parentkey' => '999999999_999999998_000000',
+                'state' => 'West Yorkshire',
+                'telnocc' => '44',
+                'emailaddr' => 'testy.mctest@example.com',
+                'address3' => 'Address line 3',
+                'address2' => 'Address line 2',
+                'contactstatus' => 'Active',
+                'address1' => 'Address line 1',
+                'contactid' => '56789',
+                'type' => 'Contact',
+                'city' => 'Leeds',
+                'country' => 'GB',
+                'zip' => 'EX3 5MP',
+                'customerid' => '12345',
+                'contacttype' =>[
+                    'dotin'
+                ],
+                'name' => 'Testy McTest',
+                'telno' =>'1130000000'
+            ]
         ]);
 
         $this->assertInstanceOf(Contact::class, $response->billingContact());
-        $this->assertEquals(890, $response->billingContact()->id());
-        $this->assertEquals('test_4@testing.co.uk', $response->billingContact()->detail());
+        $this->assertEquals(56789, $response->billingContact()->id());
+        $this->assertEquals(12345, $response->billingContact()->customerId());
+        $this->assertEquals('999999999_999999998_000000', $response->billingContact()->parentId());
+        $this->assertEquals('Testy McTest', $response->billingContact()->name());
+        $this->assertEquals('testy.mctest@example.com', (string) $response->billingContact()->email());
+        $this->assertEquals('44', $response->billingContact()->telephoneNumber()->diallingCode());
+        $this->assertEquals('1130000000', $response->billingContact()->telephoneNumber()->number());
+        $this->assertEquals('Test Company', $response->billingContact()->address()->company());
+        $this->assertEquals('Address Line 1', $response->billingContact()->address()->addressLine1());
+        $this->assertEquals('Address Line 2', $response->billingContact()->address()->addressLine2());
+        $this->assertEquals('Address Line 3', $response->billingContact()->address()->addressLine3());
+        $this->assertEquals('Leeds', $response->billingContact()->address()->city());
+        $this->assertEquals('West Yorkshire', $response->billingContact()->address()->county());
+        $this->assertEquals('Gb', $response->billingContact()->address()->country());
+        $this->assertEquals('EX3 5MP', $response->billingContact()->address()->postCode());
     }
 
     public function testGdprProtection()
@@ -456,5 +601,104 @@ class GetResponseTest extends TestCase
         $this->assertEquals('RSA-SHA256', $response->delegationSigner()->algorithm());
         $this->assertEquals('some-digest', $response->delegationSigner()->digest());
         $this->assertEquals('SHA-256', $response->delegationSigner()->digestType());
+    }
+
+    public function testRecurring()
+    {
+        $response = new GetResponse([
+            'recurring' => true
+        ]);
+
+        $this->assertInternalType('bool', $response->recurring());
+        $this->assertTrue($response->recurring());
+
+        $response = new GetResponse([
+            'recurring' => false
+        ]);
+        $this->assertFalse($response->recurring());
+
+        $response = new GetResponse([]);
+        $this->assertFalse($response->recurring());
+    }
+
+    public function testCustomerCost()
+    {
+        $response = new GetResponse(['customercost' => '0.0']);
+
+        $this->assertInternalType('float', $response->customerCost());
+        $this->assertEquals('0.00', $response->customerCost());
+    }
+
+    public function testMoneyBackPeriod()
+    {
+        $response = new GetResponse(['moneybackperiod' => 30]);
+
+        $this->assertInternalType('int', $response->moneyBackPeriod());
+        $this->assertEquals(30, $response->moneyBackPeriod());
+    }
+
+    public function testResellerCost()
+    {
+        $response = new GetResponse(['resellercost' => '0.0']);
+
+        $this->assertInternalType('float', $response->resellerCost());
+        $this->assertEquals('0.00', $response->resellerCost());
+    }
+
+    public function testJumpConditions()
+    {
+        $response = new GetResponse(['jumpConditions' => []]);
+        $this->assertInternalType('array', $response->jumpConditions());
+    }
+
+    public function testPaused()
+    {
+        $response = new GetResponse(['paused' => true]);
+        $this->assertInternalType('bool', $response->paused());
+        $this->assertTrue($response->paused());
+
+        $response = new GetResponse(['paused' => false]);
+        $this->assertInternalType('bool', $response->paused());
+        $this->assertFalse($response->paused());
+    }
+
+    public function testEaqId()
+    {
+        $response = new GetResponse(['eaqid' => 0]);
+
+        $this->assertInternalType('int', $response->eaqId());
+        $this->assertEquals(0, $response->eaqId());
+    }
+
+    public function testEntityTypeId()
+    {
+        $response = new GetResponse(['entitytypeid' => 283]);
+
+        $this->assertInternalType('int', $response->entityTypeId());
+        $this->assertEquals(283, $response->entityTypeId());
+    }
+
+    public function testActionCompleted()
+    {
+        $response = new GetResponse(['actioncompleted' => '0']);
+
+        $this->assertInternalType('string', $response->actionCompleted());
+        $this->assertEquals('0', $response->actionCompleted());
+    }
+
+    public function testAutoRenewAttemptDuration()
+    {
+        $response = new GetResponse(['actioncompleted' => '0']);
+
+        $this->assertInternalType('integer', $response->autoRenewAttemptDuration());
+        $this->assertEquals('0', $response->autoRenewAttemptDuration());
+    }
+
+    public function testAutoRenewTermType()
+    {
+        $response = new GetResponse(['autoRenewTermType' => 'LONG_TERM']);
+
+        $this->assertInternalType('string', $response->autoRenewTermType());
+        $this->assertEquals('LONG_TERM', $response->autoRenewTermType());
     }
 }
