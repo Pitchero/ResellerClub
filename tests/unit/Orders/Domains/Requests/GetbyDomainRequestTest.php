@@ -3,7 +3,6 @@
 namespace Tests\Unit\Orders\Domains\Requests;
 
 use PHPUnit\Framework\TestCase;
-use ResellerClub\Orders\BusinessEmails\Requests\RenewRequest;
 use ResellerClub\Orders\Domains\DomainOrderDetailType;
 use ResellerClub\Orders\Domains\Requests\GetByDomainRequest;
 
@@ -15,7 +14,7 @@ class GetbyDomainRequestTest extends TestCase
     private $domainOrderDetailType;
 
     /**
-     * @var RenewRequest
+     * @var GetByDomainRequest
      */
     private $request;
 
