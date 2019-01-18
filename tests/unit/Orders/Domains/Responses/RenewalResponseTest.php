@@ -20,24 +20,24 @@ class RenewalResponseTest extends TestCase
         parent::setUp();
 
         $this->response = new RenewalResponse([
-            "actiontypedesc"          => "Renewal of yesterday.co.in for 1 year",
-            "unutilisedsellingamount" => "-7.910",
-            "sellingamount"           => "-7.910",
-            "entityid"                => "85547813",
-            "actionstatus"            => "Success",
-            "privacydetails"          => [
-            "entityid" => "85547813",
-            "status"   => "error",
-            "error"    => "Privacy Protection Service not available."
+            'actiontypedesc'          => 'Renewal of yesterday.co.in for 1 year',
+            'unutilisedsellingamount' => '-7.910',
+            'sellingamount'           => '-7.910',
+            'entityid'                => '85547813',
+            'actionstatus'            => 'Success',
+            'privacydetails'          => [
+            'entityid' => '85547813',
+            'status'   => 'error',
+            'error'    => 'Privacy Protection Service not available.',
             ],
-            "status"                  => "Success",
-            "eaqid"                   => "524620696",
-            "customerid"              => "17824872",
-            "description"             => "yesterday.co.in",
-            "actiontype"              => "RenewDomain",
-            "invoiceid"               => "88713188",
-            "sellingcurrencysymbol"   => "GBP",
-            "actionstatusdesc"        => "Domain renewed successfully"
+            'status'                  => 'Success',
+            'eaqid'                   => '524620696',
+            'customerid'              => '17824872',
+            'description'             => 'yesterday.co.in',
+            'actiontype'              => 'RenewDomain',
+            'invoiceid'               => '88713188',
+            'sellingcurrencysymbol'   => 'GBP',
+            'actionstatusdesc'        => 'Domain renewed successfully',
         ]);
     }
 

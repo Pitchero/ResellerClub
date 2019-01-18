@@ -9,7 +9,7 @@ use ResellerClub\Response;
 
 class RenewalResponse extends Response
 {
-    /**
+    /*
      * Not implemented the privacy protection as the API always seems to return an error. Opened a support ticket with
      * ResellerClub to see if this option is still valid;
      *
