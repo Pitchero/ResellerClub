@@ -20,7 +20,6 @@ class RenewRequestTest extends TestCase
      */
     private $currentExpiry;
 
-
     private $invoiceOption;
 
     /**
