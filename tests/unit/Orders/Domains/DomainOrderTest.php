@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Orders\BusinessEmails;
 
+use Carbon\Carbon;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -13,7 +14,10 @@ use ResellerClub\Orders\Domains\DomainOrder;
 use ResellerClub\Orders\Domains\DomainOrderDetailType;
 use ResellerClub\Orders\Domains\Requests\GetByDomainRequest;
 use ResellerClub\Orders\Domains\Requests\GetRequest;
+use ResellerClub\Orders\Domains\Requests\RenewRequest;
 use ResellerClub\Orders\Domains\Responses\GetResponse;
+use ResellerClub\Orders\Domains\Responses\RenewalResponse;
+use ResellerClub\Orders\InvoiceOption;
 use ResellerClub\Orders\Order;
 
 class DomainOrderTest extends TestCase
@@ -59,6 +63,52 @@ class DomainOrderTest extends TestCase
                 new GetByDomainRequest(
                     $domain = 'some-domain.co.uk',
                     DomainOrderDetailType::all()
+                )
+            )
+        );
+    }
+
+    public function testResponseFromDomainOrderRenew()
+    {
+        $mock = new MockHandler([
+            new Response(
+                200,
+                ['Content-Type' => 'application/json'],
+                json_encode([
+                    'actiontypedesc'          => 'Renewal of yesterday.co.in for 1 year',
+                    'unutilisedsellingamount' => '-7.910',
+                    'sellingamount'           => '-7.910',
+                    'entityid'                => '85547813',
+                    'actionstatus'            => 'Success',
+                    'privacydetails'          => [
+                        'entityid' => '85547813',
+                        'status'   => 'error',
+                        'error'    => 'Privacy Protection Service not available.',
+                    ],
+                    'status'                  => 'Success',
+                    'eaqid'                   => '524620696',
+                    'customerid'              => '17824872',
+                    'description'             => 'yesterday.co.in',
+                    'actiontype'              => 'RenewDomain',
+                    'invoiceid'               => '88713188',
+                    'sellingcurrencysymbol'   => 'GBP',
+                    'actionstatusdesc'        => 'Domain renewed successfully',
+                ])
+            ),
+        ]);
+
+        $domainOrder = new DomainOrder($this->api($mock));
+
+        $this->assertInstanceOf(
+            RenewalResponse::class,
+            $domainOrder->renew(
+                new RenewRequest(
+                    new Order(85547813),
+                    Carbon::createFromTimestamp('1610973790'),
+                    InvoiceOption::noInvoice(),
+                    $years = 1,
+                    $purchasePrivacyProtection = false,
+                    $autoRenew = false
                 )
             )
         );

@@ -5,7 +5,9 @@ namespace ResellerClub\Orders\Domains;
 use ResellerClub\Api;
 use ResellerClub\Orders\Domains\Requests\GetByDomainRequest;
 use ResellerClub\Orders\Domains\Requests\GetRequest;
+use ResellerClub\Orders\Domains\Requests\RenewRequest;
 use ResellerClub\Orders\Domains\Responses\GetResponse;
+use ResellerClub\Orders\Domains\Responses\RenewalResponse;
 
 class DomainOrder
 {
@@ -66,5 +68,31 @@ class DomainOrder
         );
 
         return GetResponse::fromApiResponse($response);
+    }
+
+    /**
+     * Makes a POST request to ResellerClub's 'renew' domain API.
+     *
+     * @see https://manage.resellerclub.com/kb/node/746
+     *
+     * @param RenewRequest $request
+     *
+     * @return RenewalResponse
+     */
+    public function renew(RenewRequest $request): RenewalResponse
+    {
+        $response = $this->api->post(
+            'domains/renew.json',
+            [
+                'order-id'         => $request->orderId(),
+                'years'            => $request->years(),
+                'exp-date'         => $request->currentExpiryTimestamp(),
+                'purchase-privacy' => $request->purchasePrivacyProtection(),
+                'auto-renew'       => $request->autoRenew(),
+                'invoice-option'   => $request->invoiceOption(),
+            ]
+        );
+
+        return RenewalResponse::fromApiResponse($response);
     }
 }
