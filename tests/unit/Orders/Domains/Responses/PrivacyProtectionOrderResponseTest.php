@@ -104,5 +104,4 @@ class PrivacyProtectionOrderResponseTest extends TestCase
     {
         $this->assertEquals(17824872, $this->response->customerId());
     }
-
 }
