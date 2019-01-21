@@ -4,18 +4,12 @@ namespace ResellerClub\Orders\Domains\Responses;
 
 use Money\Currency;
 use Money\Money;
+use ResellerClub\Exceptions\FeatureNotAvailableException;
 use ResellerClub\Orders\BusinessEmails\Responses\Concerns\HasAction;
 use ResellerClub\Response;
 
 class RenewalResponse extends Response
 {
-    /*
-     * Not implemented the privacy protection as the API always seems to return an error. Opened a support ticket with
-     * ResellerClub to see if this option is still valid;
-     *
-     * "error": "Privacy Protection Service not available."
-     */
-
     use HasAction;
 
     /**
@@ -116,5 +110,22 @@ class RenewalResponse extends Response
         $amount = $this->unutilisedsellingamount * 100;
 
         return new Money($amount, $this->sellingCurrency());
+    }
+
+    /**
+     * Gets the privacy protection order response, if valid for the TLD renewed.
+     *
+     * @see https://manage.resellerclub.com/kb/node/746
+     * @see https://manage.resellerclub.com/kb/node/13
+     *
+     * @throws FeatureNotAvailableException
+     *
+     * @return PrivacyProtectionOrderResponse
+     */
+    public function privacyProtectionDetails()
+    {
+        return new PrivacyProtectionOrderResponse(
+            $this->privacydetails
+        );
     }
 }

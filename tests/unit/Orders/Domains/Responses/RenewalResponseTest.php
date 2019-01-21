@@ -6,6 +6,8 @@ use Money\Currency;
 use Money\Money;
 use PHPUnit\Framework\TestCase;
 use ResellerClub\Action;
+use ResellerClub\Exceptions\FeatureNotAvailableException;
+use ResellerClub\Orders\Domains\Responses\PrivacyProtectionOrderResponse;
 use ResellerClub\Orders\Domains\Responses\RenewalResponse;
 
 class RenewalResponseTest extends TestCase
@@ -26,9 +28,9 @@ class RenewalResponseTest extends TestCase
             'entityid'                => '85547813',
             'actionstatus'            => 'Success',
             'privacydetails'          => [
-            'entityid' => '85547813',
-            'status'   => 'error',
-            'error'    => 'Privacy Protection Service not available.',
+                'entityid' => '85547813',
+                'status'   => 'error',
+                'error'    => 'Privacy Protection Service not available.',
             ],
             'status'                  => 'Success',
             'eaqid'                   => '524620696',
@@ -92,5 +94,31 @@ class RenewalResponseTest extends TestCase
     public function testItCanGetCustomerId()
     {
         $this->assertEquals(17824872, $this->response->customerId());
+    }
+
+    public function testItCanGetPrivacyProtectionDetails()
+    {
+        $response = new RenewalResponse([
+            'privacydetails'          => [
+                'actiontypedesc'          => 'Purchase of Privacy Protection Service for domain wibble-wibble.net',
+                'unutilisedsellingamount' => '0.000',
+                'sellingamount'           => '0.000',
+                'entityid'                => '85575828',
+                'actionstatus'            => 'Success',
+                'status'                  => 'Success',
+                'eaqid'                   => '524956079',
+                'customerid'              => '17824872',
+                'description'             => 'wibble-wibble.net',
+                'actiontype'              => 'PurchasePrivacyProtection',
+                'invoiceid'               => '88768089',
+                'sellingcurrencysymbol'   => 'GBP',
+                'actionstatusdesc'        => 'Operation completed successfully',
+            ],
+        ]);
+
+        $this->assertInstanceOf(PrivacyProtectionOrderResponse::class, $response->privacyProtectionDetails());
+
+        $this->expectException(FeatureNotAvailableException::class);
+        $this->response->privacyProtectionDetails();
     }
 }
