@@ -21,7 +21,7 @@ class RenewalResponse extends Response
      */
     public function orderId(): int
     {
-        return $this->entityid;
+        return (int) $this->entityid;
     }
 
     /**
@@ -45,7 +45,7 @@ class RenewalResponse extends Response
      */
     public function customerId(): string
     {
-        return $this->customerid;
+        return (string) $this->customerid;
     }
 
     /**
@@ -57,7 +57,7 @@ class RenewalResponse extends Response
      */
     public function invoiceId(): string
     {
-        return $this->invoiceid;
+        return (string) $this->invoiceid;
     }
 
     /**
@@ -69,7 +69,7 @@ class RenewalResponse extends Response
      */
     public function sellingCurrencySymbol(): string
     {
-        return $this->sellingcurrencysymbol;
+        return (string) $this->sellingcurrencysymbol;
     }
 
     /**
@@ -81,7 +81,9 @@ class RenewalResponse extends Response
      */
     public function sellingCurrency(): Currency
     {
-        return new Currency($this->sellingcurrencysymbol);
+        return new Currency(
+            (string) $this->sellingcurrencysymbol
+        );
     }
 
     /**
@@ -93,7 +95,7 @@ class RenewalResponse extends Response
      */
     public function sellingAmount(): Money
     {
-        $amount = $this->sellingamount * 100;
+        $amount = (float) $this->sellingamount * 100;
 
         return new Money($amount, $this->sellingCurrency());
     }
@@ -107,7 +109,7 @@ class RenewalResponse extends Response
      */
     public function unutilisedSellingAmount(): Money
     {
-        $amount = $this->unutilisedsellingamount * 100;
+        $amount = (float) $this->unutilisedsellingamount * 100;
 
         return new Money($amount, $this->sellingCurrency());
     }
@@ -125,7 +127,7 @@ class RenewalResponse extends Response
     public function privacyProtectionDetails()
     {
         return new PrivacyProtectionOrderResponse(
-            $this->privacydetails
+            (array) $this->privacydetails
         );
     }
 }

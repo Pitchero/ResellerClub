@@ -37,7 +37,7 @@ class PrivacyProtectionOrderResponse extends Response
      */
     public function orderId(): int
     {
-        return $this->entityid;
+        return (int) $this->entityid;
     }
 
     /**
@@ -77,7 +77,9 @@ class PrivacyProtectionOrderResponse extends Response
      */
     public function sellingCurrency(): Currency
     {
-        return new Currency($this->sellingcurrencysymbol);
+        return new Currency(
+            (string) $this->sellingcurrencysymbol
+        );
     }
 
     /**
