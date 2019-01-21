@@ -14,6 +14,7 @@ class PrivacyProtectionOrderResponse extends Response
 
     /**
      * PrivacyProtectionOrderResponse constructor.
+     *
      * @param array $attributes
      *
      * Privacy protection is only enabled for specific TLDs.
