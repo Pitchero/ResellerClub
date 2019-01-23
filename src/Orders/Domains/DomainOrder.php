@@ -41,7 +41,7 @@ class DomainOrder
             'domains/details.json',
             [
                 'order-id' => $request->orderId(),
-                'options'  => $request->orderDetailType(),
+                'options'  => (string) $request->orderDetailType(),
             ]
         );
 
@@ -63,7 +63,7 @@ class DomainOrder
             'domains/details-by-name.json',
             [
                 'domain-name' => $request->domain(),
-                'options'     => $request->orderDetailType(),
+                'options'     => (string) $request->orderDetailType(),
             ]
         );
 
@@ -89,7 +89,7 @@ class DomainOrder
                 'exp-date'         => $request->currentExpiryTimestamp(),
                 'purchase-privacy' => $request->purchasePrivacyProtection(),
                 'auto-renew'       => $request->autoRenew(),
-                'invoice-option'   => $request->invoiceOption(),
+                'invoice-option'   => (string) $request->invoiceOption(),
             ]
         );
 
