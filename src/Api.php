@@ -5,6 +5,7 @@ namespace ResellerClub;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use ResellerClub\Orders\BusinessEmails\BusinessEmailOrder;
+use ResellerClub\Orders\Domains\DomainOrder;
 use ResellerClub\Orders\EmailAccounts\EmailAccount;
 use ResellerClub\Orders\EmailForwarders\EmailForwarder;
 
@@ -76,6 +77,16 @@ class Api
     public function businessEmailOrder(): BusinessEmailOrder
     {
         return new BusinessEmailOrder($this);
+    }
+
+    /**
+     * Get a new domain order instance.
+     *
+     * @return DomainOrder
+     */
+    public function domainOrder(): DomainOrder
+    {
+        return new DomainOrder($this);
     }
 
     /**
