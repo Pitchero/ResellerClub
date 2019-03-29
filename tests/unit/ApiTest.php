@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ServerException;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Request;
@@ -13,6 +14,7 @@ use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 use ResellerClub\Api;
 use ResellerClub\Config;
+use ResellerClub\Exceptions\AlreadyRenewedException;
 use ResellerClub\Exceptions\ApiClientException;
 use ResellerClub\Exceptions\ApiException;
 use ResellerClub\Exceptions\ConnectionException;
@@ -79,6 +81,21 @@ class ApiTest extends TestCase
         );
 
         $this->expectException(ConnectionException::class);
+        $api->post('post', ['request-param' => 123]);
+    }
+
+    public function testAlreadyRenewedException()
+    {
+        $mock = new MockHandler([
+            new ServerException('Domain already renewed.', new Request('POST', 'test')),
+        ]);
+
+        $api = new Api(
+            new Config(123, 'api_key', true),
+            new Client(['handler' => HandlerStack::create($mock)])
+        );
+
+        $this->expectException(AlreadyRenewedException::class);
         $api->post('post', ['request-param' => 123]);
     }
 

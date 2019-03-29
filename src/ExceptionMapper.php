@@ -5,6 +5,8 @@ namespace ResellerClub;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ServerException;
+use ResellerClub\Exceptions\AlreadyRenewedException;
 use ResellerClub\Exceptions\ApiClientException;
 use ResellerClub\Exceptions\ApiException;
 use ResellerClub\Exceptions\ConnectionException;
@@ -28,6 +30,12 @@ class ExceptionMapper
                 return new ApiClientException($message, $code);
             case ConnectException::class:
                 return new ConnectionException($message, $code);
+            case ServerException::class:
+                if ($message === 'Domain already renewed.') {
+                    return new AlreadyRenewedException($message, $code);
+                }
+
+                return new ApiException($message, $code);
             default:
                 return new ApiException($message, $code);
         }
