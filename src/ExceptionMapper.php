@@ -34,6 +34,7 @@ class ExceptionMapper
                 if ($message === 'Domain already renewed.') {
                     return new AlreadyRenewedException($message, $code);
                 }
+
                 return new ApiException($message, $code);
             default:
                 return new ApiException($message, $code);
