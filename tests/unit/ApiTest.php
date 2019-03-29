@@ -87,7 +87,7 @@ class ApiTest extends TestCase
     public function testAlreadyRenewedException()
     {
         $mock = new MockHandler([
-            new ServerException('Domain already renewed', new Request('POST', 'test')),
+            new ServerException('Domain already renewed.', new Request('POST', 'test')),
         ]);
 
         $api = new Api(
