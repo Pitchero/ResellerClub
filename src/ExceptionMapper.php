@@ -5,6 +5,8 @@ namespace ResellerClub;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ServerException;
+use ResellerClub\Exceptions\AlreadyRenewedException;
 use ResellerClub\Exceptions\ApiClientException;
 use ResellerClub\Exceptions\ApiException;
 use ResellerClub\Exceptions\ConnectionException;
@@ -20,6 +22,7 @@ class ExceptionMapper
      */
     public function map(RequestException $exception): ApiException
     {
+
         $code = $exception->getCode();
         $message = $this->getMessage($exception);
 
@@ -28,6 +31,8 @@ class ExceptionMapper
                 return new ApiClientException($message, $code);
             case ConnectException::class:
                 return new ConnectionException($message, $code);
+            case ServerException::class:
+                return new AlreadyRenewedException($message, $code);
             default:
                 return new ApiException($message, $code);
         }
