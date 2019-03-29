@@ -22,7 +22,6 @@ class ExceptionMapper
      */
     public function map(RequestException $exception): ApiException
     {
-
         $code = $exception->getCode();
         $message = $this->getMessage($exception);
 
