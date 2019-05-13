@@ -17,7 +17,7 @@ class UpdateRequest extends Response
 
     /**
      * Record you want to update
-     * e.g. "www" or "mysubdomain"
+     * e.g. "www" or "mysubdomain".
      *
      * @var string
      */
@@ -47,10 +47,10 @@ class UpdateRequest extends Response
     /**
      * UpdateRequest constructor.
      *
-     * @param string     $domain
-     * @param string     $record
-     * @param string     $currentValue
-     * @param string     $newValue
+     * @param string          $domain
+     * @param string          $record
+     * @param string          $currentValue
+     * @param string          $newValue
      * @param TimeToLive|null $ttl
      */
     public function __construct(string $domain, string $record, string $currentValue, string $newValue, TimeToLive $ttl = null)

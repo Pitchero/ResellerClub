@@ -18,7 +18,6 @@ class CnameRecordTest extends TestCase
 {
     public function testUpdateInstance()
     {
-
         $mock = new MockHandler([
             new Response(
                 200,
