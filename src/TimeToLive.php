@@ -32,4 +32,14 @@ class TimeToLive
 
         $this->value = $value;
     }
+
+    /**
+     * Get the string representation of the TTL.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->value;
+    }
 }
