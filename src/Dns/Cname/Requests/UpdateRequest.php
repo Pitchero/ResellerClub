@@ -99,6 +99,6 @@ class UpdateRequest extends Response
      */
     public function ttl(): TimeToLive
     {
-        return ($this->ttl) ? $this->ttl : TimeToLive::MINIMUM_TTL;
+        return ($this->ttl) ? $this->ttl : new TimeToLive(TimeToLive::MINIMUM_TTL);
     }
 }
