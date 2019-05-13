@@ -8,20 +8,20 @@ use ResellerClub\TimeToLive;
 class UpdateRequest extends Response
 {
     /**
-     * Full domain name whose records you want to update
-     * e.g. www.mydomain.com.
+     * Top level domain name whose records you want to update
+     * e.g. mydomain.com.
      *
      * @var string
      */
-    private $domainName;
+    private $domain;
 
     /**
      * Record you want to update
-     * e.g. www.
+     * e.g. "www" or "mysubdomain"
      *
      * @var string
      */
-    private $host;
+    private $record;
 
     /**
      * Current value of this record.
@@ -40,28 +40,23 @@ class UpdateRequest extends Response
     /**
      * Time-to-live in seconds for this DNS record.
      *
-     * @var TimeToLive
+     * @var null|TimeToLive
      */
-    private $ttl;
-
-    /**
-     * Minimum TTL on the Reseller Club API.
-     */
-    const MINIMUM_TTL = 7200;
+    private $ttl = null;
 
     /**
      * UpdateRequest constructor.
      *
-     * @param string     $domainName
-     * @param string     $host
+     * @param string     $domain
+     * @param string     $record
      * @param string     $currentValue
      * @param string     $newValue
-     * @param TimeToLive $ttl
+     * @param TimeToLive|null $ttl
      */
-    public function __construct(string $domainName, string $host, string $currentValue, string $newValue, TimeToLive $ttl)
+    public function __construct(string $domain, string $record, string $currentValue, string $newValue, TimeToLive $ttl = null)
     {
-        $this->domainName = $domainName;
-        $this->host = $host;
+        $this->domain = $domain;
+        $this->record = $record;
         $this->currentValue = $currentValue;
         $this->newValue = $newValue;
         $this->ttl = $ttl;
@@ -70,17 +65,17 @@ class UpdateRequest extends Response
     /**
      * @return string
      */
-    public function domainName(): string
+    public function domain(): string
     {
-        return $this->domainName;
+        return $this->domain;
     }
 
     /**
      * @return string
      */
-    public function host(): string
+    public function record(): string
     {
-        return $this->host;
+        return $this->record;
     }
 
     /**
@@ -104,6 +99,6 @@ class UpdateRequest extends Response
      */
     public function ttl(): TimeToLive
     {
-        return $this->ttl;
+        return ($this->ttl) ? $this->ttl : TimeToLive::MINIMUM_TTL;
     }
 }

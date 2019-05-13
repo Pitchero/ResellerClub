@@ -35,8 +35,8 @@ class CnameRecord
         $response = $this->api->post(
             'dns/manage/update-cname-record.json',
             [
-                'domain-name'       => (string) $request->domainName(),
-                'host'              => (string) $request->host(),
+                'domain-name'       => (string) $request->domain(),
+                'host'              => (string) $request->record(),
                 'current-value'     => (string) $request->currentValue(),
                 'new-value'         => (string) $request->newValue(),
                 'ttl'               => $request->ttl(),
