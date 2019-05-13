@@ -27,7 +27,7 @@ class TimeToLive
     public function __construct(int $value)
     {
         if ($value < self::MINIMUM_TTL) {
-            throw new InvalidArgumentException('TTL ['.$value.'] must be equal to or greater than the minimum ['.self::MINIMUM_TTL.'].');
+            throw new InvalidArgumentException(sprintf('TTL [%s] must be equal to or greater than the minimum [%s].', $value, self::MINIMUM_TTL));
         }
 
         $this->value = $value;
