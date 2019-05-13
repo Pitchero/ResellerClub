@@ -15,7 +15,7 @@ class TimeToLive
     /**
      * @var int
      */
-    protected $value;
+    private $value;
 
     /**
      * TimeToLive constructor.
