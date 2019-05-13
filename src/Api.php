@@ -4,6 +4,7 @@ namespace ResellerClub;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
+use ResellerClub\Dns\Cname\CnameRecord;
 use ResellerClub\Orders\BusinessEmails\BusinessEmailOrder;
 use ResellerClub\Orders\Domains\DomainOrder;
 use ResellerClub\Orders\EmailAccounts\EmailAccount;
@@ -107,6 +108,16 @@ class Api
     public function emailForwarder(): EmailForwarder
     {
         return new EmailForwarder($this);
+    }
+
+    /**
+     * Return a CNAME (DNS record) instance.
+     *
+     * @return CnameRecord
+     */
+    public function cnameRecord(): CnameRecord
+    {
+        return new CnameRecord($this);
     }
 
     /**
