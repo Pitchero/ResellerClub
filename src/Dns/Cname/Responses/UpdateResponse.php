@@ -6,5 +6,4 @@ use ResellerClub\Response;
 
 class UpdateResponse extends Response
 {
-
 }

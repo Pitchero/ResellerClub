@@ -9,7 +9,7 @@ class UpdateRequest extends Response
 {
     /**
      * Full domain name whose records you want to update
-     * e.g. www.mydomain.com
+     * e.g. www.mydomain.com.
      *
      * @var string
      */
@@ -17,54 +17,54 @@ class UpdateRequest extends Response
 
     /**
      * Record you want to update
-     * e.g. www
+     * e.g. www.
      *
      * @var string
      */
     private $host;
 
     /**
-     * Current value of this record
+     * Current value of this record.
      *
      * @var string
      */
     private $currentValue;
 
     /**
-     * New value of this record
+     * New value of this record.
      *
      * @var string
      */
     private $newValue;
 
     /**
-     * Time-to-live in seconds for this DNS record
+     * Time-to-live in seconds for this DNS record.
      *
      * @var TimeToLive
      */
     private $ttl;
 
     /**
-     * Minimum TTL on the Reseller Club API
+     * Minimum TTL on the Reseller Club API.
      */
     const MINIMUM_TTL = 7200;
 
     /**
      * UpdateRequest constructor.
      *
-     * @param string $domainName
-     * @param string $host
-     * @param string $currentValue
-     * @param string $newValue
+     * @param string     $domainName
+     * @param string     $host
+     * @param string     $currentValue
+     * @param string     $newValue
      * @param TimeToLive $ttl
      */
     public function __construct(string $domainName, string $host, string $currentValue, string $newValue, TimeToLive $ttl)
     {
-        $this->domainName   = $domainName;
-        $this->host         = $host;
+        $this->domainName = $domainName;
+        $this->host = $host;
         $this->currentValue = $currentValue;
-        $this->newValue     = $newValue;
-        $this->ttl          = $ttl;
+        $this->newValue = $newValue;
+        $this->ttl = $ttl;
     }
 
     /**

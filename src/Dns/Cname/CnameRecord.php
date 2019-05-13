@@ -22,7 +22,7 @@ class CnameRecord
     }
 
     /**
-     * Update an existing CNAME record
+     * Update an existing CNAME record.
      *
      * @see https://manage.resellerclub.com/kb/node/1101
      *
