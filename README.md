@@ -297,6 +297,29 @@ try {
 }
 ```
 
+#### Update a CNAME record
+[API Documentation](https://manage.resellerclub.com/kb/node/1101)
+
+```php
+try {
+    $ttl = new ResellerClub\TimeToLive(86400);
+    $request = new ResellerClub\Dns\Cname\Requests\UpdateRequest(
+        'your.com',
+        'www',
+        'cname.oldservice.com',
+        'cname.newservice.com',
+        $ttl
+    );
+
+    $response = $api->cnameRecord()->update($request);
+
+    // @todo - Handle the successful response within your codebase.
+
+} catch(ResellerClub\Exceptions\ApiException $e) {
+    // @todo - Handle the exception within your codebase.
+}
+```
+
 ## License
 Licensed under the [MIT License][2].
 
