@@ -296,6 +296,9 @@ try {
     // @todo - Handle the exception within your codebase.
 }
 ```
+## Helpful articles from the ResellerClub knowledge base
+1. [How to create an account on the staging platform](https://manage.resellerclub.com/kb/node/173)
+1. [Where to find and regenerate an API key](https://manage.resellerclub.com/kb/node/3188)
 
 ## License
 Licensed under the [MIT License][2].
