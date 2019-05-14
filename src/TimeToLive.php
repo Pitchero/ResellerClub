@@ -43,7 +43,7 @@ class TimeToLive
      *
      * @return TimeToLive
      */
-    public static function defaultTtl()
+    public static function defaultTtl(): self
     {
         return new self(self::DEFAULT_TTL);
     }
@@ -53,7 +53,7 @@ class TimeToLive
      *
      * @return TimeToLive
      */
-    public static function minimumTtl()
+    public static function minimumTtl(): self
     {
         return new self(self::MINIMUM_TTL);
     }
