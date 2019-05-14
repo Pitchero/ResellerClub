@@ -7,7 +7,7 @@ use InvalidArgumentException;
 class TimeToLive
 {
     /**
-     * Default TTL for DNS records (24 hours)
+     * Default TTL for DNS records (24 hours).
      */
     const DEFAULT_TTL = 86400;
 
