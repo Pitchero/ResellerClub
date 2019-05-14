@@ -10,7 +10,7 @@ class UpdateRequestTest extends TestCase
 {
     public function testInstantiation()
     {
-        $ttl = new TimeToLive(TimeToLive::MINIMUM_TTL);
+        $ttl = TimeToLive::defaultTtl();
         $request = new UpdateRequest(
             'test.com',
             'www',
@@ -36,7 +36,7 @@ class UpdateRequestTest extends TestCase
 
     public function testGetters()
     {
-        $ttl = new TimeToLive(TimeToLive::MINIMUM_TTL);
+        $ttl = TimeToLive::defaultTtl();
         $request = new UpdateRequest(
             'test.com',
             'www',
@@ -66,5 +66,6 @@ class UpdateRequestTest extends TestCase
         $this->assertInternalType('string', $request->currentValue());
         $this->assertInternalType('string', $request->newValue());
         $this->assertInstanceOf(TimeToLive::class, $request->ttl());
+        $this->assertEquals((string) $request->ttl(), TimeToLive::DEFAULT_TTL);
     }
 }

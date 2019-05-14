@@ -307,10 +307,10 @@ try {
 try {
     $ttl = new ResellerClub\TimeToLive(86400);
     $request = new ResellerClub\Dns\Cname\Requests\UpdateRequest(
-        'your.com',
-        'www',
-        'cname.oldservice.com',
-        'cname.newservice.com',
+        $domain = 'your.com',
+        $record = 'www',
+        $currentValue = 'cname.oldservice.com',
+        $newValue = 'cname.newservice.com',
         $ttl
     );
 

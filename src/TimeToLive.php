@@ -7,7 +7,12 @@ use InvalidArgumentException;
 class TimeToLive
 {
     /**
-     * Minimum TTL for DNS records
+     * Default TTL for DNS records (24 hours)
+     */
+    const DEFAULT_TTL = 86400;
+
+    /**
+     * Minimum TTL for DNS records (2 hours)
      * This is set on the API and throws an API error if not observed.
      */
     const MINIMUM_TTL = 7200;
@@ -31,6 +36,26 @@ class TimeToLive
         }
 
         $this->value = $value;
+    }
+
+    /**
+     * Return the default TTL value - this is used if a custom value is not specified.
+     *
+     * @return TimeToLive
+     */
+    public static function defaultTtl()
+    {
+        return new self(self::DEFAULT_TTL);
+    }
+
+    /**
+     * Return the minimum TTL value as imposed by the API.
+     *
+     * @return TimeToLive
+     */
+    public static function minimumTtl()
+    {
+        return new self(self::MINIMUM_TTL);
     }
 
     /**

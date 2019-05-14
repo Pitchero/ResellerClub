@@ -28,4 +28,18 @@ class TimeToLiveTest extends TestCase
         $ttl = new TimeToLive('7200');
         $this->assertInstanceOf(TimeToLive::class, $ttl);
     }
+
+    public function testDefaultTTLHelper()
+    {
+        $ttl = TimeToLive::defaultTtl();
+        $this->assertInstanceOf(TimeToLive::class, $ttl);
+        $this->assertEquals(TimeToLive::DEFAULT_TTL, (string) $ttl);
+    }
+
+    public function testMinimumTTLHelper()
+    {
+        $ttl = TimeToLive::minimumTtl();
+        $this->assertInstanceOf(TimeToLive::class, $ttl);
+        $this->assertEquals(TimeToLive::MINIMUM_TTL, (string) $ttl);
+    }
 }
