@@ -300,6 +300,29 @@ try {
 1. [How to create an account on the staging platform](https://manage.resellerclub.com/kb/node/173)
 1. [Where to find and regenerate an API key](https://manage.resellerclub.com/kb/node/3188)
 
+#### Update a CNAME record
+[API Documentation](https://manage.resellerclub.com/kb/node/1101)
+
+```php
+try {
+    $ttl = new ResellerClub\TimeToLive(86400);
+    $request = new ResellerClub\Dns\Cname\Requests\UpdateRequest(
+        $domain = 'your.com',
+        $record = 'www',
+        $currentValue = 'cname.oldservice.com',
+        $newValue = 'cname.newservice.com',
+        $ttl
+    );
+
+    $response = $api->cnameRecord()->update($request);
+
+    // @todo - Handle the successful response within your codebase.
+
+} catch(ResellerClub\Exceptions\ApiException $e) {
+    // @todo - Handle the exception within your codebase.
+}
+```
+
 ## License
 Licensed under the [MIT License][2].
 
