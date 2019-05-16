@@ -67,4 +67,14 @@ class TimeToLive
     {
         return (string) $this->value;
     }
+
+    /**
+     * Get the integer representation of the TTL.
+     *
+     * @return int
+     */
+    public function integer()
+    {
+        return (int) $this->value;
+    }
 }

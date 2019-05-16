@@ -42,4 +42,18 @@ class TimeToLiveTest extends TestCase
         $this->assertInstanceOf(TimeToLive::class, $ttl);
         $this->assertEquals(TimeToLive::MINIMUM_TTL, (string) $ttl);
     }
+
+    public function testCastToString()
+    {
+        $ttl = TimeToLive::defaultTtl();
+        $this->assertInternalType('string', (string) $ttl);
+        $this->assertEquals(TimeToLive::DEFAULT_TTL, (string) $ttl);
+    }
+
+    public function testIntegerFunction()
+    {
+        $ttl = TimeToLive::defaultTtl();
+        $this->assertInternalType('integer', $ttl->integer());
+        $this->assertEquals(TimeToLive::DEFAULT_TTL, $ttl->integer());
+    }
 }

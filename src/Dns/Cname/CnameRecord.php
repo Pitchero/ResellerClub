@@ -40,7 +40,7 @@ class CnameRecord
                 'domain-name'       => (string) $request->domain(),
                 'host'              => (string) $request->record(),
                 'value'             => (string) $request->value(),
-                'ttl'               => $request->ttl(),
+                'ttl'               => (int) $request->ttl()->integer(),
             ]
         );
 
@@ -65,7 +65,7 @@ class CnameRecord
                 'host'              => (string) $request->record(),
                 'current-value'     => (string) $request->currentValue(),
                 'new-value'         => (string) $request->newValue(),
-                'ttl'               => $request->ttl(),
+                'ttl'               => (int) $request->ttl()->integer(),
             ]
         );
 
