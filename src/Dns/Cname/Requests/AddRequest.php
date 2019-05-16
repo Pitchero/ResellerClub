@@ -24,7 +24,7 @@ class AddRequest extends Response
     private $record;
 
     /**
-     * Value of this new record e.g. "cname.mysite.com"
+     * Value of this new record e.g. "cname.mysite.com".
      *
      * @var string
      */
@@ -40,9 +40,9 @@ class AddRequest extends Response
     /**
      * AddRequest constructor.
      *
-     * @param string $domain
-     * @param string $record
-     * @param string $value
+     * @param string          $domain
+     * @param string          $record
+     * @param string          $value
      * @param TimeToLive|null $ttl
      */
     public function __construct(string $domain, string $record, string $value, TimeToLive $ttl = null)
