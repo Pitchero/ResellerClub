@@ -30,9 +30,9 @@ class CnameRecord
      *
      * @param AddRequest $request
      *
-     * @return \ResellerClub\Response
+     * @return AddResponse
      */
-    public function add(AddRequest $request)
+    public function add(AddRequest $request): AddResponse
     {
         $response = $this->api->post(
             'dns/manage/add-cname-record.json',
@@ -54,9 +54,9 @@ class CnameRecord
      *
      * @param UpdateRequest $request
      *
-     * @return mixed
+     * @return UpdateResponse
      */
-    public function update(UpdateRequest $request)
+    public function update(UpdateRequest $request): UpdateResponse
     {
         $response = $this->api->post(
             'dns/manage/update-cname-record.json',
