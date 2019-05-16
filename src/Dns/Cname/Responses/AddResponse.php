@@ -5,7 +5,7 @@ namespace ResellerClub\Dns\Cname\Responses;
 use ResellerClub\Message;
 use ResellerClub\Response;
 
-class UpdateResponse extends Response
+class AddResponse extends Response
 {
     /**
      * Get the response message.

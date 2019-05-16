@@ -4,6 +4,9 @@ namespace Tests\Unit;
 
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
+use ResellerClub\Dns\Cname\Responses\AddResponse;
+use ResellerClub\Dns\Cname\Responses\UpdateResponse;
+use ResellerClub\Message;
 use ResellerClub\Orders\BusinessEmails\Responses\BusinessEmailOrderResponse;
 use ResellerClub\Orders\BusinessEmails\Responses\CreateResponse;
 use ResellerClub\Status;
@@ -23,6 +26,22 @@ class ResponseTest extends TestCase
 
         $this->assertInstanceOf(Status::class, CreateResponse::fromApiResponse($response)->status());
         $this->assertEquals('success', CreateResponse::fromApiResponse($response)->status());
+    }
+
+    public function testMessage()
+    {
+        $message = 'The request executed successfully';
+        $response = new Response(
+            200,
+            ['Content-Type' => 'application/json'],
+            json_encode(['msg' => $message])
+        );
+
+        $this->assertInstanceOf(Message::class, AddResponse::fromApiResponse($response)->message());
+        $this->assertEquals($message, AddResponse::fromApiResponse($response)->message());
+
+        $this->assertInstanceOf(Message::class, UpdateResponse::fromApiResponse($response)->message());
+        $this->assertEquals($message, UpdateResponse::fromApiResponse($response)->message());
     }
 
     public function wasSuccessful()

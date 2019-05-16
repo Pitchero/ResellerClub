@@ -2,21 +2,21 @@
 
 namespace ResellerClub;
 
-class Status
+class Message
 {
     /**
      * @var string
      */
-    protected $status;
+    private $message;
 
     /**
-     * Create a new status response.
+     * Create a new message.
      *
-     * @param string status
+     * @param string
      */
-    public function __construct(string $status)
+    public function __construct(string $message)
     {
-        $this->status = $status;
+        $this->message = $message;
     }
 
     /**
@@ -26,6 +26,6 @@ class Status
      */
     public function __toString()
     {
-        return strtolower($this->status);
+        return $this->message;
     }
 }

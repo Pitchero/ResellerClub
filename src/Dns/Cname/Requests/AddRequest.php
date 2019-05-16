@@ -5,10 +5,10 @@ namespace ResellerClub\Dns\Cname\Requests;
 use ResellerClub\Response;
 use ResellerClub\TimeToLive;
 
-class UpdateRequest extends Response
+class AddRequest extends Response
 {
     /**
-     * Top level domain name whose records you want to update
+     * Top level domain name whose records you want to add
      * e.g. mydomain.com.
      *
      * @var string
@@ -16,7 +16,7 @@ class UpdateRequest extends Response
     private $domain;
 
     /**
-     * Record you want to update
+     * Record you want to add
      * e.g. "www" or "mysubdomain".
      *
      * @var string
@@ -24,18 +24,11 @@ class UpdateRequest extends Response
     private $record;
 
     /**
-     * Current value of this record.
+     * Value of this new record e.g. "cname.mysite.com".
      *
      * @var string
      */
-    private $currentValue;
-
-    /**
-     * New value of this record.
-     *
-     * @var string
-     */
-    private $newValue;
+    private $value;
 
     /**
      * Time-to-live object for this DNS record.
@@ -45,20 +38,18 @@ class UpdateRequest extends Response
     private $ttl;
 
     /**
-     * UpdateRequest constructor.
+     * AddRequest constructor.
      *
      * @param string          $domain
      * @param string          $record
-     * @param string          $currentValue
-     * @param string          $newValue
+     * @param string          $value
      * @param TimeToLive|null $ttl
      */
-    public function __construct(string $domain, string $record, string $currentValue, string $newValue, TimeToLive $ttl = null)
+    public function __construct(string $domain, string $record, string $value, TimeToLive $ttl = null)
     {
         $this->domain = $domain;
         $this->record = $record;
-        $this->currentValue = $currentValue;
-        $this->newValue = $newValue;
+        $this->value = $value;
         $this->ttl = $ttl;
     }
 
@@ -81,17 +72,9 @@ class UpdateRequest extends Response
     /**
      * @return string
      */
-    public function currentValue(): string
+    public function value(): string
     {
-        return $this->currentValue;
-    }
-
-    /**
-     * @return string
-     */
-    public function newValue(): string
-    {
-        return $this->newValue;
+        return $this->value;
     }
 
     /**
