@@ -7,7 +7,7 @@ class Message
     /**
      * @var string
      */
-    protected $message;
+    private $message;
 
     /**
      * Create a new message.
@@ -20,6 +20,8 @@ class Message
     }
 
     /**
+     * Get a string representation of the object.
+     *
      * @return string
      */
     public function __toString()

@@ -20,6 +20,8 @@ class Status
     }
 
     /**
+     * Get a string representation of the object.
+     *
      * @return string
      */
     public function __toString()

@@ -20,7 +20,7 @@ class CnameRecordTest extends TestCase
 {
     public function testAddInstance()
     {
-        $cnameRecord = new CnameRecord($this->api($this->mock()));
+        $cnameRecord = new CnameRecord($this->api($this->mockResponse()));
 
         $addRequest = new AddRequest(
             'mytestdomain.com',
@@ -34,7 +34,7 @@ class CnameRecordTest extends TestCase
 
     public function testUpdateInstance()
     {
-        $cnameRecord = new CnameRecord($this->api($this->mock()));
+        $cnameRecord = new CnameRecord($this->api($this->mockResponse()));
 
         $updateRequest = new UpdateRequest(
             'mytestdomain.com',
@@ -57,7 +57,10 @@ class CnameRecordTest extends TestCase
         );
     }
 
-    private function mock()
+    /**
+     * @return MockHandler
+     */
+    private function mockResponse(): MockHandler
     {
         return new MockHandler([
             new Response(
