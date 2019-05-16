@@ -19,6 +19,9 @@ class Status
         $this->status = $status;
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return strtolower($this->status);

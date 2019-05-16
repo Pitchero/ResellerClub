@@ -46,6 +46,16 @@ abstract class Response
     }
 
     /**
+     * Get the response message.
+     *
+     * @return Message
+     */
+    public function message(): Message
+    {
+        return new Message($this->attributes['msg']);
+    }
+
+    /**
      * Determine if the response was successful.
      *
      * @return bool

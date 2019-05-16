@@ -3,7 +3,9 @@
 namespace ResellerClub\Dns\Cname;
 
 use ResellerClub\Api;
+use ResellerClub\Dns\Cname\Requests\AddRequest;
 use ResellerClub\Dns\Cname\Requests\UpdateRequest;
+use ResellerClub\Dns\Cname\Responses\AddResponse;
 use ResellerClub\Dns\Cname\Responses\UpdateResponse;
 
 class CnameRecord
@@ -19,6 +21,30 @@ class CnameRecord
     public function __construct(Api $api)
     {
         $this->api = $api;
+    }
+
+    /**
+     * Add a new CNAME record.
+     *
+     * @see https://manage.resellerclub.com/kb/node/1092
+     *
+     * @param AddRequest $request
+     *
+     * @return \ResellerClub\Response
+     */
+    public function add(AddRequest $request)
+    {
+        $response = $this->api->post(
+            'dns/manage/add-cname-record.json',
+            [
+                'domain-name'       => (string) $request->domain(),
+                'host'              => (string) $request->record(),
+                'value'             => (string) $request->value(),
+                'ttl'               => $request->ttl(),
+            ]
+        );
+
+        return AddResponse::fromApiResponse($response);
     }
 
     /**
