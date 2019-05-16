@@ -31,11 +31,11 @@ class AddRequest extends Response
     private $value;
 
     /**
-     * Time-to-live in seconds for this DNS record.
+     * Time-to-live object for this DNS record.
      *
-     * @var null|TimeToLive
+     * @var TimeToLive
      */
-    private $ttl = null;
+    private $ttl;
 
     /**
      * AddRequest constructor.
