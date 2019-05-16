@@ -37,12 +37,6 @@ class ResponseTest extends TestCase
             json_encode(['msg' => $message])
         );
 
-        $this->assertInstanceOf(Message::class, BusinessEmailOrderResponse::fromApiResponse($response)->message());
-        $this->assertEquals($message, BusinessEmailOrderResponse::fromApiResponse($response)->message());
-
-        $this->assertInstanceOf(Message::class, CreateResponse::fromApiResponse($response)->message());
-        $this->assertEquals($message, CreateResponse::fromApiResponse($response)->message());
-
         $this->assertInstanceOf(Message::class, AddResponse::fromApiResponse($response)->message());
         $this->assertEquals($message, AddResponse::fromApiResponse($response)->message());
 
