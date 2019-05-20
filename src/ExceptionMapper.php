@@ -6,6 +6,7 @@ use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Exception\ServerException;
+use ResellerClub\Exceptions\ActionPendingException;
 use ResellerClub\Exceptions\AlreadyRenewedException;
 use ResellerClub\Exceptions\ApiClientException;
 use ResellerClub\Exceptions\ApiException;
@@ -31,11 +32,7 @@ class ExceptionMapper
             case ConnectException::class:
                 return new ConnectionException($message, $code);
             case ServerException::class:
-                if ($message === 'Domain already renewed.') {
-                    return new AlreadyRenewedException($message, $code);
-                }
-
-                return new ApiException($message, $code);
+                return $this->mapApiSpecificErrors($message, $code);
             default:
                 return new ApiException($message, $code);
         }
@@ -73,5 +70,25 @@ class ExceptionMapper
         $contents = json_decode($exception->getResponse()->getBody()->getContents(), true);
 
         return is_array($contents) ? $contents : [];
+    }
+
+    /**
+     * Map any API specific messages to a new exception message.
+     *
+     * @param string $message
+     * @param string $code
+     *
+     * @return ApiException
+     */
+    private function mapApiSpecificErrors(string $message, string $code): ApiException
+    {
+        switch ($message) {
+            case 'Domain already renewed.':
+                return new AlreadyRenewedException($message, $code);
+            case 'There is already an action pending on this Order.':
+                return new ActionPendingException($message, $code);
+            default:
+                return new ApiException($message, $code);
+        }
     }
 }
