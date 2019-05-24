@@ -11,6 +11,7 @@ use ResellerClub\Exceptions\AlreadyRenewedException;
 use ResellerClub\Exceptions\ApiClientException;
 use ResellerClub\Exceptions\ApiException;
 use ResellerClub\Exceptions\ConnectionException;
+use ResellerClub\Exceptions\MinimumRequirementException;
 
 class ExceptionMapper
 {
@@ -87,6 +88,8 @@ class ExceptionMapper
                 return new AlreadyRenewedException($message, $code);
             case 'There is already an action pending on this Order.':
                 return new ActionPendingException($message, $code);
+            case 'You must have atleast ONE email account.':
+                return new MinimumRequirementException($message, $code);
             default:
                 return new ApiException($message, $code);
         }
