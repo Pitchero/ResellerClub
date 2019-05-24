@@ -15,6 +15,7 @@ use ResellerClub\Exceptions\AlreadyRenewedException;
 use ResellerClub\Exceptions\ApiClientException;
 use ResellerClub\Exceptions\ApiException;
 use ResellerClub\Exceptions\ConnectionException;
+use ResellerClub\Exceptions\MinimumRequirementException;
 
 class ExceptionMapperTest extends TestCase
 {
@@ -118,6 +119,25 @@ class ExceptionMapperTest extends TestCase
         $exception = $exception_handler->map($requestException);
 
         $this->assertInstanceOf(ActionPendingException::class, $exception);
+        $this->assertEquals($expectedCode, $exception->getCode());
+        $this->assertEquals($expectedMessage, $exception->getMessage());
+    }
+
+    public function testMinimumRequirementException()
+    {
+        $expectedMessage = 'You must have atleast ONE email account.';
+        $expectedCode = 500;
+
+        $requestException = new ServerException(
+            $expectedMessage,
+            $this->request,
+            $this->response($expectedCode, $expectedMessage)
+        );
+
+        $exception_handler = new ExceptionMapper();
+        $exception = $exception_handler->map($requestException);
+
+        $this->assertInstanceOf(MinimumRequirementException::class, $exception);
         $this->assertEquals($expectedCode, $exception->getCode());
         $this->assertEquals($expectedMessage, $exception->getMessage());
     }
