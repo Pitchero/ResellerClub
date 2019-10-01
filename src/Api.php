@@ -4,6 +4,7 @@ namespace ResellerClub;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
+use ResellerClub\Dns\A\ARecord;
 use ResellerClub\Dns\Cname\CnameRecord;
 use ResellerClub\Orders\BusinessEmails\BusinessEmailOrder;
 use ResellerClub\Orders\Domains\DomainOrder;
@@ -118,6 +119,16 @@ class Api
     public function cnameRecord(): CnameRecord
     {
         return new CnameRecord($this);
+    }
+
+    /**
+     * Return an 'A' DNS record instance.
+     *
+     * @return ARecord
+     */
+    public function aRecord(): ARecord
+    {
+        return new ARecord($this);
     }
 
     /**
