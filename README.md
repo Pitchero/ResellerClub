@@ -15,10 +15,10 @@ This package is available through [Packagist][4]. To install in your project via
 ## Example Usages
 
 ### Business Emails
-[API Documentation](https://manage.resellerclub.com/kb/answer/2155).
+[API Documentation](https://manage.resellerclub.com/kb/node/2155).
 
 #### Creating a order
-[API Documentation](https://manage.resellerclub.com/kb/answer/2156)
+[API Documentation](https://manage.resellerclub.com/kb/node/2156)
 
 ```php
 try {
@@ -45,7 +45,7 @@ try {
 ```
 
 #### Deleting an order
-[API Documentation](https://manage.resellerclub.com/kb/answer/2162)
+[API Documentation](https://manage.resellerclub.com/kb/node/2162)
 
 ```php
 try {
@@ -68,7 +68,7 @@ try {
 ```
 
 #### Getting an order
-[API Documentation](https://manage.resellerclub.com/kb/answer/2163)
+[API Documentation](https://manage.resellerclub.com/kb/node/2163)
 
 ```php
 try {
@@ -91,7 +91,7 @@ try {
 ```
 
 #### Renewing an order
-[API Documentation](https://manage.resellerclub.com/kb/answer/2157)
+[API Documentation](https://manage.resellerclub.com/kb/node/2157)
 
 ```php
 try {
@@ -119,7 +119,7 @@ try {
 ```
 
 #### Add email account to a business email order
-[API Documentation](https://manage.resellerclub.com/kb/answer/2158)
+[API Documentation](https://manage.resellerclub.com/kb/node/2158)
 
 ```php
 try {
@@ -147,7 +147,7 @@ try {
 
 
 #### Delete email account from an existing business email order
-[API Documentation](https://manage.resellerclub.com/kb/answer/2159)
+[API Documentation](https://manage.resellerclub.com/kb/node/2159)
 
 ```php
 try {
@@ -173,10 +173,10 @@ try {
 ```
 
 ### Email Accounts
-[API Documentation](https://manage.resellerclub.com/kb/answer/1034).
+[API Documentation](https://manage.resellerclub.com/kb/node/1034).
 
 #### Creating an email account
-[API Documentation](https://manage.resellerclub.com/kb/answer/1037)
+[API Documentation](https://manage.resellerclub.com/kb/node/1037)
 
 ```php
 try {
@@ -212,7 +212,7 @@ try {
 ```
 
 #### Deleting an email account
-[API Documentation](https://manage.resellerclub.com/kb/answer/1049)
+[API Documentation](https://manage.resellerclub.com/kb/node/1049)
 
 ```php
 try {
@@ -242,7 +242,7 @@ try {
 ### Email forwarders
 
 #### Create an email forwarder
-[API Documentation](https://manage.resellerclub.com/kb/answer/1038)
+[API Documentation](https://manage.resellerclub.com/kb/node/1038)
 
 ```php
 try {
@@ -270,7 +270,7 @@ try {
 ```
 
 #### Deleting an email forwarder
-[API Documentation](https://manage.resellerclub.com/kb/answer/1049)
+[API Documentation](https://manage.resellerclub.com/kb/node/1049)
 
 ```php
 try {
@@ -329,7 +329,7 @@ Licensed under the [MIT License][2].
 ## Issues
 If you find an issue with this package, please open a [GitHub Issue][3].
 
-[1]: https://manage.resellerclub.com/kb/answer/744
+[1]: https://manage.resellerclub.com/kb/node/744
 [2]: LICENSE.md
 [3]: https://github.com/Pitchero/ResellerClub/issues/new
 [4]: https://packagist.org/
