@@ -354,5 +354,5 @@ If you find an issue with this package, please open a [GitHub Issue][3].
 [1]: https://manage.resellerclub.com/kb/node/744
 [2]: LICENSE.md
 [3]: https://github.com/Pitchero/ResellerClub/issues/new
-[4]: https://packagist.org/
+[4]: https://packagist.org/packages/pitchero/reseller-club
 [5]: https://getcomposer.org/
