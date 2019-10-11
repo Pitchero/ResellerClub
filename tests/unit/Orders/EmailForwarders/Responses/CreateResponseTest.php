@@ -13,7 +13,7 @@ class CreateResponseTest extends TestCase
      */
     private $response;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -24,7 +24,7 @@ class CreateResponseTest extends TestCase
         ]);
     }
 
-    public function testItCanGetStatus()
+    public function testItCanGetStatus(): void
     {
         $this->assertInstanceOf(Status::class, $this->response->status());
         $this->assertEquals('success', (string) $this->response->status());

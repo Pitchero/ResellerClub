@@ -11,7 +11,7 @@ use ResellerClub\Status;
 
 class DeletedResponseTest extends TestCase
 {
-    public function testMissingAttributeExceptionThrownWhenStatusNotSetInResponse()
+    public function testMissingAttributeExceptionThrownWhenStatusNotSetInResponse(): void
     {
         try {
             new DeletedResponse(['response' => []]);
@@ -24,7 +24,7 @@ class DeletedResponseTest extends TestCase
         $this->fail('The missing attribute exception has not been thrown.');
     }
 
-    public function testStatusSet()
+    public function testStatusSet(): void
     {
         $response = new DeletedResponse([
             'response' => ['status' => 'SUCCESS'],
@@ -34,7 +34,7 @@ class DeletedResponseTest extends TestCase
         $this->assertEquals('success', (string) $response->status());
     }
 
-    public function testDoesNotExistResponseThrownWhenEmailAddressErrorCodeFound()
+    public function testDoesNotExistResponseThrownWhenEmailAddressErrorCodeFound(): void
     {
         $this->expectException(DoesNotExistResponseException::class);
         new DeletedResponse([
@@ -46,7 +46,7 @@ class DeletedResponseTest extends TestCase
         ]);
     }
 
-    public function testResponseExceptionThrownWhenNotSuccessful()
+    public function testResponseExceptionThrownWhenNotSuccessful(): void
     {
         try {
             new DeletedResponse([

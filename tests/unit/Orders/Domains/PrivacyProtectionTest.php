@@ -13,7 +13,7 @@ class PrivacyProtectionTest extends TestCase
      */
     private $privacyProtection;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->privacyProtection = new PrivacyProtection(
@@ -24,7 +24,7 @@ class PrivacyProtectionTest extends TestCase
         );
     }
 
-    public function testExpiry()
+    public function testExpiry(): void
     {
         $this->assertInstanceOf(Carbon::class, $this->privacyProtection->expiry());
         $this->assertEquals(
@@ -33,17 +33,17 @@ class PrivacyProtectionTest extends TestCase
         );
     }
 
-    public function testRegistrantContact()
+    public function testRegistrantContact(): void
     {
         $this->assertEquals('registrant', $this->privacyProtection->registrantContact());
     }
 
-    public function testAdminContact()
+    public function testAdminContact(): void
     {
         $this->assertEquals('admin', $this->privacyProtection->adminContact());
     }
 
-    public function testBillingContact()
+    public function testBillingContact(): void
     {
         $this->assertEquals('billing', $this->privacyProtection->billingContact());
     }

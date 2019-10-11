@@ -7,7 +7,7 @@ use ResellerClub\Orders\EmailAccounts\Settings\WebmailUrlSettings;
 
 class WebmailUrlSettingsTest extends TestCase
 {
-    public function testWebmailUrlSettings()
+    public function testWebmailUrlSettings(): void
     {
         $webmailUrlSettings = new WebmailUrlSettings('http://webmail.somedomain.co.in.onlyfordemo.com');
 

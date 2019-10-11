@@ -17,7 +17,7 @@ use ResellerClub\Orders\Order;
 
 class EmailForwarderTest extends TestCase
 {
-    public function testResponseFromEmailForwarderDelete()
+    public function testResponseFromEmailForwarderDelete(): void
     {
         $mock = new MockHandler([
             new Response(

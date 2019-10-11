@@ -17,11 +17,11 @@ use ResellerClub\Orders\OrderStatus;
 
 class GetResponseTest extends TestCase
 {
-    public function testEntityId()
+    public function testEntityId(): void
     {
         $response = new GetResponse(['entityid' => 123]);
 
-        $this->assertInternalType('int', $response->entityId());
+        $this->assertIsInt($response->entityId());
         $this->assertEquals(123, $response->entityId());
     }
 
@@ -29,57 +29,57 @@ class GetResponseTest extends TestCase
     {
         $response = new GetResponse(['orderid' => 123]);
 
-        $this->assertInternalType('int', $response->orderId());
+        $this->assertIsInt($response->orderId());
         $this->assertEquals(123, $response->orderId());
 
         $response = new GetResponse(['orderid' => null]);
 
-        $this->assertInternalType('int', $response->orderId());
+        $this->assertIsInt($response->orderId());
         $this->assertEquals(0, $response->orderId());
 
         $response = new GetResponse([]);
 
-        $this->assertInternalType('int', $response->orderId());
+        $this->assertIsInt($response->orderId());
         $this->assertEquals(0, $response->orderId());
     }
 
-    public function testDescription()
+    public function testDescription(): void
     {
         $response = new GetResponse(['description' => 'domain description']);
 
-        $this->assertInternalType('string', $response->description());
+        $this->assertIsString($response->description());
         $this->assertEquals('domain description', $response->description());
 
         $response = new GetResponse(['description' => null]);
 
-        $this->assertInternalType('string', $response->description());
+        $this->assertIsString($response->description());
         $this->assertEquals('', $response->description());
 
         $response = new GetResponse([]);
 
-        $this->assertInternalType('string', $response->description());
+        $this->assertIsString($response->description());
         $this->assertEquals('', $response->description());
     }
 
-    public function testDomain()
+    public function testDomain(): void
     {
         $response = new GetResponse(['domainname' => 'some-domain.co.uk']);
 
-        $this->assertInternalType('string', $response->domain());
+        $this->assertIsString($response->domain());
         $this->assertEquals('some-domain.co.uk', $response->domain());
 
         $response = new GetResponse(['domainname' => null]);
 
-        $this->assertInternalType('string', $response->domain());
+        $this->assertIsString($response->domain());
         $this->assertEquals('', $response->domain());
 
         $response = new GetResponse([]);
 
-        $this->assertInternalType('string', $response->domain());
+        $this->assertIsString($response->domain());
         $this->assertEquals('', $response->domain());
     }
 
-    public function testCurrentOrderStatus()
+    public function testCurrentOrderStatus(): void
     {
         $response = new GetResponse(['currentstatus' => 'Active']);
         $this->assertInstanceOf(OrderStatus::class, $response->currentOrderStatus());
@@ -91,13 +91,13 @@ class GetResponseTest extends TestCase
         $this->assertInstanceOf(OrderStatus::class, $response->currentOrderStatus());
     }
 
-    public function testRegistryStatus()
+    public function testRegistryStatus(): void
     {
         $response = new GetResponse(['orderstatus' => 'resellerlock']);
         $this->assertInstanceOf(RegistryStatus::class, $response->registryStatus());
     }
 
-    public function testLockedOrHoldStatus()
+    public function testLockedOrHoldStatus(): void
     {
         $response = new GetResponse(['domainstatus' => ['sixtydaylock']]);
         $this->assertInstanceOf(LockedOrHoldStatus::class, $response->lockedOrHoldStatus());
@@ -106,243 +106,243 @@ class GetResponseTest extends TestCase
         $this->assertInstanceOf(LockedOrHoldStatus::class, $response->lockedOrHoldStatus());
     }
 
-    public function testProductCategory()
+    public function testProductCategory(): void
     {
         $response = new GetResponse(['productcategory' => 'domorder']);
-        $this->assertInternalType('string', $response->productCategory());
+        $this->assertIsString($response->productCategory());
         $this->assertEquals('domorder', $response->productCategory());
 
         $response = new GetResponse(['productcategory' => null]);
-        $this->assertInternalType('string', $response->productCategory());
+        $this->assertIsString($response->productCategory());
         $this->assertEquals('', $response->productCategory());
 
         $response = new GetResponse([]);
-        $this->assertInternalType('string', $response->productCategory());
+        $this->assertIsString($response->productCategory());
         $this->assertEquals('', $response->productCategory());
     }
 
-    public function testProductId()
+    public function testProductId(): void
     {
         $response = new GetResponse(['productkey' => 'dominfo']);
-        $this->assertInternalType('string', $response->productId());
+        $this->assertIsString($response->productId());
         $this->assertEquals('dominfo', $response->productId());
 
         $response = new GetResponse(['productcategory' => null]);
-        $this->assertInternalType('string', $response->productId());
+        $this->assertIsString($response->productId());
         $this->assertEquals('', $response->productId());
 
         $response = new GetResponse([]);
-        $this->assertInternalType('string', $response->productId());
+        $this->assertIsString($response->productId());
         $this->assertEquals('', $response->productId());
     }
 
-    public function testRegistryDate()
+    public function testRegistryDate(): void
     {
         $response = new GetResponse(['creationtime' => '1547570574']);
         $this->assertInstanceOf(Carbon::class, $response->registryDate());
         $this->assertEquals(Carbon::createFromTimestamp(1547570574), $response->registryDate());
     }
 
-    public function testRegistryExpiryDate()
+    public function testRegistryExpiryDate(): void
     {
         $response = new GetResponse(['endtime' => '1547570898']);
         $this->assertInstanceOf(Carbon::class, $response->registryExpiryDate());
         $this->assertEquals(Carbon::createFromTimestamp(1547570898), $response->registryExpiryDate());
     }
 
-    public function testCustomerId()
+    public function testCustomerId(): void
     {
         $response = new GetResponse(['customerid' => '17824872']);
 
-        $this->assertInternalType('int', $response->customerId());
+        $this->assertIsInt($response->customerId());
         $this->assertEquals(17824872, $response->customerId());
 
         $response = new GetResponse(['customerid' => null]);
 
-        $this->assertInternalType('int', $response->customerId());
+        $this->assertIsInt($response->customerId());
         $this->assertEquals(0, $response->customerId());
 
         $response = new GetResponse([]);
 
-        $this->assertInternalType('int', $response->customerId());
+        $this->assertIsInt($response->customerId());
         $this->assertEquals(0, $response->customerId());
     }
 
-    public function testIsImmediateReseller()
+    public function testIsImmediateReseller(): void
     {
         $response = new GetResponse(['isImmediateReseller' => true]);
 
-        $this->assertInternalType('bool', $response->isImmediateReseller());
+        $this->assertIsBool($response->isImmediateReseller());
         $this->assertTrue($response->isImmediateReseller());
 
         $response = new GetResponse(['isImmediateReseller' => false]);
 
-        $this->assertInternalType('bool', $response->isImmediateReseller());
+        $this->assertIsBool($response->isImmediateReseller());
         $this->assertFalse($response->isImmediateReseller());
 
         $response = new GetResponse(['isImmediateReseller' => null]);
 
-        $this->assertInternalType('bool', $response->isImmediateReseller());
+        $this->assertIsBool($response->isImmediateReseller());
         $this->assertFalse($response->isImmediateReseller());
 
         $response = new GetResponse([]);
 
-        $this->assertInternalType('bool', $response->isImmediateReseller());
+        $this->assertIsBool($response->isImmediateReseller());
         $this->assertFalse($response->isImmediateReseller());
     }
 
-    public function testResellerParentId()
+    public function testResellerParentId(): void
     {
         $response = new GetResponse(['parentkey' => '999999999_999999998_000000']);
 
-        $this->assertInternalType('string', $response->resellerParentId());
+        $this->assertIsString($response->resellerParentId());
         $this->assertEquals('999999999_999999998_000000', $response->resellerParentId());
 
         $response = new GetResponse(['parentkey' => null]);
 
-        $this->assertInternalType('string', $response->resellerParentId());
+        $this->assertIsString($response->resellerParentId());
         $this->assertEquals('', $response->resellerParentId());
 
         $response = new GetResponse([]);
 
-        $this->assertInternalType('string', $response->resellerParentId());
+        $this->assertIsString($response->resellerParentId());
         $this->assertEquals('', $response->resellerParentId());
     }
 
-    public function testIsPrivacyProtectionAllowed()
+    public function testIsPrivacyProtectionAllowed(): void
     {
         $response = new GetResponse(['privacyprotectedallowed' => true]);
 
-        $this->assertInternalType('bool', $response->isPrivacyProtectionAllowed());
+        $this->assertIsBool($response->isPrivacyProtectionAllowed());
         $this->assertTrue($response->isPrivacyProtectionAllowed());
 
         $response = new GetResponse(['privacyprotectedallowed' => false]);
 
-        $this->assertInternalType('bool', $response->isPrivacyProtectionAllowed());
+        $this->assertIsBool($response->isPrivacyProtectionAllowed());
         $this->assertFalse($response->isPrivacyProtectionAllowed());
 
         $response = new GetResponse(['privacyprotectedallowed' => null]);
 
-        $this->assertInternalType('bool', $response->isPrivacyProtectionAllowed());
+        $this->assertIsBool($response->isPrivacyProtectionAllowed());
         $this->assertFalse($response->isPrivacyProtectionAllowed());
 
         $response = new GetResponse([]);
 
-        $this->assertInternalType('bool', $response->isPrivacyProtectionAllowed());
+        $this->assertIsBool($response->isPrivacyProtectionAllowed());
         $this->assertFalse($response->isPrivacyProtectionAllowed());
     }
 
-    public function testIsPrivacyProtected()
+    public function testIsPrivacyProtected(): void
     {
         $response = new GetResponse(['isprivacyprotected' => true]);
 
-        $this->assertInternalType('bool', $response->isPrivacyProtected());
+        $this->assertIsBool($response->isPrivacyProtected());
         $this->assertTrue($response->isPrivacyProtected());
 
         $response = new GetResponse(['isprivacyprotected' => false]);
 
-        $this->assertInternalType('bool', $response->isPrivacyProtected());
+        $this->assertIsBool($response->isPrivacyProtected());
         $this->assertFalse($response->isPrivacyProtected());
 
         $response = new GetResponse(['isprivacyprotected' => null]);
 
-        $this->assertInternalType('bool', $response->isPrivacyProtected());
+        $this->assertIsBool($response->isPrivacyProtected());
         $this->assertFalse($response->isPrivacyProtected());
 
         $response = new GetResponse([]);
 
-        $this->assertInternalType('bool', $response->isPrivacyProtected());
+        $this->assertIsBool($response->isPrivacyProtected());
         $this->assertFalse($response->isPrivacyProtected());
     }
 
-    public function testIsDeletionAllowed()
+    public function testIsDeletionAllowed(): void
     {
         $response = new GetResponse(['allowdeletion' => true]);
 
-        $this->assertInternalType('bool', $response->isDeletionAllowed());
+        $this->assertIsBool($response->isDeletionAllowed());
         $this->assertTrue($response->isDeletionAllowed());
 
         $response = new GetResponse(['allowdeletion' => false]);
 
-        $this->assertInternalType('bool', $response->isDeletionAllowed());
+        $this->assertIsBool($response->isDeletionAllowed());
         $this->assertFalse($response->isDeletionAllowed());
 
         $response = new GetResponse(['allowdeletion' => null]);
 
-        $this->assertInternalType('bool', $response->isDeletionAllowed());
+        $this->assertIsBool($response->isDeletionAllowed());
         $this->assertFalse($response->isDeletionAllowed());
 
         $response = new GetResponse([]);
 
-        $this->assertInternalType('bool', $response->isDeletionAllowed());
+        $this->assertIsBool($response->isDeletionAllowed());
         $this->assertFalse($response->isDeletionAllowed());
     }
 
-    public function testIsSuspendedUponExpiry()
+    public function testIsSuspendedUponExpiry(): void
     {
         $response = new GetResponse(['isOrderSuspendedUponExpiry' => true]);
 
-        $this->assertInternalType('bool', $response->isSuspendedUponExpiry());
+        $this->assertIsBool($response->isSuspendedUponExpiry());
         $this->assertTrue($response->isSuspendedUponExpiry());
 
         $response = new GetResponse(['isOrderSuspendedUponExpiry' => false]);
 
-        $this->assertInternalType('bool', $response->isSuspendedUponExpiry());
+        $this->assertIsBool($response->isSuspendedUponExpiry());
         $this->assertFalse($response->isSuspendedUponExpiry());
 
         $response = new GetResponse(['isOrderSuspendedUponExpiry' => null]);
 
-        $this->assertInternalType('bool', $response->isSuspendedUponExpiry());
+        $this->assertIsBool($response->isSuspendedUponExpiry());
         $this->assertFalse($response->isSuspendedUponExpiry());
 
         $response = new GetResponse([]);
 
-        $this->assertInternalType('bool', $response->isSuspendedUponExpiry());
+        $this->assertIsBool($response->isSuspendedUponExpiry());
         $this->assertFalse($response->isSuspendedUponExpiry());
     }
 
-    public function testIsSuspendedByParent()
+    public function testIsSuspendedByParent(): void
     {
         $response = new GetResponse(['orderSuspendedByParent' => true]);
 
-        $this->assertInternalType('bool', $response->isSuspendedByParent());
+        $this->assertIsBool($response->isSuspendedByParent());
         $this->assertTrue($response->isSuspendedByParent());
 
         $response = new GetResponse(['orderSuspendedByParent' => false]);
 
-        $this->assertInternalType('bool', $response->isSuspendedByParent());
+        $this->assertIsBool($response->isSuspendedByParent());
         $this->assertFalse($response->isSuspendedByParent());
 
         $response = new GetResponse(['orderSuspendedByParent' => null]);
 
-        $this->assertInternalType('bool', $response->isSuspendedByParent());
+        $this->assertIsBool($response->isSuspendedByParent());
         $this->assertFalse($response->isSuspendedByParent());
 
         $response = new GetResponse([]);
 
-        $this->assertInternalType('bool', $response->isSuspendedByParent());
+        $this->assertIsBool($response->isSuspendedByParent());
         $this->assertFalse($response->isSuspendedByParent());
     }
 
-    public function testDomainSecret()
+    public function testDomainSecret(): void
     {
         $response = new GetResponse(['domsecret' => 'abc123']);
 
-        $this->assertInternalType('string', $response->domainSecret());
+        $this->assertIsString($response->domainSecret());
         $this->assertEquals('abc123', $response->domainSecret());
 
         $response = new GetResponse(['domsecret' => null]);
 
-        $this->assertInternalType('string', $response->domainSecret());
+        $this->assertIsString($response->domainSecret());
         $this->assertEquals('', $response->domain());
 
         $response = new GetResponse([]);
 
-        $this->assertInternalType('string', $response->domainSecret());
+        $this->assertIsString($response->domainSecret());
         $this->assertEquals('', $response->domainSecret());
     }
 
-    public function testNamedServers()
+    public function testNamedServers(): void
     {
         $response = new GetResponse([
             'noOfNameServers' => 2,
@@ -360,7 +360,7 @@ class GetResponseTest extends TestCase
         $this->assertEquals('ns3.test.example.com', $response->namedServers()->childNamedServer());
     }
 
-    public function testRegistrantContact()
+    public function testRegistrantContact(): void
     {
         $response = new GetResponse([
             'registrantcontact'  => [
@@ -405,7 +405,7 @@ class GetResponseTest extends TestCase
         $this->assertEquals('EX3 5MP', $response->registrantContact()->address()->postCode());
     }
 
-    public function testAdminContact()
+    public function testAdminContact(): void
     {
         $response = new GetResponse([
             'admincontact'  => [
@@ -450,7 +450,7 @@ class GetResponseTest extends TestCase
         $this->assertEquals('EX3 5MP', $response->adminContact()->address()->postCode());
     }
 
-    public function testTechnicalContact()
+    public function testTechnicalContact(): void
     {
         $response = new GetResponse([
             'techcontact'  => [
@@ -495,7 +495,7 @@ class GetResponseTest extends TestCase
         $this->assertEquals('EX3 5MP', $response->technicalContact()->address()->postCode());
     }
 
-    public function testBillingContact()
+    public function testBillingContact(): void
     {
         $response = new GetResponse([
             'billingcontact'  => [
@@ -540,7 +540,7 @@ class GetResponseTest extends TestCase
         $this->assertEquals('EX3 5MP', $response->billingContact()->address()->postCode());
     }
 
-    public function testGdprProtection()
+    public function testGdprProtection(): void
     {
         $response = new GetResponse([
             'gdpr' => [
@@ -554,7 +554,7 @@ class GetResponseTest extends TestCase
         $this->assertFalse($response->gdprProtection()->eligible());
     }
 
-    public function testRegistrantContactVerification()
+    public function testRegistrantContactVerification(): void
     {
         $response = new GetResponse([
             'raaVerificationStatus'    => 'Pending',
@@ -569,7 +569,7 @@ class GetResponseTest extends TestCase
         );
     }
 
-    public function testPrivacyProtection()
+    public function testPrivacyProtection(): void
     {
         $response = new GetResponse([
             'privacyprotectendtime'     => '1547565748',
@@ -585,7 +585,7 @@ class GetResponseTest extends TestCase
         $this->assertEquals('billing', $response->privacyProtection()->billingContact());
     }
 
-    public function testDelegationSigner()
+    public function testDelegationSigner(): void
     {
         $response = new GetResponse([
             'dnssec' => [
@@ -603,13 +603,13 @@ class GetResponseTest extends TestCase
         $this->assertEquals('SHA-256', $response->delegationSigner()->digestType());
     }
 
-    public function testRecurring()
+    public function testRecurring(): void
     {
         $response = new GetResponse([
             'recurring' => true,
         ]);
 
-        $this->assertInternalType('bool', $response->recurring());
+        $this->assertIsBool($response->recurring());
         $this->assertTrue($response->recurring());
 
         $response = new GetResponse([
@@ -621,84 +621,84 @@ class GetResponseTest extends TestCase
         $this->assertFalse($response->recurring());
     }
 
-    public function testCustomerCost()
+    public function testCustomerCost(): void
     {
         $response = new GetResponse(['customercost' => '0.0']);
 
-        $this->assertInternalType('float', $response->customerCost());
+        $this->assertIsFloat($response->customerCost());
         $this->assertEquals('0.00', $response->customerCost());
     }
 
-    public function testMoneyBackPeriod()
+    public function testMoneyBackPeriod(): void
     {
         $response = new GetResponse(['moneybackperiod' => 30]);
 
-        $this->assertInternalType('int', $response->moneyBackPeriod());
+        $this->assertIsInt($response->moneyBackPeriod());
         $this->assertEquals(30, $response->moneyBackPeriod());
     }
 
-    public function testResellerCost()
+    public function testResellerCost(): void
     {
         $response = new GetResponse(['resellercost' => '0.0']);
 
-        $this->assertInternalType('float', $response->resellerCost());
+        $this->assertIsFloat($response->resellerCost());
         $this->assertEquals('0.00', $response->resellerCost());
     }
 
-    public function testJumpConditions()
+    public function testJumpConditions(): void
     {
         $response = new GetResponse(['jumpConditions' => []]);
-        $this->assertInternalType('array', $response->jumpConditions());
+        $this->assertIsArray($response->jumpConditions());
     }
 
-    public function testPaused()
+    public function testPaused(): void
     {
         $response = new GetResponse(['paused' => true]);
-        $this->assertInternalType('bool', $response->paused());
+        $this->assertIsBool($response->paused());
         $this->assertTrue($response->paused());
 
         $response = new GetResponse(['paused' => false]);
-        $this->assertInternalType('bool', $response->paused());
+        $this->assertIsBool($response->paused());
         $this->assertFalse($response->paused());
     }
 
-    public function testEaqId()
+    public function testEaqId(): void
     {
         $response = new GetResponse(['eaqid' => 0]);
 
-        $this->assertInternalType('int', $response->eaqId());
+        $this->assertIsInt($response->eaqId());
         $this->assertEquals(0, $response->eaqId());
     }
 
-    public function testEntityTypeId()
+    public function testEntityTypeId(): void
     {
         $response = new GetResponse(['entitytypeid' => 283]);
 
-        $this->assertInternalType('int', $response->entityTypeId());
+        $this->assertIsInt($response->entityTypeId());
         $this->assertEquals(283, $response->entityTypeId());
     }
 
-    public function testActionCompleted()
+    public function testActionCompleted(): void
     {
         $response = new GetResponse(['actioncompleted' => '0']);
 
-        $this->assertInternalType('string', $response->actionCompleted());
+        $this->assertIsString($response->actionCompleted());
         $this->assertEquals('0', $response->actionCompleted());
     }
 
-    public function testAutoRenewAttemptDuration()
+    public function testAutoRenewAttemptDuration(): void
     {
         $response = new GetResponse(['actioncompleted' => '0']);
 
-        $this->assertInternalType('integer', $response->autoRenewAttemptDuration());
+        $this->assertIsInt($response->autoRenewAttemptDuration());
         $this->assertEquals('0', $response->autoRenewAttemptDuration());
     }
 
-    public function testAutoRenewTermType()
+    public function testAutoRenewTermType(): void
     {
         $response = new GetResponse(['autoRenewTermType' => 'LONG_TERM']);
 
-        $this->assertInternalType('string', $response->autoRenewTermType());
+        $this->assertIsString($response->autoRenewTermType());
         $this->assertEquals('LONG_TERM', $response->autoRenewTermType());
     }
 }

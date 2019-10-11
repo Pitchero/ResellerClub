@@ -13,7 +13,7 @@ class BusinessEmailOrderRequestTest extends TestCase
      */
     private $businessEmailOrder;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -26,30 +26,30 @@ class BusinessEmailOrderRequestTest extends TestCase
         );
     }
 
-    public function testCustomerId()
+    public function testCustomerId(): void
     {
         $customerId = $this->businessEmailOrder->customerId();
 
-        $this->assertInternalType('int', $customerId);
+        $this->assertIsInt($customerId);
         $this->assertEquals(123, $customerId);
     }
 
-    public function testDomainName()
+    public function testDomainName(): void
     {
         $this->assertEquals('some-domain.co.uk', $this->businessEmailOrder->domain());
     }
 
-    public function testNumberOfAccounts()
+    public function testNumberOfAccounts(): void
     {
         $numberOfAccounts = $this->businessEmailOrder->numberOfAccounts();
-        $this->assertInternalType('int', $numberOfAccounts);
+        $this->assertIsInt($numberOfAccounts);
         $this->assertEquals(5, $numberOfAccounts);
     }
 
-    public function testForNumberOfMonths()
+    public function testForNumberOfMonths(): void
     {
         $forNumberOfMonths = $this->businessEmailOrder->forNumberOfMonths();
-        $this->assertInternalType('int', $forNumberOfMonths);
+        $this->assertIsInt($forNumberOfMonths);
         $this->assertEquals(1, $forNumberOfMonths);
     }
 

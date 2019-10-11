@@ -14,7 +14,7 @@ class CreateRequestTest extends TestCase
      */
     private $request;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -33,44 +33,44 @@ class CreateRequestTest extends TestCase
         );
     }
 
-    public function testOrderId()
+    public function testOrderId(): void
     {
         $this->assertEquals(123, $this->request->orderId());
     }
 
-    public function testEmail()
+    public function testEmail(): void
     {
         $this->assertInstanceOf(EmailAddress::class, $this->request->email());
         $this->assertEquals('john.doe@my-domain.co.uk', (string) $this->request->email());
     }
 
-    public function testPassword()
+    public function testPassword(): void
     {
         $this->assertEquals('myT35tP@55word', $this->request->password());
     }
 
-    public function testNotificationEmail()
+    public function testNotificationEmail(): void
     {
         $this->assertInstanceOf(EmailAddress::class, $this->request->notificationEmail());
         $this->assertEquals('alternative@test.com', (string) $this->request->notificationEmail());
     }
 
-    public function testFirstName()
+    public function testFirstName(): void
     {
         $this->assertEquals('John', $this->request->firstName());
     }
 
-    public function testLastName()
+    public function testLastName(): void
     {
         $this->assertEquals('Doe', $this->request->lastName());
     }
 
-    public function testCountryCode()
+    public function testCountryCode(): void
     {
         $this->assertEquals('US', $this->request->countryCode());
     }
 
-    public function testLanguageCode()
+    public function testLanguageCode(): void
     {
         $this->assertEquals('en', $this->request->languageCode());
     }

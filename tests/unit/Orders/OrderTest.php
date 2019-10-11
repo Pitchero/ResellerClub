@@ -7,11 +7,11 @@ use ResellerClub\Orders\Order;
 
 class OrderTest extends TestCase
 {
-    public function testGettingIdWhenSet()
+    public function testGettingIdWhenSet(): void
     {
         $orderId = (new Order(123))->id();
 
-        $this->assertInternalType('int', $orderId);
+        $this->assertIsInt($orderId);
         $this->assertEquals(123, $orderId);
     }
 }

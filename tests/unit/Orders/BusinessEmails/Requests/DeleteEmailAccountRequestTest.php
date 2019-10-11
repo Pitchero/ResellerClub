@@ -13,7 +13,7 @@ class DeleteEmailAccountRequestTest extends TestCase
      */
     private $request;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -25,12 +25,12 @@ class DeleteEmailAccountRequestTest extends TestCase
         );
     }
 
-    public function testItCanGetOrderId()
+    public function testItCanGetOrderId(): void
     {
         $this->assertEquals(123, $this->request->orderId());
     }
 
-    public function testItCanGetNumberOfAccounts()
+    public function testItCanGetNumberOfAccounts(): void
     {
         $this->assertEquals(1, $this->request->numberOfAccounts());
     }

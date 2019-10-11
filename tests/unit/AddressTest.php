@@ -12,7 +12,7 @@ class AddressTest extends TestCase
      */
     private $address;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->address = new Address(
@@ -27,51 +27,51 @@ class AddressTest extends TestCase
         );
     }
 
-    public function testCompany()
+    public function testCompany(): void
     {
-        $this->assertInternalType('string', $this->address->company());
+        $this->assertIsString($this->address->company());
         $this->assertEquals('Company Name', $this->address->company());
     }
 
-    public function testAddressLine1()
+    public function testAddressLine1(): void
     {
-        $this->assertInternalType('string', $this->address->addressLine1());
+        $this->assertIsString($this->address->addressLine1());
         $this->assertEquals('Address Line 1', $this->address->addressLine1());
     }
 
-    public function testAddressLine2()
+    public function testAddressLine2(): void
     {
-        $this->assertInternalType('string', $this->address->addressLine2());
+        $this->assertIsString($this->address->addressLine2());
         $this->assertEquals('Address Line 2', $this->address->addressLine2());
     }
 
-    public function testAddressLine3()
+    public function testAddressLine3(): void
     {
-        $this->assertInternalType('string', $this->address->addressLine3());
+        $this->assertIsString($this->address->addressLine3());
         $this->assertEquals('Address Line 3', $this->address->addressLine3());
     }
 
-    public function testCity()
+    public function testCity(): void
     {
-        $this->assertInternalType('string', $this->address->city());
+        $this->assertIsString($this->address->city());
         $this->assertEquals('Leeds', $this->address->city());
     }
 
-    public function testCounty()
+    public function testCounty(): void
     {
-        $this->assertInternalType('string', $this->address->county());
+        $this->assertIsString($this->address->county());
         $this->assertEquals('West Yorkshire', $this->address->county());
     }
 
-    public function testCountry()
+    public function testCountry(): void
     {
-        $this->assertInternalType('string', $this->address->country());
+        $this->assertIsString($this->address->country());
         $this->assertEquals('Gb', $this->address->country());
     }
 
-    public function testPostCode()
+    public function testPostCode(): void
     {
-        $this->assertInternalType('string', $this->address->postCode());
+        $this->assertIsString($this->address->postCode());
         $this->assertEquals('LS1 1AB', $this->address->postCode());
     }
 }

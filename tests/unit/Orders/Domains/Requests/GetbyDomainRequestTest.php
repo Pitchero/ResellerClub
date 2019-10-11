@@ -18,7 +18,7 @@ class GetbyDomainRequestTest extends TestCase
      */
     private $request;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -30,12 +30,12 @@ class GetbyDomainRequestTest extends TestCase
         );
     }
 
-    public function testItCanGetOrderId()
+    public function testItCanGetOrderId(): void
     {
         $this->assertEquals('some-domain.co.uk', $this->request->domain());
     }
 
-    public function testItCanGetOrderDetailType()
+    public function testItCanGetOrderDetailType(): void
     {
         $this->assertInstanceOf(DomainOrderDetailType::class, $this->request->orderDetailType());
         $this->assertEquals((string) $this->domainOrderDetailType, $this->request->orderDetailType());

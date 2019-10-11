@@ -19,7 +19,7 @@ use ResellerClub\TimeToLive;
 
 class ARecordTest extends TestCase
 {
-    public function testAddInstance()
+    public function testAddInstance(): void
     {
         $ARecord = new ARecord($this->api($this->mockResponse()));
 
@@ -33,7 +33,7 @@ class ARecordTest extends TestCase
         $this->assertInstanceOf(AddResponse::class, $ARecord->add($addRequest));
     }
 
-    public function testUpdateInstance()
+    public function testUpdateInstance(): void
     {
         $ARecord = new ARecord($this->api($this->mockResponse()));
 

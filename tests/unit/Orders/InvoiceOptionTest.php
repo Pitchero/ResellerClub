@@ -7,7 +7,7 @@ use ResellerClub\Orders\InvoiceOption;
 
 class InvoiceOptionTest extends TestCase
 {
-    public function testValidStatuses()
+    public function testValidStatuses(): void
     {
         $this->assertEquals('NoInvoice', (string) InvoiceOption::noInvoice());
         $this->assertEquals('PayInvoice', (string) InvoiceOption::payInvoice());

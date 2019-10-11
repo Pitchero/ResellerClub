@@ -30,7 +30,7 @@ class ApiTest extends TestCase
      */
     private $api;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -44,17 +44,17 @@ class ApiTest extends TestCase
         );
     }
 
-    public function testGet()
+    public function testGet(): void
     {
         $this->assertInstanceOf(Response::class, $this->api->get('get', ['request-param' => 123]));
     }
 
-    public function testPost()
+    public function testPost(): void
     {
         $this->assertInstanceOf(Response::class, $this->api->post('post', ['request-param' => 123]));
     }
 
-    public function testApiClientException()
+    public function testApiClientException(): void
     {
         $mock = new MockHandler([
             new ClientException('a', new Request('POST', 'test')),
@@ -69,7 +69,7 @@ class ApiTest extends TestCase
         $api->post('post', ['request-param' => 123]);
     }
 
-    public function testConnectionException()
+    public function testConnectionException(): void
     {
         $mock = new MockHandler([
             new ConnectException('Error Communicating with Server', new Request('POST', 'test')),
@@ -84,7 +84,7 @@ class ApiTest extends TestCase
         $api->post('post', ['request-param' => 123]);
     }
 
-    public function testAlreadyRenewedException()
+    public function testAlreadyRenewedException(): void
     {
         $mock = new MockHandler([
             new ServerException('Domain already renewed.', new Request('POST', 'test')),
@@ -99,7 +99,7 @@ class ApiTest extends TestCase
         $api->post('post', ['request-param' => 123]);
     }
 
-    public function testApiException()
+    public function testApiException(): void
     {
         $mock = new MockHandler([
             new RequestException('Error Communicating with Server', new Request('POST', 'test')),
@@ -114,22 +114,22 @@ class ApiTest extends TestCase
         $api->post('post', ['request-param' => 123]);
     }
 
-    public function testBusinessEmailOrder()
+    public function testBusinessEmailOrder(): void
     {
         $this->assertInstanceOf(BusinessEmailOrder::class, $this->api->businessEmailOrder());
     }
 
-    public function testDomainOrder()
+    public function testDomainOrder(): void
     {
         $this->assertInstanceOf(DomainOrder::class, $this->api->domainOrder());
     }
 
-    public function testEmailAccount()
+    public function testEmailAccount(): void
     {
         $this->assertInstanceOf(EmailAccount::class, $this->api->emailAccount());
     }
 
-    public function testEmailForwarder()
+    public function testEmailForwarder(): void
     {
         $this->assertInstanceOf(EmailForwarder::class, $this->api->emailForwarder());
     }

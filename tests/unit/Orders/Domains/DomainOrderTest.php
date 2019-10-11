@@ -22,7 +22,7 @@ use ResellerClub\Orders\Order;
 
 class DomainOrderTest extends TestCase
 {
-    public function testResponseFromDomainOrderGet()
+    public function testResponseFromDomainOrderGet(): void
     {
         $mock = new MockHandler([
             new Response(
@@ -45,7 +45,7 @@ class DomainOrderTest extends TestCase
         );
     }
 
-    public function testResponseFromDomainOrderGetByDomain()
+    public function testResponseFromDomainOrderGetByDomain(): void
     {
         $mock = new MockHandler([
             new Response(
@@ -68,7 +68,7 @@ class DomainOrderTest extends TestCase
         );
     }
 
-    public function testResponseFromDomainOrderRenew()
+    public function testResponseFromDomainOrderRenew(): void
     {
         $mock = new MockHandler([
             new Response(

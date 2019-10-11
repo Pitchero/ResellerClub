@@ -27,7 +27,7 @@ class RenewRequestTest extends TestCase
      */
     private $request;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -45,27 +45,27 @@ class RenewRequestTest extends TestCase
         );
     }
 
-    public function testOrderId()
+    public function testOrderId(): void
     {
-        $this->assertInternalType('int', $this->request->orderId());
+        $this->assertIsInt($this->request->orderId());
         $this->assertEquals(123, $this->request->orderId());
     }
 
-    public function testCurrentExpiryTimestamp()
+    public function testCurrentExpiryTimestamp(): void
     {
-        $this->assertInternalType('int', $this->request->currentExpiryTimestamp());
+        $this->assertIsInt($this->request->currentExpiryTimestamp());
         $this->assertEquals($this->currentExpiry->getTimestamp(), $this->request->currentExpiryTimestamp());
     }
 
-    public function testInvoiceOption()
+    public function testInvoiceOption(): void
     {
         $this->assertInstanceOf(InvoiceOption::class, $this->request->invoiceOption());
         $this->assertEquals((string) $this->invoiceOption, (string) $this->request->invoiceOption());
     }
 
-    public function testYears()
+    public function testYears(): void
     {
-        $this->assertInternalType('int', $this->request->years());
+        $this->assertIsInt($this->request->years());
         $this->assertEquals(1, $this->request->years());
 
         $this->request = new RenewRequest(
@@ -77,13 +77,13 @@ class RenewRequestTest extends TestCase
             $autoRenew = false
         );
 
-        $this->assertInternalType('int', $this->request->years());
+        $this->assertIsInt($this->request->years());
         $this->assertEquals(0, $this->request->years());
     }
 
-    public function testPurchasePrivacyProtection()
+    public function testPurchasePrivacyProtection(): void
     {
-        $this->assertInternalType('bool', $this->request->purchasePrivacyProtection());
+        $this->assertIsBool($this->request->purchasePrivacyProtection());
         $this->assertFalse($this->request->purchasePrivacyProtection());
 
         $this->request = new RenewRequest(
@@ -98,9 +98,9 @@ class RenewRequestTest extends TestCase
         $this->assertTrue($this->request->purchasePrivacyProtection());
     }
 
-    public function testAutoRenew()
+    public function testAutoRenew(): void
     {
-        $this->assertInternalType('bool', $this->request->autoRenew());
+        $this->assertIsBool($this->request->autoRenew());
         $this->assertFalse($this->request->autoRenew());
 
         $this->request = new RenewRequest(

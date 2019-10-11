@@ -17,7 +17,7 @@ class PrivacyProtectionOrderResponseTest extends TestCase
      */
     private $response;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -38,7 +38,7 @@ class PrivacyProtectionOrderResponseTest extends TestCase
         ]);
     }
 
-    public function testFeatureNotAvailableExceptionThrown()
+    public function testFeatureNotAvailableExceptionThrown(): void
     {
         $this->expectException(FeatureNotAvailableException::class);
 
@@ -49,17 +49,17 @@ class PrivacyProtectionOrderResponseTest extends TestCase
         ]);
     }
 
-    public function testItCanOrderId()
+    public function testItCanOrderId(): void
     {
         $this->assertEquals(85575828, $this->response->orderId());
     }
 
-    public function testItCanGetDescription()
+    public function testItCanGetDescription(): void
     {
         $this->assertEquals('wibble-wibble.net', $this->response->description());
     }
 
-    public function testItCanGetAction()
+    public function testItCanGetAction(): void
     {
         $action = $this->response->action();
         $this->assertInstanceOf(Action::class, $action);
@@ -73,34 +73,34 @@ class PrivacyProtectionOrderResponseTest extends TestCase
         $this->assertEquals('Operation completed successfully', $action->statusDescription());
     }
 
-    public function testItCanGetInvoiceId()
+    public function testItCanGetInvoiceId(): void
     {
         $this->assertEquals(88768089, $this->response->invoiceId());
     }
 
-    public function testItCanGetSellingCurrencySymbol()
+    public function testItCanGetSellingCurrencySymbol(): void
     {
         $this->assertEquals('GBP', $this->response->sellingCurrencySymbol());
     }
 
-    public function testItCanGetSellingCurrency()
+    public function testItCanGetSellingCurrency(): void
     {
         $this->assertInstanceOf(Currency::class, $this->response->sellingCurrency());
     }
 
-    public function testItCanGetSellingAmount()
+    public function testItCanGetSellingAmount(): void
     {
         $this->assertInstanceOf(Money::class, $this->response->sellingAmount());
         $this->assertEquals(0, $this->response->sellingAmount()->getAmount());
     }
 
-    public function testItCanGetUnutilisedSellingAmount()
+    public function testItCanGetUnutilisedSellingAmount(): void
     {
         $this->assertInstanceOf(Money::class, $this->response->unutilisedSellingAmount());
         $this->assertEquals(0, $this->response->unutilisedSellingAmount()->getAmount());
     }
 
-    public function testItCanGetCustomerId()
+    public function testItCanGetCustomerId(): void
     {
         $this->assertEquals(17824872, $this->response->customerId());
     }

@@ -14,7 +14,7 @@ class CreateRequestTest extends TestCase
      */
     private $request;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -28,9 +28,9 @@ class CreateRequestTest extends TestCase
         ]);
     }
 
-    public function testItCanGetOrderId()
+    public function testItCanGetOrderId(): void
     {
-        $this->assertInternalType('integer', $this->request->orderId());
+        $this->assertIsInt($this->request->orderId());
         $this->assertEquals(123, $this->request->orderId());
     }
 
@@ -41,7 +41,7 @@ class CreateRequestTest extends TestCase
 
     public function testItCanGetForwarders()
     {
-        $this->assertInternalType('string', $this->request->forwarders());
+        $this->assertIsString($this->request->forwarders());
         $this->assertEquals(
             'john.doe@example.com,jane.doe@example.com',
             $this->request->forwarders()

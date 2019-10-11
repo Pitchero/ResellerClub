@@ -15,7 +15,7 @@ class ContactTest extends TestCase
      */
     private $contact;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->contact = new Contact(
@@ -43,41 +43,41 @@ class ContactTest extends TestCase
         );
     }
 
-    public function testId()
+    public function testId(): void
     {
-        $this->assertInternalType('integer', $this->contact->id());
+        $this->assertIsInt($this->contact->id());
         $this->assertEquals(123, $this->contact->id());
     }
 
-    public function testCustomerId()
+    public function testCustomerId(): void
     {
-        $this->assertInternalType('integer', $this->contact->customerId());
+        $this->assertIsInt($this->contact->customerId());
         $this->assertEquals(456, $this->contact->customerId());
     }
 
-    public function testParentId()
+    public function testParentId(): void
     {
-        $this->assertInternalType('string', $this->contact->parentId());
+        $this->assertIsString($this->contact->parentId());
         $this->assertEquals('999999999_999999998_715226', $this->contact->parentId());
     }
 
-    public function testName()
+    public function testName(): void
     {
-        $this->assertInternalType('string', $this->contact->name());
+        $this->assertIsString($this->contact->name());
         $this->assertEquals('Testy McTest', $this->contact->name());
     }
 
-    public function testEmailAddress()
+    public function testEmailAddress(): void
     {
         $this->assertInstanceOf(EmailAddress::class, $this->contact->email());
     }
 
-    public function testTelephoneNumber()
+    public function testTelephoneNumber(): void
     {
         $this->assertInstanceOf(TelephoneNumber::class, $this->contact->telephoneNumber());
     }
 
-    public function testAddress()
+    public function testAddress(): void
     {
         $this->assertInstanceOf(Address::class, $this->contact->address());
     }

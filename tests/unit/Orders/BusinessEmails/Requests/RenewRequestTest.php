@@ -14,7 +14,7 @@ class RenewRequestTest extends TestCase
      */
     private $request;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -30,22 +30,22 @@ class RenewRequestTest extends TestCase
         );
     }
 
-    public function testItCanGetOrderId()
+    public function testItCanGetOrderId(): void
     {
         $this->assertEquals(123, $this->request->orderId());
     }
 
-    public function testItCanGetMonths()
+    public function testItCanGetMonths(): void
     {
         $this->assertEquals(3, $this->request->months());
     }
 
-    public function testItCanGetNumberOfAccounts()
+    public function testItCanGetNumberOfAccounts(): void
     {
         $this->assertEquals(0, $this->request->numberOfAccounts());
     }
 
-    public function testItCanGetInvoiceOption()
+    public function testItCanGetInvoiceOption(): void
     {
         $this->assertInstanceOf(InvoiceOption::class, $this->request->invoiceOption());
         $this->assertEquals('NoInvoice', (string) $this->request->invoiceOption());

@@ -19,7 +19,7 @@ use ResellerClub\Orders\Order;
 
 class EmailAccountTest extends TestCase
 {
-    public function testResponseFromEmailAccountDelete()
+    public function testResponseFromEmailAccountDelete(): void
     {
         $mock = new MockHandler([
             new Response(
@@ -46,7 +46,7 @@ class EmailAccountTest extends TestCase
         );
     }
 
-    public function testResponseFromEmailAccountCreate()
+    public function testResponseFromEmailAccountCreate(): void
     {
         $mock = new MockHandler([
             new Response(

@@ -18,7 +18,7 @@ use ResellerClub\TimeToLive;
 
 class CnameRecordTest extends TestCase
 {
-    public function testAddInstance()
+    public function testAddInstance(): void
     {
         $cnameRecord = new CnameRecord($this->api($this->mockResponse()));
 
@@ -32,7 +32,7 @@ class CnameRecordTest extends TestCase
         $this->assertInstanceOf(AddResponse::class, $cnameRecord->add($addRequest));
     }
 
-    public function testUpdateInstance()
+    public function testUpdateInstance(): void
     {
         $cnameRecord = new CnameRecord($this->api($this->mockResponse()));
 
