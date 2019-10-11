@@ -13,7 +13,7 @@ class BusinessEmailOrderResponseTest extends TestCase
      */
     private $response;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -28,17 +28,17 @@ class BusinessEmailOrderResponseTest extends TestCase
         ]);
     }
 
-    public function testItCanGetDomain()
+    public function testItCanGetDomain(): void
     {
         $this->assertEquals('some-domain.co.in', $this->response->domain());
     }
 
-    public function testItCanGetOrderId()
+    public function testItCanGetOrderId(): void
     {
         $this->assertEquals(1234, $this->response->orderId());
     }
 
-    public function testItCanGetAction()
+    public function testItCanGetAction(): void
     {
         $this->assertInstanceOf(Action::class, $this->response->action());
     }

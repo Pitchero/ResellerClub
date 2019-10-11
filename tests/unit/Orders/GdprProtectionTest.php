@@ -7,7 +7,7 @@ use ResellerClub\Orders\GdprProtection;
 
 class GdprProtectionTest extends TestCase
 {
-    public function testEnabledAndDisabled()
+    public function testEnabledAndDisabled(): void
     {
         $this->assertTrue(
             (new GdprProtection(
@@ -38,7 +38,7 @@ class GdprProtectionTest extends TestCase
         );
     }
 
-    public function testEligibility()
+    public function testEligibility(): void
     {
         $this->assertTrue(
             (new GdprProtection(

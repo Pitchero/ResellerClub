@@ -14,7 +14,7 @@ class DeleteRequestTest extends TestCase
      */
     private $request;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -26,12 +26,12 @@ class DeleteRequestTest extends TestCase
         );
     }
 
-    public function testOrderId()
+    public function testOrderId(): void
     {
         $this->assertEquals(123, $this->request->orderId());
     }
 
-    public function testEmail()
+    public function testEmail(): void
     {
         $this->assertEquals('john.doe@my-domain.co.uk', $this->request->email());
     }

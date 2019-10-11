@@ -14,7 +14,7 @@ class DeletedEmailAccountResponseTest extends TestCase
      */
     private $response;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -30,7 +30,7 @@ class DeletedEmailAccountResponseTest extends TestCase
         ]);
     }
 
-    public function testItCanGetAction()
+    public function testItCanGetAction(): void
     {
         $this->assertInstanceOf(Action::class, $this->response->action());
         $this->assertEquals(471836050, $this->response->action()->id());
@@ -49,17 +49,17 @@ class DeletedEmailAccountResponseTest extends TestCase
         );
     }
 
-    public function testItCanGetEntityId()
+    public function testItCanGetEntityId(): void
     {
         $this->assertEquals(80239999, $this->response->entityId());
     }
 
-    public function testItCanGetDomain()
+    public function testItCanGetDomain(): void
     {
         $this->assertEquals('test-domain-3.co.uk.onlyfordemo.com', $this->response->domain());
     }
 
-    public function testItCanGetStatus()
+    public function testItCanGetStatus(): void
     {
         $this->assertInstanceOf(Status::class, $this->response->status());
         $this->assertEquals('success', (string) $this->response->status());

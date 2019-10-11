@@ -9,7 +9,7 @@ use ResellerClub\Orders\InvoiceOption;
 
 class AddedEmailAccountResponseFactoryTest extends TestCase
 {
-    public function testPayInvoiceResponse()
+    public function testPayInvoiceResponse(): void
     {
         $responseBody = [
             'actionstatusdesc'        => 'Request will be processed in some time.',
@@ -42,7 +42,7 @@ class AddedEmailAccountResponseFactoryTest extends TestCase
         }
     }
 
-    public function testKeepInvoiceResponse()
+    public function testKeepInvoiceResponse(): void
     {
         $responseBody = [
             'actionstatusdesc'        => 'Request will be processed in some time.',
@@ -75,7 +75,7 @@ class AddedEmailAccountResponseFactoryTest extends TestCase
         }
     }
 
-    public function testOnlyAddResponse()
+    public function testOnlyAddResponse(): void
     {
         $responseBody = [
             'customercost' => '90.54',
@@ -99,7 +99,7 @@ class AddedEmailAccountResponseFactoryTest extends TestCase
         }
     }
 
-    public function testNoInvoiceResponse()
+    public function testNoInvoiceResponse(): void
     {
         $responseBody = [
             'entityid'         => '80064711',

@@ -16,7 +16,7 @@ use ResellerClub\Status;
 
 class CreateResponseTest extends TestCase
 {
-    public function testResponseExceptionThrownWhenValidationErrorIsReturn()
+    public function testResponseExceptionThrownWhenValidationErrorIsReturn(): void
     {
         try {
             new CreateResponse(['response' => [
@@ -33,7 +33,7 @@ class CreateResponseTest extends TestCase
         $this->fail('The missing attribute exception was not thrown for the user.');
     }
 
-    public function testMissingAttributeExceptionThrownWhenUserNotSetInResponse()
+    public function testMissingAttributeExceptionThrownWhenUserNotSetInResponse(): void
     {
         try {
             new CreateResponse([
@@ -50,7 +50,7 @@ class CreateResponseTest extends TestCase
         $this->fail('The missing attribute exception was not thrown for the user.');
     }
 
-    public function testStatus()
+    public function testStatus(): void
     {
         $response = new CreateResponse([
             'response' => [
@@ -63,7 +63,7 @@ class CreateResponseTest extends TestCase
         $this->assertEquals('success', (string) $response->status());
     }
 
-    public function testStatusNotSetInResponse()
+    public function testStatusNotSetInResponse(): void
     {
         try {
             $response = new CreateResponse([
@@ -81,7 +81,7 @@ class CreateResponseTest extends TestCase
         $this->fail('The missing attribute exception was not thrown for the status.');
     }
 
-    public function testEmail()
+    public function testEmail(): void
     {
         $response = new CreateResponse([
             'response' => [
@@ -96,7 +96,7 @@ class CreateResponseTest extends TestCase
         $this->assertEquals('john.does@some-domain.co.uk', (string) $response->email());
     }
 
-    public function testDomain()
+    public function testDomain(): void
     {
         $response = new CreateResponse([
             'response' => [
@@ -107,11 +107,11 @@ class CreateResponseTest extends TestCase
             ],
         ]);
 
-        $this->assertInternalType('string', $response->domain());
+        $this->assertIsString($response->domain());
         $this->assertEquals('some-domain.co.uk', $response->domain());
     }
 
-    public function testFirstName()
+    public function testFirstName(): void
     {
         $response = new CreateResponse([
             'response' => [
@@ -122,11 +122,11 @@ class CreateResponseTest extends TestCase
             ],
         ]);
 
-        $this->assertInternalType('string', $response->firstName());
+        $this->assertIsString($response->firstName());
         $this->assertEquals('John', $response->firstName());
     }
 
-    public function testLastName()
+    public function testLastName(): void
     {
         $response = new CreateResponse([
             'response' => [
@@ -137,11 +137,11 @@ class CreateResponseTest extends TestCase
             ],
         ]);
 
-        $this->assertInternalType('string', $response->lastName());
+        $this->assertIsString($response->lastName());
         $this->assertEquals('Doe', $response->lastName());
     }
 
-    public function testNotificationsEmail()
+    public function testNotificationsEmail(): void
     {
         $response = new CreateResponse([
             'response' => [
@@ -156,7 +156,7 @@ class CreateResponseTest extends TestCase
         $this->assertEquals('another-email@some-domain.co.uk', (string) $response->notificationsEmail());
     }
 
-    public function testInternalForwards()
+    public function testInternalForwards(): void
     {
         $expected_result = 'new:somedomain.co.in.onlyfordemo.com@set25.mss.mailhostbox.aus-tx.colo';
 
@@ -169,11 +169,11 @@ class CreateResponseTest extends TestCase
             ],
         ]);
 
-        $this->assertInternalType('string', $response->internalForwards());
+        $this->assertIsString($response->internalForwards());
         $this->assertEquals($expected_result, $response->internalForwards());
     }
 
-    public function testQuotaLimit()
+    public function testQuotaLimit(): void
     {
         $response = new CreateResponse([
             'response' => [
@@ -184,11 +184,11 @@ class CreateResponseTest extends TestCase
             ],
         ]);
 
-        $this->assertInternalType('int', $response->quotaLimit());
+        $this->assertIsInt($response->quotaLimit());
         $this->assertEquals(5242880, $response->quotaLimit());
     }
 
-    public function testAccountStatus()
+    public function testAccountStatus(): void
     {
         $response = new CreateResponse([
             'response' => [
@@ -199,11 +199,11 @@ class CreateResponseTest extends TestCase
             ],
         ]);
 
-        $this->assertInternalType('string', $response->accountStatus());
+        $this->assertIsString($response->accountStatus());
         $this->assertEquals('active', $response->accountStatus());
     }
 
-    public function testAccountType()
+    public function testAccountType(): void
     {
         $response = new CreateResponse([
             'response' => [
@@ -214,11 +214,11 @@ class CreateResponseTest extends TestCase
             ],
         ]);
 
-        $this->assertInternalType('string', $response->accountType());
+        $this->assertIsString($response->accountType());
         $this->assertEquals('POP_WITHOUT_AUTORESPONDER', $response->accountType());
     }
 
-    public function testQuotaUsed()
+    public function testQuotaUsed(): void
     {
         $response = new CreateResponse([
             'response' => [
@@ -229,11 +229,11 @@ class CreateResponseTest extends TestCase
             ],
         ]);
 
-        $this->assertInternalType('int', $response->quotaUsed());
+        $this->assertIsInt($response->quotaUsed());
         $this->assertEquals(0, $response->quotaUsed());
     }
 
-    public function testCountryCode()
+    public function testCountryCode(): void
     {
         $response = new CreateResponse([
             'response' => [
@@ -244,11 +244,11 @@ class CreateResponseTest extends TestCase
             ],
         ]);
 
-        $this->assertInternalType('string', $response->countryCode());
+        $this->assertIsString($response->countryCode());
         $this->assertEquals('US', $response->countryCode());
     }
 
-    public function testPercentageQuotaUsage()
+    public function testPercentageQuotaUsage(): void
     {
         $response = new CreateResponse([
             'response' => [
@@ -259,11 +259,11 @@ class CreateResponseTest extends TestCase
             ],
         ]);
 
-        $this->assertInternalType('float', $response->percentageQuotaUsage());
+        $this->assertIsFloat($response->percentageQuotaUsage());
         $this->assertEquals(0, $response->percentageQuotaUsage());
     }
 
-    public function testLanguageCode()
+    public function testLanguageCode(): void
     {
         $response = new CreateResponse([
             'response' => [
@@ -274,11 +274,11 @@ class CreateResponseTest extends TestCase
             ],
         ]);
 
-        $this->assertInternalType('string', $response->languageCode());
+        $this->assertIsString($response->languageCode());
         $this->assertEquals('en', $response->languageCode());
     }
 
-    public function testAccountSettings()
+    public function testAccountSettings(): void
     {
         $response = new CreateResponse([
             'response' => [
@@ -296,7 +296,7 @@ class CreateResponseTest extends TestCase
 
         $accountSettings = $response->accountSettings();
 
-        $this->assertInternalType('array', $accountSettings);
+        $this->assertIsArray($accountSettings);
         $this->assertCount(4, $accountSettings);
 
         $this->assertArrayHasKey('pop', $accountSettings);
@@ -310,7 +310,7 @@ class CreateResponseTest extends TestCase
         $this->assertInstanceOf(WebmailUrlSettings::class, $accountSettings['webmail']);
     }
 
-    public function testCreatedOn()
+    public function testCreatedOn(): void
     {
         $response = new CreateResponse([
             'response' => [
@@ -325,7 +325,7 @@ class CreateResponseTest extends TestCase
         $this->assertEquals('2017-11-10 17:45:17', $response->createdOn()->format('Y-m-d H:i:s'));
     }
 
-    public function testPopAccessEnabled()
+    public function testPopAccessEnabled(): void
     {
         $response = new CreateResponse([
             'response' => [
@@ -336,11 +336,11 @@ class CreateResponseTest extends TestCase
             ],
         ]);
 
-        $this->assertInternalType('bool', $response->popAccessEnabled());
+        $this->assertIsBool($response->popAccessEnabled());
         $this->assertTrue($response->popAccessEnabled());
     }
 
-    public function testImapAccessEnabled()
+    public function testImapAccessEnabled(): void
     {
         $response = new CreateResponse([
             'response' => [
@@ -351,11 +351,11 @@ class CreateResponseTest extends TestCase
             ],
         ]);
 
-        $this->assertInternalType('bool', $response->imapAccessEnabled());
+        $this->assertIsBool($response->imapAccessEnabled());
         $this->assertTrue($response->imapAccessEnabled());
     }
 
-    public function testWebmailAccessEnabled()
+    public function testWebmailAccessEnabled(): void
     {
         $response = new CreateResponse([
             'response' => [
@@ -366,11 +366,11 @@ class CreateResponseTest extends TestCase
             ],
         ]);
 
-        $this->assertInternalType('bool', $response->webmailAccessEnabled());
+        $this->assertIsBool($response->webmailAccessEnabled());
         $this->assertTrue($response->webmailAccessEnabled());
     }
 
-    public function testCanFooterOptout()
+    public function testCanFooterOptout(): void
     {
         $response = new CreateResponse([
             'response' => [
@@ -381,11 +381,11 @@ class CreateResponseTest extends TestCase
             ],
         ]);
 
-        $this->assertInternalType('bool', $response->canFooterOptout());
+        $this->assertIsBool($response->canFooterOptout());
         $this->assertFalse($response->canFooterOptout());
     }
 
-    public function testRevertBlacklistRequestExists()
+    public function testRevertBlacklistRequestExists(): void
     {
         $response = new CreateResponse([
             'response' => [
@@ -396,11 +396,11 @@ class CreateResponseTest extends TestCase
             ],
         ]);
 
-        $this->assertInternalType('bool', $response->revertBlacklistRequestExists());
+        $this->assertIsBool($response->revertBlacklistRequestExists());
         $this->assertFalse($response->revertBlacklistRequestExists());
     }
 
-    public function testConfigurationProfile()
+    public function testConfigurationProfile(): void
     {
         $response = new CreateResponse([
             'response' => [
@@ -411,7 +411,7 @@ class CreateResponseTest extends TestCase
             ],
         ]);
 
-        $this->assertInternalType('string', $response->configurationProfile());
+        $this->assertIsString($response->configurationProfile());
         $this->assertEquals('EELITE', $response->configurationProfile());
     }
 }

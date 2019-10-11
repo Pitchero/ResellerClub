@@ -18,7 +18,7 @@ class RegistrantContactVerificationTest extends TestCase
      */
     private $verified;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -33,13 +33,13 @@ class RegistrantContactVerificationTest extends TestCase
         );
     }
 
-    public function testVerificationStatus()
+    public function testVerificationStatus(): void
     {
         $this->assertEquals('Pending', $this->pendingVerification->status());
         $this->assertEquals('Verified', $this->verified->status());
     }
 
-    public function testVerificationProcessStartTimeWhenSet()
+    public function testVerificationProcessStartTimeWhenSet(): void
     {
         $this->assertInstanceOf(
             Carbon::class,
@@ -52,7 +52,7 @@ class RegistrantContactVerificationTest extends TestCase
         );
     }
 
-    public function testVerificationProcessStartTimeWhenNotSet()
+    public function testVerificationProcessStartTimeWhenNotSet(): void
     {
         $this->assertNull(
             $this->verified->verificationProcessStartTime()

@@ -19,7 +19,7 @@ class GetRequestTest extends TestCase
      */
     private $request;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -31,12 +31,12 @@ class GetRequestTest extends TestCase
         );
     }
 
-    public function testItCanGetOrderId()
+    public function testItCanGetOrderId(): void
     {
         $this->assertEquals(123, $this->request->orderId());
     }
 
-    public function testItCanGetOrderDetailType()
+    public function testItCanGetOrderDetailType(): void
     {
         $this->assertInstanceOf(DomainOrderDetailType::class, $this->request->orderDetailType());
         $this->assertEquals((string) $this->domainOrderDetailType, $this->request->orderDetailType());

@@ -7,7 +7,7 @@ use ResellerClub\Orders\EmailAccounts\Settings\PopSettings;
 
 class PopSettingsTest extends TestCase
 {
-    public function testPopSettings()
+    public function testPopSettings(): void
     {
         $popSettings = new PopSettings('pop.somedomain.co.in.onlyfordemo.com');
 

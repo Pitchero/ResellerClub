@@ -12,7 +12,7 @@ class ActionTest extends TestCase
      */
     private $action;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -25,17 +25,17 @@ class ActionTest extends TestCase
         );
     }
 
-    public function testItCanGetId()
+    public function testItCanGetId(): void
     {
         $this->assertEquals(461331388, $this->action->id());
     }
 
-    public function testItCanGetType()
+    public function testItCanGetType(): void
     {
         $this->assertEquals('Add', $this->action->type());
     }
 
-    public function testItCanGetTypeDescription()
+    public function testItCanGetTypeDescription(): void
     {
         $this->assertEquals(
             'Addition of Business Email 1 for testdomainmail.com for 1 month',
@@ -43,12 +43,12 @@ class ActionTest extends TestCase
         );
     }
 
-    public function testItCanGetStatus()
+    public function testItCanGetStatus(): void
     {
         $this->assertEquals('PendingExecution', $this->action->status());
     }
 
-    public function testItCanGetStatusDescription()
+    public function testItCanGetStatusDescription(): void
     {
         $this->assertEquals('The action is pending execution', $this->action->statusDescription());
     }

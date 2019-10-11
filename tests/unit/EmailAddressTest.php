@@ -8,14 +8,14 @@ use ResellerClub\EmailAddress;
 
 class EmailAddressTest extends TestCase
 {
-    public function testCanCreateNewInstance()
+    public function testCanCreateNewInstance(): void
     {
         $email = new EmailAddress('steve@apple.com');
 
         $this->assertEquals('steve@apple.com', (string) $email);
     }
 
-    public function testInvalidEmailAddressThrowsException()
+    public function testInvalidEmailAddressThrowsException(): void
     {
         $this->expectException(InvalidArgumentException::class);
 

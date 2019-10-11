@@ -16,7 +16,7 @@ class AddedEmailAccountResponseTest extends TestCase
      */
     private $response;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -38,7 +38,7 @@ class AddedEmailAccountResponseTest extends TestCase
         ]);
     }
 
-    public function testItCanGetAction()
+    public function testItCanGetAction(): void
     {
         $this->assertInstanceOf(Action::class, $this->response->action());
         $this->assertEquals(469754540, $this->response->action()->id());
@@ -51,55 +51,55 @@ class AddedEmailAccountResponseTest extends TestCase
         $this->assertEquals('Request will be processed in some time.', $this->response->action()->statusDescription());
     }
 
-    public function testItCanGetEntityId()
+    public function testItCanGetEntityId(): void
     {
         $this->assertEquals(80030154, $this->response->entityId());
     }
 
-    public function testItCanGetDomain()
+    public function testItCanGetDomain(): void
     {
         $this->assertEquals('test-domain.co.uk.onlyfordemo.com', $this->response->domain());
     }
 
-    public function testItCanGetStatus()
+    public function testItCanGetStatus(): void
     {
         $this->assertInstanceOf(Status::class, $this->response->status());
         $this->assertEquals('success', (string) $this->response->status());
     }
 
-    public function testItCanGetInvoiceId()
+    public function testItCanGetInvoiceId(): void
     {
         $this->assertEquals(78877737, $this->response->invoiceId());
     }
 
-    public function testItCanGetCustomerId()
+    public function testItCanGetCustomerId(): void
     {
         $this->assertEquals(17824872, $this->response->customerId());
     }
 
-    public function testItCanGetSellingCurrencySymbol()
+    public function testItCanGetSellingCurrencySymbol(): void
     {
         $this->assertEquals('GBP', $this->response->sellingCurrencySymbol());
     }
 
-    public function testItCanGetSellingCurrency()
+    public function testItCanGetSellingCurrency(): void
     {
         $this->assertInstanceOf(Currency::class, $this->response->sellingCurrency());
     }
 
-    public function testItCanGetSellingAmount()
+    public function testItCanGetSellingAmount(): void
     {
         $this->assertInstanceOf(Money::class, $this->response->sellingAmount());
         $this->assertEquals('-9054', $this->response->sellingAmount()->getAmount());
     }
 
-    public function testItCanGetUnutilisedSellingAmount()
+    public function testItCanGetUnutilisedSellingAmount(): void
     {
         $this->assertInstanceOf(Money::class, $this->response->unutilisedSellingAmount());
         $this->assertEquals('-9054', $this->response->unutilisedSellingAmount()->getAmount());
     }
 
-    public function testItCanGetCustomerCost()
+    public function testItCanGetCustomerCost(): void
     {
         $this->assertInstanceOf(Money::class, $this->response->customerCost());
         $this->assertEquals('9054', $this->response->customerCost()->getAmount());
