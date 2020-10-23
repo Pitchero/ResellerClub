@@ -43,7 +43,8 @@ class BusinessEmailOrderTest extends TestCase
                     'unutilisedsellingamount' => '1.00',
                     'customerid'              => 17824872,
                     'status'                  => 'Success',
-                ])),
+                ])
+            ),
         ]);
 
         $businessEmailOrder = new BusinessEmailOrder($this->api($mock));
@@ -77,7 +78,8 @@ class BusinessEmailOrderTest extends TestCase
                     'actionstatus'     => 'PendingExecution',
                     'actionstatusdesc' => '',
                     'status'           => 'Success',
-                ])),
+                ])
+            ),
         ]);
 
         $businessEmailOrder = new BusinessEmailOrder($this->api($mock));
@@ -125,7 +127,8 @@ class BusinessEmailOrderTest extends TestCase
                     'productcategory'           => 'hosting',
                     'allowdeletion'             => 'true',
                     'moneybackperiod'           => '30',
-                ])),
+                ])
+            ),
         ]);
 
         $businessEmailOrder = new BusinessEmailOrder($this->api($mock));
