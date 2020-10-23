@@ -62,7 +62,7 @@ class ExceptionMapper
      *
      * @return array
      */
-    private function responseContents(RequestException $exception) :array
+    private function responseContents(RequestException $exception): array
     {
         if (!$exception->hasResponse()) {
             return [];

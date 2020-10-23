@@ -20,7 +20,7 @@ class IPv4Address
      */
     public function __construct(string $value)
     {
-        if (filter_var($value, FILTER_VALIDATE_IP,FILTER_FLAG_IPV4) === false) {
+        if (filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) === false) {
             throw new InvalidArgumentException("Value [{$value}] is not a valid IPv4 address.");
         }
 

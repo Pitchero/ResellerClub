@@ -20,7 +20,7 @@ class IPv4AddressTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
 
         /**
-         * Missing 4th octet
+         * Missing 4th octet.
          */
         new IPv4Address('127.0.0');
     }
@@ -30,7 +30,7 @@ class IPv4AddressTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
 
         /**
-         * Added 5th octet
+         * Added 5th octet.
          */
         new IPv4Address('127.0.0.0.1');
     }
@@ -40,7 +40,7 @@ class IPv4AddressTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
 
         /**
-         * IPv6 Address
+         * IPv6 Address.
          */
         new IPv4Address('::1/128');
     }
