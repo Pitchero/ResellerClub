@@ -15,12 +15,11 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/Pitchero/ResellerClub/issues",
-        "source": "https://github.com/Pitchero/ResellerClub"
+        "issues": "https://github.com/nawazsarwar/ResellerClub/issues",
+        "source": "https://github.com/nawazsarwar/ResellerClub"
     },
     "require": {
         "php": ">=7.0.0",
-        "guzzlehttp/guzzle": "^7.0.1",
         "nesbot/carbon": "~1.20 || ~2.0",
         "moneyphp/money": "~3.0"
     },
