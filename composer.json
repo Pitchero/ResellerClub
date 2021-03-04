@@ -1,5 +1,5 @@
 {
-    "name": "nawazsarwar/reseller-club",
+    "name": "wabasta/reseller-club",
     "description": "A PHP SDK for the ResellerClub API.",
     "license": "MIT",
     "keywords": ["resellerclub", "reseller-club", "email", "hosting", "api"],
