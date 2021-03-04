@@ -10,7 +10,7 @@ A PHP SDK for [ResellerClub’s API][1].
 This package is available through [Packagist][4]. To install in your project via
 [Composer][5]:
 
-    $ composer require pitchero/reseller-club
+    $ composer require wabasta/reseller-club
 
 ## Example Usages
 
