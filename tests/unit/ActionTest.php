@@ -12,7 +12,7 @@ class ActionTest extends TestCase
      */
     private $action;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
