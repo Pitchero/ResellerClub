@@ -12,7 +12,7 @@ class NamedServersTest extends TestCase
      */
     private $namedServers;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->namedServers = new NamedServers(
@@ -23,22 +23,22 @@ class NamedServersTest extends TestCase
         );
     }
 
-    public function testNumberOfNamedServers()
+    public function testNumberOfNamedServers(): void
     {
         $this->assertEquals(2, $this->namedServers->numberOfServers());
     }
 
-    public function testNamedServer1()
+    public function testNamedServer1(): void
     {
         $this->assertEquals('ns1.test.example.com', $this->namedServers->namedServer1());
     }
 
-    public function testNamedServer2()
+    public function testNamedServer2(): void
     {
         $this->assertEquals('ns2.testing.example.com', $this->namedServers->namedServer2());
     }
 
-    public function testChildNamedServer()
+    public function testChildNamedServer(): void
     {
         $this->assertEquals('ns3.child-named-server.example.com', $this->namedServers->childNamedServer());
     }

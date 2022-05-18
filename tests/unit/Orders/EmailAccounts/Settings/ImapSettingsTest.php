@@ -7,7 +7,7 @@ use ResellerClub\Orders\EmailAccounts\Settings\ImapSettings;
 
 class ImapSettingsTest extends TestCase
 {
-    public function testImapSettings()
+    public function testImapSettings(): void
     {
         $imapSettings = new ImapSettings('imap.somedomain.co.in.onlyfordemo.com');
 

@@ -23,7 +23,7 @@ use ResellerClub\Orders\Order;
 
 class BusinessEmailOrderTest extends TestCase
 {
-    public function testResponseFromBusinessEmailOrderCreate()
+    public function testResponseFromBusinessEmailOrderCreate(): void
     {
         $mock = new MockHandler([
             new Response(
@@ -63,7 +63,7 @@ class BusinessEmailOrderTest extends TestCase
         );
     }
 
-    public function testResponseFromBusinessEmailOrderDelete()
+    public function testResponseFromBusinessEmailOrderDelete(): void
     {
         $mock = new MockHandler([
             new Response(
@@ -92,7 +92,7 @@ class BusinessEmailOrderTest extends TestCase
         );
     }
 
-    public function testResponseFromBusinessEmailOrderGet()
+    public function testResponseFromBusinessEmailOrderGet(): void
     {
         $mock = new MockHandler([
             new Response(
@@ -141,7 +141,7 @@ class BusinessEmailOrderTest extends TestCase
         );
     }
 
-    public function testResponseFromBusinessEmailOrderAddEmailAccount()
+    public function testResponseFromBusinessEmailOrderAddEmailAccount(): void
     {
         $mock = new MockHandler([
             new Response(
@@ -181,7 +181,7 @@ class BusinessEmailOrderTest extends TestCase
         );
     }
 
-    public function testResponseFromBusinessEmailOrderDeleteEmailAccount()
+    public function testResponseFromBusinessEmailOrderDeleteEmailAccount(): void
     {
         $mock = new MockHandler([
             new Response(

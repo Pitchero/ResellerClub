@@ -15,39 +15,39 @@ class CreateResponseTest extends TestCase
      */
     private $response;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
         $this->response = $this->createResponse();
     }
 
-    public function testOrderId()
+    public function testOrderId(): void
     {
         $this->assertEquals(79767882, $this->response->orderId());
     }
 
-    public function testDomain()
+    public function testDomain(): void
     {
         $this->assertEquals('test-domain.co.uk.onlyfordemo.com', $this->response->domain());
     }
 
-    public function testItCanGetAction()
+    public function testItCanGetAction(): void
     {
         $this->assertInstanceOf(Action::class, $this->response->action());
     }
 
-    public function testInvoiceId()
+    public function testInvoiceId(): void
     {
         $this->assertEquals(77433277, $this->response->invoiceId());
     }
 
-    public function testSellingCurrencySymbol()
+    public function testSellingCurrencySymbol(): void
     {
         $this->assertEquals('GBP', $this->response->sellingCurrencySymbol());
     }
 
-    public function testSellingCurrency()
+    public function testSellingCurrency(): void
     {
         $this->assertInstanceOf(Currency::class, $this->response->sellingCurrency());
         $this->assertEquals('GBP', $this->response->sellingCurrency());
@@ -56,7 +56,7 @@ class CreateResponseTest extends TestCase
     /**
      * @dataProvider sellingAmountProvider
      */
-    public function testSellingAmount($response, $expectedAmount)
+    public function testSellingAmount($response, $expectedAmount): void
     {
         $this->assertInstanceOf(Money::class, $response->sellingAmount());
         $this->assertEquals($expectedAmount, $response->sellingAmount()->getAmount());
@@ -65,18 +65,18 @@ class CreateResponseTest extends TestCase
     /**
      * @dataProvider transactionAmountProvider
      */
-    public function testTransactionAmount($response, $expectedAmount)
+    public function testTransactionAmount($response, $expectedAmount): void
     {
         $this->assertInstanceOf(Money::class, $response->transactionAmount());
         $this->assertEquals($expectedAmount, $response->transactionAmount()->getAmount());
     }
 
-    public function testCustomerId()
+    public function testCustomerId(): void
     {
         $this->assertEquals(17824872, $this->response->customerId());
     }
 
-    public function sellingAmountProvider()
+    public function sellingAmountProvider(): array
     {
         return [
             [
@@ -94,7 +94,7 @@ class CreateResponseTest extends TestCase
         ];
     }
 
-    public function transactionAmountProvider()
+    public function transactionAmountProvider(): array
     {
         return [
             [
@@ -112,7 +112,7 @@ class CreateResponseTest extends TestCase
         ];
     }
 
-    private function createResponse(array $overrides = [])
+    private function createResponse(array $overrides = []): CreateResponse
     {
         $defaults = [
             'entityid'                => '79767882',

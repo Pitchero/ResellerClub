@@ -8,7 +8,7 @@ use ResellerClub\TimeToLive;
 
 class UpdateRequestTest extends TestCase
 {
-    public function testInstantiation()
+    public function testInstantiation(): void
     {
         $ttl = TimeToLive::defaultTtl();
         $request = new UpdateRequest(
@@ -22,7 +22,7 @@ class UpdateRequestTest extends TestCase
         $this->assertInstanceOf(UpdateRequest::class, $request);
     }
 
-    public function testInstantiationWithoutTTL()
+    public function testInstantiationWithoutTTL(): void
     {
         $request = new UpdateRequest(
             'test.com',
@@ -45,14 +45,14 @@ class UpdateRequestTest extends TestCase
             $ttl
         );
 
-        $this->assertInternalType('string', $request->domain());
-        $this->assertInternalType('string', $request->record());
-        $this->assertInternalType('string', $request->currentValue());
-        $this->assertInternalType('string', $request->newValue());
+        $this->assertIsString($request->domain());
+        $this->assertIsString($request->record());
+        $this->assertIsString($request->currentValue());
+        $this->assertIsString($request->newValue());
         $this->assertInstanceOf(TimeToLive::class, $request->ttl());
     }
 
-    public function testGettersWithoutTTL()
+    public function testGettersWithoutTTL(): void
     {
         $request = new UpdateRequest(
             'test.com',
@@ -61,10 +61,10 @@ class UpdateRequestTest extends TestCase
             'cname.new.com'
         );
 
-        $this->assertInternalType('string', $request->domain());
-        $this->assertInternalType('string', $request->record());
-        $this->assertInternalType('string', $request->currentValue());
-        $this->assertInternalType('string', $request->newValue());
+        $this->assertIsString($request->domain());
+        $this->assertIsString($request->record());
+        $this->assertIsString($request->currentValue());
+        $this->assertIsString($request->newValue());
         $this->assertInstanceOf(TimeToLive::class, $request->ttl());
         $this->assertEquals((string) $request->ttl(), TimeToLive::DEFAULT_TTL);
     }

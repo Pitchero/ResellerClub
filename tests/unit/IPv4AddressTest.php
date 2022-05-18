@@ -8,14 +8,14 @@ use ResellerClub\IPv4Address;
 
 class IPv4AddressTest extends TestCase
 {
-    public function testCanCreateNewInstance()
+    public function testCanCreateNewInstance(): void
     {
         $address = new IPv4Address('127.0.0.1');
 
         $this->assertEquals('127.0.0.1', (string) $address);
     }
 
-    public function testInvalidIPv4AddressThrowsException()
+    public function testInvalidIPv4AddressThrowsException(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -25,7 +25,7 @@ class IPv4AddressTest extends TestCase
         new IPv4Address('127.0.0');
     }
 
-    public function testInvalidIPv4AddressThrowsException2()
+    public function testInvalidIPv4AddressThrowsException2(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -35,7 +35,7 @@ class IPv4AddressTest extends TestCase
         new IPv4Address('127.0.0.0.1');
     }
 
-    public function testInvalidIPv4AddressThrowsException3()
+    public function testInvalidIPv4AddressThrowsException3(): void
     {
         $this->expectException(InvalidArgumentException::class);
 

@@ -9,51 +9,51 @@ use TypeError;
 
 class TimeToLiveTest extends TestCase
 {
-    public function testNonIntegerTTLThrowsException()
+    public function testNonIntegerTTLThrowsException(): void
     {
         $this->expectException(TypeError::class);
 
         new TimeToLive('three minutes');
     }
 
-    public function testBelowMinimumTTLThrowsException()
+    public function testBelowMinimumTTLThrowsException(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
         new TimeToLive('7199');
     }
 
-    public function testEqualToMinimumTTLInstantiates()
+    public function testEqualToMinimumTTLInstantiates(): void
     {
         $ttl = new TimeToLive('7200');
         $this->assertInstanceOf(TimeToLive::class, $ttl);
     }
 
-    public function testDefaultTTLHelper()
+    public function testDefaultTTLHelper(): void
     {
         $ttl = TimeToLive::defaultTtl();
         $this->assertInstanceOf(TimeToLive::class, $ttl);
         $this->assertEquals(TimeToLive::DEFAULT_TTL, (string) $ttl);
     }
 
-    public function testMinimumTTLHelper()
+    public function testMinimumTTLHelper(): void
     {
         $ttl = TimeToLive::minimumTtl();
         $this->assertInstanceOf(TimeToLive::class, $ttl);
         $this->assertEquals(TimeToLive::MINIMUM_TTL, (string) $ttl);
     }
 
-    public function testCastToString()
+    public function testCastToString(): void
     {
         $ttl = TimeToLive::defaultTtl();
-        $this->assertInternalType('string', (string) $ttl);
+        $this->assertIsString((string) $ttl);
         $this->assertEquals(TimeToLive::DEFAULT_TTL, (string) $ttl);
     }
 
-    public function testIntegerFunction()
+    public function testIntegerFunction(): void
     {
         $ttl = TimeToLive::defaultTtl();
-        $this->assertInternalType('integer', $ttl->integer());
+        $this->assertIsInt($ttl->integer());
         $this->assertEquals(TimeToLive::DEFAULT_TTL, $ttl->integer());
     }
 }

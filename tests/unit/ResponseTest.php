@@ -13,7 +13,7 @@ use ResellerClub\Status;
 
 class ResponseTest extends TestCase
 {
-    public function testStatus()
+    public function testStatus(): void
     {
         $response = new Response(
             200,
@@ -28,7 +28,7 @@ class ResponseTest extends TestCase
         $this->assertEquals('success', CreateResponse::fromApiResponse($response)->status());
     }
 
-    public function testMessage()
+    public function testMessage(): void
     {
         $message = 'The request executed successfully';
         $response = new Response(
@@ -44,7 +44,7 @@ class ResponseTest extends TestCase
         $this->assertEquals($message, UpdateResponse::fromApiResponse($response)->message());
     }
 
-    public function wasSuccessful()
+    public function wasSuccessful(): void
     {
         $successfulResponse = new Response(
             200,

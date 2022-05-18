@@ -24,13 +24,13 @@ class ExceptionMapperTest extends TestCase
      */
     private $request;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->request = new Request('GET', 'https://test');
     }
 
-    public function testApiClientException()
+    public function testApiClientException(): void
     {
         $expectedMessage = 'Authentication failure';
         $expectedCode = 400;
@@ -49,7 +49,7 @@ class ExceptionMapperTest extends TestCase
         $this->assertEquals($expectedMessage, $exception->getMessage());
     }
 
-    public function testConnectionException()
+    public function testConnectionException(): void
     {
         $expectedMessage = 'Authentication failure';
 
@@ -66,7 +66,7 @@ class ExceptionMapperTest extends TestCase
         $this->assertEquals($expectedMessage, $exception->getMessage());
     }
 
-    public function testApiException()
+    public function testApiException(): void
     {
         $expectedMessage = 'Some base message.';
         $expectedCode = 500;
@@ -85,7 +85,7 @@ class ExceptionMapperTest extends TestCase
         $this->assertEquals($expectedMessage, $exception->getMessage());
     }
 
-    public function testAlreadyRenewedException()
+    public function testAlreadyRenewedException(): void
     {
         $expectedMessage = 'Domain already renewed.';
         $expectedCode = 500;
@@ -104,7 +104,7 @@ class ExceptionMapperTest extends TestCase
         $this->assertEquals($expectedMessage, $exception->getMessage());
     }
 
-    public function testActionPendingException()
+    public function testActionPendingException(): void
     {
         $expectedMessage = 'There is already an action pending on this Order.';
         $expectedCode = 500;
@@ -123,7 +123,7 @@ class ExceptionMapperTest extends TestCase
         $this->assertEquals($expectedMessage, $exception->getMessage());
     }
 
-    public function testMinimumRequirementException()
+    public function testMinimumRequirementException(): void
     {
         $expectedMessage = 'You must have atleast ONE email account.';
         $expectedCode = 500;
@@ -142,7 +142,7 @@ class ExceptionMapperTest extends TestCase
         $this->assertEquals($expectedMessage, $exception->getMessage());
     }
 
-    private function response($expectedCode, $expectedMessage)
+    private function response($expectedCode, $expectedMessage): Response
     {
         return new Response($expectedCode, [], json_encode(['status' => 'Error', 'message' => $expectedMessage]));
     }

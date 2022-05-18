@@ -7,7 +7,7 @@ use ResellerClub\Orders\Domains\DomainOrderDetailType;
 
 class DomainOrderDetailTypeTest extends TestCase
 {
-    public function testValidDetailTypes()
+    public function testValidDetailTypes(): void
     {
         $this->assertInstanceOf(
             DomainOrderDetailType::class,

@@ -17,7 +17,7 @@ class RenewalResponseTest extends TestCase
      */
     private $response;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -43,17 +43,17 @@ class RenewalResponseTest extends TestCase
         ]);
     }
 
-    public function testItCanOrderId()
+    public function testItCanOrderId(): void
     {
         $this->assertEquals(85547813, $this->response->orderId());
     }
 
-    public function testItCanGetDescription()
+    public function testItCanGetDescription(): void
     {
         $this->assertEquals('yesterday.co.in', $this->response->description());
     }
 
-    public function testItCanGetAction()
+    public function testItCanGetAction(): void
     {
         $action = $this->response->action();
         $this->assertInstanceOf(Action::class, $action);
@@ -64,39 +64,39 @@ class RenewalResponseTest extends TestCase
         $this->assertEquals('Domain renewed successfully', $action->statusDescription());
     }
 
-    public function testItCanGetInvoiceId()
+    public function testItCanGetInvoiceId(): void
     {
         $this->assertEquals(88713188, $this->response->invoiceId());
     }
 
-    public function testItCanGetSellingCurrencySymbol()
+    public function testItCanGetSellingCurrencySymbol(): void
     {
         $this->assertEquals('GBP', $this->response->sellingCurrencySymbol());
     }
 
-    public function testItCanGetSellingCurrency()
+    public function testItCanGetSellingCurrency(): void
     {
         $this->assertInstanceOf(Currency::class, $this->response->sellingCurrency());
     }
 
-    public function testItCanGetSellingAmount()
+    public function testItCanGetSellingAmount(): void
     {
         $this->assertInstanceOf(Money::class, $this->response->sellingAmount());
         $this->assertEquals(-791, $this->response->sellingAmount()->getAmount());
     }
 
-    public function testItCanGetUnutilisedSellingAmount()
+    public function testItCanGetUnutilisedSellingAmount(): void
     {
         $this->assertInstanceOf(Money::class, $this->response->unutilisedSellingAmount());
         $this->assertEquals(-791, $this->response->unutilisedSellingAmount()->getAmount());
     }
 
-    public function testItCanGetCustomerId()
+    public function testItCanGetCustomerId(): void
     {
         $this->assertEquals(17824872, $this->response->customerId());
     }
 
-    public function testItCanGetPrivacyProtectionDetails()
+    public function testItCanGetPrivacyProtectionDetails(): void
     {
         $response = new RenewalResponse([
             'privacydetails'          => [
