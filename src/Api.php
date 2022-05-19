@@ -6,6 +6,9 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use ResellerClub\Dns\A\ARecord;
 use ResellerClub\Dns\Cname\CnameRecord;
+use ResellerClub\Dns\Mx\MxRecord;
+use ResellerClub\Dns\SearchRecords\SearchRecord;
+use ResellerClub\Dns\Txt\TxtRecord;
 use ResellerClub\Orders\BusinessEmails\BusinessEmailOrder;
 use ResellerClub\Orders\Domains\DomainOrder;
 use ResellerClub\Orders\EmailAccounts\EmailAccount;
@@ -129,6 +132,36 @@ class Api
     public function aRecord(): ARecord
     {
         return new ARecord($this);
+    }
+
+    /**
+     * Return an 'MX' DNS record instance.
+     *
+     * @return MxRecord
+     */
+    public function mxRecord(): MxRecord
+    {
+        return new MxRecord($this);
+    }
+
+    /**
+     * Return an 'TXT' DNS record instance.
+     *
+     * @return TxtRecord
+     */
+    public function txtRecord(): TxtRecord
+    {
+        return new TxtRecord($this);
+    }
+
+    /**
+     * Return an SearchRecord instance.
+     *
+     * @return SearchRecord
+     */
+    public function searchRecord(): SearchRecord
+    {
+        return new SearchRecord($this);
     }
 
     /**
