@@ -1,0 +1,27 @@
+name: PHP tests
+
+on:
+  push:
+     branches:
+      - master
+  pull_request:
+     branches: '*'
+
+jobs:
+  run:
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        php-versions: ['7.0', '7.1']
+    steps:
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php-versions }}
+        tools: pecl, composer:v2
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress --no-suggest
+      
+    - name: Run tests
+      run: ./vendor/bin/phpunit --configuration phpunit.xml
