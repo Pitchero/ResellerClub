@@ -82,9 +82,7 @@ class TxtRecordTest extends TestCase
                 200,
                 ['Content-Type' => 'application/json'],
                 json_encode([
-                    'response' => [
                         'status' => 'Success',
-                    ],
                 ])
             ),
         ]);
