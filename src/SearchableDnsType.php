@@ -7,9 +7,9 @@ use InvalidArgumentException;
 class SearchableDnsType
 {
     /**
-     *  Records that are available to search for via the ResellerClub API.
+     * Records that are available to search for via the ResellerClub API.
      * @see https://manage.resellerclub.com/kb/answer/1106
-     * @date 19-05-2022
+     * @date 2022-05-19
      */
     const AVAILABLE_RECORDS = [
         'A',

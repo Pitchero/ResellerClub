@@ -14,7 +14,7 @@ class AddRequestTest extends TestCase
         $request = new AddRequest(
             'mytestdomain.com',
             '@',
-            'v=spf1 ip4:123.456.789',
+            'v=spf1 ip4:123.45.6.789',
             $ttl
         );
 
@@ -26,7 +26,7 @@ class AddRequestTest extends TestCase
         $request = new AddRequest(
             'mytestdomain.com',
             '@',
-            'v=spf1 ip4:123.456.789'
+            'v=spf1 ip4:123.45.6.789'
         );
 
         $this->assertInstanceOf(AddRequest::class, $request);
@@ -38,7 +38,7 @@ class AddRequestTest extends TestCase
         $request = new AddRequest(
             'mytestdomain.com',
             '@',
-            'v=spf1 ip4:123.456.789',
+            'v=spf1 ip4:123.45.6.789',
             $ttl
         );
 
@@ -53,7 +53,7 @@ class AddRequestTest extends TestCase
         $request = new AddRequest(
             'mytestdomain.com',
             '@',
-            'v=spf1 ip4:123.456.789'
+            'v=spf1 ip4:123.45.6.789'
         );
 
         $this->assertInternalType('string', $request->domain());
@@ -69,7 +69,7 @@ class AddRequestTest extends TestCase
         $request = new AddRequest(
             'mytestdomain.com',
             '',
-            'v=spf1 ip4:123.456.789',
+            'v=spf1 ip4:123.45.6.789',
             $ttl
         );
 
