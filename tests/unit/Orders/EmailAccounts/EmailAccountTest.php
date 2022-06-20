@@ -13,8 +13,12 @@ use ResellerClub\EmailAddress;
 use ResellerClub\Orders\EmailAccounts\EmailAccount;
 use ResellerClub\Orders\EmailAccounts\Requests\CreateRequest;
 use ResellerClub\Orders\EmailAccounts\Requests\DeleteRequest;
+use ResellerClub\Orders\EmailAccounts\Requests\ResetPasswordRequest;
+use ResellerClub\Orders\EmailAccounts\Requests\UpdateDetailsRequest;
 use ResellerClub\Orders\EmailAccounts\Responses\CreateResponse;
 use ResellerClub\Orders\EmailAccounts\Responses\DeletedResponse;
+use ResellerClub\Orders\EmailAccounts\Responses\ResetPasswordResponse;
+use ResellerClub\Orders\EmailAccounts\Responses\UpdateDetailsResponse;
 use ResellerClub\Orders\Order;
 
 class EmailAccountTest extends TestCase
@@ -107,6 +111,121 @@ class EmailAccountTest extends TestCase
                     $languageCode = 'en'
                 )
             )
+        );
+    }
+
+    public function testUpdatingEmailDetails()
+    {
+        $mock = new MockHandler([
+            new Response(
+                200,
+                ['Content-Type' => 'application/json'],
+                json_encode([
+                    'response' => [
+                        'status' => 'Success',
+                    ],
+                ])
+            ),
+        ]);
+
+        $emailAccounts = new EmailAccount($this->api($mock));
+
+        $this->assertInstanceOf(
+            UpdateDetailsResponse::class,
+            $emailAccounts->updateDetails(
+                new UpdateDetailsRequest(
+                    new Order($id = 123),
+                    new EmailAddress($email = 'john.doe@my-domain.co.uk'),
+                    new EmailAddress($email = 'jon.doe@my-new-domain.co.uk'),
+                    'Jon',
+                    'Doe'
+                )
+            )
+        );
+    }
+
+    public function testGetStatusOfUpdatingDetails()
+    {
+        $mock = new MockHandler([
+            new Response(
+                200,
+                ['Content-Type' => 'application/json'],
+                json_encode([
+                    'response' => [
+                        'status' => 'Success',
+                    ],
+                ])
+            ),
+        ]);
+
+        $emailAccounts = new EmailAccount($this->api($mock));
+
+        $this->assertEquals(
+            true,
+            $emailAccounts->updateDetails(
+                new UpdateDetailsRequest(
+                    new Order($id = 123),
+                    new EmailAddress($email = 'john.doe@my-domain.co.uk'),
+                    new EmailAddress($email = 'jon.doe@my-new-domain.co.uk'),
+                    'Jon',
+                    'Doe'
+                )
+            )->wasSuccessful()
+        );
+    }
+
+    public function testResponseFromEmailPasswordReset()
+    {
+        $mock = new MockHandler([
+            new Response(
+                200,
+                ['Content-Type' => 'application/json'],
+                json_encode([
+                    'response' => [
+                        'status' => 'Success',
+                        'data' => 'myT35tP@55word',
+                    ],
+                ])
+            ),
+        ]);
+
+        $emailAccounts = new EmailAccount($this->api($mock));
+
+        $this->assertInstanceOf(
+            ResetPasswordResponse::class,
+            $emailAccounts->resetPassword(
+                new ResetPasswordRequest(
+                    new Order($id = 123),
+                    new EmailAddress($email = 'john.doe@my-domain.co.uk')
+                )
+            )
+        );
+    }
+
+    public function testPasswordResetHasNewPassword()
+    {
+        $mock = new MockHandler([
+            new Response(
+                200,
+                ['Content-Type' => 'application/json'],
+                json_encode([
+                    'response' => [
+                        'status' => 'Success',
+                        'data' => 'myT35tP@55word',
+                    ],
+                ])
+            ),
+        ]);
+
+        $emailAccounts = new EmailAccount($this->api($mock));
+
+        $this->assertEquals('myT35tP@55word',
+            $emailAccounts->resetPassword(
+                new ResetPasswordRequest(
+                    new Order($id = 123),
+                    new EmailAddress($email = 'john.doe@my-domain.co.uk')
+                )
+            )->getPassword()
         );
     }
 
