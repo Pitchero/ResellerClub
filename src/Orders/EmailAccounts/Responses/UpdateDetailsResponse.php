@@ -23,7 +23,7 @@ class UpdateDetailsResponse extends Response
     {
         parent::__construct($attributes);
 
-        $this->throwExceptionIfWasNotSuccessful();
+        $this->throwExceptionIfNotSuccessful();
     }
 
     /**
@@ -46,7 +46,7 @@ class UpdateDetailsResponse extends Response
      * @throws DoesNotExistResponseException
      * @throws ResponseException
      */
-    private function throwExceptionIfWasNotSuccessful()
+    private function throwExceptionIfNotSuccessful()
     {
         // Not all responses contain a status it would seem, for example get business email.
         if (!$this->wasSuccessful()) {
