@@ -93,8 +93,8 @@ class EmailAccount
             'mail/user/modify.json',
             [
                 'order-id' => $request->orderId(),
-                'email' => $request->emailAddress(),
-                'notification-email' => $request->notificationEmailAddress(),
+                'email' => (string) $request->emailAddress(),
+                'notification-email' => (string) $request->notificationEmailAddress(),
                 'first-name' => $request->firstName(),
                 'last-name' => $request->lastName(),
             ]
@@ -117,7 +117,7 @@ class EmailAccount
             'mail/user/reset-password.json',
             [
                 'order-id' => $request->orderId(),
-                'email' => $request->emailAddress(),
+                'email' => (string) $request->emailAddress(),
             ]
         );
 
