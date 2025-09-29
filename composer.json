@@ -19,14 +19,15 @@
         "source": "https://github.com/Pitchero/ResellerClub"
     },
     "require": {
-        "php": ">=7.0.0",
+        "php": ">=7.4",
         "guzzlehttp/guzzle": "~6.0",
         "nesbot/carbon": "2.x",
         "moneyphp/money": "~3.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.4 || ^8.0",
-        "symfony/var-dumper": "^3.3"
+        "symfony/var-dumper": "^3.3",
+        "rector/rector": "^2.1"
     },
     "autoload": {
         "psr-4": {

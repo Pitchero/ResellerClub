@@ -113,6 +113,6 @@ class UpdateRequest extends Response
      */
     public function ttl(): TimeToLive
     {
-        return ($this->ttl) ? $this->ttl : TimeToLive::defaultTtl();
+        return $this->ttl ?: TimeToLive::defaultTtl();
     }
 }
