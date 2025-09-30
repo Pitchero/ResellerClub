@@ -33,6 +33,8 @@ class GetResponse extends Response
      */
     public function DnsRecords(): array
     {
-        return array_filter($this->attributes, static fn($record) => is_array($record));
+        return array_filter($this->attributes, static function ($record) {
+            return is_array($record);
+        });
     }
 }
