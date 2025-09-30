@@ -19,7 +19,7 @@
         "source": "https://github.com/Pitchero/ResellerClub"
     },
     "require": {
-        "php": ">=7.4",
+        "php": ">=7.2",
         "guzzlehttp/guzzle": "~6.0",
         "nesbot/carbon": "2.x",
         "moneyphp/money": "~3.0"
